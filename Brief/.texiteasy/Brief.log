@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.9)  11 OCT 2017 19:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.11)  12 OCT 2017 10:05
 entering extended mode
 **./Brief.tex
 (Brief.tex
@@ -55,8 +55,8 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\parskip.sty"
 Package: parskip 2001/04/09 non-zero parskip adjustments
 )
-(C:\Users\lewis\OneDrive\Documents\GitHub\3rd-Year-Project\3rd-Year-Project\Bri
-ef\.texiteasy\Brief.aux)
+("C:\Users\lewis\Documents\Part III\3rd-Year-Project\Brief\.texiteasy\Brief.aux
+")
 \openout1 = `Brief.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
@@ -117,21 +117,21 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(C:\Users\lewis\OneDrive\Documents\GitHub\3rd-Year-Project\3rd-Year-Project\Bri
-ef\.texiteasy\Brief.aux) ) 
+("C:\Users\lewis\Documents\Part III\3rd-Year-Project\Brief\.texiteasy\Brief.aux
+") ) 
 Here is how much of TeX's memory you used:
  757 strings out of 493323
- 10927 string characters out of 3139066
+ 10785 string characters out of 3139065
  71973 words of memory out of 3000000
  4347 multiletter control sequences out of 15000+200000
  7591 words of font info for 27 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  23i,6n,19p,1475b,195s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-mr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb>
 Output written on Brief.pdf (1 page, 65546 bytes).
 PDF statistics:
  26 PDF objects out of 1000 (max. 8388607)
