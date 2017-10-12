@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.11)  11 OCT 2017 13:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.11)  12 OCT 2017 10:56
 entering extended mode
 **./report.tex
 (report.tex
@@ -60,8 +60,8 @@ Package: parskip 2001/04/09 non-zero parskip adjustments
 Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
 \c@lips@count=\count91
 )
-(C:\Users\lewis\OneDrive\Documents\GitHub\3rd-Year-Project\Progress\.texiteasy\
-report.aux)
+("C:\Users\lewis\Documents\Part III\3rd-Year-Project\Progress\.texiteasy\report
+.aux")
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -114,8 +114,8 @@ LaTeX Font Info:    ... okay on input line 7.
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [1]
-(C:\Users\lewis\OneDrive\Documents\GitHub\3rd-Year-Project\Progress\.texiteasy\
-report.toc)
+("C:\Users\lewis\Documents\Part III\3rd-Year-Project\Progress\.texiteasy\report
+.toc")
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
@@ -142,20 +142,20 @@ Chapter 4.
 ] [12
 
 ]
-(C:\Users\lewis\OneDrive\Documents\GitHub\3rd-Year-Project\Progress\.texiteasy\
-report.aux) ) 
+("C:\Users\lewis\Documents\Part III\3rd-Year-Project\Progress\.texiteasy\report
+.aux") ) 
 Here is how much of TeX's memory you used:
- 953 strings out of 493323
- 13340 string characters out of 3139065
+ 954 strings out of 493323
+ 13302 string characters out of 3139065
  173015 words of memory out of 3000000
- 4543 multiletter control sequences out of 15000+200000
- 5150 words of font info for 19 fonts, out of 3000000 for 9000
+ 4544 multiletter control sequences out of 15000+200000
+ 5448 words of font info for 20 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  23i,4n,19p,150b,134s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on report.pdf (13 pages, 65894 bytes).
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on report.pdf (13 pages, 65679 bytes).
 PDF statistics:
  57 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
