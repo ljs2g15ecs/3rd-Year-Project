@@ -1,1 +1,1 @@
-(lightweight AND "stream cipher" AND (hardware OR FPGA))
+(((lightweight OR "Low Power") AND "stream cipher" AND (hardware OR FPGA))) 
