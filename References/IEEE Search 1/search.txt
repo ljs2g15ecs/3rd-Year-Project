@@ -1,0 +1,1 @@
+((lightweight OR "Low Power") AND encryption AND (hardware OR FPGA OR "System Verilog" OR Verilog OR VHDL) AND ( IoT OR "Internet of Things"))
