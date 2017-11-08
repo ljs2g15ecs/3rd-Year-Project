@@ -1,0 +1,1 @@
+(lightweight OR "Low Power") AND stream AND (cipher OR encryption) AND (hardware OR FPGA)
