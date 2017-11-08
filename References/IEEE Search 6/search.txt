@@ -1,0 +1,1 @@
+SIMON AND (FPGA OR hardware) AND CIPHER
