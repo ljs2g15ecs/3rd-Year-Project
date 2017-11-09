@@ -1,6 +1,18 @@
-CC=gcc
+CC = gcc
+PROG = SIMON_host
+src = $(wildcard *.c)
+obj = $(src:.c=.o)
+CFLAGS = -D $(S)
+LFLAGS = 
 
-CFLAGS = -D S48_72
+S = 
 
-SIMON_host.exe: SIMON_host.c SIMON_host.h
-	$(CC) SIMON_host.c -o SIMON_host $(CFLAGS)
+build: $(obj)
+	$(CC) $^ -o $@
+
+$(PROG).o : $(PROG).c FORCE
+	$(CC) $(CFLAGS) -c $<
+FORCE:;
+
+%.o : %.c
+	$(CC) $(CFLAGS) -c $<
