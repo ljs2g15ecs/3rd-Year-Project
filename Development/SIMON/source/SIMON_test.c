@@ -54,20 +54,25 @@
 
 void	test()
 {
+	///*
+	printf("|\tTESTING PRE KEY EXPANSION\t\t|");
+	
 	NEWLINE();
 	printf("|\tKEY:\t\t");
-	int8_t i;
-	for(i=0; i<M; i++)	{	PRINTHEX(k[i].v);}
+	TYPE(8) i;
+	for(i=0; i<M; i++)	{	PRINTHEX(k[i].v);	}
 	printf("\t|\n");
 	
-	block cipher = {0,0};
+	block cipher, plain;
+	cipher[0].v = 0;
+	cipher[1].v = 0;
 	printf("|\tPLAIN->CIPHER:\t");
 	PRINTHEX(p[0].v);		PRINTHEX(p[1].v);
 	printf("->");
 	PRINTHEX(cipher[0].v);	PRINTHEX(cipher[1].v);
 	printf("\t|\tSTART\t|\n");
 	
-	ENCRYPT(p, cipher, k);
+	ENCRYPT_PRE(p, cipher, k);
 	printf("|\tPLAIN->CIPHER:\t");
 	PRINTHEX(p[0].v);		PRINTHEX(p[1].v);
 	printf("->");
@@ -79,4 +84,50 @@ void	test()
 	printf("->");
 	PRINTHEX(c[0].v);	PRINTHEX(c[1].v);
 	printf("\t|\tTEST\t|\n");
+	
+	///*
+	plain[0].v = 0;
+	plain[1].v = 0;
+	DECRYPT_PRE(c, plain, k);
+	printf("|\tPLAIN<-CIPHER:\t");
+	PRINTHEX(plain[0].v);		PRINTHEX(plain[1].v);
+	printf("<-");
+	PRINTHEX(c[0].v);	PRINTHEX(c[1].v);
+	printf("\t|\tDECRYPT\t|\n");
+	//*/
+	
+	printf("|\tTESTING IN LOOP KEY EXPANSION\t\t|");
+	
+	NEWLINE();
+	printf("|\tKEY:\t\t");
+	for(i=0; i<M; i++)	{	PRINTHEX(k[i].v);}
+	printf("\t|\n");
+	
+	cipher[0].v = 0;
+	cipher[1].v = 0;
+	printf("|\tPLAIN->CIPHER:\t");
+	PRINTHEX(p[0].v);		PRINTHEX(p[1].v);
+	printf("->");
+	PRINTHEX(cipher[0].v);	PRINTHEX(cipher[1].v);
+	printf("\t|\tSTART\t|\n");
+	
+	ENCRYPT_INL(p, cipher, k);
+	printf("|\tPLAIN->CIPHER:\t");
+	PRINTHEX(p[0].v);		PRINTHEX(p[1].v);
+	printf("->");
+	PRINTHEX(cipher[0].v);	PRINTHEX(cipher[1].v);
+	printf("\t|\tENCRYPT\t|\n");
+	
+	printf("|\tPLAIN->CIPHER:\t");
+	PRINTHEX(p[0].v);		PRINTHEX(p[1].v);
+	printf("->");
+	PRINTHEX(c[0].v);	PRINTHEX(c[1].v);
+	printf("\t|\tTEST\t|\n");
+	//*/
+	
+	/*
+	word a;
+	a = k[0];
+	PRINTHEX(a.v);
+	//*/
 }

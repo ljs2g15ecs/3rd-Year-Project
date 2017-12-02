@@ -52,6 +52,8 @@
     %\lipsum[1-5]
     Throughout history encryption has been has been used allow people and groups to exchange secret messages, especially in times of war. Since the early transposition and substitution ciphers, where each character in a message are rearranged and replaced by others a certain number further down the alphabet respectively, encryption has evolved to include techniques for identity authentication, integrity checks and much more. The study of encryption and these techniques is known as cryptography and its counterpart, the study of breaking the encryption to find the original message, is known as cryptanalysis. Eventually, for most encryption techniques a weakness is found so new and more complex techniques are conceived and with the invention of computers the complexity increased greatly and as computer power has developed so has encryption algorithms. However, the computer power is also available for cryptanalysis so the cycle of continuous improvement of the algorithms used hasn't stopped.
     
+    
+    
     \chapter{Progress}
     \lipsum[1-5]
     

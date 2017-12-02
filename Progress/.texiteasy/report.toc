@@ -1,7 +1,7 @@
 \contentsline {chapter}{Abstract}{1}
 \contentsline {chapter}{Contents}{2}
 \contentsline {chapter}{\numberline {1}Introduction}{3}
-\contentsline {chapter}{\numberline {2}Background Research and Literature}{4}
+\contentsline {chapter}{\numberline {2}Background Research and Literature}{5}
 \contentsline {chapter}{\numberline {3}Progress}{6}
 \contentsline {chapter}{\numberline {4}Future Plan}{8}
 \contentsline {chapter}{References}{10}

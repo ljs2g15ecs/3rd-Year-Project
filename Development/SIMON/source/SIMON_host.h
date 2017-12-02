@@ -61,24 +61,22 @@ typedef uint32_t	uint24_t;
 typedef uint64_t	uint48_t;
 #define TYPE_(x)	uint ## x ## _t
 #define TYPE(x)		TYPE_(x)
-#define UINT(x, n)	typedef struct n	{	TYPE_(x) v : x;	}	n;
+#define UINT(x, n)	typedef struct n	{	TYPE(x) v : x;	}	n;
 UINT(N, word);
 
 typedef word 		block[2];
 typedef word 		key[M];
 typedef word		keys[T];
 
-#define	PRINTHEX(x)	printf("%0*X", N/4, x	)
-#define	PRINTLINE()	printf("---------------")
-#define NEWLINE()	printf("\n\r"			)
-#define TAB()		printf("\t"				)
-
 TYPE(N)	ROTL		(word x,	uint8_t n	);
 TYPE(N)	ROTR		(word x,	uint8_t n	);
 
 TYPE(N)	F			(word x					);
 void	ROUND		(block b,	word k		);
-void	KEXP		(keys ks,	key k		);
-void	ENCRYPT		(const block p,	block c,	key k		);
+void	KEXP_PRE	(keys ks,	key k		);
+void	KEXP_INL	(key k,	TYPE(8) i			);
+void	ENCRYPT_PRE	(const block p,	block c,	key k		);
+void	ENCRYPT_INL	(const block p,	block c,	key k		);
+void	DECRYPT_PRE	(const block c, block p,	key k		);
 
 #endif
