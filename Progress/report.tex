@@ -38,8 +38,7 @@
     \tableofcontents
     \addcontentsline{toc}{chapter}{Contents}
     
-    \chapter{Introduction}
-    %\lipsum[1-5]
+	\chapter{Introduction}
     Over the last few years there has been a shift in type of \textcolor{blue}{devices} connected to the internet from just servers, PC's and later smartphones, to small embedded processors that can control many \textcolor{blue}{devices}. The idea of connecting such \textcolor{blue}{devices} to internet has been dubbed "Internet of Things" or "IoT" and has the aim to make our lives simpler. These IoT \textcolor{blue}{devices} can range from industrial applications, such as automated factories, to public infrastructure, like a smart electrical grid, or more homely \textcolor{blue}{devices} in a smart connected home. Thus due to the wide range of products that a connected IoT device can be applied to improve the efficiency and/or usefulness, it has been predicted that billions of \textcolor{blue}{devices} will be in use by \textcolor{red}{[insert year/reference]}. This also means that the complexity of the \textcolor{blue}{devices} varies greatly with simple light switches and even kettles being given the IoT treatment \textcolor{red}{[insert reference]}, but at the other end of the scale a network of connected self-driving cars is being considered \textcolor{red}{[insert reference]}.
     
     The one thing that all of these \textcolor{blue}{devices} have in common though is that they need to be secure as they communicate sensitive and private data through an open channel on the internet between the user and the device. Hence, to keep the potential adversaries from accessing the data and possibly controlling numerous connected \textcolor{blue}{devices}, maliciously or not, an encryption algorithm can be used with only the specified users having access to the decryption key. There are many encryption algorithms that perform this function and most can be implemented in both software and dedicated hardware such as a Application Specific Integrated Circuit (ASIC) or a Field Programmable Gate Array (FPGA). As a majority of IoT \textcolor{blue}{devices} are implemented on small embedded processors which have limited resources so the hardware option might possibly be a better solution for IoT \textcolor{blue}{devices}. Dedicated hardware can also, theoretically, perform the algorithms faster and more accurately. However, due to the fact that most IoT devices are always on, power consumption is a very important factor when considering options for adding hardware accelerated encryption and for battery powered devices is often more critical than the actual encryption.
@@ -49,17 +48,47 @@
     The scope of this project is therefore to develop encryption algorithms in System Verilog for a FPGA and compare their performance to the equivalent software before applying the hardware to actual IoT devices. Also if more time is available then a layout, based on the System Verilog synthesis, could be developed for ASIC fabrication in the future which could increase efficiency of the hardware due to the fact that only the required circuitry would be present on the chip.
     
     \chapter{Background Research and Literature}
-    %\lipsum[1-5]
-    Throughout history encryption has been has been used allow people and groups to exchange secret messages, especially in times of war. Since the early transposition and substitution ciphers, where each character in a message are rearranged and replaced by others a certain number further down the alphabet respectively, encryption has evolved to include techniques for identity authentication, integrity checks and much more. The study of encryption and these techniques is known as cryptography and its counterpart, the study of breaking the encryption to find the original message, is known as cryptanalysis. Eventually, for most encryption techniques a weakness is found so new and more complex techniques are conceived and with the invention of computers the complexity increased greatly and as computer power has developed so has encryption algorithms. However, the computer power is also available for cryptanalysis so the cycle of continuous improvement of the algorithms used hasn't stopped.
+    The primary objective of cryptography is to convert, or encrypt a readable message known as plaintext into an unreadable form, ciphertext, so that adversaries cannot read the contents  but over the years the scope of cryptography has widened. Throughout history encryption has been has been used allow people and groups to exchange secret messages, especially in times of war. Since the early transposition and substitution ciphers, where each character in a message are rearranged and replaced by others a certain number further down the alphabet respectively, encryption has evolved to include techniques for identity authentication, integrity checks and much more. Cryptography is therefore the study of encryption and these techniques, its counterpart: the study of breaking the encryption to find the original message, is known as cryptanalysis. Eventually, for most encryption techniques a weakness is found, and subsequently exploited, so more complex techniques are conceived and with the invention of computers the complexity of the algorithms has increased greatly. However, the computer power is also available for cryptanalysis so the cycle of continuous improvement of the algorithms hasn't stopped.
+    
+    \section{Symmetric \& Asymmetric Cryptography}
+    In cryptography there are two main concepts that the algorithms are based on: symmetric and asymmetric keys. In asymmetric key cryptography a unique key is used to encrypt data and different, but a related key, is used to decrypt it. The relationship between the two keys is often defined by maths problem that is very difficult to solve which is the basis of the encryption. On the other hand, symmetric key cryptography uses the same key for both encryption and decryption, hence symmetric, with the security usually provided by operations such as substitution, rotations or even logic operations like AND or XOR.
+    
+    \subsection{Symmetric Key}
+    Symmetric key cryptography is also known as private key as in order to keep the encrypted data secure the key used must be kept secret to ensure the security of the data. There are two main types of private key algorithms that operate on the plaintext differently: block ciphers which uses a fixed number of bits, block; or stream ciphers which encrypts data bit by bit.
+    
+    Modern block ciphers are based on Claude Shannons work on product ciphers in \textcolor{red}{[insert reference]}, in which he suggested that iterating a cipher with simple operations for multiple rounds, with subkeys, improves the security.
+    
+    Stream ciphers 
+	
+	\subsection{Asymmetric Key}
+    Similar to the symmetric/private comparison asymmetric key cryptography can be referred to as public key due to the fact that one of the related keys can be publicly available without compromising the security of the encrypted data.
+    
+    \section{Conventional Algorithms}
+    
+    \subsection{Standardization}
+    
+    \subsection{Other Algorithms}
+    
+    \section{Lightweight Algorithms}
+    
+    \subsection{PRESENT}
+    
+    \subsection{PRINCE}
+    
+    \subsection{SIMON \& SPECK Algorithms}
     
     \chapter{Progress}
-    \lipsum[1-5]
+    
+    \section{Hosted C}
+    
+    \section{System Verilog}
     
     \chapter{Future Plan}
-    \lipsum[1-5]
     
-    \chapter*{References}
+    \begin{thebibliography}{10}
     \addcontentsline{toc}{chapter}{References}
+    
+    \end{thebibliography}
     
     \chapter*{Appendix}
     \addcontentsline{toc}{chapter}{Appendix}
