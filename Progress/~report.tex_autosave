@@ -81,8 +81,6 @@
     \subsection{Standardization}
     DES, Data Encryption Standard, is one the earliest block ciphers used in the computer age and it was developed by IBM in the 1970s based on their earlier cipher Lucifer\textcolor{red}{[insert reference]}. As with Lucifer it was designed around a Feistel network but the round function used also has a SP network structure to it\textcolor{red}{[insert reference]}, but the S-boxes aren't a one-to-one function but rather output 4 bits from a 6 bit input. DES operates on a block of 64 bits for 16 rounds using a key length of 64 bits but it has an effective key length of 56 bits as 8 bits were used for parity\textcolor{red}{[insert reference]}. It has the name Data Encryption Standard as it was accepted as the standard encryption algorithm by the US National Bureau of Standards (NBS), now the National Institute of Standards and Technology (NIST), in 1977 after it was altered by the National Security Agency (NSA), which caused some controversy\textcolor{red}{[insert reference]}.
     
-    DES 
-    
     \subsection{Other Algorithms}
     
     \section{Lightweight Algorithms}
