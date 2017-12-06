@@ -38,7 +38,7 @@
     \tableofcontents
     \addcontentsline{toc}{chapter}{Contents}
     
-	\chapter{Introduction}
+    \chapter{Introduction}
     Over the last few years there has been a shift in type of \textcolor{blue}{devices} connected to the internet from just servers, PC's and later smartphones, to small embedded processors that can control many \textcolor{blue}{devices}. The idea of connecting such \textcolor{blue}{devices} to internet has been dubbed "Internet of Things" or "IoT" and has the aim to make our lives simpler. These IoT \textcolor{blue}{devices} can range from industrial applications, such as automated factories, to public infrastructure, like a smart electrical grid, or more homely \textcolor{blue}{devices} in a smart connected home. Thus due to the wide range of products that a connected IoT device can be applied to improve the efficiency and/or usefulness, it has been predicted that billions of \textcolor{blue}{devices} will be in use by \textcolor{red}{[insert year/reference]}. This also means that the complexity of the \textcolor{blue}{devices} varies greatly with simple light switches and even kettles being given the IoT treatment\textcolor{red}{[insert reference]}, but at the other end of the scale a network of connected self-driving cars is being considered\textcolor{red}{[insert reference]}.
     
     The one thing that all of these \textcolor{blue}{devices} have in common though is that they need to be secure as they communicate sensitive and private data through an open channel on the internet between the user and the device. Hence, to keep the potential adversaries from accessing the data and possibly controlling numerous connected \textcolor{blue}{devices}, maliciously or not, an encryption algorithm can be used with only the specified users having access to the decryption key. There are many encryption algorithms that perform this function and most can be implemented in both software and dedicated hardware such as a Application Specific Integrated Circuit (ASIC) or a Field Programmable Gate Array (FPGA). As a majority of IoT \textcolor{blue}{devices} are implemented on small embedded processors which have limited resources so the hardware option might possibly be a better solution for IoT \textcolor{blue}{devices}. Dedicated hardware can also, theoretically, perform the algorithms faster and more accurately. However, due to the fact that most IoT devices are always on, power consumption is a very important factor when considering options for adding hardware accelerated encryption and for battery powered devices is often more critical than the actual encryption.
@@ -56,8 +56,6 @@
     \subsection{Asymmetric Key}
     Asymmetric key cryptography can be referred to as public key due to the fact that one of the related keys can be publicly available without compromising the security of the encrypted data. This is because the keys are usually generated based on mathematical problems that have no solution or the solution is impossible for a computer to solve efficiently, such that solving it takes longer than an exhaustive key search\textcolor{red}{[insert reference]}. There are many problems that fit this criteria but the most popular in use today are the integer factorization and elliptic curve problems used by the RSA\textcolor{red}{[insert reference]} and the family of Elliptic-curve cryptography (ECC) techniques\textcolor{red}{[insert reference]} respectively. Public key cryptography can be used in two different modes as if data is encrypted with the intended recipients public key only they can decrypt it with their private key, thus encryption. However, if a private key is used for encryption then using the public key to decrypt it ensures the senders identity, authentication\textcolor{red}{[insert reference]}.
     
-    Due to the fact that these algorithms are hard to solve they require complex hardware or software to implement which is undesirable for this project. Also, with the exception of ECC the key sizes needed for the security can be very large so with the limited IO pins available on FPGAs they could prove difficult to program.
-    
     \subsection{Symmetric Key}
     Similar to the symmetric/private comparison symmetric key cryptography is also known as private key as in order to keep the encrypted data secure the key used must be kept secret. There are two main types of private key algorithms that operate on the plaintext differently: block ciphers which uses a fixed number of bits, block; or stream ciphers which encrypts data bit by bit.
     
@@ -73,25 +71,41 @@
     \[B_{i+1} = F(B_i) \oplus K_i\]
     \[B_i = F'(B_{i+1}) \oplus K_i\] 
     
-    Stream ciphers 
+    \textcolor{cyan}{[Insert Stream Ciphers]}
+    
+    \subsection{Decisions}
+    Due to the fact that asymmetric key algorithms are hard to solve they require complex hardware or software to implement which is undesirable for this project. Also, with the exception of ECC the key sizes needed for the security can be very large so with the limited IO pins available on FPGAs they could prove difficult to program. On the other hand, many private key algorithms are designed to be efficient in hardware especially Feistel networks as an inverted round function isn't required. While a stream cipher can be useful to encrypt serial data that will most likely be the source the modes of operation available for block ciphers provide more flexible functionality including stream cipher modes. Therefore, the algorithm chosen for this project will most likely be a block cipher with a Feistel network.
     
     \section{Conventional Algorithms}
-    There are many block ciphers that are considered very secure and therefore popular, they include: DES, Blowfish, Twofish and AES\textcolor{red}{[insert reference]}. 
+    There are many block ciphers that are considered very secure and therefore popular, they include: DES, AES, Blowfish\textcolor{red}{[insert reference]}. DES operates on a block of 64 bits for 16 rounds using a key length of 64 bits but it has an effective key length of 56 bits as 8 bits were used for parity\textcolor{red}{[insert reference]}. AES, an upgrade to DES, is far more secure as uses a 128 bit block and has the flexibility of using three different key lengths: 128, 192 and 256. The number of rounds that AES iterates depends on the key length with 10 rounds used for a 128 bit key, 12 for 192, and 14 for the largest key\textcolor{red}{[insert reference]}. Blowfish, like DES, operates on a 64 bit block and iterates for 16 rounds, but it can use a variable key length in the range 32 to 448 bits\textcolor{red}{[insert reference]}.
     
     \subsection{Standardization}
-    DES, Data Encryption Standard, is one the earliest block ciphers used in the computer age and it was developed by IBM in the 1970s based on their earlier cipher Lucifer\textcolor{red}{[insert reference]}. As with Lucifer it was designed around a Feistel network but the round function used also has a SP network structure to it\textcolor{red}{[insert reference]}, but the S-boxes aren't a one-to-one function but rather output 4 bits from a 6 bit input. DES operates on a block of 64 bits for 16 rounds using a key length of 64 bits but it has an effective key length of 56 bits as 8 bits were used for parity\textcolor{red}{[insert reference]}. It has the name Data Encryption Standard as it was accepted as the standard encryption algorithm by the US National Bureau of Standards (NBS), now the National Institute of Standards and Technology (NIST), in 1977 after it was altered by the National Security Agency (NSA), which caused some controversy\textcolor{red}{[insert reference]}.
+    DES, which stands for Data Encryption Standard, is one the earliest block ciphers used in the computer age and it was developed by IBM in the 1970s based on their earlier cipher Lucifer\textcolor{red}{[insert reference]}. As with Lucifer it was designed around a Feistel network but the round function used also has a SP network structure to it\textcolor{red}{[insert reference]}, but the S-boxes aren't a one-to-one function but rather output 4 bits from a 6 bit input. It has the name Data Encryption Standard as it was accepted as the standard encryption algorithm by the US National Bureau of Standards (NBS), now the National Institute of Standards and Technology (NIST), in 1977 after it was altered by the National Security Agency (NSA), which caused some controversy\textcolor{red}{[insert reference]}.
     
-    DES 
+    \textcolor{cyan}{[Insert Attacks of DES]}
+    
+    DES was used for about two decades but in the 1990s several successful attacks proved its weakness so in 1997 NIST started a selection process to find its replacement. Due the controversy of the NSAs involvement and comments from the cryptography community the selection process was as transparent as possible\textcolor{red}{[insert reference]}. Many algorithms were submitted as candidates for the standard but the finalists were: MARS, RC6, Rijndael, Serpent, and Twofish\textcolor{red}{[insert reference]}. It took three years to decide on the algorithm to be set as the standard which was announced as Rijndael in 2000 and the standard was et in 2001, with the 128, 192, 256 bit keys being used in the standard\textcolor{red}{[insert reference]}. Unlike DES, AES uses a SP network as it is efficient, in time, in both hardware and software. The round function treats the block as a $4x4$ byte matrix and performs multiple steps on the data: sub bytes; shift rows; mix columns and add round key\textcolor{red}{[insert reference]}. The sub bytes uses S-boxes with byte inputs and outputs another byte based on a lookup table. The shift row step then shifts each of the rows in the matrix by the same number of bytes as the row number. The mix column step is the most complicated as it involves matrix multiplication in the finite field $GF(2^8)$, but is commonly implemented in lookup tables. The add round key step is the simplest as it is just XORing the block with the key generated by the key schedule.
+    
+    \textcolor{cyan}{[Insert Attacks and FPGA implementations of AES]}
     
     \subsection{Other Algorithms}
+    The US standardized algorithms quickly became very popular and can be considered the unofficial global standard\textcolor{red}{[insert reference]}. Although, there are many other algorithms that are considered secure and are commonly used. One of these algorithms, TripleDES, is actually based around DES whihc increases the security by encrypting the plaintext three times with separate keys making the effective key length of 168 bits. Other algorithms might be used because there is still some distrust of the NSAs involvement in the algorithms and they are more open source. This is the case of the Blowfish algorithm as it is unpatented and can therefore be used in any product without legal consequence. Blowfish was designed by Bruce Schneier in the early 1990s as he, and many others, noticed the insecurity of DES particularly with the 56 bit key length making a brute force attack more plausible\textcolor{red}{[insert reference]}. The design of the algorithm is based around a Feistel network with, similar to DES, the round function using S-boxes. The sub keys and S-box lookup tables are generated using the hexadecimal digits of pi which are provided by the designers\textcolor{red}{[insert reference]}.
+    
+    \textcolor{cyan}{[Insert Attacks and FPGA implementations of Blowfish]}
+    
+    \subsection{Decisions}
     
     \section{Lightweight Algorithms}
+    After deciding that the conventional algorithms might not be suitable for the low power devices targeted by this project, some more lightweight algorithms were found including: PRESENT, PRINCE and the SIMON and SPECK algorithms\textcolor{red}{[insert reference]}. However, as IoT is an emerging technology and is the main reason for lightweight cryptography there isn't a standard set by NIST or any other organisation\textcolor{red}{[insert reference]}.
     
     \subsection{PRESENT}
     
     \subsection{PRINCE}
     
     \subsection{SIMON \& SPECK Algorithms}
+    The SIMON and SPECK family of algorithms are the lightweight techniques proposed by the NSA
+    
+    \subsection{Decisions}
     
     \chapter{Progress}
     
