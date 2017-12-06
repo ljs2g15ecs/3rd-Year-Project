@@ -103,7 +103,14 @@
     \subsection{PRINCE}
     
     \subsection{SIMON \& SPECK Algorithms}
-    The SIMON and SPECK family of algorithms are the lightweight techniques proposed by the NSA
+    The SIMON and SPECK family of algorithms are the lightweight techniques proposed by the NSA that were designed to perform well in both software and hardware while still being secure; and to be flexible in terms of block and key size\textcolor{red}{[insert reference]}, listed in \textcolor{green}{[insert figure]}. The different algorithms are similar but SIMON was optimised for hardware implementations and SPECK for software. As with AES the number of rounds iterated depends on the key size but as the block size varies as well it also has an effect as shown in \textcolor{green}{[insert figure]}. The structure of both algorithms is a Feistel network and thus it works on words of $n$ bits, where $2n$ is the block size, and with a key of $mn$ bits. This lends it self to the naming format of SIMON or SPECK $2n/mn$, which means, for example, SIMON48/72 has a word size of 24 and uses 3 words for the key\textcolor{red}{[insert reference]}.
+    
+    As SIMON was designed primarily for hardware it only makes uses of XOR ($\oplus$), AND ($\&$) and circular shift operations ($S^j[x]$) on the $n$ bit wide words. For the shift operation the word $x$ is rotated by $j$ bits to the left or right if $j$ is negative. The encryption and decryption functions take the Feistel network described in \textcolor{green}{[insert equations]} and the round function is \textcolor{green}{[insert equation]}.
+    \[F(x) = (S^1[x]\&S^8[x]) \oplus S^2[x]\]
+    
+    SPECK, on the other hand, 
+    
+    \textcolor{cyan}{[Insert Attacks and FPGA implementations of SIMON \& SPECK]}
     
     \subsection{Decisions}
     

@@ -14,10 +14,10 @@
 \contentsline {subsection}{\numberline {2.3.1}PRESENT}{9}
 \contentsline {subsection}{\numberline {2.3.2}PRINCE}{9}
 \contentsline {subsection}{\numberline {2.3.3}SIMON \& SPECK Algorithms}{9}
-\contentsline {subsection}{\numberline {2.3.4}Decisions}{9}
-\contentsline {chapter}{\numberline {3}Progress}{10}
-\contentsline {section}{\numberline {3.1}Hosted C}{10}
-\contentsline {section}{\numberline {3.2}System Verilog}{10}
-\contentsline {chapter}{\numberline {4}Future Plan}{11}
-\contentsline {chapter}{References}{12}
-\contentsline {chapter}{Appendix}{13}
+\contentsline {subsection}{\numberline {2.3.4}Decisions}{10}
+\contentsline {chapter}{\numberline {3}Progress}{11}
+\contentsline {section}{\numberline {3.1}Hosted C}{11}
+\contentsline {section}{\numberline {3.2}System Verilog}{11}
+\contentsline {chapter}{\numberline {4}Future Plan}{12}
+\contentsline {chapter}{References}{13}
+\contentsline {chapter}{Appendix}{14}
