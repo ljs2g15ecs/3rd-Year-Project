@@ -2,6 +2,9 @@
 
 \usepackage[inner=35mm, outer=24mm, top=24mm, bottom=24mm]{geometry}
 \usepackage[parfill]{parskip}
+\usepackage{hyperref}
+\usepackage[title]{appendix}
+\usepackage{float}
 
 \usepackage{lipsum}
 \usepackage{draftwatermark}
@@ -27,6 +30,8 @@
         
     \end{center}
     \end{titlepage}
+    \thispagestyle{empty}
+    \cleardoublepage
     
     \begin{abstract}
     
@@ -39,6 +44,7 @@
     \addcontentsline{toc}{chapter}{Contents}
     
     \chapter{Introduction}
+    \label{chapter:intro}
     Over the last few years there has been a shift in type of \textcolor{blue}{devices} connected to the internet from just servers, PC's and later smartphones, to small embedded processors that can control many \textcolor{blue}{devices}. The idea of connecting such \textcolor{blue}{devices} to internet has been dubbed "Internet of Things" or "IoT" and has the aim to make our lives simpler. These IoT \textcolor{blue}{devices} can range from industrial applications, such as automated factories, to public infrastructure, like a smart electrical grid, or more homely \textcolor{blue}{devices} in a smart connected home. Thus due to the wide range of products that a connected IoT device can be applied to improve the efficiency and/or usefulness, it has been predicted that billions of \textcolor{blue}{devices} will be in use by \textcolor{red}{[insert year/reference]}. This also means that the complexity of the \textcolor{blue}{devices} varies greatly with simple light switches and even kettles being given the IoT treatment\textcolor{red}{[insert reference]}, but at the other end of the scale a network of connected self-driving cars is being considered\textcolor{red}{[insert reference]}.
     
     The one thing that all of these \textcolor{blue}{devices} have in common though is that they need to be secure as they communicate sensitive and private data through an open channel on the internet between the user and the device. Hence, to keep the potential adversaries from accessing the data and possibly controlling numerous connected \textcolor{blue}{devices}, maliciously or not, an encryption algorithm can be used with only the specified users having access to the decryption key. There are many encryption algorithms that perform this function and most can be implemented in both software and dedicated hardware such as a Application Specific Integrated Circuit (ASIC) or a Field Programmable Gate Array (FPGA). As a majority of IoT \textcolor{blue}{devices} are implemented on small embedded processors which have limited resources so the hardware option might possibly be a better solution for IoT \textcolor{blue}{devices}. Dedicated hardware can also, theoretically, perform the algorithms faster and more accurately. However, due to the fact that most IoT devices are always on, power consumption is a very important factor when considering options for adding hardware accelerated encryption and for battery powered devices is often more critical than the actual encryption.
@@ -48,9 +54,14 @@
     The scope of this project is therefore to develop encryption algorithms in System Verilog for a FPGA and compare their performance to the equivalent software before applying the hardware to actual IoT devices. Also if more time is available then a layout, based on the System Verilog synthesis, could be developed for ASIC fabrication in the future which could increase efficiency of the hardware due to the fact that only the required circuitry would be present on the chip.
     
     \chapter{Background Research and Literature}
+    \label{chapter:research}
+    
+    \section{Internet of Things}
+    \label{section:IoT}
+    
+    \section{Cryptography}
     The primary objective of cryptography is to convert, or encrypt, a readable message known as plaintext into an unreadable form, ciphertext, so that adversaries cannot read the contents,  but over the years the scope of cryptography has widened. Throughout history encryption has been has been used allow people and groups to exchange secret messages, especially in times of war. Since the early transposition and substitution ciphers, where each character in a message are rearranged and replaced by others a certain number further down the alphabet respectively, encryption has evolved to include techniques for identity authentication, integrity checks and much more. Cryptography is therefore the study of encryption and these techniques, its counterpart: the study of breaking the encryption to find the original message, is known as cryptanalysis. Eventually, for most encryption techniques a weakness is found, and subsequently exploited, so more complex techniques are conceived and with the invention of computers the complexity of the algorithms has increased greatly. However, the computer power is also available for cryptanalysis so the cycle of continuous improvement of the algorithms hasn't stopped.
     
-    \section{Asymmetric \& Symmetric Cryptography}
     In cryptography there are two main concepts that the algorithms are based on: symmetric and asymmetric keys. In asymmetric key cryptography a unique key is used to encrypt data and different, but a related key, is used to decrypt it. The relationship between the two keys is often defined by maths problem that is very difficult to solve which is the basis of the encryption. On the other hand, symmetric key cryptography uses the same key for both encryption and decryption, hence symmetric, with the security usually provided by a combination of simple logic operations.
     
     \subsection{Asymmetric Key}
@@ -73,8 +84,10 @@
     
     \textcolor{cyan}{[Insert Stream Ciphers]}
     
+    \textcolor{cyan}{[Insert Modes of Operation]}
+    
     \subsection{Decisions}
-    Due to the fact that asymmetric key algorithms are hard to solve they require complex hardware or software to implement which is undesirable for this project. Also, with the exception of ECC the key sizes needed for the security can be very large so with the limited IO pins available on FPGAs they could prove difficult to program. On the other hand, many private key algorithms are designed to be efficient in hardware especially Feistel networks as an inverted round function isn't required. While a stream cipher can be useful to encrypt serial data that will most likely be the source the modes of operation available for block ciphers provide more flexible functionality including stream cipher modes. Therefore, the algorithm chosen for this project will most likely be a block cipher with a Feistel network.
+    Due to the fact that asymmetric key algorithms are hard to solve they require complex hardware or software to implement which is undesirable for this project. Also, with the exception of ECC the key sizes needed for the security can be very large so with the limited IO pins available on FPGAs they could prove difficult to program. On the other hand, many private key algorithms are designed to be efficient in hardware especially Feistel networks as an inverted round function isn't required. While a stream cipher can be useful to encrypt serial data that will most likely be the source, although the modes of operation available for block ciphers provide more flexible functionality including stream cipher modes. Therefore, the algorithm chosen for this project will most likely be a block cipher with a Feistel network.
     
     \section{Conventional Algorithms}
     There are many block ciphers that are considered very secure and therefore popular, they include: DES, AES, Blowfish\textcolor{red}{[insert reference]}. DES operates on a block of 64 bits for 16 rounds using a key length of 64 bits but it has an effective key length of 56 bits as 8 bits were used for parity\textcolor{red}{[insert reference]}. AES, an upgrade to DES, is far more secure as uses a 128 bit block and has the flexibility of using three different key lengths: 128, 192 and 256. The number of rounds that AES iterates depends on the key length with 10 rounds used for a 128 bit key, 12 for 192, and 14 for the largest key\textcolor{red}{[insert reference]}. Blowfish, like DES, operates on a 64 bit block and iterates for 16 rounds, but it can use a variable key length in the range 32 to 448 bits\textcolor{red}{[insert reference]}.
@@ -98,36 +111,84 @@
     \section{Lightweight Algorithms}
     After deciding that the conventional algorithms might not be suitable for the low power devices targeted by this project, some more lightweight algorithms were found including: PRESENT, PRINCE and the SIMON and SPECK algorithms\textcolor{red}{[insert reference]}. However, as IoT is an emerging technology and is the main reason for lightweight cryptography there isn't a standard set by NIST or any other organisation\textcolor{red}{[insert reference]}.
     
-    \subsection{PRESENT}
+    \subsection{SIMON \& SPECK}
+    The SIMON and SPECK family of algorithms are the lightweight techniques proposed by the NSA that were designed to perform well in both software and hardware while still being secure; and to be flexible in terms of block and key size\textcolor{red}{[insert reference]}, listed in \autoref{table:S+S}. The different algorithms are similar but SIMON was optimised for hardware implementations and SPECK for software. As with AES the number of rounds iterated depends on the key size but as the block size varies as well it also has an effect as shown in \autoref{table:S+S}. The structure of both algorithms is a Feistel network and thus it works on words of $n$ bits, where $2n$ is the block size, and with a key of $mn$ bits. This lends it self to the naming format of SIMON or SPECK $2n/mn$, which means, for example, SIMON48/72 has a word size of 24 and uses 3 words for the key\textcolor{red}{[insert reference]}.
     
-    \subsection{PRINCE}
+        \begin{table}[H]
+        \centering
+        \begin{tabular}{||c|c|c|c|c|c||}
+            \hline \hline
+            Block Size & Key Size & $n$ & $m$ & SIMON Rounds & SPECK Rounds \\
+            \hline \hline
+            32 & 64 & 16 & 4 & 32 & 22 \\
+            \hline
+            48 & 72 & 24 & 3 & 36 & 22 \\
+            48 & 96 & 24 & 4 & 36 & 23 \\
+            \hline
+            64 & 96 & 32 & 3 & 42 & 26 \\
+            64 & 128 & 32 & 4 & 44 & 27 \\
+            \hline
+            96 & 96 & 48 & 2 & 52 & 28 \\
+            96 & 144 & 48 & 3 & 54 & 29 \\
+            \hline
+            128 & 128 & 64 & 2 & 68 & 32 \\
+            128 & 192 & 64 & 3 & 69 & 33 \\
+            128 & 256 & 64 & 4 & 72 & 34 \\
+            \hline \hline
+        \end{tabular}
+        \caption{A table of the modes of operation for the SIMON \& SPECK Algorithms. Adapted from \textcolor{red}{[insert reference]}.}
+        \label{table:S+S}
+        \end{table}
     
-    \subsection{SIMON \& SPECK Algorithms}
-    The SIMON and SPECK family of algorithms are the lightweight techniques proposed by the NSA that were designed to perform well in both software and hardware while still being secure; and to be flexible in terms of block and key size\textcolor{red}{[insert reference]}, listed in \textcolor{green}{[insert figure]}. The different algorithms are similar but SIMON was optimised for hardware implementations and SPECK for software. As with AES the number of rounds iterated depends on the key size but as the block size varies as well it also has an effect as shown in \textcolor{green}{[insert figure]}. The structure of both algorithms is a Feistel network and thus it works on words of $n$ bits, where $2n$ is the block size, and with a key of $mn$ bits. This lends it self to the naming format of SIMON or SPECK $2n/mn$, which means, for example, SIMON48/72 has a word size of 24 and uses 3 words for the key\textcolor{red}{[insert reference]}.
+    As SIMON was designed primarily for hardware it only makes use of XOR ($\oplus$), AND ($\&$) and circular rotate operations ($R^j[x]$) on the $n$ bit wide words. For the rotate operation the word $x$ is rotated by $j$ bits to the left or right if $j$ is negative. The encryption and decryption functions take the Feistel network described in \textcolor{green}{[insert equations]} and the round function is \textcolor{green}{[insert equation]}.
+    \[F(x) = (R^1[x]\&R^8[x]) \oplus R^2[x]\]
     
-    As SIMON was designed primarily for hardware it only makes uses of XOR ($\oplus$), AND ($\&$) and circular shift operations ($S^j[x]$) on the $n$ bit wide words. For the shift operation the word $x$ is rotated by $j$ bits to the left or right if $j$ is negative. The encryption and decryption functions take the Feistel network described in \textcolor{green}{[insert equations]} and the round function is \textcolor{green}{[insert equation]}.
-    \[F(x) = (S^1[x]\&S^8[x]) \oplus S^2[x]\]
-    
-    SPECK, on the other hand, 
+    SPECK on the other hand, being optimised for software implementations uses XOR ($\oplus$), modulo $2^n$ addition ($+$) and circular rotate operations ($R^j[x]$), with the circular rotate being equivalent to what is used in SIMON. The encryption and decryption functions take a slightly different form to the basic Feistel network equations \textcolor{green}{[insert equations]} and are shown in \textcolor{green}{[insert equation]} where $\alpha = 7$ and $\beta = 2$ if $n = 16$, but $\alpha = 8$ and $\beta = 3$ otherwise.
+    \[L_{i+1} = (R^{-\alpha}[L_i] + R_i) \oplus K_i\]
+    \[R_{i+1} = R^{\beta}[R_i] \oplus (R^{-\alpha}[L_i] + R_i) \oplus K_i = R^{\beta}[R_i] \oplus L_{i+1}\]
     
     \textcolor{cyan}{[Insert Attacks and FPGA implementations of SIMON \& SPECK]}
+    
+    \subsection{Other Algorithms}
     
     \subsection{Decisions}
     
     \chapter{Progress}
+    Based on the research explored in \autoref{chapter:research} I chose the SIMON algorithm from the NSA, mainly because of its flexibility in security levels, with different key lengths, that could be applied to the different devices explored in \autoref{section:IoT}. This means that multiple algorithms don't need to be developed and I could concentrate on making my code as efficient as possible. As the aim of this project is to compare how an algorithm performs in hardware and software and due to the fact that there isn't a standard library or program for SIMON, a software version was required for benchmarking. Starting in software also increased by familiarity of the algorithm and provide a good starting point for System Verilog development.
+    
+    For all versions of the algorithm (table \ref{table:S+S}) efficiency, in terms of power consumption and resource use, is very important but time efficiency is not an initial priority. All versions of this algorithm were developed not only with the description but also the pseudocode provided in \textcolor{red}{[insert reference]}. That document also has a set of test vectors for all modes that define the ciphertext that the algorithm should produce from the given key and plaintext\textcolor{red}{[insert reference]}. Due to the Feistel network structure of this algorithm encryption can be done in parallel to the key expansion but for decryption requires the keys to be pre expanded. For this reason, and because some modes of operation only require encryption, two variants of the algorithm were developed: one for just encryption and one full functionality.
     
     \section{Hosted C}
+    \label{section:C}
+    As there are ten versions of this algorithm that all differ slightly with the block key sizes they could all be developed individually. However, as ten versions of the similar functions would be required I felt it was better to have one version that is flexible. However, checking which mode the program is before most operations would be very inefficient and as the program would rarely changing mode during runtime the decisions could be made at compile time using preprocessor macros as in \textcolor{green}{[insert listing]}\textcolor{red}{[insert reference]}. The macros were used to define the variable type used for the words based on the values for $n$ with the uint$n$\_t type. Also the value of $m$ was used with macro if statements in the key expansion functions where extra code is required if $m = 4$.
+    
+    \textcolor{cyan}{[Insert Listings, test vectors and results]}
     
     \section{System Verilog}
+    After the Hosted C version was working with the test vectors the System Verilog development began. Similar to the function used in the software developed in \autoref{section:C} modules were created and tested with individual testbenches before being combined in the top level control modules. Most of the modules, including the rotate operations, were done in combination logic blocks for initial simplicity to ensure correct simulations. While this might work in simulations, it could be unreliable and inefficient when implemented in an FPGA. Also parameters were used so the different modes could use the same code but the only testing done so far is with the SIMON32/64 version.
+    
+    \textcolor{cyan}{[Insert Listings, test vectors, simulations and synthesis]}
     
     \chapter{Future Plan}
+    To continue this project the System Verilog code needs to be improved with more sequential operations to improve reliability and efficiency. Serializing the algorithm at the byte level could also be explored which could have some interesting results similar to the bit serial version presented in \textcolor{red}{[insert reference]}. Work will also have to be done to implement the System Verilog top module onto an FPGA and interface it with communication module, that could be provided by the FPGA development board used or from an OpenCores.org project\textcolor{red}{[insert reference]}. When the FPGA is functioning correctly tests will need to be developed to determine the throughput in hardware and software, preferably operating at similar clock frequencies to ensure the results will be as comparable as possible. The hosted C program, \autoref{section:C}, should also be adapted to be programmed onto an 8 or 16 bit microcontroller and then the same parameters will be tested and compared.
     
     \begin{thebibliography}{0}
     \addcontentsline{toc}{chapter}{References}
     
     \end{thebibliography}
     
-    \chapter*{Appendix}
-    \addcontentsline{toc}{chapter}{Appendix}
+    \appendix
+    
+    \chapter{DES}
+    
+    \chapter{AES}
+
+    \chapter{Blowfish}
+
+    \chapter{SIMON \& SPECK}
+
+    \chapter{Other Algorithms}
+
+    \chapter{Table of FPGA and Software Data}
      
 \end{document}
