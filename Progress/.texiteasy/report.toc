@@ -1,28 +1,28 @@
 \contentsline {chapter}{Abstract}{1}{Doc-Start}
 \contentsline {chapter}{Contents}{2}{chapter*.1}
 \contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
-\contentsline {chapter}{\numberline {2}Background Research and Literature}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}Internet of Things}{5}{section.2.1}
-\contentsline {section}{\numberline {2.2}Cryptography}{5}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Asymmetric Key}{6}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Symmetric Key}{6}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Decisions}{7}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}Conventional Algorithms}{7}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Standardization}{8}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Other Algorithms}{8}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Decisions}{8}{subsection.2.3.3}
-\contentsline {section}{\numberline {2.4}Lightweight Algorithms}{8}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}SIMON \& SPECK}{9}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Other Algorithms}{10}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Decisions}{10}{subsection.2.4.3}
-\contentsline {chapter}{\numberline {3}Progress}{11}{chapter.3}
-\contentsline {section}{\numberline {3.1}Hosted C}{11}{section.3.1}
-\contentsline {section}{\numberline {3.2}System Verilog}{12}{section.3.2}
-\contentsline {chapter}{\numberline {4}Future Plan}{13}{chapter.4}
-\contentsline {chapter}{References}{14}{chapter*.2}
-\contentsline {chapter}{\numberline {A}DES}{15}{appendix.A}
-\contentsline {chapter}{\numberline {B}AES}{16}{appendix.B}
-\contentsline {chapter}{\numberline {C}Blowfish}{17}{appendix.C}
-\contentsline {chapter}{\numberline {D}SIMON \& SPECK}{18}{appendix.D}
-\contentsline {chapter}{\numberline {E}Other Algorithms}{19}{appendix.E}
-\contentsline {chapter}{\numberline {F}Table of FPGA and Software Data}{20}{appendix.F}
+\contentsline {chapter}{\numberline {2}Background Research and Literature}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}Internet of Things}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Cryptography}{4}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Asymmetric Key}{4}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Symmetric Key}{5}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Decisions}{5}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Conventional Algorithms}{6}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Standardization}{6}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Other Algorithms}{7}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Decisions}{7}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}Lightweight Algorithms}{7}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}SIMON \& SPECK}{7}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Other Algorithms}{8}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Decisions}{8}{subsection.2.4.3}
+\contentsline {chapter}{\numberline {3}Progress}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}Hosted C}{9}{section.3.1}
+\contentsline {section}{\numberline {3.2}System Verilog}{10}{section.3.2}
+\contentsline {chapter}{\numberline {4}Future Plan}{11}{chapter.4}
+\contentsline {chapter}{References}{12}{chapter*.2}
+\contentsline {chapter}{\numberline {A}DES}{13}{appendix.A}
+\contentsline {chapter}{\numberline {B}AES}{14}{appendix.B}
+\contentsline {chapter}{\numberline {C}Blowfish}{15}{appendix.C}
+\contentsline {chapter}{\numberline {D}SIMON \& SPECK}{16}{appendix.D}
+\contentsline {chapter}{\numberline {E}Other Algorithms}{17}{appendix.E}
+\contentsline {chapter}{\numberline {F}Table of FPGA and Software Data}{18}{appendix.F}
