@@ -53,7 +53,7 @@
     
     The goals of this project are to explore various encryption algorithms and compare their performance based on data throughput, accuracy, security and power consumption when implemented in software and hardware. To evaluate these parameters the same algorithms can be coded in C or C++ for the software versions and a Hardware Development Language (HDL) such as System Verilog can be first simulated in ModelSim\textcolor{red}{[insert reference]}, before programming a FPGA for the hardware version. These comparisons can then be used to match the algorithms to the appropriate IoT device as they all have different requirements for relative security level and power consumption, as for example a light switch does not necessarily need to be protected from the same level of attack as a set of digital locks or private data storage. In order for the hardware to work with IoT devices it will also need a communication protocol like $I^2 C$ or SPI to work with embedded processors, and possibly Ethernet or WiFi to act as the gateway to internet for the device. Some of these protocols are available on FPGA development boards but can be implemented in System Verilog code.
     
-    The scope of this project is therefore to develop encryption algorithms in System Verilog for a FPGA and compare their performance to the equivalent software before applying the hardware to actual IoT devices. Also if more time is available then a layout, based on the System Verilog synthesis, could be developed for ASIC fabrication in the future which could increase efficiency of the hardware due to the fact that only the required circuitry would be present on the chip.
+    %The scope of this project is therefore to develop encryption algorithms in System Verilog for a FPGA and compare their performance to the equivalent software before applying the hardware to actual IoT devices. Also if more time is available then a layout, based on the System Verilog synthesis, could be developed for ASIC fabrication in the future which could increase efficiency of the hardware due to the fact that only the required circuitry would be present on the chip.
     
     \chapter{Background Research and Literature}
     \label{chapter:research}
@@ -65,73 +65,106 @@
     \textcolor{cyan}{[Insert Iot Products/services and Power/Resource constraints]}
     
     \section{Cryptography}
-    After evaluating the conditions required to provide the appropriate level of security  in \autoref{section:IoT} this section explores the cryptographic principles and algorithms available that satisfy those conditions. The primary objective of cryptography is to convert, or encrypt, a readable message known as plaintext into an unreadable form, ciphertext, so that adversaries cannot read the contents,  but over the years the scope of cryptography has widened\textcolor{red}{[insert reference]}. Throughout history encryption has been has been used allow people and groups to exchange secret messages, especially in times of war. Since the early transposition and substitution ciphers, where each character in a message are rearranged and replaced by others a certain number further down the alphabet respectively, encryption has evolved to include techniques for identity authentication, integrity checks and much more\textcolor{red}{[insert reference]}. Cryptography is therefore the study of encryption and these techniques, its counterpart: the study of breaking the encryption to find the original message, is known as cryptanalysis. Eventually, for most encryption techniques a weakness is found, and subsequently exploited, so more complex techniques are conceived and with the invention of computers the complexity of the algorithms has increased greatly. However, the computer power is also available for cryptanalysis so the cycle of continuous improvement of the algorithms hasn't stopped.
+    After evaluating the conditions required to provide the appropriate level of security  in \autoref{section:IoT} this section explores the cryptographic principles and algorithms available that satisfy those conditions.
+    The primary objective of cryptography is to convert, or encrypt, a readable message known as plaintext into an unreadable form, ciphertext, so that adversaries cannot read the contents,  but over the years the scope of cryptography has widened\textcolor{red}{[insert reference]}.
+    %Throughout history encryption has been has been used allow people and groups to exchange secret messages, especially in times of war. Since the early transposition and substitution ciphers, where each character in a message are rearranged and replaced by others a certain number further down the alphabet respectively, encryption has evolved to include techniques for identity authentication, integrity checks and much more\textcolor{red}{[insert reference]}. 
+    Cryptography is therefore the study of encryption and these techniques, its counterpart: the study of breaking the encryption to find the original message, is known as cryptanalysis.
+    Eventually, for most encryption techniques a weakness is found, and subsequently exploited, so more complex techniques are conceived and with the invention of computers the complexity of the algorithms has increased greatly.
+    However, the computer power is also available for cryptanalysis so the cycle of continuous improvement of the algorithms hasn't stopped.
     
-    In cryptography there are two main concepts that the algorithms are based on: symmetric and asymmetric keys\textcolor{red}{[insert reference]}. In asymmetric key cryptography a unique key is used to encrypt data and different, but a related key, is used to decrypt it. The relationship between the two keys is often defined by maths problem that is very difficult to solve which is the basis of the encryption\textcolor{red}{[insert reference]}. On the other hand, symmetric key cryptography uses the same key for both encryption and decryption, hence symmetric, with the security usually provided by a combination of simple logic operations\textcolor{red}{[insert reference]}.
+    In cryptography there are two main concepts that the algorithms are based on: symmetric and asymmetric keys\textcolor{red}{[insert reference]}.
+    In asymmetric key cryptography a unique key is used to encrypt data and different, but a related key, is used to decrypt it.
+    The relationship between the two keys is often defined by maths problem that is very difficult to solve which is the basis of the encryption\textcolor{red}{[insert reference]}.
+    On the other hand, symmetric key cryptography uses the same key for both encryption and decryption, hence symmetric, with the security usually provided by a combination of simple logic operations\textcolor{red}{[insert reference]}.
     
     \subsection{Asymmetric Key}
-    Asymmetric key cryptography can be referred to as public key due to the fact that one of the related keys can be publicly available without compromising the security of the encrypted data. This is because the keys are usually generated based on mathematical problems that have no solution or the solution is impossible for a computer to solve efficiently, such that solving it takes longer than an exhaustive key search\textcolor{red}{[insert reference]}. There are many problems that fit this criteria but the most popular in use today are the integer factorization and elliptic curve problems used by the RSA\textcolor{red}{[insert reference]} and the family of Elliptic-curve cryptography (ECC) techniques\textcolor{red}{[insert reference]} respectively. Public key cryptography can be used in two different modes as if data is encrypted with the intended recipients public key only they can decrypt it with their private key, thus encryption. However, if a private key is used for encryption then using the public key to decrypt it ensures the senders identity, authentication\textcolor{red}{[insert reference]}.
+    Asymmetric key cryptography can be referred to as public key due to the fact that one of the related keys can be publicly available without compromising the security of the encrypted data.
+    This is because the keys are usually generated based on mathematical problems that have no solution or the solution is impossible for a computer to solve efficiently, such that solving it takes longer than an exhaustive key search\textcolor{red}{[insert reference]}.
+    There are many problems that fit this criteria but the most popular in use today are the integer factorization and elliptic curve problems used by the RSA\textcolor{red}{[insert reference]} and the family of Elliptic-curve cryptography (ECC) techniques\textcolor{red}{[insert reference]} respectively.
+    Public key cryptography can be used in two different modes as if data is encrypted with the intended recipients public key only they can decrypt it with their private key, thus encryption.
+    However, if a private key is used for encryption then using the public key to decrypt it ensures the senders identity, authentication\textcolor{red}{[insert reference]}.
     
     \subsection{Symmetric Key}
     Similar to the symmetric/private comparison symmetric key cryptography is also known as private key as in order to keep the encrypted data secure the key used must be kept secret. There are two main types of private key algorithms that operate on the plaintext differently: block ciphers which uses a fixed number of bits, block; or stream ciphers which encrypts data bit by bit\textcolor{red}{[insert reference]}.
     
-    Modern block ciphers are based on Claude Shannons work on product ciphers in \textcolor{red}{[insert reference]}, in which he suggested that iterating a cipher for multiple rounds, with subkeys, improves the security. Hence, the cipher to be iterated didn't need to be complex operations and simple logic operations such as XOR, substitution or permutation of the plaintext could be used\textcolor{red}{[insert reference]}. The base cipher that is iterated is known as the round function and it takes as an input a block of plaintext and a subkey, which is generated from the main key by a separate key expansion function, and outputs a block of ciphertext. The round functions are mostly designed using either a Feistel network (F network) or a Substitution Permutation network (SP network)\textcolor{red}{[insert reference]}.
+    Modern block ciphers are based on Claude Shannons work on product ciphers in \textcolor{red}{[insert reference]}, in which he suggested that iterating a cipher for multiple rounds, with subkeys, improves the security. Hence, the cipher to be iterated didn't need to be complex operations and simple logic operations such as XOR, substitution or permutation of the plaintext could be used\textcolor{red}{[insert reference]}. The base cipher that is iterated is known as the round function and it takes as an input a block of plaintext and a subkey, which is generated from the main key by a separate key expansion function, and outputs a block of ciphertext. The output is usually the result of the round function XORed with the subkey. The round functions are mostly designed using either a Feistel network (F network) or a Substitution Permutation network (SP network)\textcolor{red}{[insert reference]}.
     
-    The Fesitel network was named after physicist Horst Feistel who was a integral part of the team at IBM that developed the early block cipher Lucifer, which of course used a Feistel network\textcolor{red}{[insert reference]}. The F network works by splitting the input plaintext into two equal words, known as the left (MSB) and right (LSB) words. The round function is then applied to the right word before the result is XORed with the left word and then the words are swapped over and iterated as in \autoref{F_L_ENC} and \ref{F_R_ENC}, with the ciphertext being equal to ($R_{n+1}$, $L_{n+1}$) where $n$ is the number of rounds iterated. The advantage of using a F network is that decryption is just applying the same algorithm but with the sub keys in reverse as in \autoref{F_L_DEC} and \ref{F_R_DEC}, with the ciphertext ($R_{n+1}$, $L_{n+1}$) as the input and the plaintext ($L_0$, $R_0$) returned.
+    The Fesitel network was named after physicist Horst Feistel who was a integral part of the team at IBM that developed the early block cipher Lucifer. It works by splitting the input plaintext into equal words and applying the round function to it right, or LSB, word before swapping the words for the next iteration. This functionality, for both encryption and decryption, is described in \textcolor{green}{[Insert Figure]}. A more complete description is available in \textcolor{green}{[Insert Appendix]}.
     
-    \begin{equation}
-    \label{F_L_ENC}
-    L_{i+1} = R_i
-    \end{equation}
-    \begin{equation}
-    \label{F_R_ENC}
-    R_{i+1} = L_i \oplus F(R_i, K_i)
-    \end{equation}
-    \begin{equation}
-    \label{F_L_DEC}
-    R_i = R_{i+1}
-    \end{equation}
-    \begin{equation}
-    \label{F_R_DEC}
-    L_i = R_{i+1} \oplus F(L_{i+1}, K_i)
-    \end{equation}
+    %The Fesitel network was named after physicist Horst Feistel who was a integral part of the team at IBM that developed the early block cipher Lucifer, which of course used a Feistel network\textcolor{red}{[insert reference]}. The F network works by splitting the input plaintext into two equal words, known as the left (MSB) and right (LSB) words. The round function is then applied to the right word before the result is XORed with the left word and then the words are swapped over and iterated as in \autoref{F_L_ENC} and \ref{F_R_ENC}, with the ciphertext being equal to ($R_{n+1}$, $L_{n+1}$) where $n$ is the number of rounds iterated. The advantage of using a F network is that decryption is just applying the same algorithm but with the sub keys in reverse as in \autoref{F_L_DEC} and \ref{F_R_DEC}, with the ciphertext ($R_{n+1}$, $L_{n+1}$) as the input and the plaintext ($L_0$, $R_0$) returned.
     
-    The other structure used in block ciphers is Substitution Permutation network and unlike F networks an SP network operates on the whole plaintext block using substitution, in the form of a S-box, to provide Shannon's confusion and permutation, a P-box, for diffusion\textcolor{red}{[insert reference]}. Individually, these operations aren't particularly strong as a S-box and a P-box can be thought of as simple substitution and transposition ciphers respectively. Although if combined in a SP network over multiple rounds the security can be very strong due to Shannon's confusion and diffusion properties being satisfied. The S-boxes usually take in a certain number of bits and outputs the same number of bits but of a different value. P-boxes are then used to spread the bits around such that the output of the S-boxes are used by as many S-boxes in the next round. After the S-boxes and P-boxes and before the next round occurs the block is XORed with the round key so the round equation is \autoref{SP_ENC}. Decryption, \autoref{SP_DEC} is achieved using inverted S-boxes and P-boxes and the round keys in reverse order which means that different hardware or operations are needed.
+%    \begin{equation}
+%    \label{F_L_ENC}
+%    L_{i+1} = R_i
+%    \end{equation}
+%    \begin{equation}
+%    \label{F_R_ENC}
+%    R_{i+1} = L_i \oplus F(R_i, K_i)
+%    \end{equation}
+%    \begin{equation}
+%    \label{F_L_DEC}
+%    R_i = R_{i+1}
+%    \end{equation}
+%    \begin{equation}
+%    \label{F_R_DEC}
+%    L_i = R_{i+1} \oplus F(L_{i+1}, K_i)
+%    \end{equation}
     
-    \begin{equation}
-    \label{SP_ENC}
-    B_{i+1} = F(B_i) \oplus K_i
-    \end{equation}
-    \begin{equation}
-    \label{SP_DEC}
-    L_i = R_{i+1} \oplus F(L_{i+1}, K_i)B_i = F'(B_{i+1}) \oplus K_i
-    \end{equation}
+    On the other hand, Substitution Permutation networks operate on the whole plaintext block using S-boxes for substitution and P-boxes for permutation\textcolor{red}{[insert reference]}. There can be more steps that treat the block slightly differently but those are the basic steps and when combined they are enough to provide Shannon's confusion and diffusion\textcolor{red}{[insert reference]}. The basic structure of an SP network is in \textcolor{green}{[Insert Figure]} but a more detailed description is available in \textcolor{green}{[Insert Appendix]}.
     
-    \textcolor{cyan}{[Insert Key Expansion/Schedule]}
+    %The other structure used in block ciphers is Substitution Permutation network and unlike F networks an SP network operates on the whole plaintext block using substitution, in the form of a S-box, to provide Shannon's confusion and permutation, a P-box, for diffusion\textcolor{red}{[insert reference]}. Individually, these operations aren't particularly strong as a S-box and a P-box can be thought of as simple substitution and transposition ciphers respectively. Although if combined in a SP network over multiple rounds the security can be very strong due to Shannon's confusion and diffusion properties being satisfied. The S-boxes usually take in a certain number of bits and outputs the same number of bits but of a different value. P-boxes are then used to spread the bits around such that the output of the S-boxes are used by as many S-boxes in the next round. After the S-boxes and P-boxes and before the next round occurs the block is XORed with the round key so the round equation is \autoref{SP_ENC}. Decryption, \autoref{SP_DEC} is achieved using inverted S-boxes and P-boxes and the round keys in reverse order which means that different hardware or operations are needed.
     
-    \textcolor{cyan}{[Insert Stream Ciphers]}
+%    \begin{equation}
+%    \label{SP_ENC}
+%    B_{i+1} = F(B_i) \oplus K_i
+%    \end{equation}
+%    \begin{equation}
+%    \label{SP_DEC}
+%    L_i = R_{i+1} \oplus F(L_{i+1}, K_i)B_i = F'(B_{i+1}) \oplus K_i
+%    \end{equation}
     
-    \textcolor{cyan}{[Insert Modes of Operation]}
+    Stream ciphers were initially designed to approximate the One Time Pad (OTP) cipher that was proved to be completely unbreakable by Claude Shannon\textcolor{red}{[insert reference]}. The OTP works by combining each digit of the plaintext with a completely random keystream. Stream ciphers work by generating a pseudo-random keystream to combine with the plaintext\textcolor{red}{[insert reference]}. Because the keystream is pseudo-random and not completely random a stream cipher is breakable\textcolor{red}{[insert reference]}. The keystream is created by a pseudo-random number generated with a cryptographic key used as a seed.
+    
+    There are modes of operation for block ciphers, in \textcolor{red}{[insert reference]}, that provide better security by using feedback of the ciphertext to the next block. Some of these modes of operation also allow block ciphers to behave similar to stream ciphers as they encrypt an initialization vector with the key and the resulting ciphertext can be combined with the plaintext.
     
     \subsection{Decisions}
     Due to the fact that asymmetric key algorithms are hard to solve they require complex hardware or software to implement which is undesirable for this project. Also, with the exception of ECC the key sizes needed for the security can be very large so with the limited IO pins available on FPGAs they could prove difficult to program. On the other hand, many private key algorithms are designed to be efficient in hardware especially Feistel networks as an inverted round function isn't required. While a stream cipher can be useful to encrypt serial data that will most likely be the source, although the modes of operation available for block ciphers provide more flexible functionality including stream cipher modes. Therefore, the algorithm chosen for this project will most likely be a block cipher with a Feistel network.
     
     \section{Conventional Algorithms}
-    There are many block ciphers that are considered very secure and therefore popular, they include: DES, AES, Blowfish\textcolor{red}{[insert reference]}. DES operates on a block of 64 bits for 16 rounds using a key length of 64 bits but it has an effective key length of 56 bits as 8 bits were used for parity\textcolor{red}{[insert reference]}. AES, an upgrade to DES, is far more secure as uses a 128 bit block and has the flexibility of using three different key lengths: 128, 192 and 256. The number of rounds that AES iterates depends on the key length with 10 rounds used for a 128 bit key, 12 for 192, and 14 for the largest key\textcolor{red}{[insert reference]}. Blowfish, like DES, operates on a 64 bit block and iterates for 16 rounds, but it can use a variable key length in the range 32 to 448 bits\textcolor{red}{[insert reference]}.
+    There are many block ciphers that are considered very secure and therefore popular, they include: DES, AES, Blowfish\textcolor{red}{[insert reference]}.
+    DES operates on a block of 64 bits for 16 rounds using a key length of 64 bits but it has an effective key length of 56 bits as 8 bits were used for parity\textcolor{red}{[insert reference]}.
+    AES, an upgrade to DES, is far more secure as uses a 128 bit block and has the flexibility of using three different key lengths: 128, 192 and 256. The number of rounds that AES iterates depends on the key length with 10 rounds used for a 128 bit key, 12 for 192, and 14 for the largest key\textcolor{red}{[insert reference]}.
+    Blowfish, like DES, operates on a 64 bit block and iterates for 16 rounds, but it can use a variable key length in the range 32 to 448 bits\textcolor{red}{[insert reference]}.
     
     \subsection{Standardization}
-    DES, which stands for Data Encryption Standard, is one the earliest block ciphers used in the computer age and it was developed by IBM in the 1970s based on their earlier cipher Lucifer\textcolor{red}{[insert reference]}. As with Lucifer it was designed around a Feistel network but the round function used also has a SP network structure to it\textcolor{red}{[insert reference]}, but the S-boxes aren't a one-to-one function but rather output 4 bits from a 6 bit input. It has the name Data Encryption Standard as it was accepted as the standard encryption algorithm by the US National Bureau of Standards (NBS), now the National Institute of Standards and Technology (NIST), in 1977 after it was altered by the National Security Agency (NSA), which caused some controversy\textcolor{red}{[insert reference]}.
+    DES, which stands for Data Encryption Standard, is one the earliest block ciphers used in the computer age and it was developed by IBM in the 1970s based on their earlier cipher Lucifer\textcolor{red}{[insert reference]}. As with Lucifer it was designed around a Feistel network but the round function used also has a SP network structure to it\textcolor{red}{[insert reference]}
+    %,but the S-boxes aren't a one-to-one function but rather output 4 bits from a 6 bit input.
+    It has the name Data Encryption Standard as it was accepted as the standard encryption algorithm by the US National Bureau of Standards (NBS), now the National Institute of Standards and Technology (NIST), in 1977 after it was altered by the National Security Agency (NSA), which caused some controversy\textcolor{red}{[insert reference]}.
     
-    %\textcolor{cyan}{[Insert Attacks of DES]}
-    
-    DES was used for about two decades but in the 1990s several successful attacks proved its weakness\textcolor{red}{[insert reference]} so in 1997 NIST started a selection process to find its replacement. Due the controversy of the NSAs involvement and comments from the cryptography community the selection process was as transparent as possible\textcolor{red}{[insert reference]}. Many algorithms were submitted as candidates for the standard but the finalists were: MARS, RC6, Rijndael, Serpent, and Twofish\textcolor{red}{[insert reference]}. It took three years to decide on the algorithm to be set as the standard which was announced as Rijndael in 2000 and the standard was et in 2001, with the 128, 192, 256 bit keys being used in the standard\textcolor{red}{[insert reference]}. Unlike DES, AES uses a SP network as it is efficient, in time, in both hardware and software\textcolor{red}{[insert reference]}. The round function treats the block as a $4x4$ byte matrix and performs multiple steps on the data: sub bytes; shift rows; mix columns and add round key\textcolor{red}{[insert reference]}. The sub bytes uses S-boxes with byte inputs and outputs another byte based on a lookup table. The shift row step then shifts each of the rows in the matrix by the same number of bytes as the row number. The mix column step is the most complicated as it involves matrix multiplication in the finite field $GF(2^8)$, but is commonly implemented in lookup tables. The add round key step is the simplest as it is just XORing the block with the key generated by the key schedule.
+    DES was used for about two decades but in the 1990s several successful attacks proved its weakness\textcolor{red}{[insert reference]} so in 1997 NIST started a selection process to find its replacement.
+    %Due the controversy of the NSAs involvement and comments from the cryptography community the selection process was as transparent as possible\textcolor{red}{[insert reference]}.
+    Many algorithms were submitted as candidates for the standard but the finalists were: MARS, RC6, Rijndael, Serpent, and Twofish\textcolor{red}{[insert reference]}.
+    It took three years to decide on the algorithm to be set as the standard which was announced as Rijndael in 2000 and the standard was et in 2001, with the 128, 192, 256 bit keys being used in the standard\textcolor{red}{[insert reference]}.
+    Unlike DES, AES uses a SP network as it is efficient, in time, in both hardware and software\textcolor{red}{[insert reference]}.
+    The round function treats the block as a $4x4$ byte matrix and performs multiple steps on the data: sub bytes; shift rows; mix columns and add round key\textcolor{red}{[insert reference]}.
+    %The sub bytes uses S-boxes with byte inputs and outputs another byte based on a lookup table.
+    %The shift row step then shifts each of the rows in the matrix by the same number of bytes as the row number.
+    %The mix column step is the most complicated as it involves matrix multiplication in the finite field $GF(2^8)$, but is commonly implemented in lookup tables.
+    %The add round key step is the simplest as it is just XORing the block with the key generated by the key schedule.
     
     \textcolor{cyan}{[Insert Attacks and FPGA implementations of AES]}
     
     Since its standardization in 2001 AES has been used      
     
     \subsection{Other Algorithms}
-    The US standardized algorithms quickly became very popular and can be considered the unofficial global standard\textcolor{red}{[insert reference]}. Although, there are many other algorithms that are considered secure and are commonly used. One of these algorithms, TripleDES, is actually based around DES whihc increases the security by encrypting the plaintext three times with separate keys making the effective key length of 168 bits. Other algorithms might be used because there is still some distrust of the NSAs involvement in the algorithms and they are more open source. This is the case of the Blowfish algorithm as it is unpatented and can therefore be used in any product without legal consequence. Blowfish was designed by Bruce Schneier in the early 1990s as he, and many others, noticed the insecurity of DES particularly with the 56 bit key length making a brute force attack more plausible\textcolor{red}{[insert reference]}. The design of the algorithm is based around a Feistel network with, similar to DES, the round function using S-boxes. The sub keys and S-box lookup tables are generated using the hexadecimal digits of pi which are provided by the designers\textcolor{red}{[insert reference]}.
+    The US standardized algorithms quickly became very popular and can be considered the unofficial global standard\textcolor{red}{[insert reference]}.
+    Although, there are many other algorithms that are considered secure and are commonly used.
+    %One of these algorithms, TripleDES, is actually based around DES which increases the security by encrypting the plaintext three times with separate keys making the effective key length of 168 bits.
+    These algorithms might be used because there is still some distrust of the NSAs involvement in the algorithms and they are more open source.
+    This is the case of the Blowfish algorithm as it is unpatented and can therefore be used in any product without legal consequence.
+    Blowfish was designed by Bruce Schneier in the early 1990s as he, and many others, noticed the insecurity of DES particularly with the 56 bit key length making a brute force attack more plausible\textcolor{red}{[insert reference]}.
+    %The design of the algorithm is based around a Feistel network with, similar to DES, the round function using S-boxes.
+    %The sub keys and S-box lookup tables are generated using the hexadecimal digits of pi which are provided by the designers\textcolor{red}{[insert reference]}.
     
     \textcolor{cyan}{[Insert Attacks and FPGA implementations of Blowfish]}
     
@@ -141,7 +174,11 @@
     After deciding that the conventional algorithms might not be suitable for the low power devices targeted by this project, some more lightweight algorithms were found including: PRESENT, PRINCE and the SIMON and SPECK algorithms\textcolor{red}{[insert reference]}. However, as IoT is an emerging technology and is the main reason for lightweight cryptography there isn't a standard set by NIST or any other organisation\textcolor{red}{[insert reference]}.
     
     \subsection{SIMON \& SPECK}
-    The SIMON and SPECK family of algorithms are the lightweight techniques proposed by the NSA that were designed to perform well in both software and hardware while still being secure; and to be flexible in terms of block and key size\textcolor{red}{[insert reference]}, listed in \autoref{table:S+S}. The different algorithms are similar but SIMON was optimised for hardware implementations and SPECK for software. As with AES the number of rounds iterated depends on the key size but as the block size varies as well it also has an effect as shown in \autoref{table:S+S}. The structure of both algorithms is a Feistel network and thus it works on words of $n$ bits, where $2n$ is the block size, and with a key of $mn$ bits. This lends it self to the naming format of SIMON or SPECK $2n/mn$, which means, for example, SIMON48/72 has a word size of 24 and uses 3 words for the key\textcolor{red}{[insert reference]}.
+    The SIMON and SPECK family of algorithms are the lightweight techniques proposed by the NSA that were designed to perform well in both software and hardware while still being secure; and to be flexible in terms of block and key size\textcolor{red}{[insert reference]}, listed in \autoref{table:S+S}.
+    The different algorithms are similar but SIMON was optimised for hardware implementations and SPECK for software.
+    As with AES the number of rounds iterated depends on the key size but as the block size varies as well it also has an effect as shown in \autoref{table:S+S}.
+    The structure of both algorithms is a Feistel network and thus it works on words of $n$ bits, where $2n$ is the block size, and with a key of $mn$ bits.
+    %This lends it self to the naming format of SIMON or SPECK $2n/mn$, which means, for example, SIMON48/72 has a word size of 24 and uses 3 words for the key\textcolor{red}{[insert reference]}.
     
         \begin{table}[H]
         \centering
@@ -169,14 +206,18 @@
         \label{table:S+S}
         \end{table}
     
-    As SIMON was designed primarily for hardware it only makes use of XOR ($\oplus$), AND ($\&$) and circular rotate operations ($R^j[x]$) on the $n$ bit wide words. For the rotate operation the word $x$ is rotated by $j$ bits to the left or right if $j$ is negative. The encryption and decryption functions take the Feistel network form described in \autoref{F_L_ENC}, \ref{F_R_ENC}, \ref{F_L_DEC} and \ref{F_R_DEC} awith the round function \autoref{SIMON_round}.
+    As SIMON was designed primarily for hardware it only makes use of XOR ($\oplus$), AND ($\&$) and circular rotate operations ($R^j[x]$) on the $n$ bit wide words.
+    %For the rotate operation the word $x$ is rotated by $j$ bits to the left or right if $j$ is negative.
+    The encryption and decryption functions take the Feistel network form described in \textcolor{green}{[Insert Figure]} with the round function \autoref{SIMON_round}.
     
     \begin{equation}
     \label{SIMON_round}
     F(x) = (R^1[x]\&R^8[x]) \oplus R^2[x]
     \end{equation}
     
-    SPECK on the other hand, being optimised for software implementations uses XOR ($\oplus$), modulo $2^n$ addition ($+$) and circular rotate operations ($R^j[x]$), with the circular rotate being equivalent to what is used in SIMON. The encryption and decryption functions take a slightly different form to the basic Feistel network, \autoref{F_L_ENC}, \ref{F_R_ENC}, \ref{F_L_DEC} and \ref{F_R_DEC}, and are shown in \autoref{SPECK_L_round} and \ref{SPECK_R_round} where $\alpha = 7$ and $\beta = 2$ if $n = 16$, but $\alpha = 8$ and $\beta = 3$ otherwise.
+    SPECK on the other hand, being optimised for software implementations uses XOR ($\oplus$), modulo $2^n$ addition ($+$) and circular rotate operations ($R^j[x]$)
+    %, with the circular rotate being equivalent to what is used in SIMON.
+    The encryption and decryption functions take a slightly different form to the basic Feistel network, \textcolor{green}{[Insert Figure]}, and are shown in \autoref{SPECK_L_round} and \ref{SPECK_R_round} where $\alpha = 7$ and $\beta = 2$ if $n = 16$, but $\alpha = 8$ and $\beta = 3$ otherwise.
     
     \begin{equation}
     \label{SPECK_L_round}
@@ -211,6 +252,8 @@
     
     \chapter{Future Plan}
     To continue this project the System Verilog code needs to be improved with more sequential operations to improve reliability and efficiency. Serializing the algorithm at the byte level could also be explored which could have some interesting results similar to the bit serial version presented in \textcolor{red}{[insert reference]}. Work will also have to be done to implement the System Verilog top module onto an FPGA and interface it with communication module, that could be provided by the FPGA development board used or from an OpenCores.org project\textcolor{red}{[insert reference]}. When the FPGA is functioning correctly tests will need to be developed to determine the throughput in hardware and software, preferably operating at similar clock frequencies to ensure the results will be as comparable as possible. The hosted C program, \autoref{section:C}, should also be adapted to be programmed onto an 8 or 16 bit microcontroller and then the same parameters will be tested and compared.
+    
+    \textcolor{cyan}{[Insert Contingencies, Processor/FPGA connected]}
     
     \begin{thebibliography}{0}
     \addcontentsline{toc}{chapter}{References}

@@ -7,11 +7,11 @@
 \contentsline {subsection}{\numberline {2.2.1}Asymmetric Key}{6}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Symmetric Key}{6}{subsection.2.2.2}
 \contentsline {subsection}{\numberline {2.2.3}Decisions}{7}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}Conventional Algorithms}{8}{section.2.3}
+\contentsline {section}{\numberline {2.3}Conventional Algorithms}{7}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Standardization}{8}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Other Algorithms}{9}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Decisions}{9}{subsection.2.3.3}
-\contentsline {section}{\numberline {2.4}Lightweight Algorithms}{9}{section.2.4}
+\contentsline {subsection}{\numberline {2.3.2}Other Algorithms}{8}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Decisions}{8}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}Lightweight Algorithms}{8}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}SIMON \& SPECK}{9}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Other Algorithms}{10}{subsection.2.4.2}
 \contentsline {subsection}{\numberline {2.4.3}Decisions}{10}{subsection.2.4.3}
