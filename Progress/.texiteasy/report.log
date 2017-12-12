@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.9)  11 DEC 2017 17:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.11)  12 DEC 2017 09:26
 entering extended mode
 **./report.tex
 (report.tex
@@ -180,11 +180,6 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks17
 \@floatcapt=\box27
 )
-(C:\Users\lewis\AppData\Roaming\MiKTeX\2.9\tex\latex\cite\cite.sty
-LaTeX Info: Redefining \cite on input line 302.
-LaTeX Info: Redefining \nocite on input line 332.
-Package: cite 2015/02/27  v 5.5
-)
 (C:\Users\lewis\AppData\Roaming\MiKTeX\2.9\tex\latex\lipsum\lipsum.sty
 Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
 \c@lips@count=\count105
@@ -229,26 +224,23 @@ Package color Info: Driver file: pdftex.def on input line 147.
 \sc@wm@hcenter=\skip44
 \sc@wm@vcenter=\skip45
 \sc@wm@fontsize=\skip46
-)
-("C:\Users\lewis\Documents\Part III\3rd-Year-Project\Progress\.texiteasy\report
-.aux")
+) (report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -284,7 +276,7 @@ LaTeX Font Info:    ... okay on input line 14.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box28
-Package hyperref Info: Link coloring OFF on input line 14.
+Package hyperref Info: Link coloring OFF on input line 13.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -293,14 +285,11 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count107
 )
-LaTeX Info: Redefining \ref on input line 14.
-LaTeX Info: Redefining \pageref on input line 14.
-LaTeX Info: Redefining \nameref on input line 14.
+LaTeX Info: Redefining \ref on input line 13.
+LaTeX Info: Redefining \pageref on input line 13.
+LaTeX Info: Redefining \nameref on input line 13.
 
-("C:\Users\lewis\Documents\Part III\3rd-Year-Project\Progress\.texiteasy\report
-.out")
-("C:\Users\lewis\Documents\Part III\3rd-Year-Project\Progress\.texiteasy\report
-.out")
+(report.out) (report.out)
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
@@ -333,7 +322,7 @@ G,.JBIG2,.JB2,.eps]
 )
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <142.26378> not available
-(Font)              size <24.88> substituted on input line 33.
+(Font)              size <24.88> substituted on input line 32.
 
 [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
@@ -343,10 +332,8 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <142.26378> not available
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.42     \end{abstract}
-                        [1]
-("C:\Users\lewis\Documents\Part III\3rd-Year-Project\Progress\.texiteasy\report
-.toc"
+l.41     \end{abstract}
+                        [1] (report.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -361,7 +348,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.47     \chapter
+l.46     \chapter
                  {Introduction} [2
 
 ]
@@ -370,15 +357,16 @@ Chapter 1.
 
 ]
 Chapter 2.
-
-LaTeX Warning: Citation `Juels2005' on page 4 undefined on input line 74.
-
 [4
 
-] [5]
-Underfull \vbox (badness 1067) has occurred while \output is active []
+]
+Underfull \vbox (badness 6477) has occurred while \output is active []
 
- [6]
+ [5]
+
+LaTeX Warning: Citation `Dhoha2006' on page 6 undefined on input line 175.
+
+[6]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [7]
@@ -394,43 +382,46 @@ Chapter 3.
 
 ] [10]
 Chapter 4.
-No file report.bbl.
-[11
+(report.bbl [11
 
 ]
+Missing character: There is no â in font cmti12!
+Missing character: There is no € in font cmti12!
+Missing character: There is no ” in font cmti12!
+ [12
+
+]) [13]
 Appendix A.
-[12
-
-]
-Appendix B.
-[13
-
-]
-Appendix C.
 [14
 
 ]
-Appendix D.
+Appendix B.
 [15
 
 ]
-Appendix E.
+Appendix C.
 [16
 
 ]
-Appendix F.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 295.
+Appendix D.
 [17
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 295.
+Appendix E.
+[18
 
-("C:\Users\lewis\Documents\Part III\3rd-Year-Project\Progress\.texiteasy\report
-.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 295.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 295.
+]
+Appendix F.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 294.
+[19
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 294.
+ (report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 294.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 294.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 7095DF5BD3932FF8F54C7A8363639531;1597.
+(rerunfilecheck)             Checksum: 073D0A8F24713A8ED32020F90210FC79;1647.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -439,27 +430,31 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 295.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 294.
  ) 
 Here is how much of TeX's memory you used:
- 6143 strings out of 493323
- 91431 string characters out of 3139066
- 284647 words of memory out of 3000000
- 9583 multiletter control sequences out of 15000+200000
- 8500 words of font info for 30 fonts, out of 3000000 for 9000
+ 6100 strings out of 493323
+ 90269 string characters out of 3139065
+ 284310 words of memory out of 3000000
+ 9523 multiletter control sequences out of 15000+200000
+ 8847 words of font info for 31 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 32i,10n,30p,1208b,345s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmsy8.pfb>
-Output written on report.pdf (19 pages, 150026 bytes).
+ 32i,10n,30p,1208b,427s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{cite.Mckay} has been referenced but does not exis
+t, replaced by a fixed one
+
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+msy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb
+>
+Output written on report.pdf (21 pages, 186350 bytes).
 PDF statistics:
- 278 PDF objects out of 1000 (max. 8388607)
- 48 named destinations out of 1000 (max. 500000)
- 217 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 350 PDF objects out of 1000 (max. 8388607)
+ 65 named destinations out of 1000 (max. 500000)
+ 225 words of extra memory for PDF output out of 10000 (max. 10000000)
 

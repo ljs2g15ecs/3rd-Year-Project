@@ -1,0 +1,7 @@
+module SIMON_top
+	(input logic clk, nReset,
+	input logic [31:0] plain,
+	input logic [63:0] key,
+	output logic [31:0] cipher	);
+
+endmodule

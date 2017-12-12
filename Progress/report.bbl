@@ -21,6 +21,20 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{Evans2011}
+\BIBentryALTinterwordspacing
+D.~Evans, ``{The Internet of Things How the Next Evolution of the Internet Is
+  Changing Everything},'' 2011. [Online]. Available:
+  \url{https://www.cisco.com/c/dam/en{\_}us/about/ac79/docs/innov/IoT{\_}IBSG{\_}0411FINAL.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Hegde}
+\BIBentryALTinterwordspacing
+Z.~Hegde, ``{IoT now : how to run an IoT enabled business.}'' [Online].
+  Available:
+  \url{https://www.iot-now.com/2017/03/09/59388-iot-applications-autonomous-vehicles-smarter-cars-cellular-iot-vehicle-telematics/}
+\BIBentrySTDinterwordspacing
+
 \bibitem{Juels2005}
 \BIBentryALTinterwordspacing
 A.~Juels and S.~A. Weis, ``{Authenticating Pervasive Devices with Human
@@ -100,6 +114,82 @@ T.~S. Team, ``{COPACOBANA - Special-Purpose Hardware for Code-Breaking}.''
   [Online]. Available: \url{http://www.sciengines.com/copacobana/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Strachacki2008}
+\BIBentryALTinterwordspacing
+M.~Strachacki and S.~Szczepanski, ``{Implementation of AES algorithm resistant
+  to differential power analysis},'' in \emph{2008 15th IEEE International
+  Conference on Electronics, Circuits and Systems}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, aug 2008, pp. 214--217. [Online]. Available:
+  \url{http://ieeexplore.ieee.org/document/4674829/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Gomes2016}
+\BIBentryALTinterwordspacing
+O.~d. S.~M. Gomes and R.~L. Moreno, ``{A Compact S-Box Module for
+  128/192/256-bit Symmetric Cryptography Hardware},'' in \emph{2016 9th
+  International Conference on Developments in eSystems Engineering
+  (DeSE)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, aug 2016, pp. 94--97.
+  [Online]. Available: \url{http://ieeexplore.ieee.org/document/7930630/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Moradi2011}
+\BIBentryALTinterwordspacing
+A.~Moradi, A.~Poschmann, S.~Ling, C.~Paar, and H.~Wang, ``{Pushing the Limits:
+  A Very Compact and a Threshold Implementation of AES}.''\hskip 1em plus 0.5em
+  minus 0.4em\relax Springer, Berlin, Heidelberg, 2011, pp. 69--88. [Online].
+  Available: \url{http://link.springer.com/10.1007/978-3-642-20465-4{\_}6}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Chatterjee2014}
+\BIBentryALTinterwordspacing
+S.~R. Chatterjee, S.~Majumder, B.~Pramanik, and M.~Chakraborty, ``{FPGA
+  Implementation of Pipelined Blowfish Algorithm},'' in \emph{2014 Fifth
+  International Symposium on Electronic System Design}.\hskip 1em plus 0.5em
+  minus 0.4em\relax IEEE, dec 2014, pp. 208--209. [Online]. Available:
+  \url{http://ieeexplore.ieee.org/document/7172778/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Prasetyo2014}
+\BIBentryALTinterwordspacing
+K.~N. Prasetyo, Y.~Purwanto, and D.~Darlis, ``{An implementation of data
+  encryption for Internet of Things using blowfish algorithm on FPGA},'' in
+  \emph{2014 2nd International Conference on Information and Communication
+  Technology (ICoICT)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, may 2014,
+  pp. 75--79. [Online]. Available:
+  \url{http://ieeexplore.ieee.org/document/6914043/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Bogdanov2007}
+\BIBentryALTinterwordspacing
+A.~Bogdanov, L.~R. Knudsen, G.~Leander, C.~Paar, A.~Poschmann, M.~J.~B.
+  Robshaw, Y.~Seurin, and C.~Vikkelsoe, ``{PRESENT: An Ultra-Lightweight Block
+  Cipher},'' 2007. [Online]. Available:
+  \url{http://lightweightcrypto.org/present/present{\_}ches2007.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Borghoff2012}
+\BIBentryALTinterwordspacing
+J.~Borghoff, A.~Canteaut, T.~G{\"{u}}neysu, E.~B. Kavun, M.~Kne{\v{z}}evi,
+  L.~R. Knudsen, G.~Leander, V.~Nikov, C.~Paar, C.~Rechberger, P.~Rombouts,
+  S.~S. Thomsen, and T.~Yal{\c{c}}ın, ``{PRINCE – A Low-latency Block Cipher
+  for Pervasive Computing Applications},'' 2012. [Online]. Available:
+  \url{https://eprint.iacr.org/2012/529.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Beaulieu2013}
+\BIBentryALTinterwordspacing
+R.~Beaulieu, D.~Shors, J.~Smith, S.~Treatman-Clark, B.~Weeks, and L.~Wingers,
+  ``{The SIMON and SPECK Families of Lightweight Block Ciphers},'' 2013.
+  [Online]. Available: \url{https://eprint.iacr.org/2013/404.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Mckay}
+\BIBentryALTinterwordspacing
+K.~A. Mckay, L.~Bassham, M.~S{\"{o}}nmez, and T.~N. Mouha, ``{Report on
+  Lightweight Cryptography}.'' [Online]. Available:
+  \url{http://nvlpubs.nist.gov/nistpubs/ir/2017/NIST.IR.8114.pdf}
+\BIBentrySTDinterwordspacing
+
 \bibitem{Beaulieu2015}
 \BIBentryALTinterwordspacing
 R.~Beaulieu, D.~Shors, J.~Smith, S.~Treatman-Clark, B.~Weeks, and L.~Wingers,
@@ -110,11 +200,45 @@ R.~Beaulieu, D.~Shors, J.~Smith, S.~Treatman-Clark, B.~Weeks, and L.~Wingers,
   \url{http://dl.acm.org/citation.cfm?doid=2744769.2747946}
 \BIBentrySTDinterwordspacing
 
-\bibitem{Mckay}
+\bibitem{Aysu2014}
 \BIBentryALTinterwordspacing
-K.~A. Mckay, L.~Bassham, M.~S{\"{o}}nmez, and T.~N. Mouha, ``{Report on
-  Lightweight Cryptography}.'' [Online]. Available:
-  \url{http://nvlpubs.nist.gov/nistpubs/ir/2017/NIST.IR.8114.pdf}
+A.~Aysu, E.~Gulcan, and P.~Schaumont, ``{SIMON Says: Break Area Records of
+  Block Ciphers on FPGAs},'' \emph{IEEE Embedded Systems Letters}, vol.~6,
+  no.~2, pp. 37--40, jun 2014. [Online]. Available:
+  \url{http://ieeexplore.ieee.org/document/6782431/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Shahverdi2015}
+\BIBentryALTinterwordspacing
+A.~Shahverdi, M.~Taha, and T.~Eisenbarth, ``{Silent Simon: A threshold
+  implementation under 100 slices},'' in \emph{2015 IEEE International
+  Symposium on Hardware Oriented Security and Trust (HOST)}.\hskip 1em plus
+  0.5em minus 0.4em\relax IEEE, may 2015, pp. 1--6. [Online]. Available:
+  \url{http://ieeexplore.ieee.org/document/7140227/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Banik2015}
+\BIBentryALTinterwordspacing
+S.~Banik, A.~Bogdanov, and F.~Regazzoni, ``{Exploring the energy consumption of
+  lightweight blockciphers in FPGA},'' in \emph{2015 International Conference
+  on ReConFigurable Computing and FPGAs (ReConFig)}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, dec 2015, pp. 1--6. [Online]. Available:
+  \url{http://ieeexplore.ieee.org/document/7393308/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Vasquez2015}
+\BIBentryALTinterwordspacing
+J.~d. C.~G. Vasquez, F.~Borges, R.~Portugal, and P.~Lara, ``{An Efficient
+  One-Bit Model for Differential Fault Analysis on Simon Family},'' in
+  \emph{2015 Workshop on Fault Diagnosis and Tolerance in Cryptography
+  (FDTC)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, sep 2015, pp. 61--70.
+  [Online]. Available: \url{http://ieeexplore.ieee.org/document/7426153/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Ope}
+\BIBentryALTinterwordspacing
+OpenCores, ``{Home :: OpenCores}.'' [Online]. Available:
+  \url{https://opencores.org/}
 \BIBentrySTDinterwordspacing
 
 \end{thebibliography}

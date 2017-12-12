@@ -1,0 +1,9 @@
+module SIMON_top
+#(	parameter N = 16,
+	parameter M = 4			)
+ (	input logic clk, nReset,
+	input logic[2*N-1:0] plain,
+	input logic [M*N-1:0] key,
+	output [logic2*N-1:0] cipher	);
+
+endmodule

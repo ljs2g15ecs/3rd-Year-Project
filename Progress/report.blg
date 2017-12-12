@@ -4,9 +4,14 @@ Database file #1: Progress.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in Evans2011
 Warning--empty journal in ComputerSecurityDivision2001
+Warning--empty booktitle in Moradi2011
+Warning--empty journal in Bogdanov2007
+Warning--empty journal in Borghoff2012
+Warning--empty journal in Beaulieu2013
 Warning--empty journal in Mckay
 Warning--empty year in Mckay
 
 Done.
-(There were 3 warnings)
+(There were 8 warnings)

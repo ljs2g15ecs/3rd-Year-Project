@@ -12,17 +12,14 @@
 \contentsline {subsection}{\numberline {2.3.2}Other Algorithms}{7}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}Decisions}{7}{subsection.2.3.3}
 \contentsline {section}{\numberline {2.4}Lightweight Algorithms}{7}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}SIMON \& SPECK}{7}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.1}SIMON \& SPECK}{8}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Other Algorithms}{8}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Decisions}{8}{subsection.2.4.3}
-\contentsline {chapter}{\numberline {3}Progress}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}Hosted C}{9}{section.3.1}
-\contentsline {section}{\numberline {3.2}System Verilog}{10}{section.3.2}
-\contentsline {chapter}{\numberline {4}Future Plan}{11}{chapter.4}
-\contentsline {chapter}{Bibliography}{13}{chapter*.2}
-\contentsline {chapter}{\numberline {A}DES}{14}{appendix.A}
-\contentsline {chapter}{\numberline {B}AES}{15}{appendix.B}
-\contentsline {chapter}{\numberline {C}Blowfish}{16}{appendix.C}
-\contentsline {chapter}{\numberline {D}SIMON \& SPECK}{17}{appendix.D}
-\contentsline {chapter}{\numberline {E}Other Algorithms}{18}{appendix.E}
-\contentsline {chapter}{\numberline {F}Table of FPGA and Software Data}{19}{appendix.F}
+\contentsline {subsection}{\numberline {2.4.3}Decisions}{9}{subsection.2.4.3}
+\contentsline {chapter}{\numberline {3}Progress}{10}{chapter.3}
+\contentsline {section}{\numberline {3.1}Hosted C}{10}{section.3.1}
+\contentsline {section}{\numberline {3.2}System Verilog}{12}{section.3.2}
+\contentsline {chapter}{\numberline {4}Future Plan}{13}{chapter.4}
+\contentsline {chapter}{Bibliography}{16}{chapter*.6}
+\contentsline {chapter}{\numberline {A}SIMON32/64 Synthesis}{17}{appendix.A}
+\contentsline {chapter}{\numberline {B}Gantt Chart}{19}{appendix.B}
+\contentsline {chapter}{\numberline {C}Hosted C}{20}{appendix.C}

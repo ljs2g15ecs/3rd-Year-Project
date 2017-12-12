@@ -1,0 +1,400 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/MentorGraphics/examples
+T_opt
+!s110 1512386379
+Vgh8_j^:a41fZ9mmG:FoC`1
+04 20 4 work test_SIMON_control_1 fast 0
+=1-0050569d7446-5a252f4b-ae-cc28
+Z1 o-quiet -auto_acc_if_foreign -work work
+Z2 tCvgOpt 0
+n@_opt
+Z3 OL;O;10.6a;65
+R0
+T_opt1
+!s110 1511515800
+VaV3m`dS41^z<S2TW>G4B42
+04 23 4 work test_SIMON_keyexpansion fast 0
+=1-14b31f1c7290-5a17e698-1be-382c
+R1
+R2
+n@_opt1
+R3
+R0
+vSIMON_control
+Z4 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z5 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+31
+!i10b 1
+!s100 gD_8WHPa:o0H0FNCoJUQ20
+I]56^?2?LUU;6:HUh]Ja9Y2
+!s105 SIMON_control_sv_unit
+S1
+Z6 dH:/Part III/COMP3200/SIMON
+w1512731489
+8H:/Part III/COMP3200/SIMON/SIMON_control.sv
+FH:/Part III/COMP3200/SIMON/SIMON_control.sv
+L0 1
+Z7 OL;L;10.6a;65
+Z8 !s108 1512732144.000000
+!s107 H:/Part III/COMP3200/SIMON/SIMON_control.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|H:/Part III/COMP3200/SIMON/SIMON_control.sv|
+!i113 0
+Z9 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+n@s@i@m@o@n_control
+vSIMON_control_1
+R4
+Z10 !s110 1512732145
+!i10b 1
+!s100 jScHBiZ@c:0c4B63Pg7=00
+IKRzLVm7J4N2NTXAemVLnA3
+R5
+!s105 SIMON_control_1_sv_unit
+S1
+R6
+w1512392071
+8H:/Part III/COMP3200/SIMON/SIMON_control_1.sv
+FH:/Part III/COMP3200/SIMON/SIMON_control_1.sv
+L0 1
+R7
+r1
+!s85 0
+31
+Z11 !s108 1512732145.000000
+!s107 H:/Part III/COMP3200/SIMON/SIMON_control_1.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|H:/Part III/COMP3200/SIMON/SIMON_control_1.sv|
+!i113 0
+R9
+R2
+n@s@i@m@o@n_control_1
+vSIMON_f
+R4
+!s110 1511432274
+!i10b 1
+!s100 H`AD2k[b@=X816h2YnQa40
+IWON?OPdPPB`MITT1<6A<72
+R5
+Z12 !s105 SIMON_function_sv_unit
+S1
+R6
+w1511432193
+Z13 8H:/Part III/COMP3200/SIMON/SIMON_function.sv
+Z14 FH:/Part III/COMP3200/SIMON/SIMON_function.sv
+L0 1
+R7
+r1
+!s85 0
+31
+!s108 1511432274.000000
+Z15 !s107 H:/Part III/COMP3200/SIMON/SIMON_function.sv|
+Z16 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|H:/Part III/COMP3200/SIMON/SIMON_function.sv|
+!i113 0
+R9
+R2
+n@s@i@m@o@n_f
+vSIMON_function
+R4
+R5
+r1
+!s85 0
+31
+!i10b 1
+!s100 =U;oS1mWElKG_3<UF4DTX3
+I0G]?O<XLf@`6hf2]6<nZ33
+R12
+S1
+R6
+w1511437477
+R13
+R14
+L0 1
+R7
+Z17 !s108 1512732143.000000
+R15
+R16
+!i113 0
+R9
+R2
+n@s@i@m@o@n_function
+vSIMON_keyexpansion
+R4
+R5
+r1
+!s85 0
+31
+!i10b 1
+!s100 SaUS]Eggj23ic8`8J5:f73
+I7O:;D1WO;D9LD9A;^iT6:3
+!s105 SIMON_keyexpansion_sv_unit
+S1
+R6
+w1512731167
+8H:/Part III/COMP3200/SIMON/SIMON_keyexpansion.sv
+FH:/Part III/COMP3200/SIMON/SIMON_keyexpansion.sv
+L0 1
+R7
+R8
+!s107 H:/Part III/COMP3200/SIMON/SIMON_keyexpansion.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|H:/Part III/COMP3200/SIMON/SIMON_keyexpansion.sv|
+!i113 0
+R9
+R2
+n@s@i@m@o@n_keyexpansion
+vSIMON_pre_keyexpansion
+R4
+Z18 !s110 1512732144
+!i10b 1
+!s100 LZhcl9<Q@oD1O8DVhDF7=1
+IBY5]950az>dCj1j`FL4BR3
+R5
+!s105 SIMON_pre_keyexpansion_sv_unit
+S1
+R6
+w1512389042
+8H:/Part III/COMP3200/SIMON/SIMON_pre_keyexpansion.sv
+FH:/Part III/COMP3200/SIMON/SIMON_pre_keyexpansion.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+!s107 H:/Part III/COMP3200/SIMON/SIMON_pre_keyexpansion.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|H:/Part III/COMP3200/SIMON/SIMON_pre_keyexpansion.sv|
+!i113 0
+R9
+R2
+n@s@i@m@o@n_pre_keyexpansion
+vSIMON_round
+R4
+R5
+r1
+!s85 0
+31
+!i10b 1
+!s100 `Hf]lLn^TZ4^fN=iO8he02
+IcV<FNm:X@?DCf9GZdBDeP2
+!s105 SIMON_round_sv_unit
+S1
+R6
+w1511437908
+8H:/Part III/COMP3200/SIMON/SIMON_round.sv
+FH:/Part III/COMP3200/SIMON/SIMON_round.sv
+L0 1
+R7
+R17
+!s107 H:/Part III/COMP3200/SIMON/SIMON_round.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|H:/Part III/COMP3200/SIMON/SIMON_round.sv|
+!i113 0
+R9
+R2
+n@s@i@m@o@n_round
+vSIMON_top
+R4
+!s110 1511432227
+!i10b 1
+!s100 oUEN7^BOI_e_13@RYQ5:P1
+I^A62L78M6Vc_2m<5QH0EJ3
+R5
+!s105 SIMOM_top_sv_unit
+S1
+R6
+w1511430904
+8H:/Part III/COMP3200/SIMON/SIMOM_top.sv
+FH:/Part III/COMP3200/SIMON/SIMOM_top.sv
+L0 1
+R7
+r1
+!s85 0
+31
+!s108 1511432227.000000
+!s107 H:/Part III/COMP3200/SIMON/SIMOM_top.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|H:/Part III/COMP3200/SIMON/SIMOM_top.sv|
+!i113 0
+R9
+R2
+n@s@i@m@o@n_top
+vtest_SIMON_control
+R4
+R5
+r1
+!s85 0
+31
+!i10b 1
+!s100 1FOLBJ<f[4zmhUin0TD8e3
+Id`1bCziUzb5Lb3:W^edzX1
+!s105 test_SIMON_control_sv_unit
+S1
+R6
+w1512730245
+Z19 8H:/Part III/COMP3200/SIMON/test_SIMON_control.sv
+Z20 FH:/Part III/COMP3200/SIMON/test_SIMON_control.sv
+L0 1
+R7
+R8
+Z21 !s107 H:/Part III/COMP3200/SIMON/test_SIMON_control.sv|
+Z22 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|H:/Part III/COMP3200/SIMON/test_SIMON_control.sv|
+!i113 0
+R9
+R2
+ntest_@s@i@m@o@n_control
+vtest_SIMON_control_1
+R4
+R10
+!i10b 1
+!s100 Xzod`<0kz7>]d@moSeo<Z1
+I@[JY[XBTn:ElRYoFk?^6W1
+R5
+!s105 test_SIMON_control_1_sv_unit
+S1
+R6
+w1512392212
+8H:/Part III/COMP3200/SIMON/test_SIMON_control_1.sv
+FH:/Part III/COMP3200/SIMON/test_SIMON_control_1.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R11
+!s107 H:/Part III/COMP3200/SIMON/test_SIMON_control_1.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|H:/Part III/COMP3200/SIMON/test_SIMON_control_1.sv|
+!i113 0
+R9
+R2
+ntest_@s@i@m@o@n_control_1
+Xtest_SIMON_control_sv_unit
+R4
+!s110 1511518342
+!i10b 1
+!s100 34gaK6[XzAWF4kTZ0zST?3
+IbPkK_[Ce`fCA0ILX02zch1
+VbPkK_[Ce`fCA0ILX02zch1
+!i103 1
+S1
+R6
+w1511518312
+R19
+R20
+L0 29
+R7
+r1
+!s85 0
+31
+!s108 1511518342.000000
+R21
+R22
+!i113 0
+R9
+R2
+ntest_@s@i@m@o@n_control_sv_unit
+vtest_SIMON_function
+R4
+!s110 1512732143
+!i10b 1
+!s100 C8CFhLIAVYcnT5HZ_@9RZ2
+I=JAff94]lC1ELDN<>;VS82
+R5
+!s105 test_SIMON_function_sv_unit
+S1
+R6
+w1511436883
+8H:/Part III/COMP3200/SIMON/test_SIMON_function.sv
+FH:/Part III/COMP3200/SIMON/test_SIMON_function.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R17
+!s107 H:/Part III/COMP3200/SIMON/test_SIMON_function.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|H:/Part III/COMP3200/SIMON/test_SIMON_function.sv|
+!i113 0
+R9
+R2
+ntest_@s@i@m@o@n_function
+vtest_SIMON_keyexpansion
+R4
+R18
+!i10b 1
+!s100 BWj:[?2k>8iI@Cmm^6UmO1
+IZ^mZ7W?X=Q1gSLeSQ4;0`1
+R5
+!s105 test_SIMON_keyexpansion_sv_unit
+S1
+R6
+w1512730356
+8H:/Part III/COMP3200/SIMON/test_SIMON_keyexpansion.sv
+FH:/Part III/COMP3200/SIMON/test_SIMON_keyexpansion.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+!s107 H:/Part III/COMP3200/SIMON/test_SIMON_keyexpansion.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|H:/Part III/COMP3200/SIMON/test_SIMON_keyexpansion.sv|
+!i113 0
+R9
+R2
+ntest_@s@i@m@o@n_keyexpansion
+vtest_SIMON_pre_keyexpansion
+R4
+R18
+!i10b 1
+!s100 ]61[`G3`GGXVh0O8T[X=j0
+I_TSY>G2JQVFhlY:nh;hAP2
+R5
+!s105 test_SIMON_pre_keyexpansion_sv_unit
+S1
+R6
+w1512122571
+8H:/Part III/COMP3200/SIMON/test_SIMON_pre_keyexpansion.sv
+FH:/Part III/COMP3200/SIMON/test_SIMON_pre_keyexpansion.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+!s107 H:/Part III/COMP3200/SIMON/test_SIMON_pre_keyexpansion.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|H:/Part III/COMP3200/SIMON/test_SIMON_pre_keyexpansion.sv|
+!i113 0
+R9
+R2
+ntest_@s@i@m@o@n_pre_keyexpansion
+vtest_SIMON_round
+R4
+R18
+!i10b 1
+!s100 G4z4TgQejRUR`KG?P>@oG3
+ISELdIdQZ]Y0<6`?YWH7bA3
+R5
+!s105 test_SIMON_round_sv_unit
+S1
+R6
+w1511442593
+8H:/Part III/COMP3200/SIMON/test_SIMON_round.sv
+FH:/Part III/COMP3200/SIMON/test_SIMON_round.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R17
+!s107 H:/Part III/COMP3200/SIMON/test_SIMON_round.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|H:/Part III/COMP3200/SIMON/test_SIMON_round.sv|
+!i113 0
+R9
+R2
+ntest_@s@i@m@o@n_round
