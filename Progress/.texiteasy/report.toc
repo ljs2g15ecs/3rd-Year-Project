@@ -19,10 +19,9 @@
 \contentsline {section}{\numberline {3.1}Hosted C}{9}{section.3.1}
 \contentsline {section}{\numberline {3.2}System Verilog}{10}{section.3.2}
 \contentsline {chapter}{\numberline {4}Future Plan}{11}{chapter.4}
-\contentsline {chapter}{References}{12}{chapter*.2}
-\contentsline {chapter}{\numberline {A}DES}{13}{appendix.A}
-\contentsline {chapter}{\numberline {B}AES}{14}{appendix.B}
-\contentsline {chapter}{\numberline {C}Blowfish}{15}{appendix.C}
-\contentsline {chapter}{\numberline {D}SIMON \& SPECK}{16}{appendix.D}
-\contentsline {chapter}{\numberline {E}Other Algorithms}{17}{appendix.E}
-\contentsline {chapter}{\numberline {F}Table of FPGA and Software Data}{18}{appendix.F}
+\contentsline {chapter}{\numberline {A}DES}{12}{appendix.A}
+\contentsline {chapter}{\numberline {B}AES}{13}{appendix.B}
+\contentsline {chapter}{\numberline {C}Blowfish}{14}{appendix.C}
+\contentsline {chapter}{\numberline {D}SIMON \& SPECK}{15}{appendix.D}
+\contentsline {chapter}{\numberline {E}Other Algorithms}{16}{appendix.E}
+\contentsline {chapter}{\numberline {F}Table of FPGA and Software Data}{17}{appendix.F}
