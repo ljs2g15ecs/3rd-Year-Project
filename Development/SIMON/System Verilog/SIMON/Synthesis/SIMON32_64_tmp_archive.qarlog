@@ -1,0 +1,28 @@
+Quartus Prime Archive log --	H:/Part III/COMP3200/SIMON/Synthesis/SIMON32_64_tmp_archive.qarlog
+
+Archive:	H:/Part III/COMP3200/SIMON/Synthesis/SIMON32_64_tmp_archive.qar
+Date:		Sun Feb 18 14:55:29 2018
+Quartus Prime		16.1.2 Build 203 01/18/2017 SJ Standard Edition
+
+	=========== Files Selected: ===========
+H:/Part III/COMP3200/SIMON/SIMON_control.sv
+H:/Part III/COMP3200/SIMON/SIMON_function.sv
+H:/Part III/COMP3200/SIMON/SIMON_keyexpansion.sv
+H:/Part III/COMP3200/SIMON/SIMON_round.sv
+H:/Part III/COMP3200/SIMON/Synthesis/SIMON32_64.qpf
+H:/Part III/COMP3200/SIMON/Synthesis/SIMON_control.qsf
+H:/Part III/COMP3200/SIMON/Synthesis/output_files/SIMON_control.done
+H:/Part III/COMP3200/SIMON/Synthesis/output_files/SIMON_control.flow.rpt
+H:/Part III/COMP3200/SIMON/Synthesis/output_files/SIMON_control.map.rpt
+H:/Part III/COMP3200/SIMON/Synthesis/output_files/SIMON_control.map.summary
+c:/apps/altera/16.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 11 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
+
+
+******* Archived project restoration attempt on Sun Feb 18 14:55:31 2018
+Source archive file:	H:/Part III/COMP3200/SIMON/Synthesis/SIMON32_64_tmp_archive.qar
+Archive was extracted into	H:/Part III/COMP3200/SIMON/Synthesis_copy/
+		 - successfully.

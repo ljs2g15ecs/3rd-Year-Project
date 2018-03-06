@@ -1,0 +1,16 @@
+# Compile of SIMON_function.sv was successful.
+# Compile of SIMON_round.sv was successful.
+# Compile of SIMON_keyexpansion.sv was successful.
+# Compile of SIMON_control.sv was successful.
+# Compile of SIMON_3264.sv was successful.
+# Compile of SIMON_4872.sv was successful.
+# Compile of SIMON_4896.sv was successful.
+# Compile of SIMON_6496.sv was successful.
+# Compile of SIMON_9696.sv was successful.
+# Compile of SIMON_64128.sv was successful.
+# Compile of SIMON_96144.sv was successful.
+# Compile of SIMON_128128.sv was successful.
+# Compile of SIMON_128192.sv was successful.
+# Compile of SIMON_128256.sv was successful.
+# Compile of test_SIMON_3264.sv was successful.
+# 15 compiles, 0 failed with no errors.

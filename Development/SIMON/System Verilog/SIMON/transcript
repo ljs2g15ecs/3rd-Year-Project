@@ -1,0 +1,1631 @@
+# Compile of SIMON_function.sv was successful.
+# Compile of test_SIMON_function.sv was successful.
+# Compile of SIMON_round.sv was successful.
+# Compile of test_SIMON_round.sv was successful.
+# Compile of SIMON_keyexpansion.sv was successful.
+# Compile of test_SIMON_keyexpansion.sv was successful.
+# Compile of SIMON_control.sv was successful.
+# Compile of test_SIMON_control.sv was successful.
+# Compile of SIMON_pre_keyexpansion.sv was successful.
+# Compile of test_SIMON_pre_keyexpansion.sv was successful.
+# Compile of SIMON_control_1.sv was successful.
+# Compile of test_SIMON_control_1.sv was successful.
+# Compile of SIMON_control_v2.sv was successful.
+# Compile of test_SIMON_control_v2.sv was successful.
+# Compile of SIMON_keyexpansion_v2.sv was successful.
+# Compile of test_SIMON_keyexpansion_v2.sv was successful.
+# Compile of SIMON_control_v3.sv was successful.
+# Compile of test_SIMON_control_v3.sv was successful.
+# Compile of SIMON_control_v4.sv was successful.
+# Compile of test_SIMON_control_v4.sv was successful.
+# Compile of SIMON_control_v5.sv was successful.
+# Compile of test_SIMON_control_v5.sv was successful.
+# 22 compiles, 0 failed with no errors.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:20:07 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftvs59vf".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftvs59vf
+# Can't move the Now cursor.
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 15:23:31 on Feb 23,2018, Elapsed time: 0:03:24
+# Errors: 1, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:24:12 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftahr59c".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftahr59c
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 15:25:51 on Feb 23,2018, Elapsed time: 0:01:39
+# Errors: 0, Warnings: 2
+# Compile of SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:26:20 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftcji40k".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftcji40k
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 15:27:55 on Feb 23,2018, Elapsed time: 0:01:35
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:30:34 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlfthhb699".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlfthhb699
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 15:32:07 on Feb 23,2018, Elapsed time: 0:01:33
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+# Compile of test_SIMON_control_v5.sv was successful.
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:38:27 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftcxybfn".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftcxybfn
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 15:39:37 on Feb 23,2018, Elapsed time: 0:01:10
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:39:52 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftas80v6".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftas80v6
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 15:40:41 on Feb 23,2018, Elapsed time: 0:00:49
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:43:25 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftzyzc9v".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftzyzc9v
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 15:45:03 on Feb 23,2018, Elapsed time: 0:01:38
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:45:22 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlft749nav".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft749nav
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 15:48:25 on Feb 23,2018, Elapsed time: 0:03:03
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:48:45 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftryttk1".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftryttk1
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 15:50:58 on Feb 23,2018, Elapsed time: 0:02:13
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:51:13 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftas4cme".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftas4cme
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 15:52:43 on Feb 23,2018, Elapsed time: 0:01:30
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:53:02 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlft0n3ev7".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft0n3ev7
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 15:53:49 on Feb 23,2018, Elapsed time: 0:00:47
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:54:16 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlfti5wbr1".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlfti5wbr1
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 15:55:26 on Feb 23,2018, Elapsed time: 0:01:10
+# Errors: 0, Warnings: 2
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:56:11 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftsrva88".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftsrva88
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 15:57:00 on Feb 23,2018, Elapsed time: 0:00:49
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:57:15 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftkw8vf3".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftkw8vf3
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 15:58:47 on Feb 23,2018, Elapsed time: 0:01:32
+# Errors: 0, Warnings: 2
+# Load canceled
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 15:59:36 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftxd04hq".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftxd04hq
+run
+run
+quit -sim
+# End time: 15:59:58 on Feb 23,2018, Elapsed time: 0:00:22
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 16:00:34 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftnt1fvi".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftnt1fvi
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 16:01:31 on Feb 23,2018, Elapsed time: 0:00:57
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 16:01:55 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftd28ba9".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftd28ba9
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+# Can't move the Now cursor.
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 16:08:52 on Feb 23,2018, Elapsed time: 0:06:57
+# Errors: 1, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 16:09:53 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftw5jyjs".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftw5jyjs
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+# Can't move the Now cursor.
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 16:11:51 on Feb 23,2018, Elapsed time: 0:01:58
+# Errors: 1, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 16:12:08 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftvmyk0g".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftvmyk0g
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 16:13:43 on Feb 23,2018, Elapsed time: 0:01:35
+# Errors: 0, Warnings: 2
+# Compile of SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 16:14:02 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftybf1is".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftybf1is
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 16:15:48 on Feb 23,2018, Elapsed time: 0:01:46
+# Errors: 0, Warnings: 2
+# Compile of SIMON_control_v5.sv failed with 1 errors.
+# Compile of SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 16:19:45 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlfttbszq6".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlfttbszq6
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 16:25:56 on Feb 23,2018, Elapsed time: 0:06:11
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv failed with 1 errors.
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 16:29:11 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftgw17xa".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftgw17xa
+run
+run
+quit -sim
+# End time: 16:29:35 on Feb 23,2018, Elapsed time: 0:00:24
+# Errors: 0, Warnings: 2
+# Break key hit
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 16:35:50 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount \
+sim:/test_SIMON_control_v5/inputStream \
+sim:/test_SIMON_control_v5/outputStream
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftf6t6xg".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftf6t6xg
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 16:38:29 on Feb 23,2018, Elapsed time: 0:02:39
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 16:39:09 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/N \
+sim:/test_SIMON_control_v5/c/M \
+sim:/test_SIMON_control_v5/c/T \
+sim:/test_SIMON_control_v5/c/Co \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftxvt428".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftxvt428
+run
+run
+run
+run
+run
+run
+run
+run
+run
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount \
+sim:/test_SIMON_control_v5/inputStream \
+sim:/test_SIMON_control_v5/outputStream
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 16:58:01 on Feb 23,2018, Elapsed time: 0:18:52
+# Errors: 0, Warnings: 2
+# Compile of test_SIMON_control_v5.sv was successful.
+vsim -gui work.test_SIMON_control_v5
+# vsim -gui work.test_SIMON_control_v5 
+# Start time: 16:58:36 on Feb 23,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_control_v5
+# Loading work.SIMON_control_v5
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/cipherCount \
+sim:/test_SIMON_control_v5/inputStream \
+sim:/test_SIMON_control_v5/outputStream
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ljs2g15  Hostname: JFB59-R3229-B43  ProcessID: 12732
+#           Attempting to use alternate WLF file "./wlftek21tj".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftek21tj
+add wave -position insertpoint  \
+sim:/test_SIMON_control_v5/c/clk \
+sim:/test_SIMON_control_v5/c/nR \
+sim:/test_SIMON_control_v5/c/newData \
+sim:/test_SIMON_control_v5/c/newKey \
+sim:/test_SIMON_control_v5/c/enc_dec \
+sim:/test_SIMON_control_v5/c/readData \
+sim:/test_SIMON_control_v5/c/plain \
+sim:/test_SIMON_control_v5/c/key \
+sim:/test_SIMON_control_v5/c/ldData \
+sim:/test_SIMON_control_v5/c/ldKey \
+sim:/test_SIMON_control_v5/c/doneData \
+sim:/test_SIMON_control_v5/c/doneKey \
+sim:/test_SIMON_control_v5/c/cipher \
+sim:/test_SIMON_control_v5/c/count \
+sim:/test_SIMON_control_v5/c/ENCDEC \
+sim:/test_SIMON_control_v5/c/current \
+sim:/test_SIMON_control_v5/c/next \
+sim:/test_SIMON_control_v5/c/pKeys \
+sim:/test_SIMON_control_v5/c/keys \
+sim:/test_SIMON_control_v5/c/oKey \
+sim:/test_SIMON_control_v5/c/rKey \
+sim:/test_SIMON_control_v5/c/p \
+sim:/test_SIMON_control_v5/c/c \
+sim:/test_SIMON_control_v5/c/clkCipherGo \
+sim:/test_SIMON_control_v5/c/clkCipher \
+sim:/test_SIMON_control_v5/c/clkKeyGo \
+sim:/test_SIMON_control_v5/c/clkKey \
+sim:/test_SIMON_control_v5/c/clkAll
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 17:07:02 on Feb 23,2018, Elapsed time: 0:08:26
+# Errors: 0, Warnings: 2

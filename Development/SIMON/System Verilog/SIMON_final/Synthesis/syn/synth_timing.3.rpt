@@ -1,0 +1,72 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : SIMON_3264
+Version: M-2016.12-SP5
+Date   : Thu Mar  1 15:16:33 2018
+****************************************
+
+Operating Conditions: WORST-MIL   Library: c35_CORELIB_WC
+Wire Load Model Mode: enclosed
+
+  Startpoint: control/count_reg[0]
+              (rising edge-triggered flip-flop clocked by master_clock)
+  Endpoint: control/p_reg[16]
+            (rising edge-triggered flip-flop clocked by master_clock)
+  Path Group: master_clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  SIMON_control_N16_M4_T32_Co5
+                     10k                   c35_CORELIB_WC
+  SIMON_3264         10k                   c35_CORELIB_WC
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock master_clock (rise edge)           0.00       0.00
+  clock network delay (ideal)              2.50       2.50
+  control/count_reg[0]/C (DFC3)            0.00       2.50 r
+  control/count_reg[0]/Q (DFC3)            2.13       4.63 f
+  control/r82/U1_1_1/S (ADD22)             1.19       5.82 r
+  control/U249/Q (INV3)                    0.18       6.00 f
+  control/U1688/Q (NAND20)                 0.49       6.49 r
+  control/U1690/Q (CLKIN0)                 0.88       7.37 f
+  control/U138/Q (NAND21)                  0.71       8.08 r
+  control/U137/Q (INV3)                    0.23       8.31 f
+  control/U1686/Q (XOR20)                  1.44       9.75 r
+  control/U154/Q (INV3)                    0.29      10.05 f
+  control/U1371/Q (NOR20)                  1.19      11.24 r
+  control/U1375/Q (NAND20)                 0.60      11.84 f
+  control/U7/Q (CLKIN3)                    1.77      13.61 r
+  control/U1383/Q (AOI220)                 0.73      14.34 f
+  control/U1384/Q (NAND40)                 1.21      15.55 r
+  control/U1385/Q (OAI210)                 0.40      15.95 f
+  control/U1386/Q (NAND20)                 0.74      16.69 r
+  control/U401/Q (AOI221)                  0.53      17.22 f
+  control/U480/Q (INV3)                    0.27      17.49 r
+  control/r/key[0] (SIMON_round_N16)       0.00      17.49 r
+  control/r/U16/Q (XOR31)                  1.62      19.11 r
+  control/r/out[16] (SIMON_round_N16)      0.00      19.11 r
+  control/U22/Q (AOI220)                   0.60      19.71 f
+  control/U462/Q (OAI2111)                 0.85      20.56 r
+  control/p_reg[16]/D (DFC3)               0.00      20.56 r
+  data arrival time                                  20.56
+
+  clock master_clock (rise edge)          20.00      20.00
+  clock network delay (ideal)              2.50      22.50
+  clock uncertainty                       -1.00      21.50
+  control/p_reg[16]/C (DFC3)               0.00      21.50 r
+  library setup time                      -0.03      21.47
+  data required time                                 21.47
+  -----------------------------------------------------------
+  data required time                                 21.47
+  data arrival time                                 -20.56
+  -----------------------------------------------------------
+  slack (MET)                                         0.91
+
+
+1

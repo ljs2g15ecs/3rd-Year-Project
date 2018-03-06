@@ -1,0 +1,28 @@
+Quartus Prime Archive log --	H:/Part III/COMP3200/SIMON/Synthesis/__SIMON_control.auto.qarlog
+
+Archive:	H:/Part III/COMP3200/SIMON/Synthesis/__SIMON_control.auto.qar
+Date:		Sun Feb 18 14:55:28 2018
+Quartus Prime		16.1.2 Build 203 01/18/2017 SJ Standard Edition
+
+	=========== Files Selected: ===========
+H:/Part III/COMP3200/SIMON/SIMON_control.sv
+H:/Part III/COMP3200/SIMON/SIMON_function.sv
+H:/Part III/COMP3200/SIMON/SIMON_keyexpansion.sv
+H:/Part III/COMP3200/SIMON/SIMON_round.sv
+H:/Part III/COMP3200/SIMON/Synthesis/db/SIMON32_64.qpf
+H:/Part III/COMP3200/SIMON/Synthesis/db/SIMON_control.cbx.xml
+H:/Part III/COMP3200/SIMON/Synthesis/db/abs_divider_mbg.tdf
+H:/Part III/COMP3200/SIMON/Synthesis/db/alt_u_div_sve.tdf
+H:/Part III/COMP3200/SIMON/Synthesis/db/lpm_abs_4p9.tdf
+H:/Part III/COMP3200/SIMON/Synthesis/db/lpm_abs_mn9.tdf
+H:/Part III/COMP3200/SIMON/Synthesis/db/lpm_divide_gho.tdf
+H:/Part III/COMP3200/SIMON/Synthesis/output_files/SIMON_control.done
+H:/Part III/COMP3200/SIMON/Synthesis/output_files/SIMON_control.flow.rpt
+H:/Part III/COMP3200/SIMON/Synthesis/output_files/SIMON_control.map.rpt
+H:/Part III/COMP3200/SIMON/Synthesis/output_files/SIMON_control.map.summary
+SIMON_control.qsf
+c:/apps/altera/16.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 17 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

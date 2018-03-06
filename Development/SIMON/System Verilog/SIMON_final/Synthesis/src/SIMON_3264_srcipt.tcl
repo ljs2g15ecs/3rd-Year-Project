@@ -1,0 +1,1 @@
+analyze -formate sverilog {./SIMON_3264.sv ./SIMON_keyexpansion.sv ./SIMON_control.sv ./SIMON_round.sv ./SIMON_function.sv}

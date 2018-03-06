@@ -1,0 +1,59 @@
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : SIMON_3264
+Version: M-2016.12-SP5
+Date   : Thu Mar  1 15:16:25 2018
+****************************************
+
+
+Library(s) Used:
+
+    c35_CORELIB_WC (File: /opt/cad/designkits/ams/v410/synopsys/c35_3.3V/c35_CORELIB_WC.db)
+
+
+Operating Conditions: WORST-MIL   Library: c35_CORELIB_WC
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+SIMON_3264             10k               c35_CORELIB_WC
+SIMON_keyexpansion_N16_M4_Co5
+                       10k               c35_CORELIB_WC
+SIMON_control_N16_M4_T32_Co5
+                       10k               c35_CORELIB_WC
+SIMON_round_N16        10k               c35_CORELIB_WC
+SIMON_function_N16     10k               c35_CORELIB_WC
+
+
+Global Operating Voltage = 3    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+  Cell Internal Power  =   3.0903 mW   (61%)
+  Net Switching Power  =   1.9990 mW   (39%)
+                         ---------
+Total Dynamic Power    =   5.0893 mW  (100%)
+
+Cell Leakage Power     =   6.2597 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network  2.5449e-03            1.1020        9.5677e+03            1.1046  (  21.68%)
+register           2.6995            0.1264        4.2127e+06            2.8301  (  55.54%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational      0.3883            0.7706        2.0375e+06            1.1610  (  22.78%)
+--------------------------------------------------------------------------------------------------
+Total              3.0903 mW         1.9990 mW     6.2597e+06 pW         5.0956 mW
+1

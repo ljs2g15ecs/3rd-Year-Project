@@ -1,0 +1,188 @@
+# Compile of SIMON_3264.sv failed with 4 errors.
+# Compile of SIMON_3264.sv failed with 4 errors.
+# Compile of SIMON_control.sv was successful.
+# Compile of SIMON_3264.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.test_SIMON_3264
+# vsim -gui work.test_SIMON_3264 
+# Start time: 11:05:22 on Mar 03,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_3264
+# Loading work.SIMON_3264
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+# Loading work.SIMON_control
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (8) does not match connection size (32) for implicit .name connection port 'plain'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(10).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (128) does not match connection size (64) for implicit .name connection port 'key'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(11).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (8) does not match connection size (32) for implicit .name connection port 'cipher'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Warning: (vsim-3015) H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(27): [PCDPC] - Port size (4) does not match connection size (1) for port 'key'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_round.sv(4).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c/r File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_round.sv
+# ** Fatal: (vsim-3373) H:/Part III/COMP3200/SIMON_final/Source/SIMON_function.sv(8): Range of part-select [-5:0] into 'in' [3:0] is reversed.
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c/r/func File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_function.sv
+# FATAL ERROR while loading design
+# Error loading design
+# Compile of SIMON_3264.sv was successful.
+vsim -gui work.test_SIMON_3264
+# vsim -gui work.test_SIMON_3264 
+# Start time: 11:11:40 on Mar 03,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_3264
+# Loading work.SIMON_3264
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+# Loading work.SIMON_control
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (8) does not match connection size (32) for implicit .name connection port 'plain'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(10).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (128) does not match connection size (64) for implicit .name connection port 'key'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(11).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (8) does not match connection size (32) for implicit .name connection port 'cipher'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Warning: (vsim-3015) H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(27): [PCDPC] - Port size (4) does not match connection size (1) for port 'key'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_round.sv(4).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c/r File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_round.sv
+# ** Fatal: (vsim-3373) H:/Part III/COMP3200/SIMON_final/Source/SIMON_function.sv(8): Range of part-select [-5:0] into 'in' [3:0] is reversed.
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c/r/func File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_function.sv
+# FATAL ERROR while loading design
+# Error loading design
+# Compile of SIMON_3264.sv was successful.
+vsim -gui work.test_SIMON_3264
+# vsim -gui work.test_SIMON_3264 
+# Start time: 11:13:08 on Mar 03,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_3264
+# Loading work.SIMON_3264
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_control
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (8) does not match connection size (32) for implicit .name connection port 'plain'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(10).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (128) does not match connection size (64) for implicit .name connection port 'key'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(11).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (8) does not match connection size (32) for implicit .name connection port 'cipher'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# Error loading design
+# Compile of SIMON_control.sv was successful.
+# Compile of SIMON_3264.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.test_SIMON_3264
+# vsim -gui work.test_SIMON_3264 
+# Start time: 11:15:10 on Mar 03,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_3264
+# Loading work.SIMON_3264
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+# Loading work.SIMON_control
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (8) does not match connection size (32) for implicit .name connection port 'plain'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(10).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (128) does not match connection size (64) for implicit .name connection port 'key'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(11).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (8) does not match connection size (32) for implicit .name connection port 'cipher'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Fatal: (vsim-3373) H:/Part III/COMP3200/SIMON_final/Source/SIMON_function.sv(8): Range of part-select [-5:0] into 'in' [3:0] is reversed.
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c/r/func File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_function.sv
+# FATAL ERROR while loading design
+# Error loading design
+# Compile of SIMON_control.sv failed with 1 errors.
+# Compile of SIMON_control.sv was successful.
+vsim -gui work.test_SIMON_3264
+# vsim -gui work.test_SIMON_3264 
+# Start time: 11:16:13 on Mar 03,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_3264
+# Loading work.SIMON_3264
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+# Loading work.SIMON_control
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (8) does not match connection size (32) for implicit .name connection port 'plain'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(10).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (128) does not match connection size (64) for implicit .name connection port 'key'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(11).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (8) does not match connection size (32) for implicit .name connection port 'cipher'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Fatal: (vsim-3373) H:/Part III/COMP3200/SIMON_final/Source/SIMON_function.sv(8): Range of part-select [-5:0] into 'in' [3:0] is reversed.
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c/r/func File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_function.sv
+# FATAL ERROR while loading design
+# Error loading design
+# Compile of SIMON_3264.sv was successful.
+vsim -gui work.test_SIMON_3264
+# vsim -gui work.test_SIMON_3264 
+# Start time: 11:16:49 on Mar 03,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_3264
+# Loading work.SIMON_3264
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_control
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (8) does not match connection size (32) for implicit .name connection port 'plain'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(10).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (128) does not match connection size (64) for implicit .name connection port 'key'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(11).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Error: (vsim-8378) H:/Part III/COMP3200/SIMON_final/Simulation/test_SIMON_3264.sv(16): Port size (8) does not match connection size (32) for implicit .name connection port 'cipher'. The port definition is at: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_3264.sv
+# ** Fatal: (vsim-3373) H:/Part III/COMP3200/SIMON_final/Source/SIMON_function.sv(8): Range of part-select [-5:0] into 'in' [3:0] is reversed.
+#    Time: 0 ns  Iteration: 0  Instance: /test_SIMON_3264/c/control/r/func File: H:/Part III/COMP3200/SIMON_final/Source/SIMON_function.sv
+# FATAL ERROR while loading design
+# Error loading design
+# Compile of SIMON_control.sv was successful.
+# Compile of SIMON_3264.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.test_SIMON_3264
+# vsim -gui work.test_SIMON_3264 
+# Start time: 11:17:55 on Mar 03,2018
+# Loading sv_std.std
+# Loading work.test_SIMON_3264
+# Loading work.SIMON_3264
+# Loading work.SIMON_keyexpansion
+# Loading work.SIMON_control
+# Loading work.SIMON_round
+# Loading work.SIMON_function
+add wave -position insertpoint  \
+sim:/test_SIMON_3264/inputCount \
+sim:/test_SIMON_3264/outputCount \
+sim:/test_SIMON_3264/inputStream \
+sim:/test_SIMON_3264/outputStream
+add wave -position insertpoint  \
+sim:/test_SIMON_3264/c/control/N \
+sim:/test_SIMON_3264/c/control/M \
+sim:/test_SIMON_3264/c/control/T \
+sim:/test_SIMON_3264/c/control/Co \
+sim:/test_SIMON_3264/c/control/clk \
+sim:/test_SIMON_3264/c/control/nR \
+sim:/test_SIMON_3264/c/control/newData \
+sim:/test_SIMON_3264/c/control/newKey \
+sim:/test_SIMON_3264/c/control/enc_dec \
+sim:/test_SIMON_3264/c/control/readData \
+sim:/test_SIMON_3264/c/control/plain \
+sim:/test_SIMON_3264/c/control/key \
+sim:/test_SIMON_3264/c/control/oKey \
+sim:/test_SIMON_3264/c/control/ldData \
+sim:/test_SIMON_3264/c/control/ldKey \
+sim:/test_SIMON_3264/c/control/doneData \
+sim:/test_SIMON_3264/c/control/doneKey \
+sim:/test_SIMON_3264/c/control/cipher \
+sim:/test_SIMON_3264/c/control/pKeys \
+sim:/test_SIMON_3264/c/control/count \
+sim:/test_SIMON_3264/c/control/current \
+sim:/test_SIMON_3264/c/control/next \
+sim:/test_SIMON_3264/c/control/keys \
+sim:/test_SIMON_3264/c/control/rKey \
+sim:/test_SIMON_3264/c/control/p \
+sim:/test_SIMON_3264/c/control/c \
+sim:/test_SIMON_3264/c/control/clkCipherGo \
+sim:/test_SIMON_3264/c/control/clkCipher \
+sim:/test_SIMON_3264/c/control/clkKeyGo \
+sim:/test_SIMON_3264/c/control/clkKey \
+sim:/test_SIMON_3264/c/control/clkAll \
+sim:/test_SIMON_3264/c/control/ENCDEC
+run
+run
+run
+run
+quit -sim
