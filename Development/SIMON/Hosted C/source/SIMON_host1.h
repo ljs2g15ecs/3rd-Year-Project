@@ -1,8 +1,12 @@
+#ifndef SIMON_HOST1_H
+#define SIMON_HOST1_H
+
 #include "SIMON_host.h"
 
-typedef struct	IN_OUT
+/*
+typedef struct	IO
 {
-	//	CONTROL I/O
+	//	CONTROL IO
 	TYPE(8)	newData		:	1;	//	INPUT	-	NEW DATA AVAILABLE
 	TYPE(8)	loadData	:	1;	//	OUTPUT	-	NEW DATA LOADED
 	TYPE(8)	doneData	:	1;	//	OUTPUT	-	DATA COMPUTED
@@ -12,25 +16,42 @@ typedef struct	IN_OUT
 	TYPE(8)	doneKey		:	1;	//	OUTPUT	-	KEY COMPUTED
 	TYPE(8)	enc_dec		:	1;	// 	INPUT	-	ENCRYPT/DECRYPT
 	//TYPE(8)	FILLER0		:	8;	//	EXTRA BYTE (NOT NEEDED)
-}				IN_OUT;
+}				IO;
+//*/
 
 typedef struct	INTERNAL
 {
-	//	DATA I/O
-	block	p;					//	PLAINTEXT INPUT TO ROUND FUNCTION
-	block	c;					//	CIPHERTEXT OUTPUT OF ROUND FUNCTION
-	//key		k;					//	KEY INPUT
+	//	DATA
+	block	o;					//	CIPHERTEXT OUTPUT OF ROUND FUNCTION
 	keys	ks;					//	COMPUTED KEY SCHEDULE
+	//	CONTROL
+	TYPE(8)	count		:	8;	//	DATA COUNT
+	TYPE(8)	doneKey		:	1;	//	OUTPUT	-	KEY COMPUTED
+	TYPE(8)	doneData	:	1;	//	OUTPUT	-	DATA COMPUTED
+	TYPE(8)	ENC_DEC		:	1;	// 	INPUT	-	ENCRYPT/DECRYPT
+	TYPE(8)	FILLER0		:	5;	//	FILLER
 }				INTERNAL;
 
 typedef struct	PACKET
 {
 	//	PACKET INFO
+	TYPE(8)	in_out		:	1;	//	INPUT/OUTPUT
 	TYPE(8)	mode		:	4;	//	CIPHER MODE
-	TYPE(8)	enc_dec		:	1;	//	ENCRYPT/DECRYPT
 	TYPE(8)	data_key	:	1;	//	DATA/KEY
-	TYPE(8)	nWords		:	2;	//	NUMBER OF WORDS IN PACKET (1-4)
-	TYPE(8)	FILLER0		:	8;	//	EXTRA BYTE (NOT NEEDED)
+	TYPE(8)	enc_dec		:	1;	//	ENCRYPT/DECRYPT
+	TYPE(8)	FILLER0		:	1;	//	FILLER
+	TYPE(8)	count		:	8;	//	DATA COUNT
 	//	PACKET DATA
 	word	data[4];			//	PACKET DATA
 }				PACKET;
+
+void	buildInputPACKET(PACKET *p);
+void	buildOutputPACKET(PACKET *p, PACKET in);
+void	addBlock(PACKET *p, block b);
+void	addKey(PACKET *p, key k);
+PACKET	CIPHER(PACKET inData);
+void	loadKey(word in[4]);
+void	encryptData(word in[4]);
+void	decryptData(word in[4]);
+
+#endif

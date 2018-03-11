@@ -131,3 +131,51 @@ void	test()
 	PRINTHEX(a.v);
 	//*/
 }
+
+void	test1()
+{
+	printf("WORD SIZE:\t%d\n", sizeof(word));
+	printf("BLOCK SIZE:\t%d\n", sizeof(block));
+	printf("KEY SIZE:\t%d\n", sizeof(key));
+	printf("KEY SCHEDULE SIZE:\t%d\n", sizeof(keys));
+	
+	printf("-----------------------------------\n");
+	
+	printf("INTERNAL SIZE:\t%d\n", sizeof(INTERNAL));
+	printf("PACKET SIZE:\t%d\n", sizeof(PACKET));
+	
+	printf("-----------------------------------\n");
+	
+	PACKET inStream[2], outStream[2];
+	
+	buildInputPACKET(&inStream[0]);	addKey(&inStream[0], k);
+	buildInputPACKET(&inStream[1]);	addBlock(&inStream[1], p);
+	
+	outStream[0] = CIPHER(inStream[0]);
+	outStream[1] = CIPHER(inStream[1]);
+	
+	printSTREAM(inStream[0], outStream[0]);
+	printSTREAM(inStream[1], outStream[1]);
+}
+
+void	printPACKETDATA(PACKET p)
+{
+	printf("|\t");	PRINTHEX(p.data[0].v);
+	printf("\t");	PRINTHEX(p.data[1].v);
+	printf("\t");	PRINTHEX(p.data[2].v);
+	printf("\t");	PRINTHEX(p.data[3].v);	printf("\t");
+}
+
+void	printSTREAM(PACKET in, PACKET out)
+{
+	if((in.in_out != out.in_out) && (in.mode == out.mode) && (in.data_key == out.data_key) && (in.enc_dec == out.enc_dec) && (in.count == out.count))
+	NEWLINE();
+	printf("|\t%d\t", in.mode);
+	if(in.data_key)	printf("|\tKEY\t");
+	else			printf("|\tDATA\t");
+	if(in.enc_dec)	printf("|\tDEC\t");
+	else			printf("|\tENC\t");
+	printf("|\t%d\t", in.count);
+	printPACKETDATA(in);	printPACKETDATA(out);
+	printf("|");
+}

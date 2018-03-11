@@ -4,55 +4,65 @@
 #include <stdint.h>
 
 #if		defined	S32_64
-	#define N 16
-	#define M 4
-	#define T 32
-	#define	j 0
+	#define MODE	0
+	#define N 		16
+	#define M 		4
+	#define T 		32
+	#define	j 		0
 #elif	defined S48_72
-	#define N 24
-	#define M 3
-	#define T 36
-	#define	j 0
+	#define MODE	1
+	#define N 		24
+	#define M 		3
+	#define T 		36
+	#define	j 		0
 #elif	defined S48_96
-	#define N 24
-	#define M 4
-	#define T 36
-	#define	j 1
+	#define MODE	2
+	#define N 		24
+	#define M 		4
+	#define T 		36
+	#define	j 		1
 #elif	defined S64_96
-	#define N 32
-	#define M 3
-	#define T 42
-	#define	j 2
+	#define MODE	3
+	#define N 		32
+	#define M 		3
+	#define T 		42
+	#define	j 		2
 #elif	defined S64_128
-	#define N 32
-	#define M 4
-	#define T 44
-	#define	j 3
+	#define MODE	4
+	#define N 		32
+	#define M 		4
+	#define T 		44
+	#define	j 		3
 #elif	defined S96_96
-	#define N 48
-	#define M 2
-	#define T 52
-	#define	j 2
+	#define MODE	5
+	#define N 		48
+	#define M 		2
+	#define T 		52
+	#define	j 		2
 #elif	defined S96_144
-	#define N 48
-	#define M 3
-	#define T 54
-	#define	j 3
+	#define MODE	6
+	#define N 		48
+	#define M 		3
+	#define T 		54
+	#define	j 		3
 #elif	defined S128_128
-	#define N 64
-	#define M 2
-	#define T 68
-	#define	j 2
+	#define MODE	7
+	#define N 		64
+	#define M 		2
+	#define T 		68
+	#define	j 		2
 #elif	defined S128_192
-	#define N 64
-	#define M 3
-	#define T 69
-	#define	j 3
+	#define MODE	8
+	#define N 		64
+	#define M 		3
+	#define T 		69
+	#define	j 		3
 #elif	defined S128_256
-	#define N 64
-	#define M 4
-	#define T 72
-	#define	j 4
+	#define MODE	9
+	#define N 		64
+	#define M 		4
+	#define T 		72
+	#define	j 		4
 #else
 	#error INVALID MODE
 #endif
