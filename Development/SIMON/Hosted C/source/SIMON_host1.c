@@ -33,6 +33,11 @@ void	buildOutputPACKET(PACKET *p, PACKET in)
 	outputCount++;
 }
 
+void	addWord(PACKET *p, TYPE(N) w, TYPE(8) i)
+{
+	p->data[i].v = w;
+}
+
 void	addBlock(PACKET *p, block b)
 {
 	p->data[0].v = b[0].v;

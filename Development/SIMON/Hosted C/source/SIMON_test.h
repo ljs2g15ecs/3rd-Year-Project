@@ -15,6 +15,7 @@
 
 void	test();
 void	test1();
+void	test2();
 
 void	printPACKET(PACKET p);
 void	printSTREAM(PACKET in, PACKET out);

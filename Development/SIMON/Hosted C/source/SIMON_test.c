@@ -1,5 +1,6 @@
 #include "SIMON_test.h"
 #include "SIMON_host.h"
+#include "SIMON_file.h"
 #include <stdio.h>
 
 #if	defined S32_64	
@@ -166,6 +167,11 @@ void	test1()
 	printSTREAM(inStream[0], outStream[0]);
 	printSTREAM(inStream[1], outStream[1]);
 	printSTREAM(inStream[2], outStream[2]);
+}
+
+void	test2()
+{
+	readFile();
 }
 
 void	printPACKETDATA(PACKET p)

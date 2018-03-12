@@ -48,6 +48,7 @@ typedef struct	PACKET
 
 void	buildInputPACKET(PACKET *p);
 void	buildOutputPACKET(PACKET *p, PACKET in);
+void	addWord(PACKET *p, TYPE(N) w, TYPE(8) i);
 void	addBlock(PACKET *p, block b);
 void	addBlocks(PACKET *p, block b0, block b1);
 void	addKey(PACKET *p, key k);
