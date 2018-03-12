@@ -134,47 +134,57 @@ void	test()
 
 void	test1()
 {
+	printf("-----------------------------------");	NEWLINE();
+	
 	printf("WORD SIZE:\t%d\n", sizeof(word));
 	printf("BLOCK SIZE:\t%d\n", sizeof(block));
 	printf("KEY SIZE:\t%d\n", sizeof(key));
 	printf("KEY SCHEDULE SIZE:\t%d\n", sizeof(keys));
 	
-	printf("-----------------------------------\n");
+	printf("-----------------------------------");	NEWLINE();
 	
 	printf("INTERNAL SIZE:\t%d\n", sizeof(INTERNAL));
 	printf("PACKET SIZE:\t%d\n", sizeof(PACKET));
 	
-	printf("-----------------------------------\n");
+	printf("-----------------------------------");
 	
-	PACKET inStream[2], outStream[2];
+	PACKET inStream[3], outStream[3];
 	
 	buildInputPACKET(&inStream[0]);	addKey(&inStream[0], k);
-	buildInputPACKET(&inStream[1]);	addBlock(&inStream[1], p);
+	buildInputPACKET(&inStream[1]);	addBlocks(&inStream[1], p, c);
 	
 	outStream[0] = CIPHER(inStream[0]);
 	outStream[1] = CIPHER(inStream[1]);
 	
+	buildInputPACKET(&inStream[2]);
+	TYPE(8) i;
+	for(i=0; i<4; i++)	inStream[2].data[i] = outStream[1].data[i];
+	inStream[2].enc_dec = 1;
+	inStream[2].nBlocks = 1;
+	outStream[2] = CIPHER(inStream[2]);
+	
 	printSTREAM(inStream[0], outStream[0]);
 	printSTREAM(inStream[1], outStream[1]);
+	printSTREAM(inStream[2], outStream[2]);
 }
 
 void	printPACKETDATA(PACKET p)
 {
-	printf("|\t");	PRINTHEX(p.data[0].v);
-	printf("\t");	PRINTHEX(p.data[1].v);
-	printf("\t");	PRINTHEX(p.data[2].v);
-	printf("\t");	PRINTHEX(p.data[3].v);	printf("\t");
+	TYPE(8) i;
+	printf("|");
+	for(i=0; i<4; i++)	{	printf("\t");	PRINTHEX(p.data[i].v);	}
+	printf("\t");
 }
 
 void	printSTREAM(PACKET in, PACKET out)
 {
 	if((in.in_out != out.in_out) && (in.mode == out.mode) && (in.data_key == out.data_key) && (in.enc_dec == out.enc_dec) && (in.count == out.count))
 	NEWLINE();
-	printf("|\t%d\t", in.mode);
-	if(in.data_key)	printf("|\tKEY\t");
-	else			printf("|\tDATA\t");
-	if(in.enc_dec)	printf("|\tDEC\t");
-	else			printf("|\tENC\t");
+	printf("| %d ", in.mode);
+	if(in.data_key)	printf("| KEY! ");
+	else			printf("| DATA ");
+	if(in.enc_dec)	printf("| DEC ");
+	else			printf("| ENC ");
 	printf("|\t%d\t", in.count);
 	printPACKETDATA(in);	printPACKETDATA(out);
 	printf("|");

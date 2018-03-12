@@ -29,7 +29,8 @@ typedef struct	INTERNAL
 	TYPE(8)	doneKey		:	1;	//	OUTPUT	-	KEY COMPUTED
 	TYPE(8)	doneData	:	1;	//	OUTPUT	-	DATA COMPUTED
 	TYPE(8)	ENC_DEC		:	1;	// 	INPUT	-	ENCRYPT/DECRYPT
-	TYPE(8)	FILLER0		:	5;	//	FILLER
+	TYPE(8)	nBlocks		:	1;	//	INPUT	-	NUMBER OF BLOCKS (1/2)
+	TYPE(8)	FILLER0		:	4;	//	FILLER
 }				INTERNAL;
 
 typedef struct	PACKET
@@ -39,7 +40,7 @@ typedef struct	PACKET
 	TYPE(8)	mode		:	4;	//	CIPHER MODE
 	TYPE(8)	data_key	:	1;	//	DATA/KEY
 	TYPE(8)	enc_dec		:	1;	//	ENCRYPT/DECRYPT
-	TYPE(8)	FILLER0		:	1;	//	FILLER
+	TYPE(8)	nBlocks		:	1;	//	NUMBER OF BLOCKS (1/2)
 	TYPE(8)	count		:	8;	//	DATA COUNT
 	//	PACKET DATA
 	word	data[4];			//	PACKET DATA
@@ -48,10 +49,11 @@ typedef struct	PACKET
 void	buildInputPACKET(PACKET *p);
 void	buildOutputPACKET(PACKET *p, PACKET in);
 void	addBlock(PACKET *p, block b);
+void	addBlocks(PACKET *p, block b0, block b1);
 void	addKey(PACKET *p, key k);
 PACKET	CIPHER(PACKET inData);
 void	loadKey(word in[4]);
-void	encryptData(word in[4]);
-void	decryptData(word in[4]);
+void	encryptData(word in[4], TYPE(8) i);
+void	decryptData(word in[4], TYPE(8) i);
 
 #endif
