@@ -1,7 +1,9 @@
 #ifndef	SIMON_DEF_H
 #define SIMON_DEF_H
 
+#include <stdio.h>
 #include <stdint.h>
+#include <string.h>
 
 #if	(N<=32)
 #define	PRINTHEX(x)	printf("%0*X", N/4, x	)
@@ -87,29 +89,46 @@ typedef WORD 		BLOCK[2];
 typedef WORD 		KEY[M];
 typedef WORD		KEY_S[T];
 
-typedef struct	INTERNAL
+typedef struct		INTERNAL
 {
 	//	DATA
-	BLOCK	o;					//	CIPHERTEXT OUTPUT OF ROUND FUNCTION
-	KEY_S	ks;					//	COMPUTED KEY SCHEDULE
+	BLOCK			o;					//	CIPHERTEXT OUTPUT OF ROUND FUNCTION
+	KEY_S			ks;					//	COMPUTED KEY SCHEDULE
 	//	CONTROL
-	TYPE(8)	count		:	8;	//	DATA COUNT
-	TYPE(8)	doneKey		:	1;	//	OUTPUT	-	KEY COMPUTED
-	TYPE(8)	doneData	:	1;	//	OUTPUT	-	DATA COMPUTED
-	TYPE(8)	FILLER0		:	6;	//	FILLER
-}				INTERNAL;
+	TYPE(8)			count		:	8;	//	DATA COUNT
+	TYPE(8)			doneKey		:	1;	//	OUTPUT	-	KEY COMPUTED
+	TYPE(8)			doneData	:	1;	//	OUTPUT	-	DATA COMPUTED
+	TYPE(8)			FILLER0		:	6;	//	FILLER
+}					INTERNAL;
 
-typedef struct	PACKET
+typedef struct		PACKET
 {
 	//	PACKET INFO
-	TYPE(8)	in_out		:	1;	//	INPUT/OUTPUT
-	TYPE(8)	mode		:	4;	//	CIPHER MODE
-	TYPE(8)	data_key	:	1;	//	DATA/KEY
-	TYPE(8)	enc_dec		:	1;	//	ENCRYPT/DECRYPT
-	TYPE(8)	nBlocks		:	1;	//	NUMBER OF BLOCKS (1/2)
-	TYPE(8)	count		:	8;	//	DATA COUNT
+	TYPE(8)			in_out		:	1;	//	INPUT/OUTPUT
+	TYPE(8)			mode		:	4;	//	CIPHER MODE
+	TYPE(8)			data_key	:	1;	//	DATA/KEY
+	TYPE(8)			enc_dec		:	1;	//	ENCRYPT/DECRYPT
+	TYPE(8)			nBlocks		:	1;	//	NUMBER OF BLOCKS (1/2)
+	TYPE(8)			count		:	8;	//	DATA COUNT
 	//	PACKET DATA
-	WORD	data[4];			//	PACKET DATA
-}				PACKET;
+	WORD			data[4];			//	PACKET DATA
+}					PACKET;
+
+typedef struct 		DATA
+{
+	union
+	{
+		TYPE(8)		*bufferBYTE;
+		WORD		*bufferWORD;
+	};
+	TYPE(64)		sizeBYTE;
+	TYPE(32)		sizeWORD;
+	TYPE(8)			sizePACKET;
+	TYPE(8)			*nameFILE;
+	FILE 			*ptrFILE;
+	KEY				keyFILE;
+	PACKET			*inStream;
+	PACKET			*outStream;
+}					DATA;
 
 #endif

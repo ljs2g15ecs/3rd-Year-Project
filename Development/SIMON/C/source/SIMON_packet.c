@@ -1,4 +1,3 @@
-#include "SIMON_definitions.h"
 #include "SIMON_packet.h"
 
 TYPE(8)		inputCount = 0, outputCount = 0;
@@ -48,4 +47,36 @@ void	addBLOCKS(PACKET *p, BLOCK b0, BLOCK b1)
 	p->data[3].v = b1[1].v;
 	p->data_key = 0;
 	p->nBlocks = 1;
+}
+
+void	buildSTREAM(DATA *d)
+{
+	d->inStream		= (PACKET *)malloc((d->sizePACKET+1)*sizeof(PACKET));
+	d->outStream	= (PACKET *)malloc((d->sizePACKET+1)*sizeof(PACKET));
+	
+	buildINPUT(&d->inStream[0]);
+	addKEY(&d->inStream[0], d->keyFILE);
+	
+	TYPE(64) i, a;
+	for(i=1; i<=d->sizePACKET; i++)
+	{
+		buildINPUT(&d->inStream[i]);
+		for(a=(i-1)*4; a<i*4; a++)	addWORD(&d->inStream[i], d->bufferWORD[a].v, a%4);
+	}
+}
+
+char*	sprintPACKETDATA(PACKET *p)
+{
+	char *str;
+	TYPE(64) i, pos = 0;
+	//pos += sprintf(str, "|");
+
+	return str;
+}
+
+char*	sprintfPACKET(PACKET *p)
+{
+	char *str;
+	TYPE(64) pos = 0;
+	
 }

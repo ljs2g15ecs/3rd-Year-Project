@@ -17,7 +17,7 @@ $(build):
 
 $(PROG): $(obj)
 	$(CC) $^ -o $@
-
+	$(PROG)
 
 $(build)/%.o: $(src_dir)/%.c FORCE
 	$(CC) $(CFLAGS) -c $< -o $@
