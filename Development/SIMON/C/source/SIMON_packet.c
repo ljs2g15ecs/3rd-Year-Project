@@ -67,10 +67,16 @@ void	buildSTREAM(DATA *d)
 
 char*	sprintPACKETDATA(PACKET *p)
 {
-	char *str;
-	TYPE(64) i, pos = 0;
-	//pos += sprintf(str, "|");
-
+	char tmp[1+(N/4)];
+	char *str = (char *)malloc(sizeof(char)*(2+4*sizeof(tmp)));
+	TYPE(64) pos = 0;
+	
+	pos += sprintf(&str[pos], "|\t");
+	SPRINTHEX(tmp, p->data[0].v);	pos += sprintf(&str[pos], "%s\t", tmp);
+	SPRINTHEX(tmp, p->data[1].v);	pos += sprintf(&str[pos], "%s\t", tmp);
+	SPRINTHEX(tmp, p->data[2].v);	pos += sprintf(&str[pos], "%s\t", tmp);
+	SPRINTHEX(tmp, p->data[3].v);	pos += sprintf(&str[pos], "%s\t|", tmp);
+	
 	return str;
 }
 

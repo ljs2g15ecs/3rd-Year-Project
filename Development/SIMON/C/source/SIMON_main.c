@@ -13,4 +13,8 @@ int		main()
 	printf("%s\n", sprintBYTES_HEX(&test));
 	
 	printf("%s\n", sprintWORDS_HEX(&test));
+	
+	PACKET ptest;
+	buildINPUT(&ptest);
+	printf("%s\n", sprintPACKETDATA(&ptest));
 }

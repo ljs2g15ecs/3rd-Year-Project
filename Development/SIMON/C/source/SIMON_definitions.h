@@ -6,13 +6,15 @@
 #include <string.h>
 
 #if	(N<=32)
-#define	PRINTHEX(x)	printf("%0*X", N/4, x	)
+	#define	PRINTHEX(x)			printf("%0*X", N/4, x)
+	#define SPRINTHEX(str, x)	sprintf(str, "%04X", x)
 #else
-#define	PRINTHEX(x)	printf("%0*llX", N/4, x	)
+	#define	PRINTHEX(x)			printf("%0*llX", N/4, x)
+	#define	SPRINTHEX(str, x)	sprintf(str, "%0*llX", N/4, x)
 #endif
 
-#define NEWLINE()	printf("\n\r"			)
-#define TAB()		printf("\t"				)
+#define NEWLINE()	printf("\n\r")
+#define TAB()		printf("\t")
 
 #if		defined	S3264
 	#define MODE	0
