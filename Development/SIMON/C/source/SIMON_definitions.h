@@ -7,7 +7,7 @@
 
 #if	(N<=32)
 	#define	PRINTHEX(x)			printf("%0*X", N/4, x)
-	#define SPRINTHEX(str, x)	sprintf(str, "%04X", x)
+	#define SPRINTHEX(str, x)	sprintf(str, "%0*X", N/4, x)
 #else
 	#define	PRINTHEX(x)			printf("%0*llX", N/4, x)
 	#define	SPRINTHEX(str, x)	sprintf(str, "%0*llX", N/4, x)

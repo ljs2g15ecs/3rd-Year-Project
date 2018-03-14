@@ -75,14 +75,70 @@ char*	sprintPACKETDATA(PACKET *p)
 	SPRINTHEX(tmp, p->data[0].v);	pos += sprintf(&str[pos], "%s\t", tmp);
 	SPRINTHEX(tmp, p->data[1].v);	pos += sprintf(&str[pos], "%s\t", tmp);
 	SPRINTHEX(tmp, p->data[2].v);	pos += sprintf(&str[pos], "%s\t", tmp);
-	SPRINTHEX(tmp, p->data[3].v);	pos += sprintf(&str[pos], "%s\t|", tmp);
+	SPRINTHEX(tmp, p->data[3].v);	pos += sprintf(&str[pos], "%s\t", tmp);
+	
+	//printf("\n<<%d>>\n", pos);
+	//printf("\n<<%s>>\n", str);
 	
 	return str;
 }
 
-char*	sprintfPACKET(PACKET *p)
+char*	sprintPACKET(PACKET *p)
 {
-	char *str;
+	char tmp[10+N] = "";
+	char *str = (char *)malloc(sizeof(char)*(30+sizeof(tmp)));
 	TYPE(64) pos = 0;
+	pos += sprintf(&str[pos], "| %01X ", p->mode);
+	if(p->data_key)		pos += sprintf(&str[pos], "| KEY  ");
+	else				pos += sprintf(&str[pos], "| DATA ");
+	if(p->enc_dec)		pos += sprintf(&str[pos], "| DEC  ");
+	else				pos += sprintf(&str[pos], "| ENC  ");
+	pos += sprintf(&str[pos], "| %02X ", p->count);
+	sprintf(&tmp[0], "%s|", sprintPACKETDATA(p));
+	pos += sprintf(&str[pos], tmp);
 	
+	//printf("\n<<%d>>\n", pos);
+	//printf("\n<<%s>>\n", str);
+	
+	return str;
 }
+
+char*	sprintSTREAM(DATA *d)
+{
+	char tmp[50+N] = "";
+	char *str = (char *)malloc(sizeof(char)*((d->sizePACKET+1)*(50+N)));
+	
+	TYPE(64) i, pos = 0;
+	for(i=0; i<=d->sizePACKET; i++)
+	{
+		sprintf(tmp, sprintPACKET(&d->inStream[i]));
+		pos += sprintf(&str[pos], "\n%s", tmp);
+	}
+	
+	return str;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

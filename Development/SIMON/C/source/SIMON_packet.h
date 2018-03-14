@@ -17,4 +17,6 @@ void	buildSTREAM(DATA *d);
 char*	sprintPACKETDATA(PACKET *p);
 char*	sprintPACKET(PACKET *p);
 
+char*	sprintSTREAM(DATA *d);
+
 #endif
