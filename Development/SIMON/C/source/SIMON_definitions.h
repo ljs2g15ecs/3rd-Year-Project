@@ -103,17 +103,26 @@ typedef struct		INTERNAL
 	TYPE(8)			FILLER0		:	6;	//	FILLER
 }					INTERNAL;
 
-typedef struct		PACKET
+typedef struct		_PACKET_
 {
-	//	PACKET INFO
-	TYPE(8)			in_out		:	1;	//	INPUT/OUTPUT
-	TYPE(8)			mode		:	4;	//	CIPHER MODE
-	TYPE(8)			data_key	:	1;	//	DATA/KEY
-	TYPE(8)			enc_dec		:	1;	//	ENCRYPT/DECRYPT
-	TYPE(8)			nBlocks		:	1;	//	NUMBER OF BLOCKS (1/2)
-	TYPE(8)			count		:	8;	//	DATA COUNT
+	struct
+	{
+		//	PACKET INFO
+		TYPE(8)		mode		:	4;	//	CIPHER MODE
+		TYPE(8)		in_out		:	1;	//	INPUT/OUTPUT
+		TYPE(8)		data_key	:	1;	//	DATA/KEY
+		TYPE(8)		enc_dec		:	1;	//	ENCRYPT/DECRYPT
+		TYPE(8)		nBlocks		:	1;	//	NUMBER OF BLOCKS (1/2)
+	};
+	TYPE(8)			count;				//	DATA COUNT
 	//	PACKET DATA
 	WORD			data[4];			//	PACKET DATA
+}					_PACKET_;
+
+typedef union		PACKET
+{
+	TYPE(8)			pBYTE[sizeof(_PACKET_)];
+	_PACKET_		pDATA;
 }					PACKET;
 
 typedef struct 		DATA

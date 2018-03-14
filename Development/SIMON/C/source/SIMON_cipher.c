@@ -25,21 +25,21 @@ void	ROUND	(BLOCK b,	WORD k		)
 
 INTERNAL	STATE;
 
-void	CIPHER(PACKET inDATA, PACKET *outDATA)
+void	CIPHER(PACKET *inDATA, PACKET *outDATA)
 {
 	TYPE(8) i;
-	buildOUTPUT(outDATA, inDATA);
-	if((!inDATA.in_out) && (inDATA.mode == MODE) && (inDATA.count == STATE.count))
+	buildOUTPUT(outDATA, *inDATA);
+	if((!inDATA->pDATA.in_out) && (inDATA->pDATA.mode == MODE) && (inDATA->pDATA.count == STATE.count))
 	{
-		if(inDATA.data_key)		loadKEY(inDATA.data);
+		if(inDATA->pDATA.data_key)		loadKEY(inDATA->pDATA.data);
 		else if(STATE.doneKey)
 		{
-			for(i=0; i<=inDATA.nBlocks+1; i+=2)
+			for(i=0; i<=inDATA->pDATA.nBlocks+1; i+=2)
 			{
-				if(inDATA.enc_dec)	decryptDATA(inDATA.data, i);
-				else				encryptDATA(inDATA.data, i);
-				outDATA->data[i] = STATE.o[0];
-				outDATA->data[i+1] = STATE.o[1];
+				if(inDATA->pDATA.enc_dec)	decryptDATA(inDATA->pDATA.data, i);
+				else						encryptDATA(inDATA->pDATA.data, i);
+				outDATA->pDATA.data[i] = STATE.o[0];
+				outDATA->pDATA.data[i+1] = STATE.o[1];
 			}
 		}
 		STATE.count++;

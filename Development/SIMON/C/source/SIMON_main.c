@@ -21,4 +21,20 @@ int		main()
 	
 	buildSTREAM(&test);
 	printf("%s\n", sprintSTREAM(&test));
+	
+	printf("PACKET SIZE:\t%d\n", sizeof(PACKET));
+
+	TYPE(8) i;
+	for(i=0; i<sizeof(PACKET); i++)
+	{
+		printf("<%02X>\t", test.inStream[0].pBYTE[i]);
+		printf("<%02X>\t", test.inStream[1].pBYTE[i]);
+		printf("<%02X>\t", test.inStream[2].pBYTE[i]);
+		printf("<%02X>\n", test.inStream[3].pBYTE[i]);
+	}
+	
+	printf("<%s>\n", sprintPACKET_BYTE(&test.inStream[0]));
+	printf("<%s>\n", sprintPACKET_BYTE(&test.inStream[1]));
+	printf("<%s>\n", sprintPACKET_BYTE(&test.inStream[2]));
+	printf("<%s>\n", sprintPACKET_BYTE(&test.inStream[3]));
 }

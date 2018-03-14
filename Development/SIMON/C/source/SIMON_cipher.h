@@ -9,7 +9,7 @@ TYPE(N)	ROTR		(WORD x,	TYPE(8) n	);
 TYPE(N)	F			(WORD x					);
 void	ROUND		(BLOCK b,	WORD k		);
 
-void	CIPHER(PACKET inData, PACKET *outDATA);
+void	CIPHER(PACKET *inData, PACKET *outDATA);
 void	loadKEY(WORD in[4]);
 void	encryptDATA(WORD in[4], TYPE(8) i);
 void	decryptDATA(WORD in[4], TYPE(8) i);

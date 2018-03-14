@@ -33,7 +33,7 @@ char*	sprintBYTES_HEX(DATA *d)
 	///*
 	for(i=0; i<d->sizeBYTE; i++)
 	{
-		pos += sprintf(&str[pos], "|\t%02X\t", d->bufferBYTE[i]);
+		pos += sprintf(&str[pos], "| %02X ", d->bufferBYTE[i]);
 		if((i%4) == 3)	pos += sprintf(&str[pos], "|\n");
 	}
 	//*/
@@ -43,13 +43,17 @@ char*	sprintBYTES_HEX(DATA *d)
 
 char*	sprintWORDS_HEX(DATA *d)
 {
-	char* str = (char *)malloc((((d->sizeWORD+1)*7)+(d->sizeWORD/4))*sizeof(char));
+	char* str = (char *)malloc((((d->sizeWORD+1)*10)+(d->sizeWORD/4)+10)*sizeof(char));
+	
 	TYPE(64) i, pos = 0;
+	///*
 	for(i=0; i<d->sizeWORD; i++)
 	{
-		pos += sprintf(&str[pos] , "|\t%0*X\t", N/4, d->bufferWORD[i].v);
+		pos += sprintf(&str[pos] , "| %0*X ", N/4, d->bufferWORD[i].v);
 		if((i%4) == 3)	pos += sprintf(&str[pos], "|\n");
 	}
+	//*/
+	
 	return str;
 }
 
