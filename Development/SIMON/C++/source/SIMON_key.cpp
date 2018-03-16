@@ -62,24 +62,17 @@ KEY::KEY						(	WORD	x0,	WORD	x1,
 									WORD	x2, WORD	x3		)
 {
 	assign(x0, x1, x2, x3);
+	return;
 }
 
 KEY::KEY						(	TYPE(N)	x0,	TYPE(N)	x1,
 									TYPE(N)	x2, TYPE(N)	x3		)
 {
 	assign(x0, x1, x2, x3);
-}
-
-//	MUTATORS
-void		KEY::flush			(								)
-{
-	K[0] = 0;
-	K[1] = 0;
-	K[2] = 0;
-	K[3] = 0;
 	return;
 }
 
+//	MUTATORS
 void		KEY::assign			(	WORD	x0,	WORD	x1,
 									WORD	x2, WORD	x3		)
 {
@@ -97,6 +90,15 @@ void		KEY::assign			(	TYPE(N)	x0,	TYPE(N)	x1,
 	K[1] = x1;
 	K[2] = x2;
 	K[3] = x3;
+	return;
+}
+
+void		KEY::flush			(								)
+{
+	K[0].flush();
+	K[1].flush();
+	K[2].flush();
+	K[3].flush();
 	return;
 }
 
@@ -152,7 +154,7 @@ string		KEY::strHEX_BYTES	(								)
 void		KEY::test			(								)
 {
 	cout 	<< setbase(10)\
-			<< "|\tBLOCK\t|\t" << sizeof(this) << "\t"\
+			<< "|\tKEY\t|\t" << sizeof(this) << "\t"\
 			<< "|\t" << size() << "\t"\
 			<< "|\t" << strHEX_WORD() << "\t"\
 			<< "|\t" << strCHR_BYTES() << "\t"\
