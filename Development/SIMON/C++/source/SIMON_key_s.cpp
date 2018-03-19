@@ -107,5 +107,15 @@ string		KEY_S::strHEX_BYTES	(								)
 	}
 	return str;
 }
-	
+
+string		KEY_S::strCHR		(								)
+{
+	string str = "\n| ";
+	TYPE(8) i;
+	for(i=0; i<T; i++)
+	{
+		str += K[i].strCHR_BYTES();
+	}
+	return str;
+}	
 	

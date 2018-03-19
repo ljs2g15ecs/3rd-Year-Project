@@ -119,3 +119,27 @@ string	BLOCK::strHEX_BYTES		(								)
 	return str;
 }
 
+string	BLOCK::strCHR			(								)
+{
+	string str = "";
+	str += B[0].strCHR_BYTES();
+	str += B[1].strCHR_BYTES();
+	return str;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

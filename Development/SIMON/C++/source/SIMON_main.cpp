@@ -9,4 +9,5 @@ int		main()
 	BLOCK b(0x6565, 0x6877);	b.test();
 	KEY c;						c.test();
 	//KEY_S d;					d.test();
+	PACKET e;					e.test();
 }

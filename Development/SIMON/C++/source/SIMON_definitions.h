@@ -96,6 +96,7 @@ public:
 	string		strHEX_WORD	(								);
 	string		strCHR_BYTES(								);
 	string		strHEX_BYTES(								);
+	
 private:
 	union
 	{
@@ -128,6 +129,8 @@ public:
 	string		strHEX_WORD	(								);
 	string		strCHR_BYTES(								);
 	string		strHEX_BYTES(								);
+	string		strCHR		(								);
+	
 private:
 	WORD		B[2];
 };
@@ -175,6 +178,8 @@ public:
 	string		strHEX_WORD	(								);
 	string		strCHR_BYTES(								);
 	string		strHEX_BYTES(								);
+	string		strCHR		(								);
+	
 private:
 	WORD		K[M];
 };
@@ -201,6 +206,8 @@ public:
 	string		strHEX_WORD	(								);
 	string		strCHR_BYTES(								);
 	string		strHEX_BYTES(								);
+	string		strCHR		(								);
+	
 private:
 	WORD		K[T];
 };
@@ -255,18 +262,28 @@ public:
 	//	ACCESSORS
 	void		test		(								);
 	_INFO_		get_i		(								);
-	TYPE(8)		get_I		(								);
+	TYPE(8)		get_Ib		(								);
+	TYPE(16)	get_IB		(								);
 	_PACKET_	get_p		(								);
+	TYPE(8)		get_c		(								);
+	TYPE(16)	get_C		(								);
 	WORD		get_w		(	TYPE(8)	i					);
 	TYPE(N)		get_W		(	TYPE(8)	i					);
 	TYPE(8)		get_Wb		(	TYPE(8)	i, TYPE(8)	j		);
 	TYPE(16)	get_WB		(	TYPE(8)	i, TYPE(8)	j		);
 	TYPE(8)		get_nxtW	(								);
+	U_64		get_ICount	(								);
+	U_64		get_OCount	(								);
 	TYPE(16)	size		(								);
+	string		strHEX_WORD	(								);
+	string		strCHR_BYTES(								);
+	string		strHEX_BYTES(								);
+	string		strCHR		(								);
 	
-private:
 	static U_64	inputCount;
 	static U_64	outputCount;
+	
+private:
 	TYPE(8)		nxtWORD	:	4;
 	union
 	{

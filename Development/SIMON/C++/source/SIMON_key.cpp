@@ -148,6 +148,18 @@ string		KEY::strHEX_BYTES	(								)
 	return str;
 }
 
+string		KEY::strCHR			(								)
+{
+	string str = "";
+	
+	str += K[0].strCHR_BYTES();
+	str += K[1].strCHR_BYTES();
+	str += K[2].strCHR_BYTES();
+	str += K[3].strCHR_BYTES();
+	
+	return str;
+}
+
 #endif
 
 //	ACCESSOR
