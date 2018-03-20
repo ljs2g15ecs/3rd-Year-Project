@@ -6,81 +6,103 @@
 using namespace std;
 
 //	CONSTRUCTORS
-			WORD::WORD			(								)
+WORD::WORD()
 {
 	flush();
 }
 
-			WORD::WORD			(	TYPE(N)	x					)
+WORD::WORD(TYPE(N) x) : WORD()
 {
 	assign(x);
 }
 
 //	MUTATORS
-void		WORD::assign		(	TYPE(N)	x					)
+void		WORD::assign	(	TYPE(N)	x					)
 {
 	val = x;
 	return;
 }
 
-void		WORD::assign		(	TYPE(8)	x, TYPE(8)	i		)
+void		WORD::assign	(	TYPE(8)	x, TYPE(8)	i		)
 {
 	bytes[i] = x;
 	return;
 }
 
-void		WORD::flush			(								)
+TYPE(8)		WORD::addBYTE	(	TYPE(8)	x					)
 {
+	bytes[--w_nxtBYTE] = x;
+	///*
+	if(w_nxtBYTE != 0)	return 0;
+	else
+	{
+		w_nxtBYTE = N/8;
+		return 1;
+	}
+	//*/
+}
+
+void		WORD::flush		(								)
+{
+	w_nxtBYTE = N/8;
+	r_nxtBYTE = N/8;
 	val = 0;
 	return;
 }
 
 //	ACCESSORS
-void		WORD::test			(								)
+void		WORD::test		(								)
 {
 	cout 	<< setbase(10)\
 			<< "|\tWORD\t|\t" << sizeof(this) << "\t"\
 			<< "|\t" << size_v() << "\t"\
 			<< "|\t" << size_b() << "\t"\
-			<< "|\t" << strHEX_WORD() << "\t"\
-			<< "|\t" << strCHR_BYTES() << "\t"\
-			<< "|\t" << strHEX_BYTES() << "\t|" << endl;
+			<< "|\t" << HEX_WORD() << "\t"\
+			<< "|\t" << CHR_BYTES() << "\t"\
+			<< "|\t" << HEX_BYTES() << "\t|" << endl;
 	return;
 }
 
-TYPE(N)		WORD::get_v			(								)
+TYPE(N)		WORD::get_v		(								)
 {
 	return val;
 }
 
-TYPE(8)		WORD::get_b			(	TYPE(8)	i					)
+TYPE(8)		WORD::get_b		(								)
+{
+	if(w_nxtBYTE == 0)	r_nxtBYTE = N/8;
+	return bytes[--r_nxtBYTE];
+}
+
+TYPE(8)		WORD::get_b		(	TYPE(8)	i					)
 {
 	return bytes[i];
 }
 
-TYPE(16)	WORD::get_B			(	TYPE(8)	i					)
+TYPE(16)	WORD::get_B		(	TYPE(8)	i					)
 {
 	return bytes[i];
 }
 
-TYPE(16)	WORD::size_v		(								)
+TYPE(16)	WORD::size_v	(								)
 {
 	return sizeof(TYPE(N));
 }
 
-TYPE(16)	WORD::size_b		(								)
+TYPE(16)	WORD::size_b	(								)
 {
 	return sizeof(bytes);
 }
 
-string		WORD::strHEX_WORD	(								)
+string		WORD::HEX_WORD	(								)
 {
 	stringstream ss;
-	ss << hex << uppercase << setfill('0') << setw(N/4) << get_v();
+	ss	<< hex << uppercase << setfill('0')\
+		<< setw(N/4) << get_v();
 	return ss.str();
 }
 
-string		WORD::strCHR_BYTES	(								)
+string		WORD::CHR_BYTES	(								)
 {
 	string str = "";
 	TYPE(64) i;
@@ -91,13 +113,14 @@ string		WORD::strCHR_BYTES	(								)
 	return str;
 }
 
-string		WORD::strHEX_BYTES	(								)
+string		WORD::HEX_BYTES	(								)
 {
 	stringstream ss;
 	TYPE(64) i;
 	for(i=size_b(); i>0; i--)
 	{
-		ss << hex << uppercase << setfill('0') << setw(2) << get_B(i-1);
+		ss 	<< hex << uppercase << setfill('0')\
+			<< setw(2) << get_B(i-1);
 		if(i != 1)	ss << ":";
 	}
 	return ss.str();

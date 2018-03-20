@@ -12,19 +12,19 @@ KEY_S::KEY_S()
 
 //	MUTATORS
 
-void		KEY_S::assign		(	WORD	x,	TYPE(8)	i		)
+void		KEY_S::assign	(	WORD	x,	TYPE(8)	i		)
 {
 	K[i] = x;
 	return;
 }
 
-void		KEY_S::assign		(	TYPE(N)	x,	TYPE(8)	i		)
+void		KEY_S::assign	(	TYPE(N)	x,	TYPE(8)	i		)
 {
 	K[i] = x;
 	return;
 }
 
-void		KEY_S::flush		(								)
+void		KEY_S::flush	(								)
 {
 	TYPE(8) i;
 	for(i=0; i<T; i++)	K[i].flush();
@@ -32,89 +32,94 @@ void		KEY_S::flush		(								)
 }
 
 //	ACCESSORS
-void		KEY_S::test			(								)
+void		KEY_S::test		(								)
 {
 	cout 	<< setbase(10)\
 			<< "|\tKEY\t|\t" << sizeof(this) << "\t"\
 			<< "|\t" << size() << "\t"\
-			<< "|\t" << strHEX_WORD() << "\t"\
-			<< "|\t" << strCHR_BYTES() << "\t"\
-			<< "|\t" << strHEX_BYTES() << "\t" << "|" << endl;
+			<< "|\t" << HEX_WORD() << "\t"\
+			<< "|\t" << CHR_BYTES() << "\t"\
+			<< "|\t" << HEX_BYTES() << "\t" << "|" << endl;
 	
 	return;
 }
 
-WORD		KEY_S::get_w		(	TYPE(8)	i					)
+WORD		KEY_S::get_w	(	TYPE(8)	i					)
 {
 	return K[i];
 }
 
-TYPE(N)		KEY_S::get_W		(	TYPE(8)	i					)
+WORD*		KEY_S::ref_w	(	TYPE(8)	i					)
+{
+	return &K[i];
+}
+
+TYPE(N)		KEY_S::get_W	(	TYPE(8)	i					)
 {
 	return K[i].get_v();
 }
 
-TYPE(8)		KEY_S::get_Wb		(	TYPE(8)	i, TYPE(8)	j		)
+TYPE(8)		KEY_S::get_Wb	(	TYPE(8)	i, TYPE(8)	j		)
 {
 	return K[i].get_b(j);
 }
 
-TYPE(16)	KEY_S::get_WB		(	TYPE(8)	i, TYPE(8)	j		)
+TYPE(16)	KEY_S::get_WB	(	TYPE(8)	i, TYPE(8)	j		)
 {
 	return K[i].get_B(j);
 }
 
-TYPE(16)	KEY_S::size			(								)
+TYPE(16)	KEY_S::size		(								)
 {
 	return sizeof(K);
 }
 
-string		KEY_S::strHEX_WORD	(								)
+string		KEY_S::HEX_WORD	(								)
 {
 	string str = "\n| ";
 	TYPE(8) i;
 	for(i=0; i<T; i++)
 	{
-		str += K[i].strHEX_WORD();
+		str += K[i].HEX_WORD();
 		
 		if(i != T-1)	str += "-";
 	}
 	return str;
 }
 
-string		KEY_S::strCHR_BYTES	(								)
+string		KEY_S::CHR_BYTES(								)
 {
 	string str = "\n| ";
 	TYPE(8) i;
 	for(i=0; i<T; i++)
 	{
-		str += K[i].strCHR_BYTES();
+		str += K[i].CHR_BYTES();
 		
 		if(i != T-1)	str += "-";
 	}
 	return str;
 }
 
-string		KEY_S::strHEX_BYTES	(								)
+string		KEY_S::HEX_BYTES(								)
 {
 	string str = "\n| ";
 	TYPE(8) i;
 	for(i=0; i<T; i++)
 	{
-		str += K[i].strHEX_BYTES();
+		str += K[i].HEX_BYTES();
 		
 		if(i != T-1)	str += "-";
 	}
 	return str;
 }
 
-string		KEY_S::strCHR		(								)
+string		KEY_S::CHR		(								)
 {
 	string str = "\n| ";
 	TYPE(8) i;
 	for(i=0; i<T; i++)
 	{
-		str += K[i].strCHR_BYTES();
+		str += K[i].CHR_BYTES();
 	}
 	return str;
 }	

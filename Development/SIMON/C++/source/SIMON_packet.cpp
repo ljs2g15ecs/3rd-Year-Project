@@ -14,75 +14,134 @@ PACKET::PACKET()
 	flush();
 }
 
-PACKET::PACKET(	_PACKET_	x	)
+///*
+PACKET::PACKET(_INFO_ x) : PACKET()
 {
-	flush();
+	input();
 	assign(x);
 }
+//*/
 
 //	MUTATORS
-void		PACKET::input		(								)
+void		PACKET::input	(								)
 {
-	pDATA.iDATA.mode = MODE;
-	pDATA.iDATA.in_out = 0;
-	pDATA.iDATA.data_key = 0;	//	DEFAULT
-	pDATA.iDATA.enc_dec = 0;	//	DEFAULT
-	pDATA.iDATA.nBlocks = 0;	//	DEFAULT
-	pDATA.count = inputCount++;
+	iDATA.mode = MODE;
+	iDATA.in_out = 0;
+	iDATA.data_key = 0;	//	DEFAULT
+	iDATA.enc_dec = 0;	//	DEFAULT
+	iDATA.nBlocks = 0;	//	DEFAULT
+	count = inputCount++;
 }
 
-void		PACKET::output		(	_INFO_	x					)
+void		PACKET::output	(	_INFO_	x					)
 {
-	pDATA.iDATA = x;
-	pDATA.iDATA.in_out = 1;		//	CHANGE TO OUPUT
+	iDATA = x;
+	iDATA.in_out = 1;		//	CHANGE TO OUPUT
 	outputCount++;
 }
 
-void		PACKET::assign		(	_PACKET_	x				)
+/*
+void		PACKET::assign	(	_PACKET_	x				)
 {
 	pDATA = x;
 	return;
 }
+//*/
 
-void		PACKET::assign		(	_INFO_	x					)
+void		PACKET::assign	(	_INFO_	x					)
 {
-	pDATA.iDATA = x;
+	iDATA = x;
 	return;
 }
 
-void		PACKET::assign		(	WORD	x,	TYPE(8)	i		)
+void		PACKET::assign	(	WORD*	x,	TYPE(8)	i		)
 {
-	pDATA.wDATA[i] = x;
+	wDATA[i] = x;
 	return;
 }
 
-void		PACKET::assign		(	TYPE(N)	x,	TYPE(8)	i		)
+/*
+void		PACKET::assign	(	TYPE(N)	x,	TYPE(8)	i		)
 {
-	pDATA.wDATA[i] = x;
+	wDATA[i] = x;
 	return;
 }
+//*/
 
-void		PACKET::addWORD		(	WORD	x					)
+TYPE(8)		PACKET::addWORD	(	WORD*	x					)
 {
-	pDATA.wDATA[nxtWORD++] = x;
-	return;
+	wDATA[nxtWORD++] = x;
+	
+	if( nxtWORD != 4 )	return 0;
+	else
+	{
+		nxtWORD = 0;
+		return 1;
+	}
 }
 
-void		PACKET::addWORD		(	TYPE(N)	x					)
+/*
+TYPE(8)		PACKET::addWORD	(	TYPE(N)	x					)
 {
-	pDATA.wDATA[nxtWORD++] = x;
-	return;
+	wDATA[nxtWORD++] = x;
+	
+	if( nxtWORD != 4 )	return 0;
+	else
+	{
+		nxtWORD = 0;
+		return 1;
+	}
+}
+//*/
+
+void		PACKET::addKEY	(	KEY		x					)
+{
+#if (M==2)
+	*wDATA[0] = x.get_w(0);
+	*wDATA[1] = x.get_w(1);
+	*wDATA[2] = 0;
+	*wDATA[3] = 0;
+#endif
+#if (M==3)
+	*wDATA[0] = x.get_w(0);
+	*wDATA[1] = x.get_w(1);
+	*wDATA[2] = x.get_w(2);
+	*wDATA[3] = 0;
+#endif
+#if (M==4)
+	*wDATA[0] = x.get_w(0);
+	*wDATA[1] = x.get_w(1);
+	*wDATA[2] = x.get_w(2);
+	*wDATA[3] = x.get_w(3);
+#endif
+	iDATA.data_key = 1;
 }
 
-void		PACKET::flush		(								)
+void		PACKET::pack	(								)
+{
+	pBYTES = new TYPE(8)[2+(N/2)];
+	
+	pBYTES[0] = iBYTE;
+	pBYTES[1] = count;
+	
+	TYPE(64) i;
+	for(i=0; i<(N/2); i++)
+	{
+		pBYTES[i+2] = wDATA[i/(N/8)]->get_b();
+	}
+}
+
+void		PACKET::flush	(								)
 {
 	nxtWORD = 0;
-	pDATA.iBYTE = 0;
-	pDATA.count = 0;
-	pDATA.wDATA[0].flush();
-	pDATA.wDATA[1].flush();
-	pDATA.wDATA[2].flush();
-	pDATA.wDATA[3].flush();
+	iBYTE = 0;
+	count = 0;
+	
+	wDATA[0] = new WORD;
+	wDATA[1] = new WORD;
+	wDATA[2] = new WORD;
+	wDATA[3] = new WORD;
+	//*/
 	
 	return;
 }
@@ -137,61 +196,62 @@ void		PACKET::test		(								)
 	cout 	<< setbase(10)\
 			<< "|\tPACKET\t|\t" << sizeof(this) << "\t"\
 			<< "|\t" << size() << "\t"\
-			<< "|\t" << strHEX_WORD() << "\t"\
-			<< "|\t" << strCHR_BYTES() << "\t"\
-			<< "|\t" << strHEX_BYTES() << "\t" << "|" << endl;
+			<< "|\t" << HEX_WORD() << "\t"\
+			<< "|\t" << CHR_BYTES() << "\t"\
+			<< "|\t" << HEX_BYTES() << "\t"\
+			<< "|\t" << HEX_PKT() << "\t" << "|" << endl << endl;
 	
 	return;
 }
 
 _INFO_		PACKET::get_i		(								)
 {
-	return pDATA.iDATA;
+	return iDATA;
 }
 
 TYPE(8)		PACKET::get_Ib		(								)
 {
-	return pDATA.iBYTE;
+	return iBYTE;
 }
 
 TYPE(16)	PACKET::get_IB		(								)
 {
-	return pDATA.iBYTE;
+	return iBYTE;
 }
 
-_PACKET_	PACKET::get_p		(								)
+TYPE(8)*	PACKET::get_p		(								)
 {
-	return pDATA;
+	return pBYTES;
 }
 
 TYPE(8)		PACKET::get_c		(								)
 {
-	return pDATA.count;
+	return count;
 }
 
 TYPE(16)	PACKET::get_C		(								)
 {
-	return pDATA.count;
+	return count;
 }
 
 WORD		PACKET::get_w		(	TYPE(8)	i					)
 {
-	return pDATA.wDATA[i];
+	return *wDATA[i];
 }
 
 TYPE(N)		PACKET::get_W		(	TYPE(8)	i					)
 {
-	return pDATA.wDATA[i].get_v();
+	return wDATA[i]->get_v();
 }
 
 TYPE(8)		PACKET::get_Wb		(	TYPE(8)	i,	TYPE(8)	j		)
 {
-	return pDATA.wDATA[i].get_b(j);
+	return wDATA[i]->get_b(j);
 }
 
 TYPE(16)	PACKET::get_WB		(	TYPE(8)	i,	TYPE(8)	j		)
 {
-	return pDATA.wDATA[i].get_B(j);
+	return wDATA[i]->get_B(j);
 }
 
 TYPE(8)		PACKET::get_nxtW	(								)
@@ -211,10 +271,10 @@ U_64		PACKET::get_OCount	(								)
 
 TYPE(16)	PACKET::size		(								)
 {
-	return sizeof(pDATA);
+	return sizeof(iBYTE) + sizeof(count) + 4*wDATA[0]->size_b();
 }
 
-string		PACKET::strHEX_WORD	(								)
+string		PACKET::HEX_WORD	(								)
 {
 	stringstream ss;
 	
@@ -223,19 +283,19 @@ string		PACKET::strHEX_WORD	(								)
 	ss << "]-[";
 	ss << hex << uppercase << setfill('0') << setw(2) << get_C();
 	ss << "]-[";
-	ss << pDATA.wDATA[0].strHEX_WORD();
+	ss << wDATA[0]->HEX_WORD();
 	ss << "-";
-	ss << pDATA.wDATA[1].strHEX_WORD();
+	ss << wDATA[1]->HEX_WORD();
 	ss << "-";
-	ss << pDATA.wDATA[2].strHEX_WORD();
+	ss << wDATA[2]->HEX_WORD();
 	ss << "-";
-	ss << pDATA.wDATA[3].strHEX_WORD();
+	ss << wDATA[3]->HEX_WORD();
 	ss << "]";
 	
 	return ss.str();
 }
 
-string		PACKET::strCHR_BYTES(								)
+string		PACKET::CHR_BYTES(								)
 {
 	stringstream ss;
 	
@@ -244,19 +304,19 @@ string		PACKET::strCHR_BYTES(								)
 	ss << "]-[";
 	ss << (get_Ib() > 0 ? get_c() : (TYPE(8))0xFE);
 	ss << "]-[";
-	ss << pDATA.wDATA[0].strCHR_BYTES();
+	ss << wDATA[0]->CHR_BYTES();
 	ss << "-";
-	ss << pDATA.wDATA[1].strCHR_BYTES();
+	ss << wDATA[1]->CHR_BYTES();
 	ss << "-";
-	ss << pDATA.wDATA[2].strCHR_BYTES();
+	ss << wDATA[2]->CHR_BYTES();
 	ss << "-";
-	ss << pDATA.wDATA[3].strCHR_BYTES();
+	ss << wDATA[3]->CHR_BYTES();
 	ss << "]";
 	
 	return ss.str();
 }
 
-string		PACKET::strHEX_BYTES(								)
+string		PACKET::HEX_BYTES(								)
 {
 	stringstream ss;
 	
@@ -265,45 +325,56 @@ string		PACKET::strHEX_BYTES(								)
 	ss << "]-[";
 	ss << hex << uppercase << setfill('0') << setw(2) << get_C();
 	ss << "]-[";
-	ss << pDATA.wDATA[0].strHEX_BYTES();
+	ss << wDATA[0]->HEX_BYTES();
 	ss << "-";
-	ss << pDATA.wDATA[1].strHEX_BYTES();
+	ss << wDATA[1]->HEX_BYTES();
 	ss << "-";
-	ss << pDATA.wDATA[2].strHEX_BYTES();
+	ss << wDATA[2]->HEX_BYTES();
 	ss << "-";
-	ss << pDATA.wDATA[3].strHEX_BYTES();
+	ss << wDATA[3]->HEX_BYTES();
 	ss << "]";
 	
 	return ss.str();
 }
 
-string		PACKET::strCHR		(								)
+string		PACKET::CHR		(								)
 {
 	stringstream ss;
 	
 	ss << (get_Ib() > 0 ? get_Ib() : (TYPE(8))0xFE);
 	ss << (get_Ib() > 0 ? get_c() : (TYPE(8))0xFE);
-	ss << pDATA.wDATA[0].strCHR_BYTES();
-	ss << pDATA.wDATA[1].strCHR_BYTES();
-	ss << pDATA.wDATA[2].strCHR_BYTES();
-	ss << pDATA.wDATA[3].strCHR_BYTES();
+	ss << wDATA[0]->CHR_BYTES();
+	ss << wDATA[1]->CHR_BYTES();
+	ss << wDATA[2]->CHR_BYTES();
+	ss << wDATA[3]->CHR_BYTES();
 	
 	return ss.str();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+string		PACKET::HEX_PKT	(								)
+{
+	pack();
+	
+	stringstream ss;
+	
+	ss << "[";
+	ss << hex << uppercase << setfill('0') << setw(2) << (TYPE(16))pBYTES[0];
+	ss << "]-[";
+	ss << hex << uppercase << setfill('0') << setw(2) << (TYPE(16))pBYTES[1];
+	ss << "]-[";
+	
+	TYPE(64) i;
+	for(i=2; i<size(); i++)
+	{
+		ss << hex << uppercase << setfill('0') << setw(2) << (TYPE(16))pBYTES[i];
+		
+		if(((i-2) % (N/4) == (N/4)-1) && (i != size()-1))		ss << "]-[";
+		else if(((i-2) % (N/8) == (N/8)-1) && (i != size()-1))	ss << "-";
+		else if(i != size()-1)									ss << ":";
+	}
+	
+	ss << "]";
+	
+	return ss.str();
+}
 
