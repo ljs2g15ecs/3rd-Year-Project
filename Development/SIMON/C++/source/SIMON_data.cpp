@@ -26,6 +26,24 @@ void		DATA::assign		(	KEY		x					)
 	keyFILE = x;
 }
 
+void		DATA::checkFILE		(								)
+{
+	ifstream file(nameFILE, ifstream::binary);
+	
+	if(file)
+	{
+		file.seekg(0, file.end);
+		sizeFILE = file.tellg();
+		file.seekg(0, file.beg);
+		
+		posFILE = file.tellg();
+		
+		file.close();
+	}
+	
+	return;
+}
+
 void		DATA::readFILE		(								)
 {
 	ifstream file(nameFILE, ifstream::binary);
@@ -33,14 +51,59 @@ void		DATA::readFILE		(								)
 	if(file)
 	{
 		file.seekg(0, file.end);
-		sizeBYTE = file.tellg();
+		sizeFILE = file.tellg();
 		file.seekg(0, file.beg);
 		
-		bufferBYTE = new char[sizeBYTE];
-		file.read(bufferBYTE, sizeBYTE);
+		bufferBYTE = new char[sizeFILE];
+		file.read(bufferBYTE, sizeFILE);
 		
 		file.close();
 	}
+	
+	return;
+}
+
+void		DATA::readFILE		(	TYPE(8)	x					)
+{
+	TYPE(8) n = 0;
+	ifstream file(nameFILE, ifstream::binary);
+	
+	if(file)
+	{
+		file.seekg(posFILE);
+		
+		if((sizeFILE-sizeBYTE) >= x) n = x;
+		else						 n = sizeFILE-sizeBYTE;
+		
+		bufferBYTE = new char[n];
+		
+		file.read(bufferBYTE, n);
+		posFILE = file.tellg();
+		
+		sizeBYTE += n;
+		buildWORDS(n);
+		
+		delete bufferBYTE;
+	}
+	
+	return;
+}
+
+void		DATA::buildWORDS	(	TYPE(8)	x 					)
+{
+	TYPE(64) i;
+	
+	bufferWORD.push_back(0);
+	
+	for(i=0; i<x; i++)
+	{
+		if( (bufferWORD.back().addBYTE(bufferBYTE[i])) && (i != x-1))
+		{
+			bufferWORD.push_back(0);
+		}
+	}
+	
+	sizeWORD = bufferWORD.size();
 	
 	return;
 }
@@ -103,23 +166,28 @@ void		DATA::flush			(								)
 	inSTREAM.clear();
 	outSTREAM.clear();
 	keyFILE.flush();
+	sizeBYTE = 0;
+	sizeWORD = 0;
+	sizePACKET = 0;
 }
 
 //	ACCESSOR
 void		DATA::test			(								)
 {
-	readFILE();
-	buildWORDS();
+	checkFILE();
+	while(sizeBYTE < sizeFILE)	readFILE(N/2);
 	buildPACKETS();
 	
-	cout 	<< setbase(10)\
-			<< "|\tFILE\t|\t" << sizeof(this) << "\t"\
+	cout 	<< "|\tFILE\t|\t" << sizeof(this) << "\t"\
+			<< "|\t" << sizeFILE << "\t"\
 			<< "|\t" << sizeBYTE << "\t"\
 			<< "|\t" << sizeWORD << "\t"\
-			<< "|\t" << sizePACKET << "\t|" << endl\
-			<< CHR_BYTES() << endl\
-			<< "|\t" << CHR_WORDS() << "\t"\
-			<< "|\t" << HEX_PKT() << "\t|" << endl;
+			<< "|\t" << sizePACKET << "\t"\
+			<< "|" << endl << endl;
+			
+	cout	<< CHR_BYTES() << endl;
+	cout	<< HEX_WORDS();
+	cout	<< HEX_PKT();
 	
 	return;
 }
@@ -138,9 +206,9 @@ string		DATA::CHR_BYTES	(								)
 	return str;
 }
 
-string		DATA::CHR_WORDS	(								)
+string		DATA::HEX_WORDS	(								)
 {
-	string str = "";
+	string str = "\n|\t";
 	
 	TYPE(64) i;
 	for(i=0; i<sizeWORD; i++)
@@ -149,6 +217,8 @@ string		DATA::CHR_WORDS	(								)
 		if(((i%4) == 3) && (i != sizeWORD-1))	str += "\t|\n|\t";
 		else if(i != sizeWORD-1)	str += "-";
 	}
+	
+	str += "\t|\n";
 	
 	return str;
 }
@@ -163,6 +233,7 @@ string		DATA::HEX_PKT	(								)
 		str += inSTREAM[i].HEX_PKT();
 		if(i!= sizePACKET-1)	str += "\t|\n|\t";
 	}
+	str += "\t|\n";
 	
 	return str;
 }

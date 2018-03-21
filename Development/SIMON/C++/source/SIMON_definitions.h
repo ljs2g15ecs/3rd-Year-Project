@@ -321,8 +321,11 @@ public:
 	//	MUTATORS
 	void		assign		(	string	x					);
 	void		assign		(	KEY		x					);
+	void		checkFILE	(								);
 	void		readFILE	(								);
+	void		readFILE	(	TYPE(8)	x					);
 	void		buildWORDS	(								);
+	void		buildWORDS	(	TYPE(8)	x					);
 	void		buildPACKETS(								);
 	void		flush		(								);
 	
@@ -331,13 +334,15 @@ public:
 	void		writeFILE	(								);
 	void		writeFILE	(	string	x					);
 	string		CHR_BYTES	(								);
-	string		CHR_WORDS	(								);
+	string		HEX_WORDS	(								);
 	string		HEX_PKT		(								);
 	
 private:
 	//fstream		FILE;
 	string		nameFILE;
+	TYPE(64)	sizeFILE;
 	TYPE(64)	sizeBYTE;
+	streampos	posFILE;
 	TYPE(64)	sizeWORD;
 	TYPE(64)	sizePACKET;
 	KEY			keyFILE;
@@ -345,6 +350,20 @@ private:
 	vector<WRD>	bufferWORD;
 	vector<PKT>	inSTREAM;
 	vector<PKT>	outSTREAM;
+	
+};
+
+class			CIPHER
+{
+public:
+	//	CONSTRUCTORS
+	CIPHER();
+	
+	//	MUTATORS
+	
+	//	ACCESSORS
+	
+private:
 	
 };
 
