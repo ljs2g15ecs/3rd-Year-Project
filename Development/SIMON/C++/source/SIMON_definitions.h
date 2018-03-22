@@ -254,9 +254,9 @@ public:
 	void		output		(	_INFO_	x					);
 	//void		assign		(	_PACKET_	x				);
 	void		assign		(	_INFO_	x					);
-	void		assign		(	WORD*	x,	TYPE(8)	i		);
+	void		assign		(	WORD	x,	TYPE(8)	i		);
 	//void		assign		(	TYPE(N)	x,	TYPE(8)	i		);
-	TYPE(8)		addWORD		(	WORD*	x					);
+	TYPE(8)		addWORD		(	WORD	x					);
 	//TYPE(8)		addWORD		(	TYPE(N)	x					);
 	void		addKEY		(	KEY		x					);
 	void		pack		(								);
@@ -302,7 +302,7 @@ private:
 	};
 	TYPE(8)		count;				//	DATA COUNT
 	//	PACKET DATA
-	WORD		*wDATA[4];			//	PACKET DATA
+	WORD		wDATA[4];			//	PACKET DATA
 	
 	TYPE(8)		*pBYTES;
 };
@@ -322,11 +322,9 @@ public:
 	void		assign		(	string	x					);
 	void		assign		(	KEY		x					);
 	void		checkFILE	(								);
+	WORD		readWORD	(								);
+	PACKET		readPACKET	(								);
 	void		readFILE	(								);
-	void		readFILE	(	TYPE(8)	x					);
-	void		buildWORDS	(								);
-	void		buildWORDS	(	TYPE(8)	x					);
-	void		buildPACKETS(								);
 	void		flush		(								);
 	
 	//	ACCESSORS
@@ -339,17 +337,20 @@ public:
 	
 private:
 	//fstream		FILE;
+	streampos	posFILE;
 	string		nameFILE;
 	TYPE(64)	sizeFILE;
 	TYPE(64)	sizeBYTE;
-	streampos	posFILE;
 	TYPE(64)	sizeWORD;
 	TYPE(64)	sizePACKET;
 	KEY			keyFILE;
 	char		*bufferBYTE;
-	vector<WRD>	bufferWORD;
-	vector<PKT>	inSTREAM;
-	vector<PKT>	outSTREAM;
+	WORD		bufferWORD[4];
+	PACKET		*bufferPACKET;
+	vector<U_8>	streamBYTE;
+	vector<WRD>	streamWORD;
+	vector<PKT>	streamIN;
+	vector<PKT>	streamOUT;
 	
 };
 

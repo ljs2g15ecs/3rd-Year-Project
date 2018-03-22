@@ -19,4 +19,6 @@ int		main()
 	//KEY_S d;		d.test();
 	PACKET e;		e.test();
 	DATA f("test");	f.test();
+	
+	return 0;
 }
