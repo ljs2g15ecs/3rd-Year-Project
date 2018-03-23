@@ -324,6 +324,7 @@ public:
 	void		checkFILE	(								);
 	WORD		readWORD	(								);
 	PACKET		readPACKET	(								);
+	PACKET		readKEY		(								);
 	void		readFILE	(								);
 	void		flush		(								);
 	
@@ -361,10 +362,23 @@ public:
 	CIPHER();
 	
 	//	MUTATORS
+	void		compute		(	PACKET	p					);
+	void		expandKEY	(	KEY		x					);
+	void		encryptDATA	(	WORD	x0,	WORD	x1		);
+	void		decryptDATA	(	WORD	x0,	WORD	x1		);
+	
+	BLOCK		round		(	WORD	x					);
+	WORD		expand		(								);
+	
+	void		flush		(								);
 	
 	//	ACCESSORS
 	
 private:
+	BLOCK		stateCIPHER;
+	KEY_S		scheduleKEY;
+	TYPE(8)		pktCOUNT;
+	TYPE(8)		doneKEY	:	1;
 	
 };
 

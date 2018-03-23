@@ -109,8 +109,30 @@ PACKET		DATA::readPACKET	(								)
 	return *bufferPACKET;
 }
 
+PACKET		DATA::readKEY		(								)
+{
+	bufferPACKET = new PACKET;
+	
+	_INFO_ input;
+	input.mode = MODE;
+	input.in_out = 0;
+	input.data_key = 0;	//	DEFAULT
+	input.enc_dec = 0;	//	DEFAULT
+	input.nBlocks = 1;
+	
+	bufferPACKET->input();		bufferPACKET->assign(input);
+	
+	bufferPACKET->addKEY(keyFILE);
+	
+	bufferPACKET->pack();
+	
+	return *bufferPACKET;
+}
+
 void		DATA::readFILE		(								)
 {
+	streamIN.push_back(readKEY());
+	
 	while(sizeBYTE < sizeFILE)
 	{
 		streamIN.push_back(readPACKET());
@@ -122,14 +144,14 @@ void		DATA::readFILE		(								)
 
 void		DATA::flush			(								)
 {
-	//bufferBYTE = new char;
+	bufferBYTE = new char;
 	bufferWORD[0].flush();	bufferWORD[1].flush();
 	bufferWORD[2].flush();	bufferWORD[3].flush();
 	bufferPACKET = new PACKET;
-	streamBYTE.clear();		//streamBYTE.push_back(0);
-	streamWORD.clear();		//streamWORD.push_back(0);
-	streamIN.clear();		//streamIN.push_back(0);
-	streamOUT.clear();		//streamOUT.push_back(0);
+	streamBYTE.clear();
+	streamWORD.clear();
+	streamIN.clear();
+	streamOUT.clear();
 	keyFILE.flush();
 	posFILE = 0;
 	sizeFILE = 0;
@@ -151,11 +173,9 @@ void		DATA::test			(								)
 			<< "|\t" << sizePACKET << "\t"\
 			<< "|" << endl << endl;
 	
-	///*
 	cout	<< CHR_BYTES() << endl;
 	cout	<< HEX_WORDS();
 	cout	<< HEX_PKT();
-	//*/
 	
 	return;
 }
