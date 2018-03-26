@@ -13,12 +13,16 @@ int		main()
 	cout << "|\tTYPE(N)\t|\t" << sizeof(TYPE(N)) << "\t|" << endl;
 	cout << "|\tWORD\t|\t" << sizeof(WORD) << "\t|" << endl;
 	
-	WORD a;			a.test();
-	BLOCK b;		b.test();
-	KEY c;			c.test();
-	//KEY_S d;		d.test();
-	PACKET e;		e.test();
-	DATA f("test");	f.test();
+	WORD a = 0xB, b = 0x4;			a.test();
+	WORD c = a ^ b;	c.test();
+	c = a << 4;		c.test();
+	c = a >> 4;		c.test();
+	c = ~a;			c.test();
+	BLOCK d;		d.test();
+	KEY e;			e.test();
+	//KEY_S f;		f.test();
+	PACKET g;		g.test();
+	DATA h("test");	h.test();
 	
 	return 0;
 }

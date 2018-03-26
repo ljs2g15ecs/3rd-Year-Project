@@ -101,6 +101,14 @@ public:
 	string		CHR_BYTES	(								);
 	string		HEX_BYTES	(								);
 	
+	//	OPERATORS
+	WORD		operator~	(								);
+	WORD		operator&	(	const	WORD	x			);
+	WORD		operator^	(	const	WORD	x			);
+	WORD		operator^=	(	const	WORD	x			);
+	WORD		operator<<	(	const	TYPE(8)	i			);
+	WORD		operator>>	(	const	TYPE(8)	i			);
+	
 private:
 	TYPE(8)		w_nxtBYTE;
 	TYPE(8)		r_nxtBYTE;
@@ -368,7 +376,7 @@ public:
 	void		decryptDATA	(	WORD	x0,	WORD	x1		);
 	
 	BLOCK		round		(	WORD	x					);
-	WORD		expand		(								);
+	WORD		expand		(	WORD	x,	TYPE(8)	i		);
 	
 	void		flush		(								);
 	

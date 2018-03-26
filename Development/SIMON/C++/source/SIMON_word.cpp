@@ -126,3 +126,41 @@ string		WORD::HEX_BYTES	(								)
 	return ss.str();
 }
 
+//	OPERATORS
+WORD		WORD::operator~	(								)
+{
+	WORD w = ~this->val;
+	return w;
+}
+
+WORD		WORD::operator&	(	const	WORD	x			)
+{
+	WORD w = this->val & x.val;
+	return w;
+}
+
+WORD		WORD::operator^	(	const	WORD	x			)
+{
+	WORD w = this->val ^ x.val;
+	return w;
+}
+
+WORD		WORD::operator<<(	const	TYPE(8)	i			)
+{
+	WORD w = (this->val << i | this->val >> (N-i));
+	return w;
+}
+
+WORD		WORD::operator>>(	const	TYPE(8)	i			)
+{
+	WORD w = (this->val << (N-i) | this->val >> i);
+	return w;
+}
+
+
+
+
+
+
+
+
