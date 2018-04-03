@@ -37,7 +37,7 @@ void		PACKET::output	(	_INFO_	x					)
 {
 	iDATA = x;
 	iDATA.in_out = 1;		//	CHANGE TO OUPUT
-	outputCount++;
+	count = outputCount++;
 }
 
 /*
@@ -119,15 +119,10 @@ void		PACKET::addKEY	(	KEY		x					)
 
 void		PACKET::pack	(								)
 {
-	pBYTES = new TYPE(8)[2+(N/2)];
-	
-	pBYTES[0] = iBYTE;
-	pBYTES[1] = count;
-	
-	TYPE(64) i;
-	for(i=0; i<(N/2); i++)
+	TYPE(8) i;
+	for(i=0; i<(2+(N/2)); i++)
 	{
-		pBYTES[i+2] = wDATA[i/(N/8)].get_b();
+		pBYTES[i] = get_b(i);
 	}
 }
 
@@ -141,7 +136,6 @@ void		PACKET::flush	(								)
 	wDATA[1].flush();
 	wDATA[2].flush();
 	wDATA[3].flush();
-	//*/
 	
 	return;
 }
@@ -193,15 +187,53 @@ void		PACKET::resetOCount	(								)
 //	ACCESSORS
 void		PACKET::test		(								)
 {
+	pack();
 	cout 	<< setbase(10)\
 			<< "|\tPACKET\t|\t" << sizeof(this) << "\t"\
 			<< "|\t" << size() << "\t"\
 			<< "|\t" << HEX_WORD() << "\t"\
-			<< "|\t" << CHR_BYTES() << "\t"\
-			<< "|\t" << HEX_BYTES() << "\t"\
-			<< "|\t" << HEX_PKT() << "\t" << "|" << endl << endl;
+			<< "|\t" << HEX_BYTES() << "\t" << "|" << endl;
+			//<< "|\t" << HEX_PKT() << "\t"\
+			<< "|" << endl << endl;
 	
 	return;
+}
+
+TYPE(8)		PACKET::checkIN		(	TYPE(8)	x					)
+{
+	return ((!iDATA.in_out) & (iDATA.mode == MODE) & (count == x)) + iDATA.data_key;
+}
+
+TYPE(8)		PACKET::get_b		(	TYPE(8)	i					)
+{
+	if		(	i == 0	)
+	{
+		return get_Ib();
+	}
+	else if	(	i == 1	)	
+	{
+		return get_c();
+	}
+	else if	(	i >= 2	)	
+	{
+		return wDATA[(i-2)/(N/8)].get_b((N/8)-1-(i-2)%(N/8));
+	}
+}
+
+TYPE(16)		PACKET::get_B		(	TYPE(8)	i					)
+{
+	if		(	i == 0			)
+	{
+		return get_Ib();
+	}
+	else if	(	i == 1			)	
+	{
+		return get_c();
+	}
+	else if	(	i < (2+(N/2))	)	
+	{
+		return wDATA[i/(N/8)].get_b();
+	}
 }
 
 _INFO_		PACKET::get_i		(								)

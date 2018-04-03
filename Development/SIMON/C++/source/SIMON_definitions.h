@@ -157,36 +157,27 @@ public:
 	KEY();
 	//KEY(WORD x[M]);
 	//KEY(TYPE(N) x[M]);
-#if (M == 2)
 	KEY						(	WORD	x0,	WORD	x1		);
 	KEY						(	TYPE(N)	x0,	TYPE(N)	x1		);
+	KEY						(	WORD	x0,	WORD	x1,
+								WORD	x2					);
+	KEY						(	TYPE(N)	x0,	TYPE(N)	x1,
+								TYPE(N)	x2					);
+	KEY						(	WORD	x0,	WORD	x1,
+								WORD	x2, WORD	x3		);
+	KEY						(	TYPE(N)	x0,	TYPE(N)	x1,
+								TYPE(N)	x2, TYPE(N)	x3		);
 	//	MUTATORS
 	void		assign		(	WORD	x0,	WORD	x1		);
 	void		assign		(	TYPE(N)	x0,	TYPE(N)	x1		);
-#endif
-#if (M == 3)
-	KEY						(	WORD	x0,	WORD	x1,
-								WORD	x2					);
-	KEY						(	TYPE(N)	x0,	TYPE(N)	x1,
-								TYPE(N)	x2					);
-	//	MUTATORS
 	void		assign		(	WORD	x0,	WORD	x1,
 								WORD	x2					);
 	void		assign		(	TYPE(N)	x0,	TYPE(N)	x1,
 								TYPE(N)	x2					);
-#endif
-#if (M == 4)
-	KEY						(	WORD	x0,	WORD	x1,
-								WORD	x2, WORD	x3		);
-	KEY						(	TYPE(N)	x0,	TYPE(N)	x1,
-								TYPE(N)	x2, TYPE(N)	x3		);
-	//	MUTATORS
 	void		assign		(	WORD	x0,	WORD	x1,
 								WORD	x2, WORD	x3		);
 	void		assign		(	TYPE(N)	x0,	TYPE(N)	x1,
 								TYPE(N)	x2, TYPE(N)	x3		);
-#endif
-	//	MUTATORS
 	void		flush		(								);
 	//void		assign		(	WORD	x[M]				);
 	//void		assignWORD	(	WORD	x,	TYPE(8)	i		);
@@ -278,6 +269,9 @@ public:
 	
 	//	ACCESSORS
 	void		test		(								);
+	TYPE(8)		checkIN		(	TYPE(8)	x					);
+	TYPE(8)		get_b		(	TYPE(8)	i					);
+	TYPE(16)	get_B		(	TYPE(8)	i					);
 	_INFO_		get_i		(								);
 	TYPE(8)		get_Ib		(								);
 	TYPE(16)	get_IB		(								);
@@ -312,7 +306,7 @@ private:
 	//	PACKET DATA
 	WORD		wDATA[4];			//	PACKET DATA
 	
-	TYPE(8)		*pBYTES;
+	TYPE(8)		pBYTES[2+(N/2)];
 };
 
 typedef PACKET	PKT;
@@ -338,6 +332,7 @@ public:
 	
 	//	ACCESSORS
 	void		test		(								);
+	TYPE(8)		check		(								);
 	void		writeFILE	(								);
 	void		writeFILE	(	string	x					);
 	string		CHR_BYTES	(								);
@@ -355,7 +350,6 @@ private:
 	KEY			keyFILE;
 	char		*bufferBYTE;
 	WORD		bufferWORD[4];
-	PACKET		*bufferPACKET;
 	vector<U_8>	streamBYTE;
 	vector<WRD>	streamWORD;
 	vector<PKT>	streamIN;
@@ -370,13 +364,13 @@ public:
 	CIPHER();
 	
 	//	MUTATORS
-	void		compute		(	PACKET	p					);
+	PACKET		compute		(	PACKET	p					);
 	void		expandKEY	(	KEY		x					);
 	void		encryptDATA	(	WORD	x0,	WORD	x1		);
 	void		decryptDATA	(	WORD	x0,	WORD	x1		);
 	
 	BLOCK		round		(	WORD	x					);
-	WORD		expand		(	WORD	x,	TYPE(8)	i		);
+	WORD		expand		(	KEY		x,	TYPE(8)	i		);
 	
 	void		flush		(								);
 	
@@ -385,6 +379,7 @@ public:
 private:
 	BLOCK		stateCIPHER;
 	KEY_S		scheduleKEY;
+	TYPE(8)		roundCOUNT;
 	TYPE(8)		pktCOUNT;
 	TYPE(8)		doneKEY	:	1;
 	

@@ -71,6 +71,8 @@ WORD		DATA::readWORD		(								)
 		}
 		
 		delete bufferBYTE;
+		
+		file.close();
 	}
 	
 	return w;
@@ -78,7 +80,7 @@ WORD		DATA::readWORD		(								)
 
 PACKET		DATA::readPACKET	(								)
 {
-	bufferPACKET = new PACKET;
+	PACKET bufferPACKET;
 	
 	_INFO_ input;
 	input.mode = MODE;
@@ -87,31 +89,32 @@ PACKET		DATA::readPACKET	(								)
 	input.enc_dec = 0;	//	DEFAULT
 	input.nBlocks = 1;
 	
-	bufferPACKET->input();		bufferPACKET->assign(input);
+	bufferPACKET.input();		bufferPACKET.assign(input);
 	
 	bufferWORD[0] = readWORD();
 	bufferWORD[1] = readWORD();
 	bufferWORD[2] = readWORD();
 	bufferWORD[3] = readWORD();
 	
+	
 	streamWORD.push_back(bufferWORD[0]);
 	streamWORD.push_back(bufferWORD[1]);
 	streamWORD.push_back(bufferWORD[2]);
 	streamWORD.push_back(bufferWORD[3]);
 	
-	bufferPACKET->addWORD(bufferWORD[0]);
-	bufferPACKET->addWORD(bufferWORD[1]);
-	bufferPACKET->addWORD(bufferWORD[2]);
-	bufferPACKET->addWORD(bufferWORD[3]);
+	bufferPACKET.addWORD(bufferWORD[0]);
+	bufferPACKET.addWORD(bufferWORD[1]);
+	bufferPACKET.addWORD(bufferWORD[2]);
+	bufferPACKET.addWORD(bufferWORD[3]);
 	
-	bufferPACKET->pack();
+	bufferPACKET.pack();
 	
-	return *bufferPACKET;
+	return bufferPACKET;
 }
 
 PACKET		DATA::readKEY		(								)
 {
-	bufferPACKET = new PACKET;
+	PACKET bufferPACKET;
 	
 	_INFO_ input;
 	input.mode = MODE;
@@ -120,13 +123,13 @@ PACKET		DATA::readKEY		(								)
 	input.enc_dec = 0;	//	DEFAULT
 	input.nBlocks = 1;
 	
-	bufferPACKET->input();		bufferPACKET->assign(input);
+	bufferPACKET.input();		bufferPACKET.assign(input);
 	
-	bufferPACKET->addKEY(keyFILE);
+	bufferPACKET.addKEY(keyFILE);
 	
-	bufferPACKET->pack();
+	bufferPACKET.pack();
 	
-	return *bufferPACKET;
+	return bufferPACKET;
 }
 
 void		DATA::readFILE		(								)
@@ -147,7 +150,6 @@ void		DATA::flush			(								)
 	bufferBYTE = new char;
 	bufferWORD[0].flush();	bufferWORD[1].flush();
 	bufferWORD[2].flush();	bufferWORD[3].flush();
-	bufferPACKET = new PACKET;
 	streamBYTE.clear();
 	streamWORD.clear();
 	streamIN.clear();
@@ -178,6 +180,11 @@ void		DATA::test			(								)
 	cout	<< HEX_PKT();
 	
 	return;
+}
+
+TYPE(8)		DATA::check		(								)
+{
+	return (sizeFILE-sizeBYTE) > 0;
 }
 
 string		DATA::CHR_BYTES	(								)

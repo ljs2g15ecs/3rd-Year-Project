@@ -31,7 +31,6 @@ void	KEY::assign(	TYPE(N)	x[M]				)
 }
 //*/
 
-#if (M == 2)
 KEY::KEY(WORD x0, WORD x1) : KEY()
 {
 	assign(x0, x1);
@@ -40,6 +39,28 @@ KEY::KEY(WORD x0, WORD x1) : KEY()
 KEY::KEY(TYPE(N) x0, TYPE(N) x1) : KEY()
 {
 	assign(x0, x1);
+}
+
+KEY::KEY(WORD x0, WORD x1, WORD	x2) : KEY()
+{
+	assign(x0, x1, x2);
+}
+
+KEY::KEY(TYPE(N)x0, TYPE(N) x1, TYPE(N) x2) : KEY()
+{
+	assign(x0, x1, x2);
+}
+
+KEY::KEY(WORD x0, WORD x1, WORD x2, WORD x3) : KEY()
+{
+	assign(x0, x1, x2, x3);
+	return;
+}
+
+KEY::KEY(TYPE(N) x0, TYPE(N) x1, TYPE(N) x2, TYPE(N) x3) : KEY()
+{
+	assign(x0, x1, x2, x3);
+	return;
 }
 
 //	MUTATORS
@@ -57,6 +78,55 @@ void		KEY::assign		(	TYPE(N)	x0,	TYPE(N)	x1		)
 	return;
 }
 
+//	MUTATORS
+void		KEY::assign		(	WORD	x0,	WORD	x1,
+								WORD	x2					)
+{
+	K[0] = x0;
+	K[1] = x1;
+	K[2] = x2;
+	return;
+}
+
+void		KEY::assign		(	TYPE(N)	x0,	TYPE(N)	x1,
+								TYPE(N)	x2					)
+{
+	K[0] = x0;
+	K[1] = x1;
+	K[2] = x2;
+	return;
+}
+
+//	MUTATORS
+void		KEY::assign		(	WORD	x0,	WORD	x1,
+								WORD	x2, WORD	x3		)
+{
+	K[0] = x0;
+	K[1] = x1;
+#if (M>2)
+	K[2] = x2;
+#endif
+#if (M>3)
+	K[3] = 3;
+#endif
+	return;
+}
+
+void		KEY::assign		(	TYPE(N)	x0,	TYPE(N)	x1,
+								TYPE(N)	x2, TYPE(N)	x3		)
+{
+	K[0] = x0;
+	K[1] = x1;
+#if (M>2)
+	K[2] = x2;
+#endif
+#if (M>3)
+	K[3] = 3;
+#endif
+	return;
+}
+
+#if (M == 2)
 void		KEY::flush		(								)
 {
 	K[0].flush();
@@ -110,34 +180,6 @@ string		KEY::CHR		(								)
 
 #endif
 #if (M == 3)
-KEY::KEY(WORD x0, WORD x1, WORD	x2) : KEY()
-{
-	assign(x0, x1, x2);
-}
-
-KEY::KEY(TYPE(N)x0, TYPE(N) x1, TYPE(N) x2) : KEY()
-{
-	assign(x0, x1, x2);
-}
-
-//	MUTATORS
-void		KEY::assign		(	WORD	x0,	WORD	x1,
-								WORD	x2					)
-{
-	K[0] = x0;
-	K[1] = x1;
-	K[2] = x2;
-	return;
-}
-
-void		KEY::assign		(	TYPE(N)	x0,	TYPE(N)	x1,
-								TYPE(N)	x2					)
-{
-	K[0] = x0;
-	K[1] = x1;
-	K[2] = x2;
-	return;
-}
 
 void		KEY::flush		(								)
 {
@@ -200,39 +242,6 @@ string		KEY::CHR		(								)
 
 #endif
 #if (M == 4)
-KEY::KEY(WORD x0, WORD x1, WORD x2, WORD x3) : KEY()
-{
-	assign(x0, x1, x2, x3);
-	return;
-}
-
-KEY::KEY(TYPE(N) x0, TYPE(N) x1, TYPE(N) x2, TYPE(N) x3) : KEY()
-{
-	assign(x0, x1, x2, x3);
-	return;
-}
-
-//	MUTATORS
-void		KEY::assign		(	WORD	x0,	WORD	x1,
-								WORD	x2, WORD	x3		)
-{
-	K[0] = x0;
-	K[1] = x1;
-	K[2] = x2;
-	K[3] = x3;
-	return;
-}
-
-void		KEY::assign		(	TYPE(N)	x0,	TYPE(N)	x1,
-								TYPE(N)	x2, TYPE(N)	x3		)
-{
-	K[0] = x0;
-	K[1] = x1;
-	K[2] = x2;
-	K[3] = x3;
-	return;
-}
-
 void		KEY::flush		(								)
 {
 	K[0].flush();
