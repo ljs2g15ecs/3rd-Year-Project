@@ -36,16 +36,22 @@ PACKET		CIPHER::compute		(	PACKET	x					)
 			if(doneKEY)
 			{
 				cout << "DATA";
-				out.assign(x.get_w(3), 0);
-				out.assign(x.get_w(2), 1);
-				out.assign(x.get_w(1), 2);
-				out.assign(x.get_w(0), 3);
+				if(x.get_i().enc_dec)	decryptDATA(x.get_w(0), x.get_w(1));
+				else					encryptDATA(x.get_w(0), x.get_w(1));
+				out.assign(stateCIPHER.get_w(0), 0);
+				out.assign(stateCIPHER.get_w(1), 1);
 				pktCOUNT++;
+				if(!x.get_i().nBlocks) break;
+				
+				if(x.get_i().enc_dec)	decryptDATA(x.get_w(2), x.get_w(3));
+				else					encryptDATA(x.get_w(2), x.get_w(3));
+				out.assign(stateCIPHER.get_w(0), 2);
+				out.assign(stateCIPHER.get_w(1), 3);
 			}
 			break;
 		case	2:	// KEY
 			cout << "KEY!";
-			expandKEY( KEY(x.get_w(0), x.get_w(1), x.get_w(2), x.get_w(3)) );
+			expandKEY( KEY(x.get_w(3), x.get_w(2), x.get_w(1), x.get_w(0)) );
 			pktCOUNT++;
 			break;
 		default	 :	//	ERROR
@@ -82,6 +88,13 @@ void		CIPHER::decryptDATA	(	WORD	x0,	WORD	x1		)
 {
 	stateCIPHER.assign(x1, 0);
 	stateCIPHER.assign(x0, 1);
+	
+	for(roundCOUNT=T; roundCOUNT>0; roundCOUNT--)
+	{
+		stateCIPHER = round(scheduleKEY.get_w(roundCOUNT));
+	}
+	
+	stateCIPHER.swap();
 }
 
 BLOCK		CIPHER::round		(	WORD	x					)

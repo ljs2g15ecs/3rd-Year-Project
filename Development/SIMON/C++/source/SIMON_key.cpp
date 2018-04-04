@@ -107,7 +107,7 @@ void		KEY::assign		(	WORD	x0,	WORD	x1,
 	K[2] = x2;
 #endif
 #if (M>3)
-	K[3] = 3;
+	K[3] = x3;
 #endif
 	return;
 }
@@ -121,7 +121,7 @@ void		KEY::assign		(	TYPE(N)	x0,	TYPE(N)	x1,
 	K[2] = x2;
 #endif
 #if (M>3)
-	K[3] = 3;
+	K[3] = x3;
 #endif
 	return;
 }

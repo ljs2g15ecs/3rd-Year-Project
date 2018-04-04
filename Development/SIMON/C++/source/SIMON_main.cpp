@@ -19,20 +19,23 @@ int		main()
 	c = a >> 4;		c.test();
 	c = ~a;			c.test();
 	BLOCK d;		d.test();
-	KEY e;			e.test();
+	KEY e;
+	e.assign(0x1918, 0x1110, 0x0908, 0x0100);
+	e.test();
 	//KEY_S f;		f.test();
 	
-	_INFO_ input;
-	input.mode = MODE;
-	input.in_out = 0;
-	input.data_key = 0;	//	DEFAULT
-	input.enc_dec = 0;	//	DEFAULT
-	input.nBlocks = 1;
-	//PACKET g(input);	g.addWORD(0x6565);	g.test();\
+	//_INFO_ input;\
+	input.mode = MODE;\
+	input.in_out = 0;\
+	input.data_key = 0;\
+	input.enc_dec = 0;\
+	input.nBlocks = 1;\
+	PACKET g(input);	g.addWORD(0x6565);	g.test();\
 	DATA h("test");	h.test();\
 	/*
 	
 	DATA FILE("test");
+	FILE.assign(e);
 	FILE.checkFILE();
 	
 	PACKET p, o;
@@ -43,9 +46,9 @@ int		main()
 	cout << p.HEX_PKT() << " | ";
 	
 	o = ENC.compute(p);
-	cout << " | " << o.HEX_WORD() << " |" << endl;
+	cout << " | " << o.HEX_PKT() << " |" << endl;
 	
-	while(FILE.check())
+	do
 	{
 		cout << "| ";
 		p = FILE.readPACKET();
@@ -54,6 +57,7 @@ int		main()
 		o = ENC.compute(p);
 		cout << " | " << o.HEX_PKT() << " |" << endl;
 	}
+	while(FILE.check());
 	
 	/*
 	cout << "|\tREADING KEY\t";

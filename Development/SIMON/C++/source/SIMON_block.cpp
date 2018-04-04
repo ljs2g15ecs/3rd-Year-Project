@@ -47,6 +47,13 @@ void		BLOCK::assign	(	WORD	x,	TYPE(8)	i		)
 	return;
 }
 
+void		BLOCK::swap		(								)
+{
+	WORD tmp = B[0];
+	B[0] = B[1];
+	B[1] = tmp;
+}
+
 void		BLOCK::flush	(								)
 {
 	B[0] = 0;

@@ -131,6 +131,7 @@ public:
 	void		assign		(	WORD	x0, WORD	x1		);
 	void		assign		(	TYPE(N)	x,	TYPE(8)	i		);
 	void		assign		(	WORD	x,	TYPE(8)	i		);
+	void		swap		(								);
 	void		flush		(								);
 	
 	//	ACCESSORS
