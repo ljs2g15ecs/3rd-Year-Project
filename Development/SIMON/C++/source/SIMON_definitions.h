@@ -292,6 +292,7 @@ public:
 	string		HEX_BYTES	(								);
 	string		CHR			(								);
 	string		HEX_PKT		(								);
+	string		HEX_SV		(								);
 	
 	static U_64	inputCount;
 	static U_64	outputCount;
@@ -339,6 +340,7 @@ public:
 	string		CHR_BYTES	(								);
 	string		HEX_WORDS	(								);
 	string		HEX_PKT		(								);
+	string		HEX_SV		(								);
 	
 private:
 	//fstream		FILE;

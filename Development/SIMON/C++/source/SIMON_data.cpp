@@ -178,6 +178,7 @@ void		DATA::test			(								)
 	cout	<< CHR_BYTES() << endl;
 	cout	<< HEX_WORDS();
 	cout	<< HEX_PKT();
+	cout	<< HEX_SV();
 	
 	return;
 }
@@ -226,6 +227,21 @@ string		DATA::HEX_PKT	(								)
 	for(i=0; i<sizePACKET; i++)
 	{
 		str += streamIN[i].HEX_PKT();
+		if(i!= sizePACKET-1)	str += "\t|\n|\t";
+	}
+	str += "\t|\n";
+	
+	return str;
+}
+
+string		DATA::HEX_SV	(								)
+{
+	string str = "\n|\t";
+	
+	TYPE(64) i;
+	for(i=0; i<sizePACKET; i++)
+	{
+		str += streamIN[i].HEX_SV();
 		if(i!= sizePACKET-1)	str += "\t|\n|\t";
 	}
 	str += "\t|\n";

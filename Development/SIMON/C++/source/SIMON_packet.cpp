@@ -192,8 +192,9 @@ void		PACKET::test		(								)
 			<< "|\tPACKET\t|\t" << sizeof(this) << "\t"\
 			<< "|\t" << size() << "\t"\
 			<< "|\t" << HEX_WORD() << "\t"\
-			<< "|\t" << HEX_BYTES() << "\t" << "|" << endl;
-			//<< "|\t" << HEX_PKT() << "\t"\
+			<< "|\t" << HEX_BYTES() << "\t" << "|" << endl\
+			<< "|\t" << HEX_PKT() << "\t"\
+			<< "|\t" << HEX_SV() << "\t"\
 			<< "|" << endl << endl;
 	
 	return;
@@ -407,4 +408,45 @@ string		PACKET::HEX_PKT	(								)
 	
 	return ss.str();
 }
+
+string		PACKET::HEX_SV	(								)
+{
+	stringstream ss;
+	
+	ss << "in = " << (2+(N/2))*8 << "'h";
+	ss << hex << uppercase << setfill('0') << setw(2) << (TYPE(16))pBYTES[0];
+	ss << hex << uppercase << setfill('0') << setw(2) << (TYPE(16))pBYTES[1];
+	
+	TYPE(64) i;
+	for(i=2; i<size(); i++)
+	{
+		ss << hex << uppercase << setfill('0') << setw(2) << (TYPE(16))pBYTES[i];
+	}
+	
+	ss << ";";
+	
+	return ss.str();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -2,7 +2,8 @@ module SIMON_3264
 #(	parameter N = 16,
 	parameter M = 4,
 	parameter T = 32,		
-	parameter Cb = 5					)
+	parameter Cb = 5,
+	parameter MODE = 0					)
  (	input logic 			clk, nR,
 	input logic 			newData, newKey,
 	input logic 			enc_dec, readData,

@@ -24,14 +24,16 @@ int		main()
 	e.test();
 	//KEY_S f;		f.test();
 	
-	//_INFO_ input;\
+	_INFO_ input;\
 	input.mode = MODE;\
 	input.in_out = 0;\
 	input.data_key = 0;\
 	input.enc_dec = 0;\
 	input.nBlocks = 1;\
-	PACKET g(input);	g.addWORD(0x6565);	g.test();\
-	DATA h("test");	h.test();\
+	//PACKET g(input);	g.addWORD(0x6565);	g.test();
+	DATA h("test");\
+	h.assign(e);\
+	h.test();\
 	/*
 	
 	DATA FILE("test");
