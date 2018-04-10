@@ -9,7 +9,7 @@ logic clk, nR;
 logic newIN;
 logic [(1+(N/2)):0][7:0] in;
 logic loadData, loadKey;
-logic loadPkt;
+logic loadPkt, donePkt;
 logic [7:0] info, infoCOUNT;
 logic newKey, newData;
 logic enc_dec;
@@ -38,7 +38,7 @@ begin
 	loadData = 1'b0;
 	loadKey = 1'b0;
 
-	in = 80'h80006565687721403F21;
+	in = 80'hA0001918111009080100;
 
 	repeat(2)	@(posedge clk);
 	#10ns
@@ -52,6 +52,16 @@ begin
 	#10ns
 
 	newIN <= 1'b0;
+
+	in = 80'h80016565687721403F21;
+end
+
+always @(posedge donePkt)
+begin
+	repeat(2)	@(posedge clk);
+	#10ns
+
+	newIN <= 1'b1;
 end
 
 always @(posedge newData, posedge newKey)
