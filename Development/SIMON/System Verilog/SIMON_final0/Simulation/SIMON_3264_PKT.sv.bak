@@ -1,17 +1,27 @@
-module SIMON_3264
+module SIMON_3264_PKT
 #(	parameter N = 16,
 	parameter M = 4,
 	parameter T = 32,		
 	parameter Cb = 5,
-	parameter MODE = 0					)
- (	input logic 			clk, nR,
-	input logic 			newData, newKey,
-	input logic 			enc_dec, readData,
-	input logic [1:0][N-1:0]	BLOCK,
-	input logic [M-1:0][N-1:0] 	KEY,
-	output logic 			loadData, loadKey,
-	output logic 			doneData, doneKey,
-	output logic [1:0][N-1:0] 	outData			);
+	parameter MODE = 0			)
+ (	input logic clk, nR,
+	input logic newIN,
+	input logic [(1+(N/2)):0][7:0] in,
+	output logic loadPkt, donePkt,
+	output logic [1:0][N-1:0] outData	);
+
+logic newData, newKey;
+logic loadData, loadKey;
+logic doneData, doneKey;
+logic readData;
+logic enc_dec;
+
+logic [7:0] info, infoCOUNT;
+
+logic [1:0][N-1:0] BLOCK;
+logic [M-1:0][N-1:0] KEY;
+
+SIMON_dataIN dIN(.*);
 
 //	KEY EXPANSION LOGIC
 logic [M-1:0][N-1:0]			pKeys;

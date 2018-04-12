@@ -9,6 +9,7 @@ logic clk, nR;
 logic newIN;
 logic [(1+(N/2)):0][7:0] in;
 logic loadData, loadKey;
+logic doneData, doneKey;
 logic loadPkt, donePkt;
 logic [7:0] info, infoCOUNT;
 logic newKey, newData;
@@ -37,8 +38,10 @@ begin
 
 	loadData = 1'b0;
 	loadKey = 1'b0;
+	doneData = 1'b0;
+	doneKey = 1'b0;
 
-	in = 80'hA0001918111009080100;
+	in = 80'h80006565687721403F21;
 
 	repeat(2)	@(posedge clk);
 	#10ns
@@ -46,6 +49,7 @@ begin
 	newIN = 1'b1;
 end
 
+///*
 always @(posedge loadPkt)
 begin
 	@(posedge clk);
@@ -53,7 +57,7 @@ begin
 
 	newIN <= 1'b0;
 
-	in = 80'h80016565687721403F21;
+	in = 80'hA0011918111009080100;
 end
 
 always @(posedge donePkt)
@@ -64,20 +68,61 @@ begin
 	newIN <= 1'b1;
 end
 
+always @(posedge newData)
+begin
+	repeat(2)	@(posedge clk);
+	#10ns
+
+	loadData <= 1'b1;
+
+	repeat(2)	@(posedge clk);
+	#10ns
+
+	loadData <= 1'b0;
+	#20ns
+	doneData <= 1'b1;
+
+	@(posedge clk);
+	#10ns
+
+	doneData <= 1'b0;
+end
+
+always @(posedge newKey)
+begin
+	repeat(2)	@(posedge clk);
+	#10ns
+
+	loadKey <= 1'b1;
+
+	repeat(2)	@(posedge clk);
+	#10ns
+
+	loadKey <= 1'b0;
+	#20ns
+	doneKey <= 1'b1;
+
+	@(posedge clk);
+	#10ns
+
+	doneKey <= 1'b0;
+end
+
+/*
 always @(posedge newData, posedge newKey)
 begin
 	repeat(2)	@(posedge clk);
 	#10ns
 
-	loadData <= newData;
-	loadKey <= newKey;
+	doneData <= newData;
+	doneKey <= newKey;
 
 	repeat(1)	@(posedge clk);
 	#10ns
 
-	loadData <= 1'b0;
-	loadKey <= 1'b0;
+	doneData <= 1'b0;
+	doneKey <= 1'b0;
 end
-
+//*/
 
 endmodule

@@ -86,7 +86,7 @@ PACKET		DATA::readPACKET	(								)
 	input.mode = MODE;
 	input.in_out = 0;
 	input.data_key = 0;	//	DEFAULT
-	input.enc_dec = 0;	//	DEFAULT
+	input.enc_dec = 1;	//	DEFAULT
 	input.nBlocks = 1;
 	
 	bufferPACKET.input();		bufferPACKET.assign(input);
@@ -120,7 +120,7 @@ PACKET		DATA::readKEY		(								)
 	input.mode = MODE;
 	input.in_out = 0;
 	input.data_key = 0;	//	DEFAULT
-	input.enc_dec = 0;	//	DEFAULT
+	input.enc_dec = 1;	//	DEFAULT
 	input.nBlocks = 1;
 	
 	bufferPACKET.input();		bufferPACKET.assign(input);

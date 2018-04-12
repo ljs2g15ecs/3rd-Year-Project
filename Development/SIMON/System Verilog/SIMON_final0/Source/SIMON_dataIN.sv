@@ -8,6 +8,7 @@ module SIMON_dataIN
 	input logic newIN,
 	input logic [(1+(N/2)):0][7:0] in,
 	input logic loadData, loadKey,
+	input logic doneData, doneKey,
 	output logic loadPkt, donePkt,
 	output logic [7:0] info, infoCOUNT,
 	output logic newKey, newData,
@@ -16,7 +17,7 @@ module SIMON_dataIN
 	output logic [M-1:0][N-1:0] KEY		);
 
 //	STATES
-typedef enum bit [1:0] {LOAD, COMPUTE, WRITE, WAIT} state;
+typedef enum bit [1:0] {WAIT, LOAD, COMPUTE, WRITE} state;
 state current, next;
 
 logic				nBLOCK;
@@ -35,12 +36,13 @@ begin
 		newData <= 1'b0;
 		newKey <= 1'b0;
 		enc_dec <= 1'b0;
+		nBLOCK <= 1'b0;
 
 		BLOCK <= 'b0;
 		KEY <= 'b0;
 
 		loadPkt <= 1'b0;
-		donePkt <= 1'b0;
+		donePkt <= 1'b1;
 
 		current <= WAIT;
 	end
@@ -49,30 +51,33 @@ begin
 		unique case(current)
 		LOAD:
 		begin
-			data[0] <= in[(N/8)-1:0];
-			data[1] <= in[(N/4)-1:(N/8)];
-			data[2] <= in[(3*N/8)-1:(N/4)];
-			data[3] <= in[(N/2)-1:(3*N/8)];
+			if(donePkt)
+			begin
+				data[0] <= in[(N/8)-1:0];
+				data[1] <= in[(N/4)-1:(N/8)];
+				data[2] <= in[(3*N/8)-1:(N/4)];
+				data[3] <= in[(N/2)-1:(3*N/8)];
 
-			infoCOUNT <= in[(N/2)];
-			info <= in[(N/2)+1];
+				infoCOUNT <= in[(N/2)];
+				info <= in[(N/2)+1];
 
-			loadPkt <= 1'b1;
+				loadPkt <= 1'b1;
 
-			donePkt <= 1'b0;
+				donePkt <= 1'b0;
+			end
 		end
 		COMPUTE:
 		begin
 			if(infoCOUNT == pktCOUNT)	pktCOUNT <= pktCOUNT + 1;
-			else				//	ERROR - PACKET COUNT TRACKER
+			else				$display("ERROR - PACKET COUNT TRACKER");
 			
-			if(info[3:0] != MODE)		//	ERROR - INCORRECT MODE
+			if(info[3:0] != MODE)		$display("ERROR - INCORRECT MODE");
 	
-			if(info[4])			//	ERROR - OUTPUT PACKET
+			if(info[4])			$display("ERROR - OUTPUT PACKET");
 			
 			enc_dec <= info[6];
 
-			nBLOCK <= info[7];
+			nBLOCK <= ~info[5] && info[7];
 		end
 		WRITE:
 		begin
@@ -93,12 +98,12 @@ begin
 		WAIT:
 		begin
 			if(next == WRITE)	nBLOCK <= 1'b0;
-			else if(loadData || loadKey)	donePkt <= 1'b1;
-			if(newData && loadData)	newData <= 1'b0;
-			if(newKey && loadKey)	newKey <= 1'b0;
+			else if(doneData || doneKey)	donePkt <= 1'b1;
 		end
 		endcase
 		current <= next;
+		if(newData && loadData)	newData <= 1'b0;
+		if(newKey && loadKey)	newKey <= 1'b0;
 	end
 end
 
@@ -108,7 +113,7 @@ begin
 	LOAD:
 	begin
 		if(newIN)	next = COMPUTE;
-		else		next = LOAD;
+		else			next = LOAD;
 	end
 	COMPUTE:
 	begin
@@ -120,13 +125,20 @@ begin
 	end
 	WAIT:
 	begin
-		if(loadData || loadKey)
+		if(nBLOCK)
+		begin
+			if(doneData)	next = WRITE;
+			else		next = WAIT;
+		end
+		else if(newIN && donePkt)		next = LOAD;
+		/*
+		if(loadData || loadKey || donePkt)
 		begin
 			if(newData && nBLOCK)	next = WRITE;
+			else if(newIN)		next = LOAD;	
 			else			next = WAIT;
 		end
-		else if(newIN)			next = LOAD;
-		else				next = WAIT;
+		//*/
 	end
 	endcase
 end

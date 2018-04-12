@@ -6,8 +6,8 @@ module SIMON_128256
  (	input logic 			clk, nR,
 	input logic 			newData, newKey,
 	input logic 			enc_dec, readData,
-	input logic [1:0][N-1:0]	inData,
-	input logic [M-1:0][N-1:0] 	key,
+	input logic [1:0][N-1:0]	BLOCK,
+	input logic [M-1:0][N-1:0] 	KEY,
 	output logic 			loadData, loadKey,
 	output logic 			doneData, doneKey,
 	output logic [1:0][N-1:0] 	outData);

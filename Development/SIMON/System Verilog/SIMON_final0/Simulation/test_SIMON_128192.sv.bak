@@ -7,7 +7,7 @@ parameter Co = 7;
 logic 			clk, nR;
 logic 			newData, newKey;
 logic 			enc_dec, readData;
-logic [1:0][N-1:0]	inData;
+logic [1:0][N-1:0]	BLOCK;
 logic [M-1:0][N-1:0] 	key;
 logic 			loadData, loadKey;
 logic 			doneData, doneKey;
@@ -37,17 +37,17 @@ begin
 	inputCount = 0;
 	outputCount = 0;
 
-	inputStream[enc_dec][0] = 32'h65656877;
-	inputStream[enc_dec][1] = 32'hA8D5F7DE;
-	inputStream[enc_dec][2] = 32'h5BC92D01;
-	inputStream[enc_dec][3] = 32'hF2B48D45;
-	inputStream[enc_dec][4] = 32'h567F11DE;
+	inputStream[enc_dec][0] = 128'h206572656874206E6568772065626972;
+	inputStream[enc_dec][1] = 128'hA8D5F7DE0123FEDC01234567FEDCBA98;
+	inputStream[enc_dec][2] = 128'h5BC92D014567BA9889ABCDEF01234567;
+	inputStream[enc_dec][3] = 128'hF2B48D4589AB765401234567FEDCBA98;
+	inputStream[enc_dec][4] = 128'h567F11DECDEF321089ABCDEF01234567;
 
-	inData = inputStream[enc_dec][0];
-	key[3] = 16'h1918;
-	key[2] = 16'h1110;
-	key[1] = 16'h0908;
-	key[0] = 16'h0100;
+	BLOCK = inputStream[enc_dec][0];
+	//KEY[3] = 64'h1A1918;
+	KEY[2] = 64'h1716151413121110;
+	KEY[1] = 64'h0F0E0D0C0B0A0908;
+	KEY[0] = 64'h0706050403020100;
 
 	#250ns
 	newData = 1'b1;
@@ -63,7 +63,7 @@ begin
 	repeat(2)	@(posedge clk);
 	#20ns
 	newData = 1'b0;
-	inData = inputStream[enc_dec][inputCount];
+	BLOCK = inputStream[enc_dec][inputCount];
 end
 
 always @(posedge doneData)
@@ -91,7 +91,7 @@ begin
 		inputStream[enc_dec] = outputStream[~enc_dec];
 		inputCount = 0;
 		outputCount = 0;
-		inData = inputStream[enc_dec][0];
+		BLOCK = inputStream[enc_dec][0];
 		nR = 1'b1;
 		#250ns
 		newData = 1'b1;

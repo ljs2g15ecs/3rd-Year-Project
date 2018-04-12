@@ -1,12 +1,12 @@
 module SIMON_4872
-#(s	parameter N = 24,
+#(	parameter N = 24,
 	parameter M = 3,
 	parameter T = 36,		
 	parameter Cb = 6					)
  (	input logic 			clk, nR,
 	input logic 			newData, newKey,
 	input logic 			enc_dec, readData,
-	input logic [1:0][N-1:0]	inData,
+	input logic [1:0][N-1:0]	BLOCK,
 	input logic [M-1:0][N-1:0] 	key,
 	output logic 			loadData, loadKey,
 	output logic 			doneData, doneKey,

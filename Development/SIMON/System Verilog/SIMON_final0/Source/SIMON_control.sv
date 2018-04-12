@@ -6,8 +6,8 @@ module SIMON_control
  (	input logic 			clk, nR,
 	input logic 			newData, newKey,
 	input logic 			enc_dec, readData,
-	input logic [1:0][N-1:0] 	inData, o,
-	input logic [M-1:0][N-1:0] 	key,
+	input logic [1:0][N-1:0] 	BLOCK, o,
+	input logic [M-1:0][N-1:0] 	KEY,
 	input logic [N-1:0] 		oKey,
 	output logic 			loadData, loadKey,
 	output logic 			doneData, doneKey,
@@ -121,8 +121,8 @@ begin
 		end
 		LOAD:
 		begin
-			if(ENCDEC)		i <= inData;
-			else			i <= {inData[0], inData[1]};
+			if(ENCDEC)		i <= BLOCK;
+			else			i <= {BLOCK[0], BLOCK[1]};
 			loadData <= 1'b1;
 		end
 		EXECUTE:
@@ -164,8 +164,8 @@ begin
 		begin
 			for(int i=0; i<M; i++)
 			begin
-				pKeys[i] <= key[i];
-				keys[i] <= key[i];
+				pKeys[i] <= KEY[i];
+				keys[i] <= KEY[i];
 			end
 			loadKey <= 1'b1;
 		end
