@@ -6,7 +6,7 @@ module SIMON_128192
  (	input logic 			clk, nR,
 	input logic 			newData, newKey,
 	input logic 			enc_dec, readData,
-	input logic [1:0][N-1:0]	BLOCK,
+	input logic [1:0][N-1:0]	blockIN,
 	input logic [M-1:0][N-1:0] 	KEY,
 	output logic 			loadData, loadKey,
 	output logic 			doneData, doneKey,
@@ -27,6 +27,7 @@ logic [1:0][N-1:0]			i, o;
 SIMON_round #(N) r(.in(i), .key(rKey), .out(o));
 
 //	CONTROL LOGIC
+logic [7:0] infoIN, infoOUT, countIN, countOUT;
 SIMON_control #(N,M,T,Cb) control(.*);
 
 endmodule

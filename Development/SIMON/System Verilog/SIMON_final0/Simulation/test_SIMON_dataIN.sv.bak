@@ -82,7 +82,7 @@ begin
 	#20ns
 	doneData <= 1'b1;
 
-	repeat(2)	@(posedge clk);
+	@(posedge clk);
 	#10ns
 
 	doneData <= 1'b0;

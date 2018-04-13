@@ -6,15 +6,17 @@ module SIMON_control
  (	input logic 			clk, nR,
 	input logic 			newData, newKey,
 	input logic 			enc_dec, readData,
-	input logic [1:0][N-1:0] 	BLOCK, o,
+	input logic [1:0][N-1:0] 	blockIN, o,
 	input logic [M-1:0][N-1:0] 	KEY,
 	input logic [N-1:0] 		oKey,
+	input logic [7:0]		infoIN, countIN,
 	output logic 			loadData, loadKey,
 	output logic 			doneData, doneKey,
 	output logic [1:0][N-1:0] 	outData, i,
 	output logic [M-1:0][N-1:0] 	pKeys,
 	output logic [N-1:0]		rKey,
-	output logic [Cb-1:0] 		count			);
+	output logic [Cb-1:0] 		count,
+	output logic [7:0]		infoOUT, countOUT	);
 
 //	STATES
 typedef enum bit [1:0] {INIT, LOAD, EXECUTE, WRITE} state;
@@ -75,9 +77,15 @@ begin
 	begin
 		current <= INIT;
 		count <= 1'b0;
+		
+		infoOUT <= 'b0;
+		countOUT <= 'b0;
+		
+		doneData <= 1'b0;
 	end
 	else
 	begin
+		if(readData)	doneData <= 1'b0;
 		unique case(current)
 		INIT:
 		begin
@@ -86,6 +94,7 @@ begin
 		LOAD:
 		begin
 			count <= 1'b0;
+			
 		end
 		EXECUTE:
 		begin
@@ -93,7 +102,12 @@ begin
 		end
 		WRITE:
 		begin
-			//count <= count;
+			if(next == LOAD)
+			begin
+				doneData <= 1'b1;
+				infoOUT <= {infoIN[7:5], ~infoIN[4], infoIN[3:0]};
+				countOUT <= countIN;
+			end
 		end
 		endcase
 		current <= next;
@@ -108,11 +122,9 @@ begin
 		outData <= 'b0;
 		i <= 'b0;
 		loadData <= 1'b0;
-		doneData <= 1'b0;
 	end
 	else
 	begin
-		if(readData)	doneData <= 1'b0;
 		unique case(current)
 		INIT:
 		begin
@@ -120,13 +132,13 @@ begin
 			loadData <= 1'b0;
 		end
 		LOAD:
-		begin
-			if(ENCDEC)		i <= BLOCK;
-			else			i <= {BLOCK[0], BLOCK[1]};
+		begin		
+			if(ENCDEC)		i <= blockIN;
+			else			i <= {blockIN[0], blockIN[1]};
 			loadData <= 1'b1;
 		end
 		EXECUTE:
-		begin
+		begin		
 			i <= o;
 		end
 		WRITE:
@@ -134,7 +146,6 @@ begin
 			loadData <= 1'b0;
 			if(next == LOAD)
 			begin
-				doneData <= 1'b1;
 				outData <= ENCDEC ? o : {o[0], o[1]};
 			end
 		end

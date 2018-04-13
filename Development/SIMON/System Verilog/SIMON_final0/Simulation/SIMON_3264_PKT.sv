@@ -16,9 +16,9 @@ logic doneData, doneKey;
 logic readData;
 logic enc_dec;
 
-logic [7:0] info, infoCOUNT;
+logic [7:0] infoIN, infoOUT, countIN, countOUT;
 
-logic [1:0][N-1:0] BLOCK;
+logic [1:0][N-1:0] blockIN;
 logic [M-1:0][N-1:0] KEY;
 
 SIMON_dataIN #(N,M,T,Cb,MODE) dIN(.*);

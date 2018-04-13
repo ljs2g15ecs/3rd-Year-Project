@@ -7,8 +7,8 @@ parameter Co = 7;
 logic 			clk, nR;
 logic 			newData, newKey;
 logic 			enc_dec, readData;
-logic [1:0][N-1:0]	BLOCK;
-logic [M-1:0][N-1:0] 	key;
+logic [1:0][N-1:0]	blockIN;
+logic [M-1:0][N-1:0] 	KEY;
 logic 			loadData, loadKey;
 logic 			doneData, doneKey;
 logic [1:0][N-1:0] 	outData;
@@ -43,7 +43,7 @@ begin
 	inputStream[enc_dec][3] = 128'hF2B48D4589AB765401234567FEDCBA98;
 	inputStream[enc_dec][4] = 128'h567F11DECDEF321089ABCDEF01234567;
 
-	BLOCK = inputStream[enc_dec][0];
+	blockIN = inputStream[enc_dec][0];
 	//KEY[3] = 64'h1A1918;
 	KEY[2] = 64'h1716151413121110;
 	KEY[1] = 64'h0F0E0D0C0B0A0908;
@@ -63,7 +63,7 @@ begin
 	repeat(2)	@(posedge clk);
 	#20ns
 	newData = 1'b0;
-	BLOCK = inputStream[enc_dec][inputCount];
+	blockIN = inputStream[enc_dec][inputCount];
 end
 
 always @(posedge doneData)

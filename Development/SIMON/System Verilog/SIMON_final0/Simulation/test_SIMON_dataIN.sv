@@ -11,7 +11,7 @@ logic [(1+(N/2)):0][7:0] in;
 logic loadData, loadKey;
 logic doneData, doneKey;
 logic loadPkt, donePkt;
-logic [7:0] info, infoCOUNT;
+logic [7:0] infoIN, countIN;
 logic newKey, newData;
 logic enc_dec;
 logic [1:0][N-1:0] BLOCK;
