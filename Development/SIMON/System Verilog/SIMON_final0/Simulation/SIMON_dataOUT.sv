@@ -18,7 +18,7 @@ module SIMON_dataOUT
 typedef enum bit [1:0] {WAIT, LOAD, READ, WRITE} state;
 state current, next;
 
-logic				nBLOCK;
+logic				nBLOCK, LOADING;
 logic [7:0] 			info, countPkt;
 logic [3:0][N-1:0] 		data;
 
@@ -30,12 +30,13 @@ begin
 	if(~nR)
 	begin
 		newOUT <= 1'b0;
-		doneOUT <= 1'b1;
+		doneOUT <= 1'b0;
 		readData <= 1'b0;
 
 		current <= WAIT;
 
 		nBLOCK <= 1'b0;
+		LOADING <= 1'b0;
 		info <= 'b0;
 		countPkt <= 'b0;
 		data <= 'b0;
@@ -54,7 +55,7 @@ begin
 		end
 		LOAD:
 		begin
-			doneOUT <= 1'b0;
+			LOADING <= 1'b1;
 
 			info <= infoOUT;
 
@@ -83,6 +84,7 @@ begin
 		end
 		WRITE:
 		begin
+			LOADING <= 1'b0;
 			if(next == WAIT)
 			begin
 				doneOUT <= 1'b1;
@@ -99,13 +101,13 @@ begin
 	unique case(current)
 	WAIT:
 	begin
-		if(nBLOCK)
+		if(LOADING && nBLOCK)
 		begin
 			if(doneData && readData)	next = WAIT;
 			else if(doneData)		next = READ;
 		end
-		else if(doneData && doneOUT)		next = LOAD;
-		else if(doneData)			next = WRITE;
+		else if(~LOADING && doneData && ~doneOUT)		next = LOAD;
+		else					next = WAIT;
 	end
 	LOAD:
 	begin
@@ -114,7 +116,8 @@ begin
 	end
 	READ:
 	begin
-		next = WAIT;
+		if(nBLOCK)				next = WAIT;
+		else					next = WRITE;
 	end
 	WRITE:
 	begin
