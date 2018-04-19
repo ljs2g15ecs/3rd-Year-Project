@@ -43,7 +43,6 @@ begin
 		info <= 'b0;
 		countPkt <= 'b0;
 		data <= 'b0;
-
 		doneOUT <= 1'b0;
 		readData <= 1'b0;
 		out <= 'b0;
@@ -52,11 +51,11 @@ begin
 	end
 	else
 	begin
-		if(readData && ~doneData)	readData <= 1'b0;
+		//if(readData && ~doneData)	readData <= 1'b0;
 		unique case(current)
 		WAIT:
 		begin
-			
+			readData <= 1'b0;
 		end
 		LOAD:
 		begin

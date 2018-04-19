@@ -51,11 +51,10 @@ begin
 	end
 	else
 	begin
-		if(readData && ~doneData)	readData <= 1'b0;
 		unique case(current)
 		WAIT:
 		begin
-			
+			readData <= 1'b0;
 		end
 		LOAD:
 		begin
