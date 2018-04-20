@@ -7,7 +7,6 @@ module SIMON_dataIN2
  (	input logic clk, nR,
 	input logic newPkt,
 	input logic loadData, loadKey,
-	input logic doneData, doneKey,
 	input logic [(1+(N/2)):0][7:0] in,
 	output logic loadPkt, donePkt,
 	output logic newKey, newData,
@@ -123,7 +122,7 @@ begin
 	begin
 		if(PROCESSING)
 		begin
-			if(newData)			next = WAIT;	
+			if(newData || loadData)		next = WAIT;	
 			else				next = WRITE;	
 		end
 		else

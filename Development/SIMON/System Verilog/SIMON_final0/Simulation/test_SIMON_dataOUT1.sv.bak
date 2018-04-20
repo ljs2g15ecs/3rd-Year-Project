@@ -72,7 +72,18 @@ end
 
 always @(posedge doneOUT)
 begin
+	nData = ~nData;
+	@(posedge clk);
+	#10ns
+
+	readOUT <= 1'b1;
+	$display("Packet Read: %h", out);
 	countOUT = countOUT + 1;
+
+	repeat(2)	@(posedge clk);
+	#10ns
+
+	readOUT <= 1'b0;
 end
 
 endmodule

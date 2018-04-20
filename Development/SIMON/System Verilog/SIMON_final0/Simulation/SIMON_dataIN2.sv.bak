@@ -7,7 +7,6 @@ module SIMON_dataIN2
  (	input logic clk, nR,
 	input logic newPkt,
 	input logic loadData, loadKey,
-	input logic doneData, doneKey,
 	input logic [(1+(N/2)):0][7:0] in,
 	output logic loadPkt, donePkt,
 	output logic newKey, newData,
@@ -45,7 +44,7 @@ always @(PROCESSING, negedge nR)
 begin
 	if(~nR)			donePkt <= 1'b0;
 	else if(PROCESSING)	donePkt <= 1'b0;
-	else if(~PROCESSING)	donePkt <= 1'b1;
+	else			donePkt <= 1'b1;
 end
 
 always @(posedge clk, negedge nR)

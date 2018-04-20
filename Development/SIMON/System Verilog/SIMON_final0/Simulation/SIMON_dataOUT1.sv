@@ -51,6 +51,7 @@ begin
 	end
 	else
 	begin
+		if(doneOUT && readOUT)			doneOUT <= 1'b0;		
 		unique case(current)
 		WAIT:
 		begin

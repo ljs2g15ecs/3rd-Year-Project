@@ -8,7 +8,6 @@ parameter MODE = 0;
 logic clk, nR;
 logic newPkt;
 logic loadData, loadKey;
-logic doneData, doneKey;
 logic [(1+(N/2)):0][7:0] in;
 logic loadPkt, donePkt;
 logic newKey, newData;
@@ -28,15 +27,17 @@ logic done;
 
 initial
 begin
-	repeat(2)	@(posedge clk);
-
+	#10ns
+		
 	nR = 1'b0;
+	
+	repeat(2)	@(posedge clk);
+	#10ns
+
 	done = 1'b0;
 	newPkt = 1'b0;
 	loadData = 1'b0;
 	loadKey = 1'b0;
-	doneData = 1'b0;
-	doneKey = 1'b0;
 
 	in = 80'hA0001918111009080100;
 
@@ -88,7 +89,7 @@ end
 
 always @(posedge donePkt)
 begin
-	@(posedge clk);
+	repeat(5)	@(posedge clk);
 	#10ns
 	
 	if(~done)

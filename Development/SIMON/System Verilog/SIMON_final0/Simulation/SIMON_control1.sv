@@ -1,0 +1,189 @@
+module SIMON_control
+#(	parameter N = 16,
+	parameter M = 4,
+	parameter T = 32,
+	parameter Cb = 5					)
+ (	input logic 			clk, nR,
+	input logic 			newData, newKey,
+	input logic 			readData,
+	input logic [1:0][N-1:0] 	blockIN, o,
+	input logic [M-1:0][N-1:0] 	KEY,
+	input logic [N-1:0] 		oKey,
+	input logic [7:0]		infoIN, countIN,
+	output logic 			loadData, loadKey,
+	output logic 			doneData, doneKey,
+	output logic [1:0][N-1:0] 	blockOUT, i,
+	output logic [M-1:0][N-1:0] 	pKeys,
+	output logic [N-1:0]		rKey,
+	output logic [Cb-1:0] 		count,
+	output logic [7:0]		infoOUT, countOUT	);
+
+//	STATES
+typedef enum bit [1:0] {INIT, LOAD, EXECUTE, WRITE} state;
+state current, next;
+
+//	KEY EXPANSION LOGIC
+logic [T-1:0][N-1:0] keys;
+logic ENCDEC;
+assign rKey = ENCDEC ? keys[count] : keys[T-(count+1)];
+
+//	GATED CLOCK LOGIC
+logic clkCipherGo, clkCipher;
+logic clkKeyGo, clkKey, clkAll;
+
+assign clkCipher = clk && clkCipherGo;
+assign clkKey = clk && clkKeyGo;
+assign clkAll = clkCipher || clkKey;
+
+logic [7:0]				info, countData;
+
+//	CLOCK CONTROL
+//	At negedge to avoid glitches
+always_ff @(negedge clk, negedge nR)
+begin
+	if(~nR)
+	begin
+		clkCipherGo <= 1'b0;
+		clkKeyGo <= 1'b0;
+	end
+	else
+	begin
+		unique case(current)
+		INIT:
+		begin
+			
+		end
+		LOAD:
+		begin
+			
+		end
+		EXECUTE:
+		begin
+		end
+		WRITE:
+		begin
+		end
+		endcase
+	end
+end
+
+//	MAIN STATE CONTROL
+always_ff @(posedge clkAll, negedge nR)
+begin
+	if(~nR)
+	begin
+		count <= 'b0;
+
+		ENCDEC <= 1'b0;
+		info <= 'b0;
+		countData <= 'b0;
+		infoOUT <= 'b0;
+		countOUT <= 'b0;
+
+		current <= INIT;
+	end
+	else
+	begin
+		unique case(current)
+		INIT:
+		begin
+			
+		end
+		LOAD:
+		begin
+			
+		end
+		EXECUTE:
+		begin
+			
+		end
+		WRITE:
+		begin
+			
+		end
+		endcase
+		current <= next;
+	end
+end
+
+//	CIPHER STATE
+always_ff @(posedge clkCipher, negedge nR)
+begin
+	if(~nR)
+	begin
+		blockOUT <= 'b0;
+		i <= 'b0;
+		loadData <= 1'b0;
+		doneData <= 1'b0;
+	end
+	else
+	begin
+		unique case(current)
+		INIT:
+		begin
+			
+		end
+		LOAD:
+		begin		
+			
+		end
+		EXECUTE:
+		begin		
+			
+		end
+		WRITE:
+		begin		
+			
+		end
+		endcase
+	end
+end
+
+//	KEY STATE
+always_ff @(posedge clkKey, negedge nR)
+begin
+	if(~nR)
+	begin
+		
+	end
+	else
+	begin
+		unique case(current)
+		INIT:
+		begin
+			
+		end
+		LOAD:
+		begin
+			
+		end
+		EXECUTE:
+		begin
+			
+		end
+		WRITE:
+		begin
+			
+		end
+		endcase
+	end
+end
+
+//	NEXT STATE LOGIC
+always_comb
+begin
+	unique case(current)
+	INIT:				next = LOAD;
+	LOAD:
+	EXECUTE:
+	begin
+		
+	end
+	WRITE:
+	begin
+		
+	end
+	endcase
+end
+
+endmodule

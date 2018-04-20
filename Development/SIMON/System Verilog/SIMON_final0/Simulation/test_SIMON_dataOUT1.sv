@@ -76,7 +76,14 @@ begin
 	@(posedge clk);
 	#10ns
 
+	readOUT <= 1'b1;
+	$display("Packet Read: %h @ %tns", out, $time);
 	countOUT = countOUT + 1;
+
+	repeat(2)	@(posedge clk);
+	#10ns
+
+	readOUT <= 1'b0;
 end
 
 endmodule
