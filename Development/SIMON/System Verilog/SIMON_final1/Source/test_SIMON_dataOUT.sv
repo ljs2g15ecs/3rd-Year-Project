@@ -30,26 +30,46 @@ begin
 
 	readPKT = 1'b0;
 	doneDATA = 1'b0;
-	infoOUT = 'b0;
-	countOUT = 'b0;
-	outDATA = 'b0;
+	infoOUT = `out_iDATA_TEST;
+	countOUT = 8'h00;
+	outDATA = `in_DATA_TEST;	//	CHANGE TO OUTPUT DATA
 
 	@(posedge clk);
 	#10ns
 
 	nR = 1'b1;
 
-	/*
 	repeat(2)	@(posedge clk);
 	#10ns
 	
-	newPKT <= 1'b1;
+	doneDATA <= 1'b1;
+end
+
+always @(posedge readDATA)
+begin
+	repeat(2)	@(posedge clk);
+	#10ns
+	
+	doneDATA <= 1'b0;
+
+	repeat(5)	@(posedge clk);
+	#10ns
+	
+	doneDATA <= 1'b1;
+end
+
+always @(posedge donePKT)
+begin
+	repeat(2)	@(posedge clk);
+	#10ns
+	
+	countOUT <= countOUT + 1'b1;
+	readPKT <= 1'b1;
 
 	repeat(2)	@(posedge clk);
 	#10ns
-	
-	newPKT <= 1'b0;
-	//*/
+
+	readPKT <= 1'b0;
 end
 
 endmodule

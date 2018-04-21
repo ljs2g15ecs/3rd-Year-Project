@@ -31,7 +31,7 @@ int		main()
 	input.enc_dec = 0;\
 	input.nBlocks = 1;\
 	//PACKET g(input);	g.addWORD(0x6565);	g.test();
-	DATA h("test");\
+	//DATA h("test");\
 	h.assign(e);\
 	h.test();\
 	/*

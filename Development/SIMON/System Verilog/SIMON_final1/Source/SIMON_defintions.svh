@@ -14,9 +14,14 @@
 	`define	T	32
 	`define	J0
 	`define	Cb	5
-		
-	`define	inTEST 	32'h65656877;
-	`define	KEY_TEST	64'h1918111009080100;
+
+	//	TEST VECTORS
+	`define	in_DATA_TEST 	32'h65656877
+	`define	in_KEY_TEST	64'h1918111009080100
+	`define	in_iKEY_TEST	8'hE0
+	`define out_iKEY_TEST	8'hF0
+	`define	in_iDATA_TEST	8'hC0
+	`define	out_iDATA_TEST	8'hD0
 `else `ifdef MODE1
 	`define	MODE	1
 	`define	N	24

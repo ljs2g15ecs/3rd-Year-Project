@@ -35,8 +35,8 @@ begin
 	readDATA = 1'b0;
 	infoIN = 8'hD0;
 	countIN = 'b0;
-	inDATA = `inTEST;
-	KEY = `KEY_TEST;	
+	inDATA = `in_DATA_TEST;
+	KEY = `in_KEY_TEST;	
 
 	@(posedge clk);
 	#10ns

@@ -14,20 +14,20 @@ module SIMON_dataOUT
 typedef enum bit [1:0] {WAIT, LOAD, READ, WRITE} state;
 state current, next;
 
-logic					doneDATA_rise;
+logic						doneDATA_rise;
 
-logic [(1+(`N/2)):0][7:0]		pkt;
-logic					nBLOCK, PROCESSING;
-logic [7:0] 				info, countPKT;
-logic [3:0][`N-1:0] 			data;
+logic [(1+(`N/2)):0][7:0]			pkt;
+logic						nBLOCK, PROCESSING;
+logic [7:0] 					info, countPKT;
+logic [3:0][`N-1:0] 				data;
 
 assign pkt = {info, countOUT, data[3], data[2], data[1], data[0]};
 
 always @(posedge doneDATA, posedge readDATA, negedge nR)
 begin
-	if(~nR)				doneDATA_rise <= 1'b0;
-	else if(readDATA)		doneDATA_rise <= 1'b0;
-	else if(doneDATA)		doneDATA_rise <= 1'b1;
+	if(~nR)					doneDATA_rise <= 1'b0;
+	else if(readDATA)			doneDATA_rise <= 1'b0;
+	else if(doneDATA)			doneDATA_rise <= 1'b1;
 end
 
 always @(posedge clk, negedge nR)
@@ -47,7 +47,7 @@ begin
 	end
 	else
 	begin
-		if(donePKT && readPKT)	donePKT <= 1'b0;		
+		if(donePKT && readPKT)		donePKT <= 1'b0;		
 		unique case(current)
 		WAIT:
 		begin
@@ -69,17 +69,18 @@ begin
 		end
 		READ:
 		begin
-			if(info[5] && doneDATA)
+			if(info[5])
 			begin
 				data <= 'b0;
 			end
-			else if(~info[5] && doneDATA)
+			else if(~info[5])
 			begin
-				readDATA <= 1'b1;
 				data[{~nBLOCK, 1'b0}] <= outDATA[0];
 				data[{~nBLOCK, 1'b1}] <= outDATA[1];
 				nBLOCK <= 1'b0;
 			end
+			
+			readDATA <= 1'b1;
 			
 			if(~nBLOCK)	PROCESSING <= 1'b0;
 		end
@@ -103,24 +104,24 @@ begin
 	begin
 		if(doneDATA_rise)
 		begin
-			if(PROCESSING)	next = READ;
-			else		next = LOAD;
+			if(PROCESSING)		next = READ;
+			else			next = LOAD;
 		end
-		else			next = WAIT;
+		else				next = WAIT;
 	end
 	LOAD:
 	begin
-					next = READ;
+						next = READ;
 	end
 	READ:
 	begin
-		if(nBLOCK)		next = WAIT;
-		else			next = WRITE;		
+		if(nBLOCK)			next = WAIT;
+		else				next = WRITE;		
 	end
 	WRITE:
 	begin
-		if(donePKT || readPKT)	next = WRITE;
-		else			next = WAIT;
+		if(donePKT || readPKT)		next = WRITE;
+		else				next = WAIT;
 	end
 	endcase
 end

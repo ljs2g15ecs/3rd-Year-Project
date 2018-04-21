@@ -1,0 +1,235 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Simulation
+vSIMON_control
+Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z1 !s110 1524306368
+!i10b 1
+!s100 aeTc>?[j_jkIK^TlDoIJ60
+IRcY@Em2;mAliSR3DMdNIo2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s105 SIMON_control_sv_unit
+S1
+Z3 dC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Simulation/Surface Pro
+w1524230278
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_control.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_control.sv
+L0 3
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1524306368.000000
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\SIMON\System Verilog\SIMON_final1\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_control.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_control.sv|
+!i113 1
+Z6 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z7 tCvgOpt 0
+n@s@i@m@o@n_control
+vSIMON_dataIN
+R0
+R1
+!i10b 1
+!s100 4XiF<58?O8i4a>^_;N63<2
+IOfJPznLh:Bd;6>GcGh>[E0
+R2
+!s105 SIMON_dataIN_sv_unit
+S1
+R3
+w1524303015
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataIN.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataIN.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\SIMON\System Verilog\SIMON_final1\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataIN.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataIN.sv|
+!i113 1
+R6
+R7
+n@s@i@m@o@n_data@i@n
+vSIMON_dataOUT
+R0
+!s110 1524306763
+!i10b 1
+!s100 :JhjF;F;eo2b761Y;Q[?C1
+I5bnLI=UmF75L8g=;DSbT:0
+R2
+!s105 SIMON_dataOUT_sv_unit
+S1
+R3
+w1524306761
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataOUT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataOUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+!s108 1524306763.000000
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\SIMON\System Verilog\SIMON_final1\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataOUT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataOUT.sv|
+!i113 1
+R6
+R7
+n@s@i@m@o@n_data@o@u@t
+vSIMON_function
+R0
+R1
+!i10b 1
+!s100 oLamm<KkaBz7@cz1M@V[Q0
+IhK3W?Q2=C1]f1<I]ViBIF2
+R2
+!s105 SIMON_function_sv_unit
+S1
+R3
+w1524224254
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_function.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_function.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\SIMON\System Verilog\SIMON_final1\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_function.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_function.sv|
+!i113 1
+R6
+R7
+n@s@i@m@o@n_function
+vSIMON_keyexpansion
+R0
+R1
+!i10b 1
+!s100 _Si2WlLH2_fKKM3V1k3ab3
+I527cM4IT5;gL38ZUj:SjO3
+R2
+!s105 SIMON_keyexpansion_sv_unit
+S1
+R3
+w1524224938
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_keyexpansion.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_keyexpansion.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\SIMON\System Verilog\SIMON_final1\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_keyexpansion.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_keyexpansion.sv|
+!i113 1
+R6
+R7
+n@s@i@m@o@n_keyexpansion
+vSIMON_round
+R0
+R1
+!i10b 1
+!s100 YDc4WGTCMgS5:^TWMiMHb1
+I14E9zA5H=FJm]<kjo[Hc^2
+R2
+!s105 SIMON_round_sv_unit
+S1
+R3
+w1524224376
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_round.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_round.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\SIMON\System Verilog\SIMON_final1\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_round.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_round.sv|
+!i113 1
+R6
+R7
+n@s@i@m@o@n_round
+vtest_SIMON_control
+R0
+Z8 !s110 1524306369
+!i10b 1
+!s100 OQ?e1OOV@lJXXAoT=;BT^1
+IBF:S=aY`^N[dhE_WV?m;j1
+R2
+!s105 test_SIMON_control_sv_unit
+S1
+R3
+w1524306363
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_control.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_control.sv
+L0 3
+R4
+r1
+!s85 0
+31
+Z9 !s108 1524306369.000000
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\SIMON\System Verilog\SIMON_final1\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_control.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_control.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_control
+vtest_SIMON_dataIN
+R0
+R8
+!i10b 1
+!s100 oJok=bm216PH8Lc0Ck83F0
+IV8aV]?]Mo4eJkUCXPGa?Y1
+R2
+!s105 test_SIMON_dataIN_sv_unit
+S1
+R3
+w1524306281
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_dataIN.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_dataIN.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\SIMON\System Verilog\SIMON_final1\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_dataIN.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_dataIN.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_data@i@n
+vtest_SIMON_dataOUT
+R0
+!s110 1524307456
+!i10b 1
+!s100 b^?2:@fFzHLi0UPS9j79W0
+IKiQU9KVbCVCj]9n9<@bOY2
+R2
+!s105 test_SIMON_dataOUT_sv_unit
+S1
+R3
+w1524307453
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_dataOUT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_dataOUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+!s108 1524307456.000000
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\SIMON\System Verilog\SIMON_final1\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_dataOUT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_dataOUT.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_data@o@u@t
