@@ -4,12 +4,12 @@ module test_SIMON_dataIN;
 
 //	INPUTS
 logic				clk, nR;
-logic				newPKT;
+logic				in_newPKT;
 logic				loadDATA, loadKEY;
 logic [(1+(`N/2)):0][7:0]	in;
 
 //	OUTPUTS
-logic				loadPKT, donePKT;
+logic				in_loadPKT, in_donePKT;
 logic				newKEY, newDATA;
 logic [7:0]			infoIN, countIN;
 logic [1:0][`N-1:0]		inDATA;
@@ -32,7 +32,7 @@ begin
 	@(posedge clk);
 	#10ns
 
-	newPKT = 1'b0;
+	in_newPKT = 1'b0;
 	loadDATA = 1'b0;
 	loadKEY = 1'b0;
 	testDATA = `in_DATA_TEST;
@@ -44,19 +44,19 @@ begin
 
 	nR = 1'b1;
 
-	repeat(2)	@(posedge clk);
+	@(posedge clk);
 	#10ns
 	
-	newPKT <= 1'b1;
+	in_newPKT <= 1'b1;
 end
 
-always @(posedge loadPKT)
+always @(posedge in_loadPKT)
 begin
 	repeat(2)	@(posedge clk);
 	#10ns
 	
 	countPKT <= countPKT + 1'b1;	
-	newPKT <= 1'b0;
+	in_newPKT <= 1'b0;
 end
 
 always @(posedge newDATA)
@@ -91,7 +91,7 @@ begin
 	loadKEY <= 1'b0;
 end
 
-always @(posedge donePKT)
+always @(posedge in_donePKT)
 begin
 	repeat(2)	@(posedge clk);
 	#10ns
@@ -99,7 +99,7 @@ begin
 	in <= { `in_iDATA_TEST, countPKT, testDATA, ~testDATA};
 	
 	@(posedge clk)
-	newPKT <= 1'b1;
+	in_newPKT <= 1'b1;
 	testDATA <= ~testDATA;
 end
 

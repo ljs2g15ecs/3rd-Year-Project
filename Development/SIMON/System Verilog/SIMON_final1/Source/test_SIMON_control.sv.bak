@@ -33,10 +33,10 @@ begin
 	newDATA = 1'b0;
 	newKEY = 1'b0;
 	readDATA = 1'b0;
-	infoIN = 8'hD0;
+	infoIN = `in_iDATA_TEST;
 	countIN = 'b0;
-	inDATA = `inTEST;
-	KEY = `keyTEST;	
+	inDATA = `in_DATA_TEST;
+	KEY = `in_KEY_TEST;	
 
 	@(posedge clk);
 	#10ns
@@ -47,21 +47,22 @@ begin
 	#10ns
 	
 	newKEY <= 1'b1;
+end
 
-	repeat(2)	@(posedge clk);
-	#10ns
-	
-	newKEY <= 1'b0;
-
-	repeat(10)	@(posedge clk);
-	#10ns
-	
-	newDATA <= 1'b1;
-
+always @(posedge loadDATA)
+begin
 	repeat(2)	@(posedge clk);
 	#10ns
 	
 	newDATA <= 1'b0;
+end
+
+always @(posedge loadKEY)
+begin
+	repeat(2)	@(posedge clk);
+	#10ns
+	
+	newKEY <= 1'b0;
 end
 
 endmodule

@@ -96,9 +96,15 @@ begin
 	begin
 		ENC_DEC <= 1'b0;
 		count <= 1'b0;
+		info <= 'b0;
+		infoOUT <= 'b0;
+		countPKT <= 'b0;
+		countOUT <= 'b0;
+		doneDATA <= 1'b0;
 	end
 	else
 	begin
+		if(doneDATA && readDATA)	doneDATA <= 1'b0;		
 		unique case(current)
 		INIT:
 		begin
@@ -119,6 +125,7 @@ begin
 		begin
 			if(next == LOAD)
 			begin
+				doneDATA <= 1'b1;				
 				infoOUT <= {info[7:5], ~info[4], info[3:0]};
 				countOUT <= countPKT;
 			end
@@ -136,7 +143,6 @@ begin
 		outDATA <= 'b0;
 		i <= 'b0;
 		loadDATA <= 1'b0;
-		doneDATA <= 1'b0;
 	end
 	else
 	begin
@@ -160,7 +166,6 @@ begin
 		begin		
 			if(next == LOAD)
 			begin
-				doneDATA <= 1'b1;
 				outDATA <= ENC_DEC ? o : {o[0], o[1]};
 			end
 		end

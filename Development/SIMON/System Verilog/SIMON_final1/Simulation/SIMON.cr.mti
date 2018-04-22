@@ -1,19 +1,9 @@
-{C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_defintions.svh} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_defintions.svh}
+{C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_keyexpansion.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_keyexpansion.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-
-} {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_round.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_round.sv}
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module SIMON_round
+-- Compiling module SIMON_keyexpansion
 
 Top level modules:
-	SIMON_round
-
-} {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_control.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_control.sv}
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module test_SIMON_control
-
-Top level modules:
-	test_SIMON_control
+	SIMON_keyexpansion
 
 } {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_dataIN.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_dataIN.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -22,19 +12,19 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	test_SIMON_dataIN
 
+} {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_control.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_control.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module test_SIMON_control
+
+Top level modules:
+	test_SIMON_control
+
 } {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_control.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_control.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module SIMON_control
 
 Top level modules:
 	SIMON_control
-
-} {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataIN.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataIN.sv}
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module SIMON_dataIN
-
-Top level modules:
-	SIMON_dataIN
 
 } {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_dataOUT.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_dataOUT.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -43,19 +33,12 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	test_SIMON_dataOUT
 
-} {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_function.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_function.sv}
+} {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_topPKT.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_topPKT.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module SIMON_function
+-- Compiling module SIMON_topPKT
 
 Top level modules:
-	SIMON_function
-
-} {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_keyexpansion.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_keyexpansion.sv}
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module SIMON_keyexpansion
-
-Top level modules:
-	SIMON_keyexpansion
+	SIMON_topPKT
 
 } {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataOUT.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataOUT.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -63,5 +46,36 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 
 Top level modules:
 	SIMON_dataOUT
+
+} {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_defintions.svh} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_defintions.svh}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+
+} {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_function.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_function.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module SIMON_function
+
+Top level modules:
+	SIMON_function
+
+} {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_round.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_round.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module SIMON_round
+
+Top level modules:
+	SIMON_round
+
+} {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_topPKT.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_topPKT.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module test_SIMON_topPKT
+
+Top level modules:
+	test_SIMON_topPKT
+
+} {} {}} {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataIN.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataIN.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module SIMON_dataIN
+
+Top level modules:
+	SIMON_dataIN
 
 } {} {}}

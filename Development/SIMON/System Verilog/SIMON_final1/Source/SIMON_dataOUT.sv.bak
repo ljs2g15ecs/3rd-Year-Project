@@ -2,11 +2,11 @@
 
 module SIMON_dataOUT
 (	input logic				clk, nR,
-	input logic				readPKT,
+	input logic				out_readPKT,
 	input logic				doneDATA,
 	input logic [7:0]			infoOUT, countOUT,
 	input logic [1:0][`N-1:0]		outDATA,
-	output logic 				donePKT,
+	output logic 				out_donePKT,
 	output logic 				readDATA,
 	output logic [(1+(`N/2)):0][7:0]	out			);
 
@@ -39,7 +39,7 @@ begin
 		info <= 'b0;
 		countPKT <= 'b0;
 		data <= 'b0;
-		donePKT <= 1'b0;
+		out_donePKT <= 1'b0;
 		readDATA <= 1'b0;
 		out <= 'b0;
 
@@ -47,7 +47,7 @@ begin
 	end
 	else
 	begin
-		if(donePKT && readPKT)		donePKT <= 1'b0;		
+		if(out_donePKT && out_readPKT)		out_donePKT <= 1'b0;		
 		unique case(current)
 		WAIT:
 		begin
@@ -69,11 +69,11 @@ begin
 		end
 		READ:
 		begin
-			if(info[5] && doneDATA)
+			if(info[5])
 			begin
 				data <= 'b0;
 			end
-			else if(~info[5] && doneDATA)
+			else if(~info[5])
 			begin
 				data[{~nBLOCK, 1'b0}] <= outDATA[0];
 				data[{~nBLOCK, 1'b1}] <= outDATA[1];
@@ -88,7 +88,7 @@ begin
 		begin
 			if(next == WAIT)
 			begin
-				donePKT <= 1'b1;
+				out_donePKT <= 1'b1;
 				out <= pkt;
 			end
 		end
@@ -120,7 +120,7 @@ begin
 	end
 	WRITE:
 	begin
-		if(donePKT || readPKT)		next = WRITE;
+		if(out_donePKT || readPKT)		next = WRITE;
 		else				next = WAIT;
 	end
 	endcase

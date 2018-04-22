@@ -4,13 +4,13 @@ module test_SIMON_dataOUT;
 
 //	INPUT
 logic				clk, nR;
-logic				readPKT;
+logic				out_readPKT;
 logic				doneDATA;
 logic [7:0]			infoOUT, countOUT;
 logic [1:0][`N-1:0]		outDATA;
 
 //	OUTPUT
-logic 				donePKT;
+logic 				out_donePKT;
 logic 				readDATA;
 logic [(1+(`N/2)):0][7:0]	out;
 
@@ -28,7 +28,7 @@ begin
 	@(posedge clk);
 	#10ns
 
-	readPKT = 1'b0;
+	out_readPKT = 1'b0;
 	doneDATA = 1'b0;
 	infoOUT = `out_iDATA_TEST;
 	countOUT = 8'h00;
@@ -39,7 +39,7 @@ begin
 
 	nR = 1'b1;
 
-	repeat(2)	@(posedge clk);
+	@(posedge clk);
 	#10ns
 	
 	doneDATA <= 1'b1;
@@ -58,12 +58,13 @@ begin
 	doneDATA <= 1'b1;
 end
 
-always @(posedge donePKT)
+always @(posedge out_donePKT)
 begin
 	repeat(2)	@(posedge clk);
 	#10ns
 	
-	readPKT <= 1'b1;
+	countOUT <= countOUT + 1'b1;
+	out_readPKT <= 1'b1;
 
 	repeat(2)	@(posedge clk);
 	#10ns

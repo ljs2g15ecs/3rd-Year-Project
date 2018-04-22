@@ -36,15 +36,15 @@ PACKET		CIPHER::compute		(	PACKET	x					)
 			if(doneKEY)
 			{
 				cout << "DATA";
-				if(x.get_i().enc_dec)	decryptDATA(x.get_w(0), x.get_w(1));
-				else					encryptDATA(x.get_w(0), x.get_w(1));
+				if(x.get_i().enc_dec)	encryptDATA(x.get_w(0), x.get_w(1));
+				else					decryptDATA(x.get_w(0), x.get_w(1));
 				out.assign(stateCIPHER.get_w(0), 0);
 				out.assign(stateCIPHER.get_w(1), 1);
 				pktCOUNT++;
 				if(!x.get_i().nBlocks) break;
 				
-				if(x.get_i().enc_dec)	decryptDATA(x.get_w(2), x.get_w(3));
-				else					encryptDATA(x.get_w(2), x.get_w(3));
+				if(x.get_i().enc_dec)	encryptDATA(x.get_w(2), x.get_w(3));
+				else					decryptDATA(x.get_w(2), x.get_w(3));
 				out.assign(stateCIPHER.get_w(0), 2);
 				out.assign(stateCIPHER.get_w(1), 3);
 			}
