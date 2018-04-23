@@ -1,0 +1,24 @@
+\contentsline {chapter}{Abstract}{1}{Doc-Start}
+\contentsline {chapter}{Contents}{2}{chapter*.1}
+\contentsline {chapter}{Acknowledgements}{3}{chapter*.2}
+\contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}
+\contentsline {chapter}{\numberline {2}Background Research \& Literature}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Internet of Things}{6}{section.2.1}
+\contentsline {section}{\numberline {2.2}Cryptography}{6}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Asymmetric Key}{7}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Symmetric Key}{7}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Decisions}{9}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Conventional Algorithms}{9}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Standardization}{9}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Other Algorithms}{10}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Decisions}{11}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}Lightweight Algorithms}{11}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}SIMON \& SPECK}{11}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Other Algorithms}{12}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Decisions}{12}{subsection.2.4.3}
+\contentsline {chapter}{\numberline {3}Initial Design Approaches}{14}{chapter.3}
+\contentsline {chapter}{\numberline {4}Final Design Approach}{15}{chapter.4}
+\contentsline {chapter}{\numberline {5}Experiments \& Results}{16}{chapter.5}
+\contentsline {chapter}{\numberline {6}Conclusion}{17}{chapter.6}
+\contentsline {chapter}{Bibliography}{18}{chapter*.4}
+\contentsline {chapter}{\numberline {A}New Appendix}{19}{appendix.A}
