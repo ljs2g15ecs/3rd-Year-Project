@@ -17,8 +17,15 @@
 \BOOKMARK [2][-]{subsection.2.4.2}{Other Algorithms}{section.2.4}% 17
 \BOOKMARK [2][-]{subsection.2.4.3}{Decisions}{section.2.4}% 18
 \BOOKMARK [0][-]{chapter.3}{Previous Work \046 Initial Design Approaches}{}% 19
-\BOOKMARK [0][-]{chapter.4}{Final Design Approach}{}% 20
-\BOOKMARK [0][-]{chapter.5}{Experiments \046 Results}{}% 21
-\BOOKMARK [0][-]{chapter.6}{Conclusion \046 Future Work}{}% 22
-\BOOKMARK [0][-]{chapter*.4}{Bibliography}{}% 23
-\BOOKMARK [0][-]{appendix.A}{New Appendix}{}% 24
+\BOOKMARK [1][-]{section.3.1}{First Approach}{chapter.3}% 20
+\BOOKMARK [2][-]{subsection.3.1.1}{Hosted C}{section.3.1}% 21
+\BOOKMARK [2][-]{subsection.3.1.2}{System Verilog}{section.3.1}% 22
+\BOOKMARK [1][-]{section.3.2}{Second Approach}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.2.1}{Hosted C}{section.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.2.2}{System Verilog}{section.3.2}% 25
+\BOOKMARK [0][-]{chapter.4}{Final Design Approach}{}% 26
+\BOOKMARK [1][-]{section.4.1}{Hosted C++}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.2}{System Verilog}{chapter.4}% 28
+\BOOKMARK [0][-]{chapter.5}{Experiments \046 Results}{}% 29
+\BOOKMARK [0][-]{chapter.6}{Conclusion \046 Future Work}{}% 30
+\BOOKMARK [0][-]{chapter*.4}{Bibliography}{}% 31

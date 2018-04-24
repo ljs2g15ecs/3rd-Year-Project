@@ -17,8 +17,7 @@
 \definecolor{mGray}{rgb}{0.5,0.5,0.5}
 \definecolor{backgroundColour}{rgb}{1,1,1}
 
-\lstdefinestyle{CStyle}
-{
+\lstdefinestyle{CStyle}{
     backgroundcolor=\color{backgroundColour},   
     commentstyle=\color{mGray},
     keywordstyle=\color{mGray},
@@ -56,7 +55,7 @@
         \\[2cm]Low Power Hardware Accelerated Internet of Things Cryptography
         \\[4cm]Project Supervisor: Mark Zwolinski
         \\Second Examiner:
-        \\[4cm]A project report submitted for the award of MEng Electronic Systems with Computer Systems
+        \\[4cm]A project progress report submitted for the award of MEng Electronic Systems with Computer Systems
         
     \end{center}
     \end{titlepage}
@@ -269,16 +268,135 @@
     \label{SPECK_R_round}
     R_{i+1} = R^{\beta}[R_i] \oplus (R^{-\alpha}[L_i] + R_i) \oplus K_i = R^{\beta}[R_i] \oplus L_{i+1}
     \end{equation}
-    As the aim of this project is to compare how an algorithm performs in hardware and software SIMON was chosen even though SPECK shows almost as good performance in hardware and much better in software. 
+    As the aim of this project is to compare how an algorithm performs in hardware and not software SIMON was chosen even though SPECK shows almost as good performance in hardware and much better in software. 
     
     \chapter{Previous Work \& Initial Design Approaches}
     \label{chapter:INITIAL}
+    Unfortunately, unlike some of the algorithms explored in \autoref{section:BACK} there isn't a standard SIMON/SPECK software library available for use and benchmarking with my design. For that a reason a software version needed to be developed that offers similar functionality to the hardware version, so both software and hardware were developed in parallel. Also, by working on the software version, in C or C++, it allowed me to increase my familiarity with the algorithm and provided some insight in to how the hardware version, in System Verilog, would be designed.
+    
+    For all versions of the SIMON algorithm developed for this project the most important factor is efficiency in terms of power consumption and resource use, with time efficiency not being an initial priority. All versions of this algorithm were developed not only with the description but also the pseudocode\textcolor{red}{[insert reference]}. In that document there is also a set of test vectors that define the ciphertext the algorithm should produce with given key and plaintext. Due to Feistel network structure of SIMON the decryption is just the same as encryption but with the key schedule reversed. This means that the encryption can be done in parallel to the key expansion but decryption requires the key to be pre-expanded. As some of the block cipher modes of operation\textcolor{red}{[insert reference]} only require encryption, two variants might be useful: one that can just encrypt data; and one with full functionality.
+    
+    \section{First Approach}
+    \label{section:first}
+    The first approach for this project was to develop the software and hardware to be flexible to the various data block and key sizes defined for SIMON, shown in \autoref{table:S+S}. As each system would only be computing with one mode at a time the decision of the variable sizes could be made at compile time and not during in runtime which be introduce some unnecessary inefficiency to the system. This could be achieved with C preprocessor macros for the software and, even though something similar is possible in System Verilog, parameters were passed between the modules. The macros and parameters were used to define the $n$ and $m$ values for each mode so that the input and output variables of each function in software and each module in hardware would be correct. They were also used to define the number of rounds that the round function should iterated and the value of $j$ used in the key expansion.
+    
+    \subsection{Hosted C}
+    \label{subsection:HOSTED1}
+    Initially the software was only developed to be used in a hosted environment but future approaches could made be for an embedded processor or something similar. With most languages used in software development the variable sizes and constrained to the data types available, with C offering only 8, 16, 32 and 64 bit variable types. This produced some difficulty with the 24 and 48 bit sizes required for this algorithm, but with the use of typedefs and bitfields in a structure it was solved. Using the values of $N$ and $M$ a $word$ data type was defined based on unsigned integers, uint$N$\_t, and the block, key and key schedule data types were setup using arrays of the base $word$ type. All of the code used to setup the data sizes and type can be seen in \autoref{lst:macro}.
+    
+    \begin{lstlisting}[label={lst:macro},caption={Macro definition of the word, block, key and key schedule types.},style=CStyle]
+#if	defined	S32_64
+    #define    N    16
+    #define    M    4
+    #define    T    32
+    #define    j    0
+#elif	defined S48_72
+    ...
+#elif	defined S48_96
+...
+
+typedef uint32_t	uint24_t;
+typedef uint64_t	uint48_t;
+#define TYPE_(x)	uint ## x ## _t
+#define TYPE(x)		TYPE_(x)
+#define UINT(x, n)	typedef struct n	{	TYPE(x) v : x;	}	n;
+UINT(N, word);
+
+typedef word 		block[2];
+typedef word 		key[M];
+typedef word		keys[T];
+    \end{lstlisting}
+    
+    After the data types were defined the rotate functions, which are used frequently in algorithm, were made to rotate the bits in a $word$ around a given number of bits. These rotate functions were used in the Feistel and round functions which is iterated for both encryption and decryption. The key expansion functions also use the rotate functions but they are more complicated than the round function as they differ slightly depending the number of words in the key, $M$, but more compiler directives can handle that problem. There are two separate key expansion function: one that can expand the key at the same time as the encryption in the iterative loop; and one that computes the schedule before encryption or decryption occurs in its own iterative loop. The code used for these functions can be seen in \autoref{lst:func} but a full listing is available in the \textcolor{green}{Appendix}. 
+    
+    \textcolor{red}{CHANGE/IMPROVE BELOW} 
+    
+    \begin{lstlisting}[label={lst:func},caption={Round and Feistel functions},style=CStyle]
+TYPE(N)	F		(word x					)
+{
+	return (ROTL(x,1) & ROTL(x,8)) ^ ROTL(x, 2);
+}
+
+void	ROUND	(block b,	word k		)
+{	
+	word tmp = b[0];
+	b[0].v = b[1].v ^ F(b[0]) ^ k.v;
+	b[1] = tmp;
+}
+    \end{lstlisting}
+    
+    For simplicity in the early stages the the software didn't have the capability of reading a file and encrypting or decrypting it so it could only use data stored in the code. This still allowed for the test vectors to be used and therefore correct functionality could still be confirmed.
+    
+    \textcolor{red}{ADD C TESTING BELOW [100]}
+    
+    \subsection{System Verilog}
+    \label{subsection:SV1}
+    As mentioned in \autoref{section:first} the parameter system was used to pass the values for word and key size and also the number of rounds to be iterated. Similar to the functions used in \autoref{subsection:HOSTED1} modules were used for the Feistel function, round function, key expansion function before being combined in the top level control module. Although, unlike the software version the rotate and logic operations used could be done with just combinational logic so the result is available almost instantaneously not after a few CPU instruction cycles.
+    
+    \textcolor{red}{ADD SYSTEM VERILOG LISTINGS BELOW [100]}
+    
+    \textcolor{red}{ADD SYSTEM VERILOG SIMULATIONS BELOW [200]}
+    
+    \textcolor{red}{ADD SYSTEM VERILOG SYNTHESIS BELOW [100]}
+    
+    \section{Second Approach}
+    \label{section:second}
+    With the basic functionality working in \autoref{section:first} improvements could be made to the power consumption and resource use with methods like: code minimisation; logic minimisation; clock gating. Also more functionality could be added to increase the usability of the algorithm. As the aim of this project is to design an efficient version of this algorithm in hardware not software, most of the changes in this approach were made in the System Verilog code.
+    
+    \subsection{Hosted C}
+    \label{subsection:HOSTED2}
+    
+    \textcolor{red}{ADD C CHANGES BELOW [200]}
+    
+    \textcolor{red}{ADD C TESTING BELOW [200]}   
+    
+    \subsection{System Verilog}
+    \label{subsection:SV2}
+    
+    \textcolor{red}{ADD SYSTEM VERILOG CHANGES BELOW [200]}
+    
+    \textcolor{red}{ADD SYSTEM VERILOG LISTINGS BELOW [100]}
+    
+    \textcolor{red}{ADD SYSTEM VERILOG SIMULATIONS BELOW [200]}
+    
+    \textcolor{red}{ADD SYSTEM VERILOG SYNTHESIS BELOW [100]}
     
     \chapter{Final Design Approach}
     \label{chapter:FINAL}
+    For the final approach the idea was to ensure that the control module remains in the $execute$ state as much as possible to ensure that the system is always processing data and thus increase the throughput. Having the hardware active all the time does increase the overall power consumption and might negate the effects of the clock gating added in \autoref{section:second} but as the throughput is increased the power consumed per bit or byte of data processed is lower.
+    
+    In a full system the packets would be sent using a serial protocol like $I^2C$ but the packets being sent would also include information about what and how much data is being sent in a packet. As there are ten modes of the SIMON algorithm four bits of the information are used to identify what mode of SIMON the data is intended for. This leaves another 4 bits to be used in a byte that were used individually for different parameters of the packet. One bit was used to indicate whether the data is to be processed or a new key to be loaded. Another tells the hardware to encrypt or decrypt the data, obviously irrelevant if a new key is being sent. As for most modes the number of words in the key are more than the two in a block it was decided that a constant four words, or two blocks, would be sent in each packet but an option to just send one block would be controlled by one bit. The last bit in this byte tells the hardware that the packet is either meant to be inputted to it or outputted from it. To help the hardware keep track of the packets another byte was used to as a packet ID, which increments with each new packet.
+    
+    \textcolor{red}{ADD PACKET DIAGRAM}
+    
+    \section{Hosted C++}
+    \label{section:HOSTEDF}
+    
+    \textcolor{red}{ADD C++ CHANGES BELOW [500]}
+    
+    As the packets need to be setup by the a processor and includes a few data types and with some individual bits needing to be controlled it made sense to switch to an object orientated language instead of C so naturally C++ was chosen. While it would be possible to develop the functionality required in C it would take time and effort to get functionality already provided by C++.
+    
+    \textcolor{red}{ADD C++ TESTING BELOW [200]} 
+    
+    \section{System Verilog}
+    \label{section:SVF}
+    
+    \textcolor{red}{ADD SYSTEM VERILOG CHANGES BELOW [500]}
+    
+    \textcolor{red}{ADD SYSTEM VERILOG LISTINGS BELOW [100]}
+    
+    \textcolor{red}{ADD SYSTEM VERILOG SIMULATIONS BELOW [200]}
+    
+    \textcolor{red}{ADD SYSTEM VERILOG SYNTHESIS BELOW [100]}
     
     \chapter{Experiments \& Results}
     \label{chapter:RESULT}
+    
+    \textcolor{red}{ADD THROUGHPUT TESTING BELOW [400]}
+    
+    \textcolor{red}{ADD POWER TESTING BELOW [300]}
+    
+    \textcolor{red}{ADD AREA TESTING BELOW [300]}
     
     \chapter{Conclusion \& Future Work}
     \label{chapter:CONC}
@@ -288,7 +406,5 @@
     \addcontentsline{toc}{chapter}{Bibliography}
     
     \appendix    
-    
-    \chapter{New Appendix}
     
 \end{document}

@@ -17,8 +17,15 @@
 \contentsline {subsection}{\numberline {2.4.2}Other Algorithms}{12}{subsection.2.4.2}
 \contentsline {subsection}{\numberline {2.4.3}Decisions}{12}{subsection.2.4.3}
 \contentsline {chapter}{\numberline {3}Previous Work \& Initial Design Approaches}{14}{chapter.3}
-\contentsline {chapter}{\numberline {4}Final Design Approach}{15}{chapter.4}
-\contentsline {chapter}{\numberline {5}Experiments \& Results}{16}{chapter.5}
-\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{17}{chapter.6}
-\contentsline {chapter}{Bibliography}{18}{chapter*.4}
-\contentsline {chapter}{\numberline {A}New Appendix}{19}{appendix.A}
+\contentsline {section}{\numberline {3.1}First Approach}{14}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Hosted C}{15}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}System Verilog}{16}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Second Approach}{16}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Hosted C}{16}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}System Verilog}{17}{subsection.3.2.2}
+\contentsline {chapter}{\numberline {4}Final Design Approach}{18}{chapter.4}
+\contentsline {section}{\numberline {4.1}Hosted C++}{18}{section.4.1}
+\contentsline {section}{\numberline {4.2}System Verilog}{19}{section.4.2}
+\contentsline {chapter}{\numberline {5}Experiments \& Results}{20}{chapter.5}
+\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{21}{chapter.6}
+\contentsline {chapter}{Bibliography}{22}{chapter*.4}
