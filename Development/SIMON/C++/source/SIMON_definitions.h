@@ -388,4 +388,6 @@ private:
 	
 };
 
+void			testClass	(								);
+
 #endif

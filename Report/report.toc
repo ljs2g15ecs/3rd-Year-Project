@@ -16,9 +16,9 @@
 \contentsline {subsection}{\numberline {2.4.1}SIMON \& SPECK}{11}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Other Algorithms}{12}{subsection.2.4.2}
 \contentsline {subsection}{\numberline {2.4.3}Decisions}{12}{subsection.2.4.3}
-\contentsline {chapter}{\numberline {3}Initial Design Approaches}{14}{chapter.3}
+\contentsline {chapter}{\numberline {3}Previous Work \& Initial Design Approaches}{14}{chapter.3}
 \contentsline {chapter}{\numberline {4}Final Design Approach}{15}{chapter.4}
 \contentsline {chapter}{\numberline {5}Experiments \& Results}{16}{chapter.5}
-\contentsline {chapter}{\numberline {6}Conclusion}{17}{chapter.6}
+\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{17}{chapter.6}
 \contentsline {chapter}{Bibliography}{18}{chapter*.4}
 \contentsline {chapter}{\numberline {A}New Appendix}{19}{appendix.A}
