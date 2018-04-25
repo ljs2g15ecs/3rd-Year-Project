@@ -28,7 +28,7 @@ end
 logic gateClk;
 assign gateClk = ~doneKey & clk;
 
-always_ff @(posedge clk or negedge nR)
+always_ff @(posedge gateClk or negedge nR)
 begin
 	if(~nR)
 	begin

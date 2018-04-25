@@ -1,6 +1,5 @@
 #include "SIMON_test.h"
 #include "SIMON_host.h"
-#include "SIMON_file.h"
 #include <stdio.h>
 
 #if	defined S32_64	
@@ -55,7 +54,6 @@
 
 void	test()
 {
-	///*
 	printf("|\tTESTING PRE KEY EXPANSION\t\t|");
 	
 	NEWLINE();
@@ -86,7 +84,6 @@ void	test()
 	PRINTHEX(c[0].v);	PRINTHEX(c[1].v);
 	printf("\t|\tTEST\t|\n");
 	
-	///*
 	plain[0].v = 0;
 	plain[1].v = 0;
 	DECRYPT_PRE(c, plain, k);
@@ -95,7 +92,6 @@ void	test()
 	printf("<-");
 	PRINTHEX(c[0].v);	PRINTHEX(c[1].v);
 	printf("\t|\tDECRYPT\t|\n");
-	//*/
 	
 	printf("|\tTESTING IN LOOP KEY EXPANSION\t\t|");
 	
@@ -124,74 +120,5 @@ void	test()
 	printf("->");
 	PRINTHEX(c[0].v);	PRINTHEX(c[1].v);
 	printf("\t|\tTEST\t|\n");
-	//*/
-	
-	/*
-	word a;
-	a = k[0];
-	PRINTHEX(a.v);
-	//*/
 }
 
-void	test1()
-{
-	printf("-----------------------------------");	NEWLINE();
-	
-	printf("WORD SIZE:\t%d\n", sizeof(word));
-	printf("BLOCK SIZE:\t%d\n", sizeof(block));
-	printf("KEY SIZE:\t%d\n", sizeof(key));
-	printf("KEY SCHEDULE SIZE:\t%d\n", sizeof(keys));
-	
-	printf("-----------------------------------");	NEWLINE();
-	
-	printf("INTERNAL SIZE:\t%d\n", sizeof(INTERNAL));
-	printf("PACKET SIZE:\t%d\n", sizeof(PACKET));
-	
-	printf("-----------------------------------");
-	
-	PACKET inStream[3], outStream[3];
-	
-	buildInputPACKET(&inStream[0]);	addKey(&inStream[0], k);
-	buildInputPACKET(&inStream[1]);	addBlocks(&inStream[1], p, c);
-	
-	outStream[0] = CIPHER(inStream[0]);
-	outStream[1] = CIPHER(inStream[1]);
-	
-	buildInputPACKET(&inStream[2]);
-	TYPE(8) i;
-	for(i=0; i<4; i++)	inStream[2].data[i] = outStream[1].data[i];
-	inStream[2].enc_dec = 1;
-	inStream[2].nBlocks = 1;
-	outStream[2] = CIPHER(inStream[2]);
-	
-	printSTREAM(inStream[0], outStream[0]);
-	printSTREAM(inStream[1], outStream[1]);
-	printSTREAM(inStream[2], outStream[2]);
-}
-
-void	test2()
-{
-	readFile();
-}
-
-void	printPACKETDATA(PACKET p)
-{
-	TYPE(8) i;
-	printf("|");
-	for(i=0; i<4; i++)	{	printf("\t");	PRINTHEX(p.data[i].v);	}
-	printf("\t");
-}
-
-void	printSTREAM(PACKET in, PACKET out)
-{
-	if((in.in_out != out.in_out) && (in.mode == out.mode) && (in.data_key == out.data_key) && (in.enc_dec == out.enc_dec) && (in.count == out.count))
-	NEWLINE();
-	printf("| %d ", in.mode);
-	if(in.data_key)	printf("| KEY! ");
-	else			printf("| DATA ");
-	if(in.enc_dec)	printf("| DEC ");
-	else			printf("| ENC ");
-	printf("|\t%d\t", in.count);
-	printPACKETDATA(in);	printPACKETDATA(out);
-	printf("|");
-}

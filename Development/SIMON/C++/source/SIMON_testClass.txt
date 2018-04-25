@@ -1,5 +1,0 @@
-#include "SIMON_definitions.h"
-
-#include <iostream>
-#include <iomanip>
-using namespace std;

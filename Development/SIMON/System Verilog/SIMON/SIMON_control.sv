@@ -77,7 +77,6 @@ begin
 	endcase
 end
 
-assign cipher = done ? c : 'bZ;
 
 
 endmodule

@@ -5,7 +5,7 @@ module SIMON_keyexpansion_v2
 	parameter C = 5			)
  (	input logic clk, nR,
 	input logic newKey,
-	input logic [C-1:0] count,		// CHANGE TO INPUT
+	input logic [C-1:0] count,
 	input logic [M-1:0][N-1:0] key,
 	output logic ldKey, doneKey,
 	output logic [N-1:0] rKey	);

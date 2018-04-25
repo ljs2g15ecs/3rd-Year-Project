@@ -1,0 +1,101 @@
+module SIMON_control_PRE
+#(
+parameter		N =	16,
+parameter		M =	4,
+parameter		T =	32,
+parameter		Cb =	5
+)
+(
+input logic			clk, nR,
+input logic			newData, readData,
+input logic			enc_dec,
+input logic [2*N-1:0]		plain,
+input logic [M-1:0][N-1:0]	key,
+output logic			doneData, doneKey,
+output logic [2*N-1:0]		cipher
+);
+
+//	STATE LOGIC
+typedef enum {s0, s1, s2, s3} 	state;
+state 				current, next;
+
+logic [Cb-1:0]			count;
+
+
+//	KEY EXPANSION LOGIC
+logic [T-1:0][N-1:0]		keys;
+
+SIMON_keyexpansion_PRE		ke(.*);
+
+//	ROUNDD FUNCTION LOGIC
+logic [N-1:0] 			rKey;
+logic [2*N-1:0] 		p, c;
+
+logic				ENCDEC;
+assign rKey = ENCDEC ? keys[count] : keys[T-(count+1)];
+
+SIMON_round r(.in(p), .key(rKey), . out(c) );
+
+always_ff @(posedge clk or negedge nR)
+begin
+	if(~nR)
+	begin
+		current <= s0;
+		count <= 'b0;
+		doneData <= 1'b0;
+		p <= 'b0;
+		cipher <= 'b0;
+	end
+	else
+	begin
+		unique case(current)
+		s0:
+		begin
+			ENCDEC <= enc_dec;
+		end
+		s1:
+		begin
+			if(ENCDEC)	p <= plain;
+			else		p <= {plain[N-1:0], plain[2*N-1:N]};
+			count <= 'b0;
+			doneData <= 1'b0;
+		end
+		s2:
+		begin
+			
+			p <= c;
+			count <= count + 1'b1;
+		end
+		s3:
+		begin
+			cipher <= ENCDEC ? p : {p[N-1:0], p[2*N-1:N]};
+			doneData <= 1'b1;
+		end
+		endcase
+		current <= next;
+	end
+end
+
+always_comb
+begin
+	unique case(current)
+	s0:
+	begin
+		if(newData && doneKey)	next = s1;
+		else			next = s0;
+	end
+	s1:				next = s2;
+	s2:
+	begin
+		if(count != T-1)	next = s2;
+		else			next = s3;
+	end
+	s3:
+	begin
+		if(readData)		next = s0;
+		else			next = s3;
+	end
+	endcase
+end
+
+endmodule

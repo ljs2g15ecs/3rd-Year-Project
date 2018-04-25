@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.11)  24 APR 2018 12:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.11)  25 APR 2018 15:50
 entering extended mode
 **./report.tex
 (report.tex
@@ -397,8 +397,8 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <142.26378> not available
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.70     \end{abstract}
-                        [1] (report.toc
+l.69 	\end{abstract}
+                     [1] (report.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 6.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -413,8 +413,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.75     \chapter
-                 *{Acknowledgements} [2
+l.74 	\chapter
+              *{Acknowledgements} [2
 
 ] [3
 
@@ -425,147 +425,147 @@ Chapter 1.
 ] [5]
 Chapter 2.
 
-LaTeX Warning: Citation `Juels2005' on page 6 undefined on input line 98.
+LaTeX Warning: Citation `Juels2005' on page 6 undefined on input line 97.
 
 
-LaTeX Warning: Citation `David2011' on page 6 undefined on input line 98.
+LaTeX Warning: Citation `David2011' on page 6 undefined on input line 97.
 
 
 LaTeX Warning: Citation `AlfredJ.Menezes1996' on page 6 undefined on input line
- 105.
+ 104.
 
 [6
 
 ]
 
 LaTeX Warning: Citation `BruceSchneier2000' on page 7 undefined on input line 1
-12.
+11.
 
 
 LaTeX Warning: Citation `AlfredJ.Menezes1996' on page 7 undefined on input line
- 112.
+ 111.
 
 
 LaTeX Warning: Citation `AlfredJ.Menezes1996' on page 7 undefined on input line
- 117.
+ 116.
 
 
-LaTeX Warning: Citation `Shannon1949' on page 7 undefined on input line 119.
+LaTeX Warning: Citation `Shannon1949' on page 7 undefined on input line 118.
 
 
-LaTeX Warning: Citation `Feistel1973' on page 7 undefined on input line 119.
+LaTeX Warning: Citation `Feistel1973' on page 7 undefined on input line 118.
 
 
 LaTeX Warning: Citation `AlfredJ.Menezes1996' on page 7 undefined on input line
- 119.
+ 118.
 
 [7]
 
-LaTeX Warning: Citation `Shannon1949' on page 8 undefined on input line 155.
+LaTeX Warning: Citation `Shannon1949' on page 8 undefined on input line 154.
 
 
-LaTeX Warning: Citation `Robshaw1995' on page 8 undefined on input line 168.
+LaTeX Warning: Citation `Robshaw1995' on page 8 undefined on input line 167.
 
 
-LaTeX Warning: Citation `Dworkin2001' on page 8 undefined on input line 170.
+LaTeX Warning: Citation `Dworkin2001' on page 8 undefined on input line 169.
 
 [8]
 
 LaTeX Warning: Citation `ComputerSecurityDivision1999' on page 9 undefined on i
-nput line 183.
+nput line 182.
 
 
 LaTeX Warning: Citation `ComputerSecurityDivision2001' on page 9 undefined on i
-nput line 183.
+nput line 182.
 
 
 LaTeX Warning: Citation `BruceSchneier1994' on page 9 undefined on input line 1
-83.
+82.
 
 
 LaTeX Warning: Citation `ComputerSecurityDivision1999' on page 9 undefined on i
-nput line 189.
+nput line 185.
 
 [9]
 
-LaTeX Warning: Citation `Team' on page 10 undefined on input line 191.
+LaTeX Warning: Citation `Team' on page 10 undefined on input line 187.
 
 
 LaTeX Warning: Citation `ComputerSecurityDivision2001' on page 10 undefined on 
-input line 191.
+input line 187.
 
 
-LaTeX Warning: Citation `Strachacki2008' on page 10 undefined on input line 197
+LaTeX Warning: Citation `Strachacki2008' on page 10 undefined on input line 193
 .
 
 
-LaTeX Warning: Citation `Gomes2016' on page 10 undefined on input line 197.
+LaTeX Warning: Citation `Gomes2016' on page 10 undefined on input line 193.
 
 
-LaTeX Warning: Citation `Moradi2011' on page 10 undefined on input line 197.
+LaTeX Warning: Citation `Moradi2011' on page 10 undefined on input line 193.
 
 
 LaTeX Warning: Citation `BruceSchneier1994' on page 10 undefined on input line 
-204.
+198.
 
 
-LaTeX Warning: Citation `Chatterjee2014' on page 10 undefined on input line 204
+LaTeX Warning: Citation `Chatterjee2014' on page 10 undefined on input line 198
 .
 
 
-LaTeX Warning: Citation `Prasetyo2014' on page 10 undefined on input line 204.
+LaTeX Warning: Citation `Prasetyo2014' on page 10 undefined on input line 198.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [10]
 
-LaTeX Warning: Citation `Bogdanov2007' on page 11 undefined on input line 211.
+LaTeX Warning: Citation `Bogdanov2007' on page 11 undefined on input line 205.
 
 
-LaTeX Warning: Citation `Borghoff2012' on page 11 undefined on input line 211.
+LaTeX Warning: Citation `Borghoff2012' on page 11 undefined on input line 205.
 
 
-LaTeX Warning: Citation `Beaulieu2013' on page 11 undefined on input line 211.
+LaTeX Warning: Citation `Beaulieu2013' on page 11 undefined on input line 205.
 
 
-LaTeX Warning: Citation `Mckay' on page 11 undefined on input line 211.
+LaTeX Warning: Citation `Mckay' on page 11 undefined on input line 205.
 
 
-LaTeX Warning: Citation `Beaulieu2015' on page 11 undefined on input line 239.
+LaTeX Warning: Citation `Beaulieu2015' on page 11 undefined on input line 232.
 
 
-LaTeX Warning: Citation `Beaulieu2015' on page 11 undefined on input line 239.
+LaTeX Warning: Citation `Beaulieu2015' on page 11 undefined on input line 232.
 
 
-LaTeX Warning: Citation `Aysu2014' on page 11 undefined on input line 244.
+LaTeX Warning: Citation `Aysu2014' on page 11 undefined on input line 237.
 
 
-LaTeX Warning: Citation `Shahverdi2015' on page 11 undefined on input line 244.
+LaTeX Warning: Citation `Shahverdi2015' on page 11 undefined on input line 237.
 
 
 
-LaTeX Warning: Citation `Beaulieu2013' on page 11 undefined on input line 244.
+LaTeX Warning: Citation `Beaulieu2013' on page 11 undefined on input line 237.
 
 [11]
+
+LaTeX Warning: Reference `Feistel' on page 12 undefined on input line 240.
+
+
+LaTeX Warning: Citation `Banik2015' on page 12 undefined on input line 245.
+
 
 LaTeX Warning: Reference `Feistel' on page 12 undefined on input line 247.
 
 
-LaTeX Warning: Reference `chapter:research' on page 12 undefined on input line 
-252.
-
-
-LaTeX Warning: Citation `Banik2015' on page 12 undefined on input line 252.
-
-
 LaTeX Warning: Reference `Feistel' on page 12 undefined on input line 254.
-
-
-LaTeX Warning: Reference `Feistel' on page 12 undefined on input line 261.
 
 [12] [13]
 Chapter 3.
+
+LaTeX Warning: Reference `section:BACK' on page 14 undefined on input line 269.
+
+
 [14
 
 ] (C:\Users\lewis\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
@@ -574,26 +574,34 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 287.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 302.
+nput line 281.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 296.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 302.
- [15] [16] [17]
-Chapter 4.
-[18
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 296.
+ [15]
+Underfull \vbox (badness 1377) has occurred while \output is active []
 
-] [19]
+ [16]
+[17] [18]
+Chapter 4.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19
+
+]
+[20]
 Chapter 5.
-[20
+[21
 
 ]
 Chapter 6.
-(report.bbl [21
+(report.bbl [22
 
 ]
 Underfull \hbox (badness 1107) in paragraph at lines 26--30
@@ -608,14 +616,14 @@ cars-[]cellular-[]iot-[]vehicle-[]telematics/$[]
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 410.
- [22
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 418.
+ [23
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 410.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 418.
  (report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 410.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 410.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 418.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 418.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 32C22AA03B3CDD80C1721B1B4A48D4CA;1959.
 
@@ -626,19 +634,16 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 410.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 418.
  ) 
 Here is how much of TeX's memory you used:
- 9018 strings out of 493323
- 135232 string characters out of 3139065
- 402713 words of memory out of 3000000
+ 9019 strings out of 493323
+ 135235 string characters out of 3139065
+ 401716 words of memory out of 3000000
  12376 multiletter control sequences out of 15000+200000
  8500 words of font info for 30 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,11n,58p,1593b,1749s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,11n,58p,1590b,1749s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTe
@@ -648,9 +653,9 @@ public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 ><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on report.pdf (24 pages, 218324 bytes).
+Output written on report.pdf (25 pages, 224720 bytes).
 PDF statistics:
- 398 PDF objects out of 1000 (max. 8388607)
- 100 named destinations out of 1000 (max. 500000)
+ 407 PDF objects out of 1000 (max. 8388607)
+ 101 named destinations out of 1000 (max. 500000)
  249 words of extra memory for PDF output out of 10000 (max. 10000000)
 

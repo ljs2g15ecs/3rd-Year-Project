@@ -11,6 +11,7 @@ obj		= $(patsubst $(src_dir)/%.c,$(build)/%.o,$(src))
 S = S32_64
 
 all: $(build) $(PROG)
+	$(PROG)
 
 $(build):
 	mkdir $(build)

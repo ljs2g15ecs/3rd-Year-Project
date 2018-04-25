@@ -1,5 +1,4 @@
 #include "SIMON_host.h"
-#include "SIMON_host1.h"
 #include <stdio.h>
 
 const TYPE(8) z[5][62] = {

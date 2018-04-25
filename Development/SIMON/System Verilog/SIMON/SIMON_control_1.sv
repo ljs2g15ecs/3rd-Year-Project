@@ -1,25 +1,32 @@
 module SIMON_control_1
-#(	parameter N = 16,
-	parameter M = 4,
-	parameter T = 32		)
- (	input logic clk, nReset,
-	input logic enc_dec,
-	output int count,
-	output logic kLd, kExp, pLd,
-	output logic done,
-	input logic [2*N-1:0] plain,
-	output logic [2*N-1:0] cipher,
-	input logic [N-1:0] key[M-1:0]	);
+#(
+parameter		N =	16,
+parameter		M =	4,
+parameter		T =	32
+)
+(
+input logic 		clk, nReset,
+input logic 		enc_dec,
+output int 		count,
+output logic 		kLd, kExp, pLd,
+output logic 		done,
+input logic [2*N-1:0] 	plain,
+output logic [2*N-1:0] 	cipher,
+input logic [N-1:0] 	key[M-1:0]
+);
 
-logic [N-1:0] keys[T-1:0];
+logic [N-1:0] 		keys[T-1:0];
+
 SIMON_pre_keyexpansion k(.clk(clk), .nReset(nReset), .done(kExp), .key(key),  .keys(keys));
 
-logic [N-1:0] rKey;
-logic [2*N-1:0] p, c;
+logic [N-1:0] 		rKey;
+logic [2*N-1:0] 	p, c;
+
 SIMON_round r(.block(p), .key(rKey), . out(c) );
 
 typedef enum {s0, s1, s2, s3} state;
-state current, next;
+
+state 			current, next;
 
 always_ff @(posedge clk, negedge nReset)
 begin
@@ -53,7 +60,7 @@ end
 always_comb
 begin
 	unique case(current)
-	s0:
+	s0:	//	LOAD
 	begin
 		kLd = 1;
 		pLd = 1;
@@ -64,17 +71,18 @@ begin
 			else		next = s1;
 		end
 	end
-	s1:
+	s1:	//	ENCRYPT
 	begin
 		if(count == T-1)	next = s3;
 	end
-	s2:
+	s2:	//	DECRYPT
 	begin
 		if(count == T-1)	next = s3;
 	end
-	s3:
+	s3:	//	DONE
 	begin
 		done = 1;
+
 	end
 	endcase
 end
