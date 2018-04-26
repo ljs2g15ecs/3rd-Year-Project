@@ -19,13 +19,13 @@
 \contentsline {chapter}{\numberline {3}Previous Work \& Initial Design Approaches}{14}{chapter.3}
 \contentsline {section}{\numberline {3.1}First Approach}{14}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Hosted C}{15}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}System Verilog}{16}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Second Approach}{17}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Hosted C}{17}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}System Verilog}{17}{subsection.3.2.2}
-\contentsline {chapter}{\numberline {4}Final Design Approach}{19}{chapter.4}
-\contentsline {section}{\numberline {4.1}Hosted C++}{20}{section.4.1}
-\contentsline {section}{\numberline {4.2}System Verilog}{20}{section.4.2}
-\contentsline {chapter}{\numberline {5}Experiments \& Results}{21}{chapter.5}
-\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{22}{chapter.6}
-\contentsline {chapter}{Bibliography}{23}{chapter*.4}
+\contentsline {subsection}{\numberline {3.1.2}System Verilog}{17}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Second Approach}{18}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Hosted C}{18}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}System Verilog}{18}{subsection.3.2.2}
+\contentsline {chapter}{\numberline {4}Final Design Approach}{20}{chapter.4}
+\contentsline {section}{\numberline {4.1}Hosted C++}{21}{section.4.1}
+\contentsline {section}{\numberline {4.2}System Verilog}{21}{section.4.2}
+\contentsline {chapter}{\numberline {5}Experiments \& Results}{23}{chapter.5}
+\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{24}{chapter.6}
+\contentsline {chapter}{Bibliography}{25}{chapter*.4}

@@ -55,7 +55,7 @@
 		\\[2cm]Low Power Hardware Accelerated Internet of Things Cryptography
 		\\[4cm]Project Supervisor: Mark Zwolinski
 		\\Second Examiner:
-		\\[4cm]A project progress report submitted for the award of MEng Electronic Systems with Computer Systems
+		\\[4cm]A project report submitted for the award of MEng Electronic Systems with Computer Systems
         
 	\end{center}
 	\end{titlepage}
@@ -76,7 +76,7 @@
     
 	\chapter{Introduction}
 	\label{chapter:intro}
-	As the speed and global reach of the internet has expanded over the years the number of devices connected to it has rapidly increased. These devices are no longer just the servers and the PC's connected to them, they now include consumer devices like smartphones, tablets, and games consoles. However, even more recently the idea of connecting the internet to various `dumb' appliances like: simple light switches; kettles; fridges and many more; to make them `smart' devices that can be controlled through small embedded processors has emerged. The idea of connecting such devices to internet has been dubbed `Internet of Things' or `IoT' and has the aim to make our lives simpler. The `IoT' concept is also being explored for more industrial applications such as: automated factories; and city electrical grids; and even a network of self-driving cars\cite{Hegde} but this is far more advanced than the basic `smart' home.
+	As the speed and global reach of the internet has expanded over the years the number of devices connected to it has rapidly increased. These devices are no longer just the servers and the PC's connected to them, they now include consumer devices like smartphones, tablets, and games consoles. However, even more recently the idea of connecting the internet to various `dumb' appliances like: simple light switches; kettles; fridges and many more; to make them `smart' devices that can be controlled through small embedded processors has emerged. The idea of connecting such devices to internet has been dubbed `Internet of Things' or `IoT' and has the aim to make our lives simpler. The `IoT' concept is also being explored for more industrial applications such as: automated factories; city electrical grids; and even a network of self-driving cars\cite{Hegde} but this is far more advanced than the basic `smart' home.
     
 	Due to the wide range of products that a connected IoT device can be applied to improve the efficiency and/or usefulness, it has been predicted that billions of devices will be in use by 2020\cite{Evans2011}. This also means that the complexity of the devices varies greatly. The one thing that all of these devices have in common though is that they need to be secure as they communicate sensitive and private data through an open channel on the internet between the user and the device. To keep the potential adversaries from accessing the data and possibly controlling numerous connected devices, maliciously or not, an encryption algorithm can be used.
     
@@ -92,9 +92,9 @@
 	\section{Internet of Things}
 	\label{section:IoT}
     
-	\textcolor{red}{CHANGE/IMPROVE BELOW}
+	\textcolor{red}{CHANGE/IMPROVE BELOW [100]}
     
-	As mentioned in \autoref{chapter:intro} there are many IoT devices that require varying levels of security and have to be protected against different of attacks, like side channel attacks. The purpose of this subsection is to discover what these devices are and what properties are required in the encryption algorithm in terms of throughput, power or energy consumption, software or hardware restrictions and security. Due to IoT devices having limited resources \cite{Juels2005} suggests that 2000 Gate Equivalents in hardware is the maximum size for most embedded platforms but even that might be to big for devices like RFID tags. Power consumption should also be kept to as little as possible but \cite{David2011} outlines a limit of tens of micro Watts ($\mu W$) for RFID tags.
+	As mentioned in \autoref{chapter:intro} there are many IoT devices that require varying levels of security and have to be protected against different of attacks, like side channel attacks. The purpose of this subsection is to discover what these devices are and what properties are required in the encryption algorithm in terms of throughput, power or energy consumption, software or hardware restrictions and security. Due to IoT devices having limited resources a provisional limit of 2000 Gate Equivalents in hardware is the maximum size for most embedded platforms but even that might be to big for devices like RFID tags\cite{Juels2005}. Power consumption should also be kept to as little as possible but a limit of tens of micro Watts ($\mu W$) for RFID tags is suggested\cite{David2011}.
     
 	\section{Cryptography}
 	\label{section:crypt}
@@ -133,6 +133,7 @@
 %            \label{SP}
 %    \end{subfigure}
 %    \end{figure}
+
 
 	\begin{equation}
 	\label{F_L_ENC}
@@ -185,10 +186,7 @@
 	DES, which stands for Data Encryption Standard, is one the earliest block ciphers used in the computer age and it was developed by IBM in the 1970s based on their earlier cipher Lucifer\textcolor{red}{[insert reference]}. As with Lucifer it was designed around a Feistel network but the round function used also has a SP network structure to it\textcolor{red}{[insert reference]},but the S-boxes aren't a one-to-one function but rather output 4 bits from a 6 bit input. It has the name Data Encryption Standard as it was accepted as the standard encryption algorithm by the US National Bureau of Standards (NBS), now the National Institute of Standards and Technology (NIST), in 1977 after it was altered by the National Security Agency (NSA), which caused some controversy\cite{ComputerSecurityDivision1999}.
     
 	DES was used for about two decades but in the 1990s several successful attacks proved its weakness\cite{Team} so in 1997 NIST started a selection process to find its replacement. Due the controversy of the NSAs involvement and comments from the cryptography community the selection process was as transparent as possible\textcolor{red}{[insert reference]}. Many algorithms were submitted as candidates for the standard but the finalists were: MARS, RC6, Rijndael, Serpent, and Twofish\textcolor{red}{[insert reference]}. It took three years to decide on the algorithm to be set as the standard which was announced as Rijndael in 2000 and the standard was et in 2001, with the 128, 192, 256 bit keys being used in the standard\cite{ComputerSecurityDivision2001}. Unlike DES, AES uses a SP network as it is efficient, in time, in both hardware and software. The round function treats the block as a $4x4$ byte matrix and performs multiple steps on the data: sub bytes; shift rows; mix columns and add round key\textcolor{red}{[insert reference]}.
-	%The sub bytes uses S-boxes with byte inputs and outputs another byte based on a lookup table.
-	 %The shift row step then shifts each of the rows in the matrix by the same number of bytes as the row number.
-	%The mix column step is the most complicated as it involves matrix multiplication in the finite field $GF(2^8)$, but is commonly implemented in lookup tables.
-	%The add round key step is the simplest as it is just XORing the block with the key generated by the key schedule.
+
     
 	Since its standardization in 2001 AES has been used almost exclusively because its security is trusted. Because of this there are many different software and hardware implementations produced with some concentrating on side-channel attack resistance\cite{Strachacki2008} or efficient S-box implementations\cite{Gomes2016}. However, even area optimized designs like \cite{Moradi2011} use 2400 gate equivalents which is too much for lightweight applications.
     
@@ -205,13 +203,13 @@
 	After deciding that the conventional algorithms might not be suitable for the low power devices targeted by this project, some more lightweight algorithms were found including: PRESENT\cite{Bogdanov2007}, PRINCE\cite{Borghoff2012} and the SIMON and SPECK algorithms\cite{Beaulieu2013}. However, as IoT is an emerging technology and is the main reason for lightweight cryptography there isn't a standard set by NIST, but the process has begun in \cite{Mckay}. These algorithms are considered lightweight because they make sacrifices in and security or throughput, or both, to achieve small area and low power designs.
     
 	\subsection{SIMON \& SPECK}
-	The SIMON and SPECK family of algorithms are the lightweight techniques proposed by the NSA that were designed to perform well in both software and hardware while still being secure; and to be flexible in terms of block and key size, listed in \autoref{table:S+S}. The algorithms are similar but SIMON was optimised for hardware implementations and SPECK for software. As with AES the number of rounds iterated depends on the key size but as the block size varies as well it also has an effect as shown in \autoref{table:S+S}. The structure of both algorithms is a Feistel network and thus it works on words of $n$ bits, where $2n$ is the block size, and with a key of $mn$ bits. This lends it self to the naming format of SIMON or SPECK $2n/mn$, which means, for example, SIMON48/72 has a word size of 24 and uses 3 words for the key\textcolor{red}{[insert reference]}.
+	The SIMON and SPECK family of algorithms are the lightweight techniques proposed by the NSA that were designed to perform well in both software and hardware while still being secure; and to be flexible in terms of block and key size, listed in \autoref{table:S+S}. The algorithms are similar but SIMON was optimised for hardware implementations and SPECK for software. As with AES the number of rounds iterated depends on the key size but as the block size varies as well it also has an effect as shown in \autoref{table:S+S}. The structure of both algorithms is a Feistel network and thus it works on words of $N$ bits, where $2N$ is the block size, and with a key of $M*N$ bits. This lends it self to the naming format of SIMON or SPECK $2N/N*M$, which means, for example, SIMON48/72 has a word size of 24 and uses 3 words for the key\textcolor{red}{[insert reference]}.
     
 	\begin{table}[H]
 	\centering
 	\begin{tabular}{||c|c|c|c|c|c||}
 		\hline \hline
-		Block Size & Key Size & $n$ & $m$ & SIMON Rounds & SPECK Rounds \\
+		Block Size & Key Size & $N$ & $M$ & SIMON Rounds & SPECK Rounds \\
 		\hline \hline
 		32 & 64 & 16 & 4 & 32 & 22 \\
 		\hline
@@ -266,7 +264,7 @@
     
 	\chapter{Previous Work \& Initial Design Approaches}
 	\label{chapter:INITIAL}
-	Unfortunately, unlike some of the algorithms explored in \autoref{section:BACK} there isn't a standard SIMON/SPECK software library available for use and benchmarking with my design. For that a reason a software version needed to be developed that offers similar functionality to the hardware version, so both software and hardware were developed in parallel. Also, by working on the software version, in C or C++, it allowed me to increase my familiarity with the algorithm and provided some insight in to how the hardware version, in System Verilog, would be designed.
+	Unfortunately, unlike some of the algorithms explored in \autoref{chapter:BACK} there isn't a standard SIMON/SPECK software library available for use and benchmarking with my design. For that a reason a software version needed to be developed that offers similar functionality to the hardware version, so both software and hardware were developed in parallel. Also, by working on the software version, in C or C++, it allowed me to increase my familiarity with the algorithm and provided some insight in to how the hardware version, in System Verilog, would be designed, and vice versa.
     
 	For all versions of the SIMON algorithm developed for this project the most important factor is efficiency in terms of power consumption and resource use, with time efficiency not being an initial priority. All versions of this algorithm were developed not only with the description but also the pseudocode\textcolor{red}{[insert reference]}. In that document there is also a set of test vectors that define the ciphertext the algorithm should produce with given key and plaintext. Due to Feistel network structure of SIMON the decryption is just the same as encryption but with the key schedule reversed. This means that the encryption can be done in parallel to the key expansion but decryption requires the key to be pre-expanded. As some of the block cipher modes of operation\textcolor{red}{[insert reference]} only require encryption, two variants might be useful: one that can just encrypt data; and one with full functionality.
     
@@ -301,10 +299,11 @@ typedef word 		key[M];
 typedef word		keys[T];
 	\end{lstlisting}
     
-	After the data types were defined the rotate functions, which are used frequently in algorithm, were made to rotate the bits in a $word$ around a given number of bits. These rotate functions were used in the Feistel and round functions which is iterated for both encryption and decryption. The key expansion functions also use the rotate functions but they are more complicated than the round function as they differ slightly depending the number of words in the key, $M$, but more compiler directives can handle that problem. There are two separate key expansion function: one that can expand the key at the same time as the encryption in the iterative loop; and one that computes the schedule before encryption or decryption occurs in its own iterative loop. The code used for these functions can be seen in \autoref{lst:func} but a full listing is available in the \textcolor{green}{Appendix}. 
+	After the data types were defined the rotate functions, which are used frequently in algorithm, were made to rotate the bits in a $word$ around a given number of bits. These rotate functions were used in the Feistel and round functions which is iterated for both encryption and decryption. The code used for these functions can be seen in \autoref{lst:func} but a full listing is available in the \textcolor{green}{Appendix}. 
     
 	\textcolor{red}{CHANGE/IMPROVE BELOW} 
-    
+	
+	\begin{minipage}{\linewidth}
 	\begin{lstlisting}[label={lst:func},caption={Round and Feistel functions},style=CStyle]
 TYPE(N)	F		(word x					)
 {
@@ -313,27 +312,76 @@ TYPE(N)	F		(word x					)
 
 void	ROUND	(block b,	word k		)
 {	
-	word tmp = b[0];
-	b[0].v = b[1].v ^ F(b[0]) ^ k.v;
-	b[1] = tmp;
+	word tmp = b[0];									//	SAVED TO SWAP
+	b[0].v = b[1].v ^ F(b[0]) ^ k.v;	//	GENERATE NEW WORD
+	b[1] = tmp;												//	SWAP FROM SAVED
 }
 	\end{lstlisting}
+	\end{minipage}
+	
+	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:keyexpan},caption={Key Expansion Functions},style=CStyle]
+void	KEXP_PRE	(keys ks,	key k		)
+{
+	word tmp;
+	int8_t i;
+	//	LOAD KEY
+	for(i=M; i>0; i--)	ks[i-1].v = k[M-i].v;
+	
+	//	GENERATE NEW KEYs
+	for(i=M; i<T; i++)
+	{
+		tmp.v = ROTR(ks[i-1], 3);
+		
+#if (M == 4)	tmp.v ^= ks[i-3].v;	#endif
+
+		tmp.v ^= ROTR(tmp, 1);
+		ks[i].v = ~ks[i-M].v ^ tmp.v ^ (z[j][(i-M) % 62]) ^ 3;
+	}
+}
+
+void	KEXP_INL	(key k,	TYPE(8) i		)
+{
+	//	GENERATE NEW KEY	
+	word tmp;
+	tmp.v = ROTR(k[M-1], 3);
+	
+#if (M==4)	tmp.v ^= k[M-3].v;	#endif
+
+	tmp.v ^= ROTR(tmp, 1);
+	tmp.v ^= ~k[0].v ^ (z[j][i % 62]) ^ 3;
+	
+	//	SHIFT KEYS
+	k[0] = k[1];
+	
+#if (M>2)	k[1] = k[2];		#endif
+
+#if (M>3)	k[2] = k[3];		#endif
+
+	k[M-1] = tmp;
+}
+	\end{lstlisting}
+	\end{minipage}
+	
+	The key expansion functions, \autoref{lst:keyexpan}, also use the rotate functions but they are more complicated than the round function as they differ slightly depending the number of words in the key, $M$, but more compiler directives can handle that problem. There are two separate key expansion function: one that can expand the key at the same time as the encryption in the iterative loop ($INL$); and one that computes the schedule before encryption or decryption occurs in its own iterative loop ($PRE$).
     
-	For simplicity in the early stages the the software didn't have the capability of reading a file and encrypting or decrypting it so it could only use data stored in the code. This still allowed for the test vectors to be used and therefore correct functionality could still be confirmed.
-    
-	\textcolor{red}{ADD C TESTING BELOW [100]}
+	For simplicity in the early stages the the software didn't have the capability of reading a file and encrypting or decrypting it so it could only use data stored in the code. This still allowed for the test vectors to be used and therefore correct functionality could still be confirmed.  By simply changing the desired mode at compile time and setting up the test vectors for each mode they could be tested with the same code. The results of testing the code, in mode 0 (32/64), can be seen in \textcolor{red}{[reference figure]}. For the in loop key expansion the test plaintext and key was inputted and encrypted with the result compared with the expected ciphertext. With the pre loop key exapansion the encrypted ciphertext could also be decrypted so when that produced the original plaintext then the whole system was confirmed to function correctly.
+	
+	\textcolor{blue}{INSERT TESTING RESULTS FIGURE}
     
 	\subsection{System Verilog}
 	\label{subsection:SV1}
 	As mentioned in \autoref{section:first} the parameter system was used to pass the values for word and key size and also the number of rounds to be iterated. Similar to the functions used in \autoref{subsection:HOSTED1} modules were used for the Feistel function, round function, key expansion function before being combined in the top level control module. Although, unlike the software version the rotate and logic operations used could be done with just combinational logic so the result is available almost instantaneously not after a few CPU instruction cycles.
 	
-	The main functionality of the system was provided by the control module which provides the sequential operation with the clock ($clk$), and active low reset signal ($nR$). As with the software version two control modules were created: one that expands they key while encrypting and one that waits for the key to be fully expanded before the data processing begins. They both achieve this by operation as a state machine with with different states: waiting for data; loading data; processing data; and writing the output data. The state is controlled by the combinational block which is dependant on the current state; the inputs: $newData$, $readData$ and $enc\_dec$*; and the internal $count$ variable and the output $doneKey$*.
+	The main functionality of the system was provided by the control module which provides the sequential operation with the clock ($clk$), and active low reset signal ($nR$). As with the software version two control modules were created: one that expands they key while encrypting ($INL$) and one that waits for the key to be fully expanded before the data processing begins ($PRE$). They both achieve this by operation as a state machine with with different states: waiting for data; loading data; processing data; and writing the output data. The state is controlled by the combinational block which is dependant on the current state; the inputs: $newData$, $readData$ and $enc\_dec$*; and the internal $count$ variable and the output $doneKey$*.
 	
-	\textcolor{blue}{INSERT STATE MACHINE}
+	\textcolor{blue}{INSERT STATE MACHINE FIGURE}
     
 	\textcolor{red}{ADD SYSTEM VERILOG LISTINGS BELOW [100]}
-    
-	\textcolor{red}{ADD SYSTEM VERILOG SIMULATIONS BELOW [200]}
+	
+	To test the individual modules various input data was selected and the expected outputs were calculated either manually for the simple operations or using the software. As with the software when this functionality was correct they were combined into the top level control module to be further tested. Again, this was only for the most basic 32/64 mode of SIMON. To do this a testbench was created that with a clock that had a $100ns$ period, or $10MHz$ \textcolor{red}{[CHECK]}, and with the initial inputs setup during the reset of the module. After this the reset signal could be disabled and then the $newData$ signal could be set $HIGH$ to indicate to the state machine to move into the loading and processing states. When the module finished processing the data the ciphertext outputted could read by the testbench and then compared with the expected result before being decrypted in the module capable of that.
+	
+	\textcolor{blue}{INSERT TESTING RESULTS FIGURE}
     
 	\textcolor{red}{ADD SYSTEM VERILOG SYNTHESIS BELOW [100]}
     
@@ -347,15 +395,19 @@ void	ROUND	(block b,	word k		)
 	There were only some minor changes to the software version for this approach which were mainly what was learnt from developing the System Verilog version, \autoref{subsection:SV1}. One of these changes was ensuring that the key schedule was stored, before or during the main loop, and only expanded once. This was done with a $doneKey$ flag variable which is set to true at the end of the key expansion.
 	
 	One other improvement was to add basic file reading capability to the software which allowed any  `$.txt$' file to be read and stored in data blocks to be processed. Although, the same test data was used for the key and first data block to ensure that the cipher was still performing correctly.
+	
+	\textcolor{red}{ADD C LISTINGS BELOW [100]}
     
 	\textcolor{red}{ADD C TESTING BELOW [200]}   
     
 	\subsection{System Verilog}
 	\label{subsection:SV2}
 	
-	To add the clock gating to the control module wasn't simple as the clock should not be halted while data is being processed or written to the output, so it could only be updated during the wait state. This was attempted with the clock gating signal only updating in this state on the same rising edge as the state machine. However, this caused glitches because the state machine moved onto the next state before the clock was stopped and was thus not in the correct the clock gating when required. This was because the same edge that is needed to update the control signal moves the machine onto the next state.One option to solve this is to add more signals and a latch to have the gated clock to only stop when the clock is $LOW$. A similar method to this eventually used as the clock gating signal sensitivity was changed to the falling edge of the clock, hence updating before the system changes state.
+	To add the clock gating to the control module wasn't simple as the clock should not be halted while data is being processed or written to the output, so it could only be updated during the wait state. This was attempted with the clock gating signal only updating in this state on the same rising edge as the state machine. However, this caused glitches because the state machine moved onto the next state before the clock was stopped and was thus no longer in the correct state the clock gating when required. This was because the same edge that is needed to update the control signal moves the machine onto the next state. One option to solve this is to add more signals and a latch to have the gated clock to only stop when the clock is $LOW$. A similar method to this was eventually used as the clock gating signal sensitivity was changed to the falling edge of the clock, hence updating half a clock cycle before the system changes state.
 	
-	Gating the clock also enabled a few more enhancements to the code. One of these was because the halted clock provided same waiting that the waiting state was used for, so that state was no longer necessary. The clock gating was moved onto the loading state and the waiting state was just used for initialisation to improve the reliability of the system. Another change was the option to clock both the encryption/decryption as well as the key expansion and have them both in the same module. This also removed the need for two variants needed for in loop and pre key expansion as the clock gating could also be dependant on the $enc\_dec$ signal. It also helped with the logic minimisation as the key and the expanded key didn't need to be passed between multiple modules.
+	Gating the clock also enabled a few more enhancements to the code. One of these was because the halted clock provided waiting for new data functionality, the waiting state was no longer necessary. The clock gating was moved onto the loading state and the waiting state was just used for initialisation to improve the reliability of the system. Another change was the option to clock both the encryption/decryption as well as the key expansion and have them both in the same module. This also removed the need for two variants needed for in loop and pre key expansion as the clock gating could also be dependant on the $enc\_dec$ signal. It also helped with the logic minimisation as the key and the expanded key didn't need to be passed between multiple modules.
+	
+	Another addition to the system was the ability to load a new key after the initial loading was done. This was done with another input signal $newKey$ which operated in the same way as the $newData$ signal did for data. Also a few more signals were outputted that indicate when the data and keys were loaded into the system and thus the inputs could change to be ready for the next set of data.
     
 	\textcolor{red}{ADD SYSTEM VERILOG LISTINGS BELOW [100]}
     
@@ -369,50 +421,62 @@ void	ROUND	(block b,	word k		)
     
 	In a full system the packets would be sent using a serial protocol like $I^2C$ but the they would also include information about what and how much data is being sent in a packet. As there are ten modes of the SIMON algorithm, labelled as $0 - 9$, four bits of the information are used to identify what mode of SIMON the data is intended for. This leaves another 4 bits to be used in a byte that were used individually for different parameters of the packet. One bit was used to indicate whether the data is to be processed or a new key to be loaded. Another tells the hardware to encrypt or decrypt the data, obviously irrelevant if a new key is being sent. As for most modes the number of words in the key are more than the two words in a block it was decided that a constant four words, or two blocks, would be sent in each packet but an option to just send one block would be controlled by one bit. The last bit in this byte tells the hardware that the packet is either meant to be inputted to it or outputted from it. To help the hardware keep track of the packets another byte was used to as a packet ID, which increments with each new packet.
     
-	\textcolor{red}{ADD PACKET DIAGRAM}
+	\textcolor{blue}{ADD PACKET DIAGRAM FIGURE}
 	
 	Having this information attached to each block of data being processed could introduce a weakness to the cipher that might be exploited by an attacker. Although, ensuring and increasing the security of the algorithm is not the main purpose of this project.
     
 	\section{Hosted C++}
 	\label{section:HOSTEDF}
-    
-	\textcolor{red}{ADD C++ CHANGES BELOW [500]}
-    
+	
 	As the packets need to be setup by the a processor and includes a few data types and with some individual bits needing to be controlled it made sense to switch to an object orientated language instead of C so naturally C++ was chosen. While it would be possible to develop the functionality required in C it would take time and effort to get functionality already provided by C++. A Class was setup for each of the data types used in the previous approaches with appropriate constructor, mutator and accessor functions. Classes were also used for the packets, to store the data read from a file and for the cipher object.
     
    	The packet class stored the packet information, packet count and the four words of data. It also has an array of one byte unsigned integers that compacts the data into the smallest possible size for transmission. This is required because the information and count can always be stored in two bytes but depending on the mode the words vary in size and don't always fit exactly into the data types available. So before being sent a function is used to copy the data from the words byte by byte into the byte array which results in no redundant data being sent by accident. The setting up of these packets can be done separately or as part of the encryption, or decryption, process.
+   	
+   	A class was used to reading files because the data were read into a temporary byte array before being stored in a the four words in a packet. From there with the packet setup it could be added to a vector of input vectors or sent straight to the cipher used, either software or hardware. If the vector method is used then the packets could be stored in another file to be sent to the cipher at a later point. The class is also used for reading the packets returned to it by the cipher and then written to a file with the same as the original name but with an encrypted or decrypted indicator. The class could also keep track of where in the file it has read to as it will not be read as a whole.
+   	
+   	The reason for using a class for the cipher object was so that the key schedule and the state of the encrypted/decrypted block could be stored in one variable it similar to how it is stored in the hardware version. There is also a function added for handling the packets to ensure that data is used correctly.
+   	
+   	\textcolor{red}{ADD C++ LISTINGS BELOW [100]} 
     
 	\textcolor{red}{ADD C++ TESTING BELOW [200]} 
     
 	\section{System Verilog}
 	\label{section:SVF}
-    
-	\textcolor{red}{ADD SYSTEM VERILOG CHANGES BELOW [500]}
-	
+		
 	With the packets being setup in software, as described in \autoref{section:HOSTEDF}, the System Verilog module only needed to be handle the information and hence route the packeted data to the correct part of the system at the right time. The whole system also needed to ability to pass the packet information and count through the modules as each one processed the data to ensure that the correct packet is outputted. To do this two modules were added: one to handle the input packet; and one to handle the output packets.
+	
+	To handle the input packets the module takes an input of bytes equal to the size of the packets as well as an input control signal $newIN$. The module operates in a similar way to how the control module did in the first approach, \autoref{subsection:SV1}, with states for waiting for packets; loading packets; processing packets; and writing the relevant words to the relevant output, the key or the input block of the control module. After the packet is loaded the processing state checks the information byte is in the correct form: as an input, for the correct mode and the packet count; and then decodes what data is in the packet which is used by the writing state. When a packet contains two blocks of data, identified in the information, the first writes two of the words to the the input block and then waits for the control module to be ready for new data before writing the other two words.
+	
+	The control module was also changed slightly to enable the packet information and count to propagate through the module with the connected data. This removed the need for the $enc\_dec$ signal as that is contained in the information. The input or output flag is also flipped by the control module for the output handling module.
+	
+	The output handling module receives the packet information and data from the control module and then writes the data to the relevant part of the output packet. It then checks and decodes the packet information similar to the input dandling module but then instead of loading, processing and then writing it processes the packet information, reads the data and then writes the packet to the output. If the packet information suggests that there should be two blocks of data in the packet then the module waits for a second block of data to be processed by the control module before writing the output packet.
     
 	\textcolor{red}{ADD SYSTEM VERILOG LISTINGS BELOW [100]}
     
 	\textcolor{red}{ADD SYSTEM VERILOG SIMULATIONS BELOW [200]}
-    
+	
+	As the control module didn't change much from the previous approach its testing wasn't important but the other modules needed to be functionality correctly with absolutely no glitches for them to all interact as a whole system. To this the, as with all of the previous testbenches, the inputs were all setup with the reset signal active and then changed after the reset was deactivated.
+
+	For the input handling module the input packet had the basic packet information for a key, initial packet count of $0$ and then the key from the test vectors.
+
 	\textcolor{red}{ADD SYSTEM VERILOG SYNTHESIS BELOW [100]}
-    
+
 	\chapter{Experiments \& Results}
 	\label{chapter:RESULT}
-    
+
 	\textcolor{red}{ADD THROUGHPUT TESTING BELOW [400]}
-    
+
 	\textcolor{red}{ADD POWER TESTING BELOW [300]}
-    
+
 	\textcolor{red}{ADD AREA TESTING BELOW [300]}
-    
+
 	\chapter{Conclusion \& Future Work}
 	\label{chapter:CONC}
-    
+
 	\bibliographystyle{IEEEtran}
 	\bibliography{Report}
 	\addcontentsline{toc}{chapter}{Bibliography}
-    
+
 	\appendix    
-    
+
 \end{document}
