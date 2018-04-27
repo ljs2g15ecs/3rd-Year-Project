@@ -80,6 +80,25 @@ TYPE(8)		PACKET::addWORD	(	WORD	x					)
 	}
 }
 
+TYPE(8)		PACKET::addBLOCK(	BLOCK	x					)
+{
+	if(nxtBLOCK)
+	{
+		assign(x.get_w(0), 2);
+		assign(x.get_w(1), 3);
+		nxtBLOCK = 0;
+		return 1;
+	}
+	else
+	{
+		assign(x.get_w(0), 0);
+		assign(x.get_w(1), 1);
+		nxtBLOCK = 1;
+		return 0;
+	}
+	
+}
+
 /*
 TYPE(8)		PACKET::addWORD	(	TYPE(N)	x					)
 {
@@ -129,6 +148,7 @@ void		PACKET::pack	(								)
 void		PACKET::flush	(								)
 {
 	nxtWORD = 0;
+	nxtBLOCK = 0;
 	iBYTE = 0;
 	count = 0;
 	
@@ -140,46 +160,46 @@ void		PACKET::flush	(								)
 	return;
 }
 
-void		PACKET::setCounts	(	U_64	x					)
+void		setCounts	(	U_64	x					)
 {
-	inputCount = x;
-	outputCount = x;
+	PACKET::inputCount = x;
+	PACKET::outputCount = x;
 	
 	return;
 }
 
-void		PACKET::setICount	(	U_64	x					)
+void		setICount	(	U_64	x					)
 {
-	inputCount = x;
+	PACKET::inputCount = x;
 	
 	return;
 }
 
-void		PACKET::setOCount	(	U_64	x					)
+void		setOCount	(	U_64	x					)
 {
-	outputCount = x;
+	PACKET::outputCount = x;
 	
 	return;
 }
 
-void		PACKET::resetCounts	(								)
+void		resetCounts	(								)
 {
-	inputCount = 0;
-	outputCount = 0;
+	PACKET::inputCount = 0;
+	PACKET::outputCount = 0;
 	
 	return;
 }
 
-void		PACKET::resetICount	(								)
+void		PresetICount	(								)
 {
-	inputCount = 0;
+	PACKET::inputCount = 0;
 	
 	return;
 }
 
-void		PACKET::resetOCount	(								)
+void		resetOCount	(								)
 {
-	outputCount = 0;
+	PACKET::outputCount = 0;
 	
 	return;
 }
@@ -194,15 +214,27 @@ void		PACKET::test		(								)
 			<< "|\t" << HEX_WORD() << "\t"\
 			<< "|\t" << HEX_BYTES() << "\t" << "|" << endl\
 			<< "|\t" << HEX_PKT() << "\t"\
-			<< "|\t" << HEX_SV() << "\t"\
+			<< "|\t" << HEX_SV(0) << "\t"\
 			<< "|" << endl << endl;
 	
 	return;
 }
 
-TYPE(8)		PACKET::checkIN		(	TYPE(8)	x					)
+TYPE(8)		PACKET::checkIN		(	TYPE(16)	x					)
 {
-	return ((!iDATA.in_out) & (iDATA.mode == MODE) & (count == x)) + iDATA.data_key;
+	if((!iDATA.in_out) & (iDATA.mode == MODE) & (count == x))
+	{
+		if(iDATA.data_key)	return 2;
+		else				return 1;
+	}
+	else
+	{
+		cout << endl;
+		cout << "<" << (TYPE(16))iDATA.in_out << ">\t";
+		cout << "<" << (TYPE(16))iDATA.mode << " == " << (TYPE(16))MODE << ">\t";
+		cout << "<" << (TYPE(16))count << " == " << x << ">" << endl;
+		return 0;
+	}
 }
 
 TYPE(8)		PACKET::get_b		(	TYPE(8)	i					)
@@ -285,6 +317,12 @@ TYPE(8)		PACKET::get_Wb		(	TYPE(8)	i,	TYPE(8)	j		)
 TYPE(16)	PACKET::get_WB		(	TYPE(8)	i,	TYPE(8)	j		)
 {
 	return wDATA[i].get_B(j);
+}
+
+BLOCK		PACKET::get_BLK		(	TYPE(8)	i					)
+{
+	if(i)	return BLOCK(wDATA[2], wDATA[3]);
+	else	return BLOCK(wDATA[0], wDATA[1]);
 }
 
 TYPE(8)		PACKET::get_nxtW	(								)
@@ -409,18 +447,18 @@ string		PACKET::HEX_PKT	(								)
 	return ss.str();
 }
 
-string		PACKET::HEX_SV	(								)
+string		PACKET::HEX_SV	(	TYPE(64)	i				)
 {
 	stringstream ss;
 	
-	ss << "in = " << (2+(N/2))*8 << "'h";
+	ss << "in[" << i << "]\t= " << (2+(N/2))*8 << "'h";
 	ss << hex << uppercase << setfill('0') << setw(2) << (TYPE(16))pBYTES[0];
 	ss << hex << uppercase << setfill('0') << setw(2) << (TYPE(16))pBYTES[1];
 	
-	TYPE(64) i;
-	for(i=2; i<size(); i++)
+	TYPE(64) j;
+	for(j=2; j<size(); j++)
 	{
-		ss << hex << uppercase << setfill('0') << setw(2) << (TYPE(16))pBYTES[i];
+		ss << hex << uppercase << setfill('0') << setw(2) << (TYPE(16))pBYTES[j];
 	}
 	
 	ss << ";";

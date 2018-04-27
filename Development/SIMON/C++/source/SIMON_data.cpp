@@ -64,11 +64,7 @@ WORD		DATA::readWORD		(								)
 		
 		sizeBYTE += n;
 		
-		for(i=0; i<n; i++)
-		{
-			w.addBYTE(bufferBYTE[i]);
-			streamBYTE.push_back(bufferBYTE[i]);
-		}
+		for(i=0; i<n; i++)	w.addBYTE(bufferBYTE[i]);
 		
 		delete bufferBYTE;
 		
@@ -91,25 +87,61 @@ PACKET		DATA::readPACKET	(								)
 	
 	bufferPACKET.input();		bufferPACKET.assign(input);
 	
-	bufferWORD[0] = readWORD();
-	bufferWORD[1] = readWORD();
-	bufferWORD[2] = readWORD();
-	bufferWORD[3] = readWORD();
-	
-	
-	streamWORD.push_back(bufferWORD[0]);
-	streamWORD.push_back(bufferWORD[1]);
-	streamWORD.push_back(bufferWORD[2]);
-	streamWORD.push_back(bufferWORD[3]);
-	
-	bufferPACKET.addWORD(bufferWORD[0]);
-	bufferPACKET.addWORD(bufferWORD[1]);
-	bufferPACKET.addWORD(bufferWORD[2]);
-	bufferPACKET.addWORD(bufferWORD[3]);
+	bufferPACKET.addWORD(readWORD());
+	bufferPACKET.addWORD(readWORD());
+	bufferPACKET.addWORD(readWORD());
+	bufferPACKET.addWORD(readWORD());
 	
 	bufferPACKET.pack();
 	
 	return bufferPACKET;
+}
+
+PACKET		DATA::readPACKET	(	_INFO_	x					)
+{
+	PACKET bufferPACKET;
+	
+	bufferPACKET.input();		bufferPACKET.assign(x);
+	
+	bufferPACKET.addWORD(readWORD());
+	bufferPACKET.addWORD(readWORD());
+	bufferPACKET.addWORD(readWORD());
+	bufferPACKET.addWORD(readWORD());
+	
+	bufferPACKET.pack();
+	
+	return bufferPACKET;
+}
+
+PACKET		DATA::readPACKET	(	BLOCK	x0,	BLOCK	x1		)
+{
+	PACKET bufferPACKET;
+	
+	_INFO_ input;
+	input.mode = MODE;
+	input.in_out = 0;
+	input.data_key = 0;	//	DEFAULT
+	input.enc_dec = 1;	//	DEFAULT
+	input.nBlocks = 1;
+	
+	bufferPACKET.input();		bufferPACKET.assign(input);
+	
+	bufferPACKET.addWORD(x0.get_w(0));
+	bufferPACKET.addWORD(x0.get_w(1));
+	bufferPACKET.addWORD(x1.get_w(0));
+	bufferPACKET.addWORD(x1.get_w(1));
+	
+	bufferPACKET.pack();
+	
+	return bufferPACKET;
+}
+
+BLOCK		DATA::readBLOCK		(								)
+{
+	BLOCK b;
+	b.addWORD(readWORD());
+	b.addWORD(readWORD());
+	return b;
 }
 
 PACKET		DATA::readKEY		(								)
@@ -132,53 +164,116 @@ PACKET		DATA::readKEY		(								)
 	return bufferPACKET;
 }
 
-void		DATA::readFILE		(								)
+void		DATA::readFILE_PKT	(								)
 {
-	streamIN.push_back(readKEY());
+	sizeBYTE = 0;
+	posFILE = 0;
 	
 	while(sizeBYTE < sizeFILE)
 	{
-		streamIN.push_back(readPACKET());
+		streamPKT_IN.push_back(readPACKET());
 	}
 	
-	sizeWORD = streamWORD.size();
-	sizePACKET = streamIN.size();
+	sizePACKET = streamPKT_IN.size();
 }
+
+void		DATA::readFILE_PKT	(	_INFO_	x					)
+{
+	streamPKT_IN.push_back(readKEY());
+	
+	while(sizeBYTE < sizeFILE)
+	{
+		streamPKT_IN.push_back(readPACKET(x));
+	}
+	
+	sizePACKET = streamPKT_IN.size();
+}
+
+void		DATA::addFILE_PKT	(								)
+{
+	streamPKT_IN.push_back(readKEY());
+	keyADDED = 1;
+}
+
+void		DATA::addFILE_PKT	(	BLOCK	x0,	BLOCK	x1		)
+{
+	streamPKT_IN.push_back(readPACKET(x0, x1));
+}
+
+void		DATA::addFILE_PKT	(	KEY		x					)
+{
+	assign(x);
+	streamPKT_IN.push_back(readKEY());
+}
+
+void		DATA::computePKTs	(	TYPE(64)	i				)
+{
+	TYPE(64) j, total;
+	total = sizePACKET >= i ? i : sizePACKET;
+	
+	CIPHER SIMON;	resetCount();
+	
+	for(j=0; j<total; j++)
+	{
+		streamPKT_OUT.push_back(SIMON.compute(streamPKT_IN.at(j)));
+	}
+}
+
+void		DATA::readFILE_BLK	(								)
+{
+	sizeBYTE = 0;
+	posFILE = 0;
+	
+	while(sizeBYTE < sizeFILE)
+	{
+		streamBLK_IN.push_back(readBLOCK());
+	}
+	
+	sizeBLOCK = streamBLK_IN.size();
+}
+
+void		DATA::addFILE_BLK	(	BLOCK	x					)
+{
+	streamBLK_IN.push_back(x);
+	streamBLK_IN.push_back(x);
+}
+
 
 void		DATA::flush			(								)
 {
 	bufferBYTE = new char;
 	bufferWORD[0].flush();	bufferWORD[1].flush();
 	bufferWORD[2].flush();	bufferWORD[3].flush();
-	streamBYTE.clear();
-	streamWORD.clear();
-	streamIN.clear();
-	streamOUT.clear();
+	streamPKT_IN.clear();
+	streamBLK_IN.clear();
+	streamPKT_OUT.clear();
+	streamBLK_OUT.clear();
 	keyFILE.flush();
 	posFILE = 0;
 	sizeFILE = 0;
 	sizeBYTE = 0;
-	sizeWORD = 0;
 	sizePACKET = 0;
+	sizeBLOCK = 0;
+	keyADDED = 0;
 }
 
 //	ACCESSOR
 void		DATA::test			(								)
 {
 	checkFILE();
-	readFILE();
+	readFILE_PKT();
+	readFILE_BLK();
 	
 	cout 	<< "|\tFILE\t|\t" << sizeof(this) << "\t"\
 			<< "|\t" << sizeFILE << "\t"\
-			<< "|\t" << sizeBYTE << "\t"\
-			<< "|\t" << sizeWORD << "\t"\
 			<< "|\t" << sizePACKET << "\t"\
 			<< "|" << endl << endl;
 	
-	cout	<< CHR_BYTES() << endl;
-	cout	<< HEX_WORDS();
 	cout	<< HEX_PKT();
-	cout	<< HEX_SV();
+	cout	<< HEX_PKT_SV();
+	
+	cout	<< HEX_BLK();
+	cout	<< HEX_BLK_SV();
 	
 	return;
 }
@@ -188,37 +283,6 @@ TYPE(8)		DATA::check		(								)
 	return (sizeFILE-sizeBYTE) > 0;
 }
 
-string		DATA::CHR_BYTES	(								)
-{
-	string str = "";
-	
-	TYPE(64) i;
-	for(i=0; i<sizeWORD; i++)
-	{
-		str += streamWORD.at(i).CHR_BYTES();
-		if(i != sizeWORD-1)	str += "-";
-	}
-	
-	return str;
-}
-
-string		DATA::HEX_WORDS	(								)
-{
-	string str = "\n|\t";
-	
-	TYPE(64) i;
-	for(i=0; i<sizeWORD; i++)
-	{
-		str += streamWORD.at(i).HEX_BYTES();
-		if(((i%4) == 3) && (i != sizeWORD-1))	str += "\t|\n|\t";
-		else if(i != sizeWORD-1)	str += "-";
-	}
-	
-	str += "\t|\n";
-	
-	return str;
-}
-
 string		DATA::HEX_PKT	(								)
 {
 	string str = "\n|\t";
@@ -226,7 +290,7 @@ string		DATA::HEX_PKT	(								)
 	TYPE(64) i;
 	for(i=0; i<sizePACKET; i++)
 	{
-		str += streamIN[i].HEX_PKT();
+		str += streamPKT_IN[i].HEX_PKT();
 		if(i!= sizePACKET-1)	str += "\t|\n|\t";
 	}
 	str += "\t|\n";
@@ -234,15 +298,45 @@ string		DATA::HEX_PKT	(								)
 	return str;
 }
 
-string		DATA::HEX_SV	(								)
+string		DATA::HEX_PKT_SV(								)
 {
 	string str = "\n|\t";
 	
 	TYPE(64) i;
 	for(i=0; i<sizePACKET; i++)
 	{
-		str += streamIN[i].HEX_SV();
+		str += streamPKT_IN[i].HEX_SV(i);
 		if(i!= sizePACKET-1)	str += "\t|\n|\t";
+	}
+	str += "\t|\n";
+	
+	return str;
+}
+
+string		DATA::HEX_BLK	(								)
+{
+	string str = "\n|\t";
+	
+	TYPE(64) i;
+	for(i=0; i<sizeBLOCK; i++)
+	{
+		str += streamBLK_IN[i].HEX_WORD();
+		if(i!= sizeBLOCK-1)	str += "\t|\n|\t";
+	}
+	str += "\t|\n";
+	
+	return str;
+}
+
+string		DATA::HEX_BLK_SV(								)
+{
+	string str = "\n|\t";
+	
+	TYPE(64) i;
+	for(i=0; i<sizeBLOCK; i++)
+	{
+		str += streamBLK_IN[i].HEX_SV(i);
+		if(i!= sizeBLOCK-1)	str += "\t|\n|\t";
 	}
 	str += "\t|\n";
 	

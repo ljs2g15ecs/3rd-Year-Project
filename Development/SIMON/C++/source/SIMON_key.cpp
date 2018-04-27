@@ -127,6 +127,11 @@ void		KEY::assign		(	TYPE(N)	x0,	TYPE(N)	x1,
 }
 
 #if (M == 2)
+KEY		KEY::reverse	(								)
+{
+	return KEY( get_w(1), get_w(0) );
+}
+
 void		KEY::flush		(								)
 {
 	K[0].flush();
@@ -180,6 +185,10 @@ string		KEY::CHR		(								)
 
 #endif
 #if (M == 3)
+KEY		KEY::reverse	(								)
+{
+	return KEY( get_w(2), get_w(1), get_w(0) );
+}
 
 void		KEY::flush		(								)
 {
@@ -242,6 +251,11 @@ string		KEY::CHR		(								)
 
 #endif
 #if (M == 4)
+KEY		KEY::reverse	(								)
+{
+	return KEY( get_w(3), get_w(2), get_w(1), get_w(0) );
+}
+
 void		KEY::flush		(								)
 {
 	K[0].flush();

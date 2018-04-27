@@ -131,6 +131,7 @@ public:
 	void		assign		(	WORD	x0, WORD	x1		);
 	void		assign		(	TYPE(N)	x,	TYPE(8)	i		);
 	void		assign		(	WORD	x,	TYPE(8)	i		);
+	void		addWORD		(	WORD	x					);
 	void		swap		(								);
 	void		flush		(								);
 	
@@ -146,8 +147,13 @@ public:
 	string		CHR_BYTES	(								);
 	string		HEX_BYTES	(								);
 	string		CHR			(								);
+	string		HEX_SV		(	TYPE(64)	i				);
+	
+	//	OPERATORS
+	TYPE(8)		operator==	(	BLOCK x						);
 	
 private:
+	TYPE(8)		nxtWORD	:	1;
 	WORD		B[2];
 };
 
@@ -179,6 +185,7 @@ public:
 								WORD	x2, WORD	x3		);
 	void		assign		(	TYPE(N)	x0,	TYPE(N)	x1,
 								TYPE(N)	x2, TYPE(N)	x3		);
+	KEY			reverse		(								);
 	void		flush		(								);
 	//void		assign		(	WORD	x[M]				);
 	//void		assignWORD	(	WORD	x,	TYPE(8)	i		);
@@ -255,22 +262,18 @@ public:
 	//void		assign		(	_PACKET_	x				);
 	void		assign		(	_INFO_	x					);
 	void		assign		(	WORD	x,	TYPE(8)	i		);
+	void		assign		(	BLOCK	x,	TYPE(8) i		);
 	//void		assign		(	TYPE(N)	x,	TYPE(8)	i		);
 	TYPE(8)		addWORD		(	WORD	x					);
+	TYPE(8)		addBLOCK	(	BLOCK	x					);
 	//TYPE(8)		addWORD		(	TYPE(N)	x					);
 	void		addKEY		(	KEY		x					);
 	void		pack		(								);
 	void		flush		(								);
-	void		setCounts	(	U_64	x					);
-	void		setICount	(	U_64	x					);
-	void		setOCount	(	U_64	x					);
-	void		resetCounts	(								);
-	void		resetICount	(								);
-	void		resetOCount	(								);
 	
 	//	ACCESSORS
 	void		test		(								);
-	TYPE(8)		checkIN		(	TYPE(8)	x					);
+	TYPE(8)		checkIN		(	TYPE(16)	x				);
 	TYPE(8)		get_b		(	TYPE(8)	i					);
 	TYPE(16)	get_B		(	TYPE(8)	i					);
 	_INFO_		get_i		(								);
@@ -283,6 +286,7 @@ public:
 	TYPE(N)		get_W		(	TYPE(8)	i					);
 	TYPE(8)		get_Wb		(	TYPE(8)	i, TYPE(8)	j		);
 	TYPE(16)	get_WB		(	TYPE(8)	i, TYPE(8)	j		);
+	BLOCK		get_BLK		(	TYPE(8)	i					);
 	TYPE(8)		get_nxtW	(								);
 	U_64		get_ICount	(								);
 	U_64		get_OCount	(								);
@@ -292,13 +296,14 @@ public:
 	string		HEX_BYTES	(								);
 	string		CHR			(								);
 	string		HEX_PKT		(								);
-	string		HEX_SV		(								);
+	string		HEX_SV		(	TYPE(64)	i				);
 	
 	static U_64	inputCount;
 	static U_64	outputCount;
 	
 private:
 	TYPE(8)		nxtWORD;
+	TYPE(8)		nxtBLOCK	:	1;
 	union
 	{
 		TYPE(8)	iBYTE;
@@ -311,7 +316,15 @@ private:
 	TYPE(8)		pBYTES[2+(N/2)];
 };
 
+void			setCounts	(	U_64	x					);
+void			setICount	(	U_64	x					);
+void			setOCount	(	U_64	x					);
+void			resetCounts	(								);
+void			resetICount	(								);
+void			resetOCount	(								);
+
 typedef PACKET	PKT;
+typedef BLOCK	BLK;
 typedef TYPE(8)	U_8;
 typedef WORD	WRD;
 
@@ -328,8 +341,20 @@ public:
 	void		checkFILE	(								);
 	WORD		readWORD	(								);
 	PACKET		readPACKET	(								);
+	PACKET		readPACKET	(	_INFO_	x					);
+	PACKET		readPACKET	(	BLOCK	x0,	BLOCK	x1		);
+	BLOCK		readBLOCK	(								);
 	PACKET		readKEY		(								);
-	void		readFILE	(								);
+	void		readFILE_PKT(								);
+	void		readFILE_PKT(	_INFO_	x					);
+	void		addFILE_PKT	(								);
+	void		addFILE_PKT	(	BLOCK	x0,	BLOCK	x1		);
+	void		addFILE_PKT	(	KEY		x					);
+	void		computePKTs	(	TYPE(64)	i				);
+	void		readFILE_BLK(								);
+	void		addFILE_BLK	(	BLOCK	x					);
+	void		encryptBLKs	(	TYPE(64)	i				);
+	void		decryptBLKs	(	TYPE(64)	i				);
 	void		flush		(								);
 	
 	//	ACCESSORS
@@ -337,26 +362,26 @@ public:
 	TYPE(8)		check		(								);
 	void		writeFILE	(								);
 	void		writeFILE	(	string	x					);
-	string		CHR_BYTES	(								);
-	string		HEX_WORDS	(								);
 	string		HEX_PKT		(								);
-	string		HEX_SV		(								);
+	string		HEX_PKT_SV	(								);
+	string		HEX_BLK		(								);
+	string		HEX_BLK_SV	(								);
 	
 private:
-	//fstream		FILE;
 	streampos	posFILE;
 	string		nameFILE;
 	TYPE(64)	sizeFILE;
 	TYPE(64)	sizeBYTE;
-	TYPE(64)	sizeWORD;
 	TYPE(64)	sizePACKET;
+	TYPE(64)	sizeBLOCK;
 	KEY			keyFILE;
+	TYPE(8)		keyADDED	:	1;
 	char		*bufferBYTE;
 	WORD		bufferWORD[4];
-	vector<U_8>	streamBYTE;
-	vector<WRD>	streamWORD;
-	vector<PKT>	streamIN;
-	vector<PKT>	streamOUT;
+	vector<PKT>	streamPKT_IN;
+	vector<BLK>	streamBLK_IN;
+	vector<PKT>	streamPKT_OUT;
+	vector<BLK>	streamBLK_OUT;
 	
 };
 
@@ -368,9 +393,12 @@ public:
 	
 	//	MUTATORS
 	PACKET		compute		(	PACKET	p					);
+	BLOCK		compute		(	BLOCK	b, TYPE(8)	enc_dec	);
 	void		expandKEY	(	KEY		x					);
 	void		encryptDATA	(	WORD	x0,	WORD	x1		);
+	void		encryptDATA	(	BLOCK	x					);
 	void		decryptDATA	(	WORD	x0,	WORD	x1		);
+	void		decryptDATA	(	BLOCK	x					);
 	
 	BLOCK		round		(	WORD	x					);
 	WORD		expand		(	KEY		x,	TYPE(8)	i		);
@@ -379,15 +407,16 @@ public:
 	
 	//	ACCESSORS
 	
+	static		TYPE(8)		pktCOUNT;
+	
 private:
 	BLOCK		stateCIPHER;
 	KEY_S		scheduleKEY;
 	TYPE(8)		roundCOUNT;
-	TYPE(8)		pktCOUNT;
 	TYPE(8)		doneKEY	:	1;
 	
 };
 
-void			testClass	(								);
+void			resetCount	(								);
 
 #endif

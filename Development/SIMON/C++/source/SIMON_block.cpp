@@ -1,6 +1,7 @@
 #include "SIMON_definitions.h"
 
 #include <iostream>
+#include <sstream>
 #include <iomanip>
 using namespace std;
 
@@ -47,6 +48,12 @@ void		BLOCK::assign	(	WORD	x,	TYPE(8)	i		)
 	return;
 }
 
+void		BLOCK::addWORD	(	WORD	x					)
+{
+	B[nxtWORD] = x;
+	nxtWORD = !nxtWORD;
+}
+
 void		BLOCK::swap		(								)
 {
 	WORD tmp = B[0];
@@ -56,6 +63,7 @@ void		BLOCK::swap		(								)
 
 void		BLOCK::flush	(								)
 {
+	nxtWORD = 0;
 	B[0] = 0;
 	B[1] = 0;
 	return;
@@ -72,6 +80,12 @@ void		BLOCK::test		(								)
 			<< "|\t" << HEX_BYTES() << "\t" << "|" << endl;
 	
 	return;
+}
+
+//	OPERATORS
+TYPE(8)		BLOCK::operator==	(	BLOCK x					)
+{
+	return (this->get_W(0) == x.get_W(0)) && (this->get_W(1) == x.get_W(1));
 }
 
 WORD		BLOCK::get_w	(	TYPE(8)	i					)
@@ -137,6 +151,20 @@ string	BLOCK::CHR			(								)
 	str += B[0].CHR_BYTES();
 	str += B[1].CHR_BYTES();
 	return str;
+}
+
+string	BLOCK::HEX_SV		(	TYPE(64)	i				)
+{
+	stringstream ss;
+	
+	ss << "in[" << i << "]\t= " << N*2 << "'h";
+	
+	ss << B[0].HEX_WORD();
+	ss << B[1].HEX_WORD();
+	
+	ss << ";";
+	
+	return ss.str();
 }
 
 

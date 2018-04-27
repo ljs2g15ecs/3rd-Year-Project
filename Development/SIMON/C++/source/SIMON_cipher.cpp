@@ -15,10 +15,13 @@ WORD		F					(	WORD	x					)
 }
 //*/
 
+TYPE(8)		CIPHER::pktCOUNT = 0;
+
 //	CONSTRUCTORS
 CIPHER::CIPHER()
 {
 	flush();
+	resetCount();
 }
 
 //	MUTATORS
@@ -30,12 +33,12 @@ PACKET		CIPHER::compute		(	PACKET	x					)
 	switch(x.checkIN(pktCOUNT))
 	{
 		case	0:	// ERROR
-			cout << "ERR1";
+			//cout << "ERR1";
 			break;
 		case	1:	// DATA
 			if(doneKEY)
 			{
-				cout << "DATA";
+				//cout << "DATA";
 				if(x.get_i().enc_dec)	encryptDATA(x.get_w(0), x.get_w(1));
 				else					decryptDATA(x.get_w(0), x.get_w(1));
 				out.assign(stateCIPHER.get_w(0), 0);
@@ -50,12 +53,12 @@ PACKET		CIPHER::compute		(	PACKET	x					)
 			}
 			break;
 		case	2:	// KEY
-			cout << "KEY!";
-			expandKEY( KEY(x.get_w(3), x.get_w(2), x.get_w(1), x.get_w(0)) );
+			//cout << "KEY!";
+			expandKEY( KEY(x.get_w(0), x.get_w(1), x.get_w(2), x.get_w(3)) );
 			pktCOUNT++;
 			break;
 		default	 :	//	ERROR
-			cout << "ERR2";
+			//cout << "ERR2";
 			break;
 	}
 	
@@ -64,8 +67,25 @@ PACKET		CIPHER::compute		(	PACKET	x					)
 	return out;
 }
 
+BLOCK		CIPHER::compute		(	BLOCK	b, TYPE(8)	enc_dec	)
+{
+	if(doneKEY)
+	{
+		if(enc_dec)		encryptDATA(b);
+		else			decryptDATA(b);
+		
+		return stateCIPHER;
+	}
+	else
+	{
+		cout << "LOAD KEY";
+		return BLOCK();
+	}
+}
+
 void		CIPHER::expandKEY	(	KEY		x					)
 {
+	x = x.reverse();
 	for(roundCOUNT=0; roundCOUNT<T; roundCOUNT++)
 	{
 		scheduleKEY.assign(expand(x,roundCOUNT), roundCOUNT);
@@ -84,10 +104,34 @@ void		CIPHER::encryptDATA	(	WORD	x0,	WORD	x1		)
 	}
 }
 
+void		CIPHER::encryptDATA	(	BLOCK	x					)
+{
+	stateCIPHER = x;
+
+	for(roundCOUNT=0; roundCOUNT<T; roundCOUNT++)
+	{
+		stateCIPHER = round(scheduleKEY.get_w(roundCOUNT));
+	}
+	
+}
+
 void		CIPHER::decryptDATA	(	WORD	x0,	WORD	x1		)
 {
 	stateCIPHER.assign(x1, 0);
 	stateCIPHER.assign(x0, 1);
+	
+	for(roundCOUNT=T; roundCOUNT>0; roundCOUNT--)
+	{
+		stateCIPHER = round(scheduleKEY.get_w(roundCOUNT));
+	}
+	
+	stateCIPHER.swap();
+}
+
+void		CIPHER::decryptDATA	(	BLOCK	x					)
+{
+	stateCIPHER = x;
+	stateCIPHER.swap();
 	
 	for(roundCOUNT=T; roundCOUNT>0; roundCOUNT--)
 	{
@@ -132,12 +176,16 @@ WORD		CIPHER::expand		(	KEY		x,	TYPE(8)	i		)
 	return w;
 }
 
+void		resetCount	(								)
+{
+	CIPHER::pktCOUNT = 0;
+}
+
 void		CIPHER::flush		(								)
 {
 	stateCIPHER.flush();
 	scheduleKEY.flush();
 	roundCOUNT = 0;
-	pktCOUNT = 0;
 	doneKEY = 0;
 }
 
