@@ -27,5 +27,14 @@
 \BOOKMARK [1][-]{section.4.1}{Hosted C++}{chapter.4}% 27
 \BOOKMARK [1][-]{section.4.2}{System Verilog}{chapter.4}% 28
 \BOOKMARK [0][-]{chapter.5}{Experiments \046 Results}{}% 29
-\BOOKMARK [0][-]{chapter.6}{Conclusion \046 Future Work}{}% 30
-\BOOKMARK [0][-]{chapter*.4}{Bibliography}{}% 31
+\BOOKMARK [1][-]{section.5.1}{Throughput}{chapter.5}% 30
+\BOOKMARK [2][-]{subsection.5.1.1}{Method}{section.5.1}% 31
+\BOOKMARK [2][-]{subsection.5.1.2}{Results}{section.5.1}% 32
+\BOOKMARK [1][-]{section.5.2}{Power Comsumption}{chapter.5}% 33
+\BOOKMARK [2][-]{subsection.5.2.1}{Method}{section.5.2}% 34
+\BOOKMARK [2][-]{subsection.5.2.2}{Results}{section.5.2}% 35
+\BOOKMARK [1][-]{section.5.3}{Resource Use}{chapter.5}% 36
+\BOOKMARK [2][-]{subsection.5.3.1}{Method}{section.5.3}% 37
+\BOOKMARK [2][-]{subsection.5.3.2}{Results}{section.5.3}% 38
+\BOOKMARK [0][-]{chapter.6}{Conclusion \046 Future Work}{}% 39
+\BOOKMARK [0][-]{chapter*.4}{Bibliography}{}% 40

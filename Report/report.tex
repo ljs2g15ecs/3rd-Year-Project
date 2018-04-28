@@ -463,12 +463,36 @@ void	KEXP_INL	(key k,	TYPE(8) i		)
 
 	\chapter{Experiments \& Results}
 	\label{chapter:RESULT}
+	
+	The experiments used in this project mainly focussed on the parameters that were outlined in \autoref{chapter:intro}: throughput, power consumption, and resource use; with the accuracy confirmed throughout the development stage and the security level assumed to be good enough. Unfortunately, the hardware was never fully implemented on an FPGA as it was felt that the work required to setup the modules to work with a communication protocol was too much and would not yield any more information that couldn't be discovered  with the various simulation tools. As the software and hardware versions do differ in how they compute the results, some of the desired comparisons couldn't be made directly as, for example, the power consumption is not available in software and the resources used are not the same. Even with the throughput the clock speed used in each version is vastly different, but even with that disadvantage the hardware should perform better.
+	
+	\section{Throughput}
+	
+	\subsection{Method}
+	To test the throughput of the algorithm is as simple as putting some data through it and timing how the implementation takes to process that data. From there, using the number of bytes and the time taken, the throughput can be calculated in bytes per second ($Bs^{-1}$) with \textcolor{red}{[insert equation]}. For the both software and hardware the data needed to be setup in software by reading an example file containing approximately $10kB$ of lorum ipsum\textcolor{red}{[insert reference]}. As the reading of the file takes some time, and is not part of the hardware testing, it is not included for the throughput testing in software by reading the file and setting up the packets and blocks before recording the start time. To input the data into the ModelSim testbenches it was simply written to a file in a SystemVerilog format and then copied and pasted into the relevant testbench.
+	
+	\subsection{Results}
+	\textcolor{red}{ADD THROUGHPUT TESTING RESULTS BELOW [300]}
+	
+	As each mode of SIMON processes a different number of bytes depending on the block the throughput of each block size (32, 48, 64, 96 and 128) is shown as it doesn't vary much key size. 
+	
+	\textcolor{blue}{ADD THROUGHPUT FIGURE}
 
-	\textcolor{red}{ADD THROUGHPUT TESTING BELOW [400]}
+	\section{Power Comsumption}
+	
+	\subsection{Method}
+	\textcolor{red}{ADD POWER TESTING METHOD BELOW [100]}
+	
+	\subsection{Results}
+	\textcolor{red}{ADD POWER TESTING RESULTS BELOW [300]}
 
-	\textcolor{red}{ADD POWER TESTING BELOW [300]}
-
-	\textcolor{red}{ADD AREA TESTING BELOW [300]}
+	\section{Resource Use}
+	
+	\subsection{Method}
+	\textcolor{red}{ADD RESOURCE TESTING METHOD BELOW [100]}
+	
+	\subsection{Results}
+	\textcolor{red}{ADD RESOURCE TESTING RESULTS BELOW [300]}
 
 	\chapter{Conclusion \& Future Work}
 	\label{chapter:CONC}
