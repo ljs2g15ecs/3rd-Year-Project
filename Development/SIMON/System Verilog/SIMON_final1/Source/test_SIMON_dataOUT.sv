@@ -30,9 +30,9 @@ begin
 
 	out_readPKT = 1'b0;
 	doneDATA = 1'b0;
-	infoOUT = `out_iDATA_TEST;
+	infoOUT = `out_iDEC_TEST;
 	countOUT = 8'h00;
-	outDATA = `in_DATA_TEST;	//	CHANGE TO OUTPUT DATA
+	outDATA = `out_DEC_TEST;	//	CHANGE TO OUTPUT DATA
 
 	@(posedge clk);
 	#10ns

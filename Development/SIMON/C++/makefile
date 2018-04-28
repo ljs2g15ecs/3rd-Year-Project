@@ -1,11 +1,12 @@
 CC 		= g++
-CFLAGS	= -D $(S) -std=c++11
+CFLAGS	= -D $(S) -D $(D) -std=c++11
 LFLAGS	= 
 
 S = S3264
+D = BUILD
 
 src_dir	= source
-build	= build\$(S)
+build	= $(D)\$(S)
 PROG	= $(build)/SIMON_$(S).exe
 src		= $(wildcard $(src_dir)/*.cpp)
 obj		= $(patsubst $(src_dir)/%.cpp,$(build)/%.o,$(src))
@@ -28,8 +29,8 @@ run:
 	
 .PHONY: clean
 clean:
-	del /Q build\S3264 build\S4872
-	del /Q build\S4896 build\S6496
-	del /Q build\S64128 build\S9696
-	del /Q build\S96144 build\S128128
-	del /Q build\S128192 build\S128256
+	del /Q $(D)\S3264 $(D)\S4872
+	del /Q $(D)\S4896 $(D)\S6496
+	del /Q $(D)\S64128 $(D)\S9696
+	del /Q $(D)\S96144 $(D)\S128128
+	del /Q $(D)\S128192 $(D)\S128256

@@ -15,13 +15,10 @@ WORD		F					(	WORD	x					)
 }
 //*/
 
-TYPE(8)		CIPHER::pktCOUNT = 0;
-
 //	CONSTRUCTORS
 CIPHER::CIPHER()
 {
 	flush();
-	resetCount();
 }
 
 //	MUTATORS
@@ -176,15 +173,16 @@ WORD		CIPHER::expand		(	KEY		x,	TYPE(8)	i		)
 	return w;
 }
 
-void		resetCount	(								)
+void		CIPHER::resetCount	(								)
 {
-	CIPHER::pktCOUNT = 0;
+	pktCOUNT = 0;
 }
 
 void		CIPHER::flush		(								)
 {
 	stateCIPHER.flush();
 	scheduleKEY.flush();
+	pktCOUNT = 0;
 	roundCOUNT = 0;
 	doneKEY = 0;
 }

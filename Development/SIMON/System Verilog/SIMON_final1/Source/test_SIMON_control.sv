@@ -11,6 +11,7 @@ logic [1:0][`N-1:0]	inDATA;
 logic [`M-1:0][`N-1:0]	KEY;
 
 //	OUPUTS
+logic			newDATA_rise, newKEY_rise;
 logic			loadDATA, loadKEY;
 logic			doneDATA, doneKEY;
 logic [7:0]		infoOUT, countOUT;
@@ -33,9 +34,9 @@ begin
 	newDATA = 1'b0;
 	newKEY = 1'b0;
 	readDATA = 1'b0;
-	infoIN = `in_iDATA_TEST;
+	infoIN = `in_iDEC_TEST;
 	countIN = 'b0;
-	inDATA = `in_DATA_TEST;
+	inDATA = `in_DEC_TEST;
 	KEY = `in_KEY_TEST;	
 
 	@(posedge clk);
@@ -67,6 +68,16 @@ end
 
 always @(posedge doneDATA)
 begin
+	repeat(2)	@(posedge clk);
+	#10ns
+	
+	readDATA <= 1'b1;	
+
+	repeat(2)	@(posedge clk);
+	#10ns
+	
+	readDATA <= 1'b0;
+
 	repeat(2)	@(posedge clk);
 	#10ns
 	

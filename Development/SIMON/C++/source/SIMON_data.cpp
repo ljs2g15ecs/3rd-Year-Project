@@ -168,6 +168,7 @@ void		DATA::readFILE_PKT	(								)
 {
 	sizeBYTE = 0;
 	posFILE = 0;
+	checkFILE();
 	
 	while(sizeBYTE < sizeFILE)
 	{
@@ -206,23 +207,30 @@ void		DATA::addFILE_PKT	(	KEY		x					)
 	streamPKT_IN.push_back(readKEY());
 }
 
-void		DATA::computePKTs	(	TYPE(64)	i				)
+TYPE(64)	DATA::computePKTs	(	TYPE(64)	i				)
 {
 	TYPE(64) j, total;
 	total = sizePACKET >= i ? i : sizePACKET;
 	
-	CIPHER SIMON;	resetCount();
+	CIPHER SIMON;
 	
 	for(j=0; j<total; j++)
 	{
 		streamPKT_OUT.push_back(SIMON.compute(streamPKT_IN.at(j)));
+#ifdef	DEBUG
+		cout << "|\t" << streamPKT_IN[j].HEX_WORD() << "\t|>>";
+		cout << "|\t" << streamPKT_OUT[j].HEX_WORD() << "\t|" << endl;
+#endif
 	}
+	
+	return total;
 }
 
 void		DATA::readFILE_BLK	(								)
 {
 	sizeBYTE = 0;
 	posFILE = 0;
+	checkFILE();
 	
 	while(sizeBYTE < sizeFILE)
 	{
@@ -238,6 +246,25 @@ void		DATA::addFILE_BLK	(	BLOCK	x					)
 	streamBLK_IN.push_back(x);
 }
 
+TYPE(64)	DATA::encryptBLKs	(	TYPE(64)	i				)
+{
+	TYPE(64) j, total;
+	total = sizeBLOCK >= i ? i : sizeBLOCK;
+	
+	CIPHER SIMON;
+	SIMON.expandKEY(keyFILE);
+	
+	for(j=0; j<total; j++)
+	{
+		streamBLK_OUT.push_back(SIMON.compute(streamBLK_IN.at(j), 1));
+#ifdef	DEBUG
+		cout << "|\t" << streamBLK_IN[j].HEX_WORD() << "\t|>>";
+		cout << "|\t" << streamBLK_OUT[j].HEX_WORD() << "\t|" << endl;
+#endif
+	}
+	
+	return total;
+}
 
 void		DATA::flush			(								)
 {
@@ -300,15 +327,15 @@ string		DATA::HEX_PKT	(								)
 
 string		DATA::HEX_PKT_SV(								)
 {
-	string str = "\n|\t";
+	string str = "\n\t";
 	
 	TYPE(64) i;
 	for(i=0; i<sizePACKET; i++)
 	{
 		str += streamPKT_IN[i].HEX_SV(i);
-		if(i!= sizePACKET-1)	str += "\t|\n|\t";
+		if(i!= sizePACKET-1)	str += "\n\t";
 	}
-	str += "\t|\n";
+	str += "\n";
 	
 	return str;
 }

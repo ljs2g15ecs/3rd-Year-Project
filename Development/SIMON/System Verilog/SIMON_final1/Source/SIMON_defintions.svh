@@ -16,12 +16,19 @@
 	`define	Cb	5
 
 	//	TEST VECTORS
-	`define	in_DATA_TEST 	32'h65656877
+	
 	`define	in_KEY_TEST	64'h1918111009080100
+	`define	in_ENC_TEST 	32'h65656877
+	`define	in_DEC_TEST	32'hC69BE9BB
 	`define	in_iKEY_TEST	8'hE0
+	`define	in_iENC_TEST	8'hC0
+	`define	in_iDEC_TEST	8'h80
+
+	`define	out_ENC_TEST	32'hC69BE9BB
+	`define	out_DEC_TEST	32'h65656877
 	`define out_iKEY_TEST	8'hF0
-	`define	in_iDATA_TEST	8'hC0
-	`define	out_iDATA_TEST	8'hD0
+	`define	out_iENC_TEST	8'hD0
+	`define	out_iDEC_TEST	8'h90
 `else `ifdef MODE1
 	`define	MODE	1
 	`define	N	24

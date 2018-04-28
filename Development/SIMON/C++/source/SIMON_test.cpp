@@ -126,7 +126,7 @@ PACKET		encryptTV_PKT	(						)
 	in.mode = MODE;\
 	in.in_out = 0;\
 	in.data_key = 0;\
-	in.enc_dec = 1;\
+	in.enc_dec = 0;\
 	in.nBlocks = 1;\
 	
 	t.input();
@@ -144,7 +144,6 @@ TYPE(8)		tCIPHER_TV_PKT	(							)
 	PACKET p, c;
 	CIPHER	SIMON;
 	
-	resetCount();
 	resetCounts();
 	
 	p = expandTV_PKT();
@@ -205,7 +204,7 @@ TYPE(64)	tTHROUGH_TV_PKT	(							)
 	
 	SIMON.compute(expandTV_PKT());
 	TYPE(16) i;
-	for(i=0; i<(1<<15)-1; i++)
+	for(i=0; i<(1<<16)-1; i++)
 	{
 		SIMON.compute(encryptTV_PKT());
 	}
@@ -250,6 +249,7 @@ DATA		testFILE;
 void		encryptFILE_PKT	(							)
 {
 	testFILE.flush();
+	resetCounts();
 	
 	testFILE.assign("test");
 	testFILE.addFILE_PKT(K);
@@ -284,17 +284,56 @@ void		decryptFILE_BLK	(							)
 TYPE(8)		tCIPHER_DF_PKT	(							)
 {
 	encryptFILE_PKT();
-	testFILE.computePKTs(10);
+	testFILE.computePKTs(101);
 }
 TYPE(8)		tCIPHER_DF_BLK	(							)
 {
-	
+	encryptFILE_BLK();
+	testFILE.encryptBLKs(200);
 }
 TYPE(64)	tTHROUGH_DF_PKT	(							)
 {
+	clock_t start, end;
 	
+	encryptFILE_PKT();
+	start = clock();
+
+	//perform calculations for which performance needs to be checked
+	TYPE(64) i = testFILE.computePKTs((1<<16)-1);
+	
+	end = clock();
+
+	cout	<< "Time required for " << i << " executions: "\
+			<< (double)(end-start)/CLOCKS_PER_SEC\
+			<< " seconds." << endl;
+	return 0;
 }
 TYPE(64)	tTHROUGH_DF_BLK	(							)
+{
+	clock_t start, end;
+
+	encryptFILE_BLK();
+	start = clock();
+
+	//perform calculations for which performance needs to be checked
+	TYPE(64) i = testFILE.encryptBLKs((1<<16)-1);
+	
+	end = clock();
+
+	cout	<< "Time required for " << i << " executions: "\
+			<< (double)(end-start)/CLOCKS_PER_SEC\
+			<< " seconds." << endl;
+	return 0;
+}
+
+//	SETUP DATA FOR MODELSIM SIMULATION
+void		printFILE_PKT_SV(							)
+{
+	encryptFILE_PKT();
+	cout << testFILE.HEX_PKT_SV();
+}
+
+void		printFILE_BLK_SV(							)
 {
 	
 }

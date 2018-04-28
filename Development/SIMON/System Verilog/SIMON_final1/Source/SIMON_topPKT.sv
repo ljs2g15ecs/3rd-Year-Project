@@ -13,6 +13,7 @@ output logic [(1+(`N/2)):0][7:0]	out
 
 //	DATA FLOW CONTROL LOGIC
 logic					newDATA, newKEY;
+logic					newDATA_rise, newKEY_rise;
 logic					loadDATA, loadKEY;
 logic					doneDATA, doneKEY;
 logic					readDATA;

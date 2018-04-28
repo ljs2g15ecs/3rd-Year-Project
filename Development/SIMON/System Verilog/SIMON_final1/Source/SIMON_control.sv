@@ -7,6 +7,7 @@ module SIMON_control
 	input logic [7:0]		infoIN, countIN,
 	input logic [1:0][`N-1:0]	inDATA,
 	input logic [`M-1:0][`N-1:0]	KEY,
+	output logic			newDATA_rise, newKEY_rise,
 	output logic			loadDATA, loadKEY,
 	output logic			doneDATA, doneKEY,
 	output logic [7:0]		infoOUT, countOUT,
@@ -34,8 +35,6 @@ logic [2*`N-1:0] 			i, o;
 SIMON_round r(.in(i), .key(rKey), .out(o));
 
 //	RISING EDGE NEW CHECK
-logic					newDATA_rise, newKEY_rise;
-
 always @(posedge newDATA, posedge loadDATA, negedge nR)
 begin
 	if(~nR)				newDATA_rise <= 1'b0;
@@ -89,6 +88,40 @@ begin
 	end
 end
 
+always_ff @(posedge clk, negedge nR)
+begin
+	if(~nR)
+	begin
+		doneDATA <= 1'b0;
+	end
+	else
+	begin
+		if(doneDATA && readDATA)	doneDATA <= 1'b0;		
+		unique case(current)
+		INIT:
+		begin
+			
+		end
+		LOAD:
+		begin
+			
+		end
+		EXECUTE:
+		begin
+			
+		end
+		WRITE:
+		begin
+			if(next == LOAD)
+			begin				
+				doneDATA <= 1'b1;
+			end
+		end
+		endcase
+		current <= next;
+	end
+end
+
 //	MAIN STATE CONTROL
 always_ff @(posedge clkALL, negedge nR)
 begin
@@ -124,8 +157,7 @@ begin
 		WRITE:
 		begin
 			if(next == LOAD)
-			begin
-				doneDATA <= 1'b1;				
+			begin				
 				infoOUT <= {info[7:5], ~info[4], info[3:0]};
 				countOUT <= countPKT;
 			end
@@ -153,7 +185,7 @@ begin
 		end
 		LOAD:
 		begin		
-			if(ENC_DEC)		i <= inDATA;
+			if(infoIN[6])		i <= inDATA;
 			else			i <= {inDATA[0], inDATA[1]};
 			loadDATA <= 1'b1;
 		end
@@ -166,7 +198,7 @@ begin
 		begin		
 			if(next == LOAD)
 			begin
-				outDATA <= ENC_DEC ? o : {o[0], o[1]};
+				outDATA <= o;
 			end
 		end
 		endcase

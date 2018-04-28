@@ -4,20 +4,18 @@ module SIMON_control
 (	input logic 			clk, nR,
 	input logic 			newDATA, newKEY,
 	input logic 			readDATA,
-	input logic [7:0]		infoIN, countIN,
+	input logic 			enc_dec
 	input logic [1:0][`N-1:0]	inDATA,
 	input logic [`M-1:0][`N-1:0]	KEY,
 	output logic			newDATA_rise, newKEY_rise,
 	output logic			loadDATA, loadKEY,
 	output logic			doneDATA, doneKEY,
-	output logic [7:0]		infoOUT, countOUT,
 	output logic [1:0][`N-1:0]	outDATA			);
 
 //	STATES
 typedef enum bit [1:0] {INIT, LOAD, EXECUTE, WRITE} state;
 state current, next;
 
-logic [7:0]				info, countPKT;
 
 //	KEY EXPANSION LOGIC
 logic					ENC_DEC;
@@ -35,8 +33,6 @@ logic [2*`N-1:0] 			i, o;
 SIMON_round r(.in(i), .key(rKey), .out(o));
 
 //	RISING EDGE NEW CHECK
-logic					newDATA_rise, newKEY_rise;
-
 always @(posedge newDATA, posedge loadDATA, negedge nR)
 begin
 	if(~nR)				newDATA_rise <= 1'b0;
@@ -76,7 +72,7 @@ begin
 		end
 		LOAD:
 		begin
-			if(infoIN[6])	clkDATAGo <= (newDATA_rise) && (newKEY_rise || doneKEY);
+			if(enc_dec)	clkDATAGo <= (newDATA_rise) && (newKEY_rise || doneKEY);
 			else		clkDATAGo <= (newDATA_rise) && doneKEY;
 			clkKEYGo <= newKEY;
 		end
@@ -148,9 +144,7 @@ begin
 		LOAD:
 		begin
 			count <= 1'b0;
-			info <= infoIN;
-			ENC_DEC <= infoIN[6];
-			countPKT <= countIN;
+			ENC_DEC <= enc_dec;
 		end
 		EXECUTE:
 		begin
@@ -160,8 +154,7 @@ begin
 		begin
 			if(next == LOAD)
 			begin				
-				infoOUT <= {info[7:5], ~info[4], info[3:0]};
-				countOUT <= countPKT;
+				
 			end
 		end
 		endcase

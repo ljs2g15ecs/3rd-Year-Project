@@ -350,10 +350,10 @@ public:
 	void		addFILE_PKT	(								);
 	void		addFILE_PKT	(	BLOCK	x0,	BLOCK	x1		);
 	void		addFILE_PKT	(	KEY		x					);
-	void		computePKTs	(	TYPE(64)	i				);
+	TYPE(64)	computePKTs	(	TYPE(64)	i				);
 	void		readFILE_BLK(								);
 	void		addFILE_BLK	(	BLOCK	x					);
-	void		encryptBLKs	(	TYPE(64)	i				);
+	TYPE(64)	encryptBLKs	(	TYPE(64)	i				);
 	void		decryptBLKs	(	TYPE(64)	i				);
 	void		flush		(								);
 	
@@ -399,7 +399,7 @@ public:
 	void		encryptDATA	(	BLOCK	x					);
 	void		decryptDATA	(	WORD	x0,	WORD	x1		);
 	void		decryptDATA	(	BLOCK	x					);
-	
+	void		resetCount	(								);
 	BLOCK		round		(	WORD	x					);
 	WORD		expand		(	KEY		x,	TYPE(8)	i		);
 	
@@ -407,9 +407,8 @@ public:
 	
 	//	ACCESSORS
 	
-	static		TYPE(8)		pktCOUNT;
-	
 private:
+	TYPE(8)		pktCOUNT;
 	BLOCK		stateCIPHER;
 	KEY_S		scheduleKEY;
 	TYPE(8)		roundCOUNT;
@@ -417,6 +416,6 @@ private:
 	
 };
 
-void			resetCount	(								);
+
 
 #endif

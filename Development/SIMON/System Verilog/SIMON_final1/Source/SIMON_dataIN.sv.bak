@@ -3,6 +3,7 @@
 module SIMON_dataIN
 (	input logic			clk, nR,
 	input logic			in_newPKT,
+	input logic			newDATA_rise, newKEY_rise,
 	input logic			loadDATA, loadKEY,
 	input logic [(1+(`N/2)):0][7:0]	in,
 	output logic			in_loadPKT, in_donePKT,
@@ -33,7 +34,7 @@ always @(posedge in_newPKT, posedge in_loadPKT, negedge nR)
 begin
 	if(~nR)				newPKT_rise <= 1'b0;
 	else if(in_loadPKT)		newPKT_rise <= 1'b0;
-	else if(in_newPKT)			newPKT_rise <= 1'b1;
+	else if(in_newPKT)		newPKT_rise <= 1'b1;
 end
 
 always @(PROCESSING, negedge nR)
@@ -118,7 +119,7 @@ begin
 	begin
 		if(PROCESSING)
 		begin
-			if(newDATA || loadDATA)		next = WAIT;	
+			if(newDATA_rise || loadDATA)	next = WAIT;	
 			else				next = WRITE;	
 		end
 		else
@@ -129,7 +130,11 @@ begin
 	end
 	LOAD:						next = COMPUTE;
 	COMPUTE:					next = WRITE;
-	WRITE:						next = WAIT;
+	WRITE:
+	begin
+		if(newDATA_rise)			next = WRITE;
+		else					next = WAIT;
+	end
 	endcase
 end
 

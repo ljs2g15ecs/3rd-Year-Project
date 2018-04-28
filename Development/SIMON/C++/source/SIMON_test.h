@@ -29,5 +29,9 @@ TYPE(8)		tCIPHER_DF_BLK	(							);
 TYPE(64)	tTHROUGH_DF_PKT	(							);
 TYPE(64)	tTHROUGH_DF_BLK	(							);
 
+//	SETUP DATA FOR MODELSIM SIMULATION
+void		printFILE_PKT_SV(							);
+void		printFILE_BLK_SV(							);
+
 #endif
 

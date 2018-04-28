@@ -35,7 +35,7 @@ begin
 	in_newPKT = 1'b0;
 	loadDATA = 1'b0;
 	loadKEY = 1'b0;
-	testDATA = `in_DATA_TEST;
+	testDATA = `in_ENC_TEST;
 	countPKT = 8'h00;
 	in = {`in_iKEY_TEST, countPKT, `in_KEY_TEST };
 
@@ -96,7 +96,7 @@ begin
 	repeat(2)	@(posedge clk);
 	#10ns
 
-	in <= { `in_iDATA_TEST, countPKT, testDATA, ~testDATA};
+	in <= { `in_iENC_TEST, countPKT, testDATA, ~testDATA};
 	
 	@(posedge clk)
 	in_newPKT <= 1'b1;

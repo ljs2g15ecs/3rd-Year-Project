@@ -451,7 +451,7 @@ string		PACKET::HEX_SV	(	TYPE(64)	i				)
 {
 	stringstream ss;
 	
-	ss << "in[" << i << "]\t= " << (2+(N/2))*8 << "'h";
+	ss << "inPKT[" << i << "]\t= " << (2+(N/2))*8 << "'h";
 	ss << hex << uppercase << setfill('0') << setw(2) << (TYPE(16))pBYTES[0];
 	ss << hex << uppercase << setfill('0') << setw(2) << (TYPE(16))pBYTES[1];
 	

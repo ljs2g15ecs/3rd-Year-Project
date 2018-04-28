@@ -15,8 +15,7 @@ logic [(1+(`N/2)):0][7:0]	out;
 
 SIMON_topPKT			topPKT(.*);
 
-logic				encrypted;
-logic [1:0][`N-1:0]		testDATA;
+logic				encrypt, doneSIM;
 logic [7:0]			countPKT;
 
 initial
@@ -33,8 +32,8 @@ begin
 	
 	in_newPKT = 1'b0;
 	out_readPKT = 1'b0;
-	encrypted = 1'b1;
-	testDATA = `in_DATA_TEST;
+	encrypt = 1'b1;
+	doneSIM = 1'b0;
 	countPKT = 8'h00;
 	in = {`in_iKEY_TEST, 8'h00, `in_KEY_TEST };
 
@@ -54,7 +53,7 @@ begin
 	repeat(2)	@(posedge clk);
 	#10ns
 	
-	if(encrypted)	countPKT <= countPKT + 1'b1;
+	if(~doneSIM)	countPKT <= countPKT + 1'b1;
 	in_newPKT <= 1'b0;
 end
 
@@ -63,13 +62,14 @@ begin
 	repeat(2)	@(posedge clk);
 	#10ns
 
-	if(encrypted)
+	if(~doneSIM)
 	begin
-		in <= { `in_iDATA_TEST, countPKT, testDATA, testDATA};
+		if(encrypt)	in <= { `in_iENC_TEST, countPKT, `in_ENC_TEST, `in_ENC_TEST};
+		else		in <= { `in_iDEC_TEST, countPKT, `in_DEC_TEST, `in_DEC_TEST};
 	
 		@(posedge clk)
 		in_newPKT <= 1'b1;
-		encrypted <= 1'b0;
+		encrypt <= ~encrypt;
 	end
 end
 

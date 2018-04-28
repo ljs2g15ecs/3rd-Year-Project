@@ -21,7 +21,7 @@ logic						nBLOCK, PROCESSING;
 logic [7:0] 					info, countPKT;
 logic [3:0][`N-1:0] 				data;
 
-assign pkt = {info, countOUT, data[3], data[2], data[1], data[0]};
+assign pkt = {info, countPKT, data[3], data[2], data[1], data[0]};
 
 always @(posedge doneDATA, posedge readDATA, negedge nR)
 begin
@@ -57,12 +57,10 @@ begin
 		begin
 			PROCESSING <= 1'b1;			
 			
-			if(countOUT != countPKT)	$display("ERROR - PACKET COUNT TRACKER");
-			else if(infoOUT[3:0] != `MODE)	$display("ERROR - INCORRECT MODE");
-			else if(~infoOUT[4])		$display("ERROR - OUTPUT PACKET");
+			if(infoOUT[3:0] != `MODE)	$display("ERROR - INCORRECT MODE");
+			else if(~infoOUT[4])		$display("ERROR - INPUT PACKET");
 			else
 			begin
-				countPKT <= countPKT + 1;
 				info <= infoOUT;
 				nBLOCK <= ~infoOUT[5] && infoOUT[7];
 			end
@@ -75,8 +73,8 @@ begin
 			end
 			else if(~info[5])
 			begin
-				data[{~nBLOCK, 1'b0}] <= outDATA[0];
-				data[{~nBLOCK, 1'b1}] <= outDATA[1];
+				data[{~nBLOCK, 1'b0}] <= outDATA[~info[6]];
+				data[{~nBLOCK, 1'b1}] <= outDATA[info[6]];
 				nBLOCK <= 1'b0;
 			end
 			
@@ -89,6 +87,7 @@ begin
 			if(next == WAIT)
 			begin
 				out_donePKT <= 1'b1;
+				countPKT <= countPKT + 1;
 				out <= pkt;
 			end
 		end

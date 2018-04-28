@@ -1,5 +1,5 @@
 CC 		= gcc
-CFLAGS	= -D $(S)
+CFLAGS	= -D $(S) -D $(D)
 LFLAGS	= 
 
 src_dir	= source
@@ -9,6 +9,7 @@ src		= $(wildcard $(src_dir)/*.c)
 obj		= $(patsubst $(src_dir)/%.c,$(build)/%.o,$(src))
 
 S = S32_64
+D = 
 
 all: $(build) $(PROG)
 	$(PROG)

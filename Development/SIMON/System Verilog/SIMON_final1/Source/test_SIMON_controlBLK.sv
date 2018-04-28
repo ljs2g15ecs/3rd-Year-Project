@@ -1,23 +1,22 @@
 `include "SIMON_defintions.svh"
 
-module test_SIMON_control;
+module test_SIMON_controlBLK;
 
 //	INPUTS
 logic 			clk, nR;
 logic 			newDATA, newKEY;
 logic 			readDATA;
-logic [7:0]		infoIN, countIN;
+logic			enc_dec;
 logic [1:0][`N-1:0]	inDATA;
 logic [`M-1:0][`N-1:0]	KEY;
 
 //	OUPUTS
-logic			newDATA_rise, newKEY_rise
+logic			newDATA_rise, newKEY_rise;
 logic			loadDATA, loadKEY;
 logic			doneDATA, doneKEY;
-logic [7:0]		infoOUT, countOUT;
 logic [1:0][`N-1:0]	outDATA;
 
-SIMON_control control(.*);
+SIMON_controlBLK 	control(.*);
 
 initial
 begin
@@ -34,9 +33,8 @@ begin
 	newDATA = 1'b0;
 	newKEY = 1'b0;
 	readDATA = 1'b0;
-	infoIN = `in_iDEC_TEST;
-	countIN = 'b0;
-	inDATA = `in_DEC_TEST;
+	enc_dec = 1'b1;
+	inDATA = `in_ENC_TEST;
 	KEY = `in_KEY_TEST;	
 
 	@(posedge clk);

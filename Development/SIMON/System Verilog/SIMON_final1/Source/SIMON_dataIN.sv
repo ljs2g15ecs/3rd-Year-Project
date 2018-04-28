@@ -3,6 +3,7 @@
 module SIMON_dataIN
 (	input logic			clk, nR,
 	input logic			in_newPKT,
+	input logic			newDATA_rise, newKEY_rise,
 	input logic			loadDATA, loadKEY,
 	input logic [(1+(`N/2)):0][7:0]	in,
 	output logic			in_loadPKT, in_donePKT,
@@ -89,22 +90,25 @@ begin
 		end
 		WRITE:
 		begin
-			if(info[5] && ~loadKEY)
+			if(next == WAIT)
 			begin
-				newKEY <= 1'b1;
-				for(int i=0; i<`M; i++)	KEY[i] <= data[i];
-			end
-			else if(~info[5] && ~loadDATA)
-			begin
-				newDATA <= 1'b1;
-				inDATA[0] <= data[{~nBLOCK, 1'b0}];
-				inDATA[1] <= data[{~nBLOCK, 1'b1}];
-				nBLOCK <= 1'b0;
-			end
+				if(info[5] && ~loadKEY)
+				begin
+					newKEY <= 1'b1;
+					for(int i=0; i<`M; i++)	KEY[i] <= data[i];
+				end
+				else if(~info[5] && ~loadDATA)
+				begin
+					newDATA <= 1'b1;
+					inDATA[0] <= data[{~nBLOCK, 1'b0}];
+					inDATA[1] <= data[{~nBLOCK, 1'b1}];
+					nBLOCK <= 1'b0;
+				end
 
-			infoIN <= info;
+				infoIN <= info;
 
-			if(~nBLOCK)	PROCESSING <= 1'b0;
+				if(~nBLOCK)	PROCESSING <= 1'b0;
+			end
 		end
 		endcase
 		current <= next;
@@ -118,7 +122,7 @@ begin
 	begin
 		if(PROCESSING)
 		begin
-			if(newDATA || loadDATA)		next = WAIT;	
+			if(newDATA_rise || loadDATA)	next = WAIT;	
 			else				next = WRITE;	
 		end
 		else
@@ -129,7 +133,11 @@ begin
 	end
 	LOAD:						next = COMPUTE;
 	COMPUTE:					next = WRITE;
-	WRITE:						next = WAIT;
+	WRITE:
+	begin
+		if(newDATA_rise)			next = WRITE;
+		else					next = WAIT;
+	end
 	endcase
 end
 
