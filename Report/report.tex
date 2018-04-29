@@ -272,7 +272,7 @@
 	\label{section:first}
 	The first approach for this project was to develop the software and hardware to be flexible to the various data block and key sizes defined for SIMON, shown in \autoref{table:S+S}. As each system would only be computing with one mode at a time the decision of the variable sizes could be made at compile time and not during in runtime which be introduce some unnecessary inefficiency to the system. This could be achieved with C preprocessor macros for the software and, even though something similar is possible in System Verilog, parameters were passed between the modules. The macros and parameters were used to define the $n$ and $m$ values for each mode so that the input and output variables of each function in software and each module in hardware would be correct. They were also used to define the number of rounds that the round function should iterated and the value of $j$ used in the key expansion.
     
-	\subsection{Hosted C}
+	\subsection{Software - Hosted C}
 	\label{subsection:HOSTED1}
 	Initially the software was only developed to be used in a hosted environment but future approaches could made be for an embedded processor or something similar. With most languages used in software development the variable sizes and constrained to the data types available, with C offering only 8, 16, 32 and 64 bit variable types. This produced some difficulty with the 24 and 48 bit sizes required for this algorithm, but with the use of typedefs and bitfields in a structure it was solved. Using the values of $N$ and $M$ a $word$ data type was defined based on unsigned integers, uint$N$\_t, and the block, key and key schedule data types were setup using arrays of the base $word$ type. All of the code used to setup the data sizes and type can be seen in \autoref{lst:macro}.
     
@@ -365,31 +365,129 @@ void	KEXP_INL	(key k,	TYPE(8) i		)
 	
 	The key expansion functions, \autoref{lst:keyexpan}, also use the rotate functions but they are more complicated than the round function as they differ slightly depending the number of words in the key, $M$, but more compiler directives can handle that problem. There are two separate key expansion function: one that can expand the key at the same time as the encryption in the iterative loop ($INL$); and one that computes the schedule before encryption or decryption occurs in its own iterative loop ($PRE$).
     
-	For simplicity in the early stages the the software didn't have the capability of reading a file and encrypting or decrypting it so it could only use data stored in the code. This still allowed for the test vectors to be used and therefore correct functionality could still be confirmed.  By simply changing the desired mode at compile time and setting up the test vectors for each mode they could be tested with the same code. The results of testing the code, in mode 0 (32/64), can be seen in \textcolor{red}{[reference figure]}. For the in loop key expansion the test plaintext and key was inputted and encrypted with the result compared with the expected ciphertext. With the pre loop key exapansion the encrypted ciphertext could also be decrypted so when that produced the original plaintext then the whole system was confirmed to function correctly.
+	For simplicity in the early stages the the software didn't have the capability of reading a file and encrypting or decrypting it so it could only use data stored in the code. This still allowed for the test vectors to be used and therefore correct functionality could still be confirmed.  By simply changing the desired mode at compile time and setting up the test vectors for each mode they could be tested with the same code.
+	
+	The results of testing the code, in mode 0 (32/64), can be seen in \textcolor{red}{[reference figure]}. For the in loop key expansion the test plaintext and key was inputted and encrypted with the result compared with the expected ciphertext. With the pre loop key exapansion the encrypted ciphertext could also be decrypted so when that produced the original plaintext then the whole system was confirmed to function correctly.
 	
 	\textcolor{blue}{INSERT TESTING RESULTS FIGURE}
     
-	\subsection{System Verilog}
+	\subsection{Hardware - System Verilog}
 	\label{subsection:SV1}
-	As mentioned in \autoref{section:first} the parameter system was used to pass the values for word and key size and also the number of rounds to be iterated. Similar to the functions used in \autoref{subsection:HOSTED1} modules were used for the Feistel function, round function, key expansion function before being combined in the top level control module. Although, unlike the software version the rotate and logic operations used could be done with just combinational logic so the result is available almost instantaneously not after a few CPU instruction cycles.
+	As mentioned in \autoref{section:first} the parameter system was used to pass the values for word and key size and also the number of rounds to be iterated. Similar to the functions used in \autoref{subsection:HOSTED1} modules were used for the Feistel function, round function, key expansion function before being combined in the top level control module. Although, unlike the software version the rotate and logic operations used could be done with just combinational logic so the result is available almost instantaneously not after a few CPU instruction cycles. 
+
+	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:Feistel_function},caption={The feistel function},style=CStyle]	
+module SIMON_function
+#(
+parameter 		N = 	16,
+parameter 		M =	4
+)
+(
+input logic [N-1:0]	in,
+output logic [N-1:0]	out
+);
+
+always_comb
+begin
+	out = ({in[N-2:0], in[N-1]} & {in[N-9:0], in[N-1:N-8]}) ^ {in[N-3:0], in[N-1:N-2]};
+end
+
+endmodule
+	\end{lstlisting}
+	\end{minipage}
 	
-	The main functionality of the system was provided by the control module which provides the sequential operation with the clock ($clk$), and active low reset signal ($nR$). As with the software version two control modules were created: one that expands they key while encrypting ($INL$) and one that waits for the key to be fully expanded before the data processing begins ($PRE$). They both achieve this by operation as a state machine with with different states: waiting for data; loading data; processing data; and writing the output data. The state is controlled by the combinational block which is dependant on the current state; the inputs: $newData$, $readData$ and $enc\_dec$*; and the internal $count$ variable and the output $doneKey$*.
+	\autoref{lst:Feistel_function} shows how the Feistel function is implemented in hardware with just combinational logic and wire shifts.  A similar method is used for the shifts in the key expansion. The round function, \autoref{lst:Round_function}, was then designed using an instance of the Feistel function with the input being the the top half of the input block of the round function and the result being assigned to the $f$ logic block. The result of the round function is then calculated in another combinational block.
+
+	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:Round_function},caption={The Round function},style=CStyle]	
+module SIMON_round
+#(
+parameter 		N = 	16,
+parameter 		M = 	4	
+)
+(
+input logic [2*N-1:0] 	in,
+input logic [N-1:0] 	key,	
+output logic [2*N-1:0]	out
+);
+
+logic [N-1:0] f;
+
+SIMON_function func(.in(in[2*N-1:N]), .out(f));
+
+always_comb
+begin
+	out[N-1:0] <= in[2*N-1:N];
+	out[2*N-1:N] <= in[N-1:0] ^ key ^ f;
+end
+
+endmodule
+	\end{lstlisting}
+	\end{minipage}
 	
-	\textcolor{blue}{INSERT STATE MACHINE FIGURE}
-    
-	\textcolor{red}{ADD SYSTEM VERILOG LISTINGS BELOW [100]}
+	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:Next_state_INL},caption={The next state logic for the ($INL$) control module},style=CStyle]
+always_comb
+begin
+	unique case(current)
+	s0:
+	begin
+		if(newData)				next = s1;
+		else							next = s0;
+	end
+	s1:									next = s2;
+	s2:
+	begin
+		if(count != T-1)	next = s2;
+		else							next = s3;
+	end
+	s3:
+	begin
+		if(readData)			next = s0;
+		else							next = s3;
+	end
+	endcase
+end
+	\end{lstlisting}
+	\end{minipage}
+	
+	The main functionality of the system was provided by the control module which provides the sequential operation with the clock ($clk$), and active low reset signal ($nR$). As with the software version two control modules were created: one that expands they key while encrypting ($INL$) and one that waits for the key to be fully expanded before the data processing begins ($PRE$). They both achieve this by operation as a state machine with with different states: waiting for data; loading data; processing data; and writing the output data. The state is controlled by the combinational block which is dependant on the current state; the inputs: $newData$, $readData$ and $enc\_dec$; and the internal $count$ variable and the output $doneKey$. The combinational blocks that implement the next state logic is shown in \autoref{lst:Next_state_INL} and \ref{lst:Next_state_PRE}.
+
+	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:Next_state_PRE},caption={The next state logic for the ($PRE$) control module},style=CStyle]	
+always_comb
+begin
+	unique case(current)
+	s0:
+	begin
+		if(newData && doneKey)	next = s1;
+		else										next = s0;
+	end
+	s1:												next = s2;
+	s2:
+	begin
+		if(count != T-1)				next = s2;
+		else										next = s3;
+	end
+	s3:
+	begin
+		if(readData)						next = s0;
+		else										next = s3;
+	end
+	endcase
+end
+	\end{lstlisting}
+	\end{minipage}
 	
 	To test the individual modules various input data was selected and the expected outputs were calculated either manually for the simple operations or using the software. As with the software when this functionality was correct they were combined into the top level control module to be further tested. Again, this was only for the most basic 32/64 mode of SIMON. To do this a testbench was created that with a clock that had a $100ns$ period, or $10MHz$ \textcolor{red}{[CHECK]}, and with the initial inputs setup during the reset of the module. After this the reset signal could be disabled and then the $newData$ signal could be set $HIGH$ to indicate to the state machine to move into the loading and processing states. When the module finished processing the data the ciphertext outputted could read by the testbench and then compared with the expected result before being decrypted in the module capable of that.
 	
 	\textcolor{blue}{INSERT TESTING RESULTS FIGURE}
     
-	\textcolor{red}{ADD SYSTEM VERILOG SYNTHESIS BELOW [100]}
-    
 	\section{Second Approach}
 	\label{section:second}
 	With the basic functionality working in \autoref{section:first} improvements could be made to the power consumption and resource use with methods like: code minimisation; logic minimisation; clock gating. Also more functionality could be added to increase the usability of the algorithm. As the aim of this project is to design an efficient version of this algorithm in hardware not software, most of the changes in this approach were made in the System Verilog code.
     
-	\subsection{Hosted C}
+	\subsection{Software - Hosted C}
 	\label{subsection:HOSTED2}
 	
 	There were only some minor changes to the software version for this approach which were mainly what was learnt from developing the System Verilog version, \autoref{subsection:SV1}. One of these changes was ensuring that the key schedule was stored, before or during the main loop, and only expanded once. This was done with a $doneKey$ flag variable which is set to true at the end of the key expansion.
@@ -400,24 +498,107 @@ void	KEXP_INL	(key k,	TYPE(8) i		)
     
 	\textcolor{red}{ADD C TESTING BELOW [200]}   
     
-	\subsection{System Verilog}
+	\subsection{Hardware - System Verilog}
 	\label{subsection:SV2}
 	
 	To add the clock gating to the control module wasn't simple as the clock should not be halted while data is being processed or written to the output, so it could only be updated during the wait state. This was attempted with the clock gating signal only updating in this state on the same rising edge as the state machine. However, this caused glitches because the state machine moved onto the next state before the clock was stopped and was thus no longer in the correct state the clock gating when required. This was because the same edge that is needed to update the control signal moves the machine onto the next state. One option to solve this is to add more signals and a latch to have the gated clock to only stop when the clock is $LOW$. A similar method to this was eventually used as the clock gating signal sensitivity was changed to the falling edge of the clock, hence updating half a clock cycle before the system changes state.
+
+	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:Clock_Gating},caption={The next state logic for the ($PRE$) control module},style=CStyle]
+//	GATED CLOCK LOGIC
+logic clkCipherGo, clkCipher;
+logic clkKeyGo, clkKey, clkAll;
+
+assign clkCipher = clk && clkCipherGo;
+assign clkKey = clk && clkKeyGo;
+assign clkAll = clkCipher || clkKey;
+
+always_ff @(negedge clk, negedge nR)
+begin
+	if(~nR)
+	begin
+		clkCipherGo <= 1'b0;
+		clkKeyGo <= 1'b0;
+	end
+	else
+	begin
+		unique case(current)
+		INIT:
+		begin
+			clkCipherGo <= newData;
+			clkKeyGo <= newKey;
+		end
+		LOAD:
+		begin
+			ENCDEC <= enc_dec;
+			if(enc_dec)	clkCipherGo <= (newData) && (newKey || doneKey);
+			else				clkCipherGo <= (newData) && doneKey;
+			clkKeyGo <= newKey;
+		end
+		EXECUTE:
+		begin
+		end
+		WRITE:
+		begin
+		end
+		endcase
+	end
+end
+	\end{lstlisting}
+	\end{minipage}
 	
 	Gating the clock also enabled a few more enhancements to the code. One of these was because the halted clock provided waiting for new data functionality, the waiting state was no longer necessary. The clock gating was moved onto the loading state and the waiting state was just used for initialisation to improve the reliability of the system. Another change was the option to clock both the encryption/decryption as well as the key expansion and have them both in the same module. This also removed the need for two variants needed for in loop and pre key expansion as the clock gating could also be dependant on the $enc\_dec$ signal. It also helped with the logic minimisation as the key and the expanded key didn't need to be passed between multiple modules.
 	
 	Another addition to the system was the ability to load a new key after the initial loading was done. This was done with another input signal $newKey$ which operated in the same way as the $newData$ signal did for data. Also a few more signals were outputted that indicate when the data and keys were loaded into the system and thus the inputs could change to be ready for the next set of data.
+	
+	For this new approach all ten modes of SIMON were tested in hardware with each having it's own top level module containing an instance of the control module as well as the key expansion module which had a new input of the $z$ constant that varies with each mode. This top level module for the basic mode 32/64 is shown in \autoref{lst:Top_level}
+
+	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:Top_level},caption={The next state logic for the ($PRE$) control module},style=CStyle]
+module SIMON_3264
+#(
+parameter N = 16,
+parameter M = 4,
+parameter T = 32,		
+parameter Co = 5
+)
+(
+input logic clk, nR,
+input logic newData, newKey,
+input logic enc_dec, readData,
+input logic [2*N-1:0] plain,
+input logic [M-1:0][N-1:0] key,
+output logic ldData, ldKey,
+output logic doneData, doneKey,
+output logic [2*N-1:0] cipher
+);
+
+//	KEY EXPANSION LOGIC
+logic [M-1:0][N-1:0] pKeys;
+logic [N-1:0] oKey;
+logic [Co-1:0] count;
+
+reg [61:0] z = 62'b01100111000011010100100010111110110011100001101010010001011111;
+
+SIMON_keyexpansion #(N,M,Co) ke(.count(count), .keys(pKeys), .z(z), .out(oKey));
+
+SIMON_control #(N,M,T,Co) control(.*);
+
+endmodule
+	\end{lstlisting}
+	\end{minipage}
     
 	\textcolor{red}{ADD SYSTEM VERILOG LISTINGS BELOW [100]}
     
 	\textcolor{red}{ADD SYSTEM VERILOG SIMULATIONS BELOW [200]}
+	
+	To test this new approach the
     
 	\textcolor{red}{ADD SYSTEM VERILOG SYNTHESIS BELOW [100]}
     
 	\chapter{Final Design Approach}
 	\label{chapter:FINAL}
-	For the final approach the idea was to ensure that the control module remains in the $execute$ state as much as possible to ensure that the system is always processing data and thus increase the throughput. Having the hardware active all the time does increase the overall power consumption and might negate the effects of the clock gating added in \autoref{section:second} but as the throughput is increased the power consumed per bit or byte of data processed is lower. This is done by sending packets of data instead of just individual blocks of data and having extra functions or modules to handle the input and output of these packets. This adds another system to be tested and compared in both hardware and software but even if it performs worst it does represent a more usable and complete system.
+	For the final approach the idea was to ensure that the control module remains in the $execute$, or processing, state as much as possible to ensure that the system is always processing data and thus increase the throughput. Having the hardware active all the time does increase the overall power consumption and might negate the effects of the clock gating added in \autoref{section:second}, but as the throughput is increased the power consumed per bit or byte of data processed is lower. This is done by sending packets of data instead of just individual blocks of data and having extra functions or modules to handle the input and output of these packets. This added another system to be tested and compared in both hardware and software but even if it performs worst than the just inputting blocks, it does represent a more usable and complete system.
     
 	In a full system the packets would be sent using a serial protocol like $I^2C$ but the they would also include information about what and how much data is being sent in a packet. As there are ten modes of the SIMON algorithm, labelled as $0 - 9$, four bits of the information are used to identify what mode of SIMON the data is intended for. This leaves another 4 bits to be used in a byte that were used individually for different parameters of the packet. One bit was used to indicate whether the data is to be processed or a new key to be loaded. Another tells the hardware to encrypt or decrypt the data, obviously irrelevant if a new key is being sent. As for most modes the number of words in the key are more than the two words in a block it was decided that a constant four words, or two blocks, would be sent in each packet but an option to just send one block would be controlled by one bit. The last bit in this byte tells the hardware that the packet is either meant to be inputted to it or outputted from it. To help the hardware keep track of the packets another byte was used to as a packet ID, which increments with each new packet.
     
@@ -425,22 +606,204 @@ void	KEXP_INL	(key k,	TYPE(8) i		)
 	
 	Having this information attached to each block of data being processed could introduce a weakness to the cipher that might be exploited by an attacker. Although, ensuring and increasing the security of the algorithm is not the main purpose of this project.
     
-	\section{Hosted C++}
+	\section{Software - Hosted C++}
 	\label{section:HOSTEDF}
 	
-	As the packets need to be setup by the a processor and includes a few data types and with some individual bits needing to be controlled it made sense to switch to an object orientated language instead of C so naturally C++ was chosen. While it would be possible to develop the functionality required in C it would take time and effort to get functionality already provided by C++. A Class was setup for each of the data types used in the previous approaches with appropriate constructor, mutator and accessor functions. Classes were also used for the packets, to store the data read from a file and for the cipher object.
+	\subsection{Changes to the Code}
+	
+	As the packets need to be setup by the a processor and includes a few data types and with some individual bits needing to be controlled it made sense to switch to an object orientated language instead of C so naturally C++ was chosen. While it would be possible to develop the functionality required in C it would take time and effort to get functionality already provided by C++.
+
+	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:WORD_CLASS},caption={Declaration of WORD Class},style=CStyle]
+class 			WORD
+{
+public:
+	//	CONSTRUCTORS
+	WORD();
+	WORD(TYPE(N) x);
+	//	MUTATORS
+	void			assign			(	TYPE(N)	x							);
+	void			assign			(	TYPE(8)	x, TYPE(8)	i	);
+	TYPE(8)		addBYTE			(	TYPE(8)	x							);
+	void			flush				(												);
+	//	ACCESSORS
+	void			test				(												);
+	TYPE(N)		get_v				(												);
+	TYPE(8)		get_b				(												);
+	TYPE(8)		get_b				(	TYPE(8)	i							);
+	TYPE(16)	get_B				(	TYPE(8)	i							);
+	TYPE(16)	size_v			(												);
+	TYPE(16)	size_b			(												);
+	string		HEX_WORD		(												);
+	string		CHR_BYTES		(												);
+	string		HEX_BYTES		(												);
+	//	OPERATORS
+	WORD			operator~		(												);
+	WORD			operator&		(	const	WORD	x					);
+	WORD			operator^		(	const	WORD	x					);
+	WORD			operator^=	(	const	WORD	x					);
+	WORD			operator<<	(	const	TYPE(8)	i				);
+	WORD			operator>>	(	const	TYPE(8)	i				);
+private:
+	TYPE(8)		w_nxtBYTE;	//	NEXT BYTE TO WRITE TO
+	TYPE(8)		r_nxtBYTE;	//	NEXT BYTE TO READ FROM
+	union
+	{
+		TYPE(N)	val	:	N;		//	VALUE STORED AS ONE BYTE
+		TYPE(8)	bytes[N/8];	//	VALUE STORED IN BYTES
+	};
+};
+	\end{lstlisting}
+	\end{minipage}
+	
+	\autoref{lst:WORD_CLASS} shows the basic word class with the same $TYPE(N)$ as in the previous C software. With C++ some of the operators needed could be overloaded, including the shift operators ($<<$ \& $>>$) which were used to provide the rotation functions. The other basic data type used in the previous approaches were setup with similar classes and constructor, mutator and accessor functions. All of the classes developed also used similar functions, especially for printing the data to strings and getting the data stored.
     
-   	The packet class stored the packet information, packet count and the four words of data. It also has an array of one byte unsigned integers that compacts the data into the smallest possible size for transmission. This is required because the information and count can always be stored in two bytes but depending on the mode the words vary in size and don't always fit exactly into the data types available. So before being sent a function is used to copy the data from the words byte by byte into the byte array which results in no redundant data being sent by accident. The setting up of these packets can be done separately or as part of the encryption, or decryption, process.
+   	The packet class stored the packet information, \autoref{lst:_INFO_}, packet count and the four words of data, \autoref{lst:PACKET}. It also has an array of one byte unsigned integers that compacts the data into the smallest possible size for transmission. This is required because the information and count can always be stored in two bytes but depending on the mode the words vary in size and don't always fit exactly into the data types available. So before being sent a function is used to copy the data from the words byte by byte into the byte array which results in no redundant data being sent by accident. The setting up of these packets can be done separately or as part of the encryption, or decryption, process. The input and output packet counts were stored in static variable as they are meant to increment with each new packet. This was done when a packet is declared as an input or an output and not in the constructor as the actual object could be used again. For example, an output packet with some cipher text stored could be used to test decryption by simply declaring it an input packet while keeping the same data.
+
+	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:_INFO_},caption={Declaration of Packet information},style=CStyle]
+typedef struct	_INFO_
+{
+	//	PACKET INFO
+	TYPE(8)		mode		:	4;	//	CIPHER MODE
+	TYPE(8)		in_out		:	1;	//	INPUT/OUTPUT
+	TYPE(8)		data_key	:	1;	//	DATA/KEY
+	TYPE(8)		enc_dec		:	1;	//	ENCRYPT/DECRYPT
+	TYPE(8)		nBlocks		:	1;	//	NUMBER OF BLOCKS (1/2)
+}				_INFO_;
+	\end{lstlisting}
+	\end{minipage}
+
+	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:PACKET},caption={Data stored in Packet class},style=CStyle]	
+static U_64	inputCount;
+static U_64	outputCount;
+
+union
+{
+	TYPE(8)	iBYTE;
+	_INFO_	iDATA;
+};
+TYPE(8)		count;			//	DATA COUNT
+WORD		wDATA[4];			//	PACKET DATA
+
+//	PACKET IN BYTES	
+TYPE(8)		pBYTES[2+(N/2)];
+	\end{lstlisting}
+	\end{minipage}
    	
-   	A class was used to reading files because the data were read into a temporary byte array before being stored in a the four words in a packet. From there with the packet setup it could be added to a vector of input vectors or sent straight to the cipher used, either software or hardware. If the vector method is used then the packets could be stored in another file to be sent to the cipher at a later point. The class is also used for reading the packets returned to it by the cipher and then written to a file with the same as the original name but with an encrypted or decrypted indicator. The class could also keep track of where in the file it has read to as it will not be read as a whole.
+   	A class was used to reading files because the data were read into a temporary byte array before being stored in a the four words in a packet. From there with the packet setup, using \autoref{lst:readPACKET} where the $readWORD()$ function reads a $WORD$ from the file and also keeps track of where in the file it has read to. With the packet read it could be added to a vector of input vectors or sent straight to the cipher used, either software or hardware. If the vector method is used then the packets could be stored in another file to be sent to the cipher at a later point. The class is also used for reading the packets returned to it by the cipher and then written to a file with the same as the original name but with an encrypted or decrypted indicator. This class is also capable of just reading blocks of data from the file so that the new approach to the SIMON could be compared with the previous approaches.
+
+ 	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:readPACKET},caption={Function used for reading a packet},style=CStyle]	
+PACKET		DATA::readPACKET	(								)
+{
+	PACKET bufferPACKET;
+	
+	_INFO_ input;
+	input.mode = MODE;
+	input.in_out = 0;
+	input.data_key = 0;	//	DEFAULT
+	input.enc_dec = 1;	//	DEFAULT
+	input.nBlocks = 1;
+	
+	bufferPACKET.input();		bufferPACKET.assign(input);
+	
+	bufferPACKET.addWORD(readWORD());
+	bufferPACKET.addWORD(readWORD());
+	bufferPACKET.addWORD(readWORD());
+	bufferPACKET.addWORD(readWORD());
+	
+	bufferPACKET.pack();
+	
+	return bufferPACKET;
+}
+	\end{lstlisting}
+	\end{minipage}
+	
+ 	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:CIPHER_CLASS},caption={The declaration of the CIPHER Class},style=CStyle]	   	
+class			CIPHER
+{
+public:
+	//	CONSTRUCTORS
+	CIPHER();
+	
+	//	MUTATORS
+	PACKET		compute		(	PACKET	p					);
+	BLOCK			compute		(	BLOCK	b, TYPE(8)	enc_dec	);
+	void			expandKEY	(	KEY		x					);
+	void			encryptDATA	(	WORD	x0,	WORD	x1		);
+	void			encryptDATA	(	BLOCK	x					);
+	void			decryptDATA	(	WORD	x0,	WORD	x1		);
+	void			decryptDATA	(	BLOCK	x					);
+	void			resetCount	(								);
+	BLOCK			round		(	WORD	x					);
+	WORD			expand		(	KEY		x,	TYPE(8)	i		);
+	
+	void			flush		(								);
+	
+private:
+	TYPE(8)		pktCOUNT;
+	BLOCK			stateCIPHER;
+	KEY_S			scheduleKEY;
+	TYPE(8)		roundCOUNT;
+	TYPE(8)		doneKEY	:	1;
+	
+};
+	\end{lstlisting}
+	\end{minipage}
    	
-   	The reason for using a class for the cipher object was so that the key schedule and the state of the encrypted/decrypted block could be stored in one variable it similar to how it is stored in the hardware version. There is also a function added for handling the packets to ensure that data is used correctly.
-   	
-   	\textcolor{red}{ADD C++ LISTINGS BELOW [100]} 
+   	The reason for using a class for the cipher object, \autoref{lst:CIPHER_CLASS}, was so that the key schedule and the state of the encrypted/decrypted block could be stored in one variable it similar to how it is stored in the hardware version. There is also a function added for handling the packets to ensure that data is used correctly in \autoref{lst:compute_PACKET}. This function takes the inputted packet and sets up a new output packet with the same information about the data and then checks it for errors before computing the relevant data and addding it to the output packet. As with data class there is also the basic encryption and decryption functions to deal with just blocks as the inputs.
+
+ 	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:compute_PACKET},caption={The function for handling the packets},style=CStyle]	
+PACKET		CIPHER::compute		(	PACKET	x					)
+{
+	PACKET out;
+	out.output(x.get_i());
+	
+	switch(x.checkIN(pktCOUNT))
+	{
+		case	0:	// ERROR
+			break;
+		case	1:	// DATA
+			if(doneKEY)
+			{
+				if(x.get_i().enc_dec)	encryptDATA(x.get_w(0), x.get_w(1));
+				else					decryptDATA(x.get_w(0), x.get_w(1));
+				out.assign(stateCIPHER.get_w(0), 0);
+				out.assign(stateCIPHER.get_w(1), 1);
+				pktCOUNT++;
+				if(!x.get_i().nBlocks) break;
+				
+				if(x.get_i().enc_dec)	encryptDATA(x.get_w(2), x.get_w(3));
+				else					decryptDATA(x.get_w(2), x.get_w(3));
+				out.assign(stateCIPHER.get_w(0), 2);
+				out.assign(stateCIPHER.get_w(1), 3);
+			}
+			break;
+		case	2:	// KEY
+			expandKEY( KEY(x.get_w(0), x.get_w(1), x.get_w(2), x.get_w(3)) );
+			pktCOUNT++;
+			break;
+		default	 :	//	ERROR
+			break;
+	}
+	
+	out.pack();
+	
+	return out;
+}
+	\end{lstlisting}
+	\end{minipage}
     
+    \subsection{Testing}
 	\textcolor{red}{ADD C++ TESTING BELOW [200]} 
+	
+	As this final approach is in a different language the actual cipher needed to be tested with just individual blocks to confirm correct operation again, which was done in the same way as the previous approaches. After this was done the packet system needed
     
-	\section{System Verilog}
+	\section{Hardware - System Verilog}
 	\label{section:SVF}
 		
 	With the packets being setup in software, as described in \autoref{section:HOSTEDF}, the System Verilog module only needed to be handle the information and hence route the packeted data to the correct part of the system at the right time. The whole system also needed to ability to pass the packet information and count through the modules as each one processed the data to ensure that the correct packet is outputted. To do this two modules were added: one to handle the input packet; and one to handle the output packets.
@@ -474,7 +837,7 @@ void	KEXP_INL	(key k,	TYPE(8) i		)
 	\subsection{Results}
 	\textcolor{red}{ADD THROUGHPUT TESTING RESULTS BELOW [300]}
 	
-	As each mode of SIMON processes a different number of bytes depending on the block the throughput of each block size (32, 48, 64, 96 and 128) is shown as it doesn't vary much key size. 
+	As each mode of SIMON processes a different number of bytes depending on the block the throughput of each block size (32, 48, 64, 96 and 128) is shown as it doesn't vary much key size.  
 	
 	\textcolor{blue}{ADD THROUGHPUT FIGURE}
 
@@ -496,7 +859,16 @@ void	KEXP_INL	(key k,	TYPE(8) i		)
 
 	\chapter{Conclusion \& Future Work}
 	\label{chapter:CONC}
-
+	
+	\section{Conclusion}
+	
+	\section{Future Work}
+	There are lots of functionality that can be added and testing that can be done to continue and improve on this project in the future. These includes, but not limited to, continuing to improve the efficiency of both the hardware and software; implemented the hardware version onto an FPGA; implementing the hardware as an Application Specific Integrated Circuit (ASIC); optimising the design for clock speed on the FPGA and ASIC; and implementing the software onto the small embedded processors used in IoT. For the hardware version the improvements needed are mainly just adding more power saving methods like clock gating and also optimising the logic for the fastest clock speed possible. In terms of software, the code should probably be reduced to just the basic functionality and the setup of the packets and the encryption algorithm could be used in separate sets of code. 
+	
+	Mainly that would be putting the hardware design onto an FPGA and performing some tests for throughput and power consumption on the actual hardware. This would involve adding some more modules on top of the SIMON cipher system to enable communications to get the data in and out, which could be a fully parallel method if enough input/output pins are available for both the key and data block. However, this would prove very difficult due the limited I/O options available on most FPGA development boards, and it requiring a total of 96 inputs (64 Key + 32 Data Block) and 32 outputs (32 Data Block) for just the most basic mode without the packet system in place. Another option would be to send a $WORD$, or maybe a $BLOCK$, of data in parallel and then some control signals to route it into the correct register for the key or data block. But the method I would have used, if I had the time in this project, would have been to implement a serial protocol like $I^2C$ or similar in the hardware. This is because this functionality would most likely be already implemented on the host embedded processor and requires only a few I/O pins. The serial protocol would send over the packets which would be stored in a FIFO with the width of the packets.
+	
+	The developed System Verilog design could also be compiled and implemented on an ASIC. This would almost certainly improve the power consumption as only the absolutely necessary  logic would be present and consuming power. It would also improve the throughput performance as it could be designed for an optimal clock speed that should be faster than what an FPGA can achieve.
+	
 	\bibliographystyle{IEEEtran}
 	\bibliography{Report}
 	\addcontentsline{toc}{chapter}{Bibliography}

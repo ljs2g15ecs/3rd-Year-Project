@@ -61,19 +61,19 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	test_SIMON_dataIN
 
-} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_controlBLK.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_controlBLK.sv}
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module test_SIMON_controlBLK
-
-Top level modules:
-	test_SIMON_controlBLK
-
 } {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataIN.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataIN.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module SIMON_dataIN
 
 Top level modules:
 	SIMON_dataIN
+
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_controlBLK.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/test_SIMON_controlBLK.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module test_SIMON_controlBLK
+
+Top level modules:
+	test_SIMON_controlBLK
 
 } {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_control.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_control.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -82,19 +82,19 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	SIMON_control
 
-} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_controlBLK.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_controlBLK.sv}
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module SIMON_controlBLK
-
-Top level modules:
-	SIMON_controlBLK
-
 } {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataOUT.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_dataOUT.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module SIMON_dataOUT
 
 Top level modules:
 	SIMON_dataOUT
+
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_controlBLK.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_controlBLK.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module SIMON_controlBLK
+
+Top level modules:
+	SIMON_controlBLK
 
 } {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_defintions.svh} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/SIMON/System Verilog/SIMON_final1/Source/SIMON_defintions.svh}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016

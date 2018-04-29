@@ -57,8 +57,8 @@ begin
 		begin
 			PROCESSING <= 1'b1;			
 			
-			if(infoOUT[3:0] != `MODE)	$display("ERROR - INCORRECT MODE");
-			else if(~infoOUT[4])		$display("ERROR - INPUT PACKET");
+			if(infoOUT[3:0] != `MODE)	$display("OUTPUT ERROR - INCORRECT MODE");
+			else if(~infoOUT[4])		$display("OUTPUT ERROR - INPUT PACKET");
 			else
 			begin
 				info <= infoOUT;

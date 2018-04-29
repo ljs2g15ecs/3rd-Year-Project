@@ -18,23 +18,27 @@
 \BOOKMARK [2][-]{subsection.2.4.3}{Decisions}{section.2.4}% 18
 \BOOKMARK [0][-]{chapter.3}{Previous Work \046 Initial Design Approaches}{}% 19
 \BOOKMARK [1][-]{section.3.1}{First Approach}{chapter.3}% 20
-\BOOKMARK [2][-]{subsection.3.1.1}{Hosted C}{section.3.1}% 21
-\BOOKMARK [2][-]{subsection.3.1.2}{System Verilog}{section.3.1}% 22
+\BOOKMARK [2][-]{subsection.3.1.1}{Software - Hosted C}{section.3.1}% 21
+\BOOKMARK [2][-]{subsection.3.1.2}{Hardware - System Verilog}{section.3.1}% 22
 \BOOKMARK [1][-]{section.3.2}{Second Approach}{chapter.3}% 23
-\BOOKMARK [2][-]{subsection.3.2.1}{Hosted C}{section.3.2}% 24
-\BOOKMARK [2][-]{subsection.3.2.2}{System Verilog}{section.3.2}% 25
+\BOOKMARK [2][-]{subsection.3.2.1}{Software - Hosted C}{section.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.2.2}{Hardware - System Verilog}{section.3.2}% 25
 \BOOKMARK [0][-]{chapter.4}{Final Design Approach}{}% 26
-\BOOKMARK [1][-]{section.4.1}{Hosted C++}{chapter.4}% 27
-\BOOKMARK [1][-]{section.4.2}{System Verilog}{chapter.4}% 28
-\BOOKMARK [0][-]{chapter.5}{Experiments \046 Results}{}% 29
-\BOOKMARK [1][-]{section.5.1}{Throughput}{chapter.5}% 30
-\BOOKMARK [2][-]{subsection.5.1.1}{Method}{section.5.1}% 31
-\BOOKMARK [2][-]{subsection.5.1.2}{Results}{section.5.1}% 32
-\BOOKMARK [1][-]{section.5.2}{Power Comsumption}{chapter.5}% 33
-\BOOKMARK [2][-]{subsection.5.2.1}{Method}{section.5.2}% 34
-\BOOKMARK [2][-]{subsection.5.2.2}{Results}{section.5.2}% 35
-\BOOKMARK [1][-]{section.5.3}{Resource Use}{chapter.5}% 36
-\BOOKMARK [2][-]{subsection.5.3.1}{Method}{section.5.3}% 37
-\BOOKMARK [2][-]{subsection.5.3.2}{Results}{section.5.3}% 38
-\BOOKMARK [0][-]{chapter.6}{Conclusion \046 Future Work}{}% 39
-\BOOKMARK [0][-]{chapter*.4}{Bibliography}{}% 40
+\BOOKMARK [1][-]{section.4.1}{Software - Hosted C++}{chapter.4}% 27
+\BOOKMARK [2][-]{subsection.4.1.1}{Changes to the Code}{section.4.1}% 28
+\BOOKMARK [2][-]{subsection.4.1.2}{Testing}{section.4.1}% 29
+\BOOKMARK [1][-]{section.4.2}{Hardware - System Verilog}{chapter.4}% 30
+\BOOKMARK [0][-]{chapter.5}{Experiments \046 Results}{}% 31
+\BOOKMARK [1][-]{section.5.1}{Throughput}{chapter.5}% 32
+\BOOKMARK [2][-]{subsection.5.1.1}{Method}{section.5.1}% 33
+\BOOKMARK [2][-]{subsection.5.1.2}{Results}{section.5.1}% 34
+\BOOKMARK [1][-]{section.5.2}{Power Comsumption}{chapter.5}% 35
+\BOOKMARK [2][-]{subsection.5.2.1}{Method}{section.5.2}% 36
+\BOOKMARK [2][-]{subsection.5.2.2}{Results}{section.5.2}% 37
+\BOOKMARK [1][-]{section.5.3}{Resource Use}{chapter.5}% 38
+\BOOKMARK [2][-]{subsection.5.3.1}{Method}{section.5.3}% 39
+\BOOKMARK [2][-]{subsection.5.3.2}{Results}{section.5.3}% 40
+\BOOKMARK [0][-]{chapter.6}{Conclusion \046 Future Work}{}% 41
+\BOOKMARK [1][-]{section.6.1}{Conclusion}{chapter.6}% 42
+\BOOKMARK [1][-]{section.6.2}{Future Work}{chapter.6}% 43
+\BOOKMARK [0][-]{chapter*.4}{Bibliography}{}% 44

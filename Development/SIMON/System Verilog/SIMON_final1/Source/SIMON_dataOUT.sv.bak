@@ -73,8 +73,8 @@ begin
 			end
 			else if(~info[5])
 			begin
-				data[{~nBLOCK, 1'b0}] <= outDATA[~info[6];
-				data[{~nBLOCK, 1'b1}] <= outDATA[info[6];
+				data[{~nBLOCK, 1'b0}] <= outDATA[~info[6]];
+				data[{~nBLOCK, 1'b1}] <= outDATA[info[6]];
 				nBLOCK <= 1'b0;
 			end
 			

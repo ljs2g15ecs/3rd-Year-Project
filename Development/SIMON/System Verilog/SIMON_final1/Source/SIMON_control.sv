@@ -4,7 +4,7 @@ module SIMON_control
 (	input logic 			clk, nR,
 	input logic 			newDATA, newKEY,
 	input logic 			readDATA,
-	input logic [7:0]		infoIN, countIN,
+	input logic 			enc_dec
 	input logic [1:0][`N-1:0]	inDATA,
 	input logic [`M-1:0][`N-1:0]	KEY,
 	output logic			newDATA_rise, newKEY_rise,

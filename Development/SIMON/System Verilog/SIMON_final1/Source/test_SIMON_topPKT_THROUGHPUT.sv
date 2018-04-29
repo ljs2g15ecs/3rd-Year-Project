@@ -16,7 +16,7 @@ logic [(1+(`N/2)):0][7:0]	out;
 SIMON_topPKT			topPKT(.*);
 
 logic				encrypt, doneSIM;
-int				countIN, countOUT;
+int				countIN, countOUT, countCYCLE;
 
 initial
 begin
@@ -39,6 +39,7 @@ begin
 	doneSIM = 1'b0;
 	countIN = 0;
 	countOUT = 0;
+	countCYCLE = 0;
 
         inPKT[0]        = 80'hE0001918111009080100;
         inPKT[1]        = 80'hC0016565687765656877;
@@ -1314,6 +1315,8 @@ begin
 	in_newPKT <= 1'b1;
 end
 
+always @(posedge clk)				countCYCLE <= countCYCLE + 1'b1;
+
 always @(posedge in_loadPKT)
 begin
 	repeat(2)	@(posedge clk);
@@ -1340,16 +1343,16 @@ end
 
 always @(posedge out_donePKT)
 begin
+	if(countOUT != `PKT_MAX)		countOUT <= countOUT + 1'b1;
+	else
+	begin
+		$display("%d PACKETS PROCESS AND FINISHED @ %tns in %d cycles", countOUT, $time, countCYCLE);
+	end
+
 	repeat(2)	@(posedge clk);
 	#10ns
 	
 	out_readPKT <= 1'b1;
-	
-	if(countOUT != `PKT_MAX)		countOUT <= countOUT + 1'b1;
-	else
-	begin
-		$display("%d PACKETS PROCESS AND FINISHED @ %tns", countOUT, $time);
-	end
 
 	repeat(2)	@(posedge clk);
 	#10ns

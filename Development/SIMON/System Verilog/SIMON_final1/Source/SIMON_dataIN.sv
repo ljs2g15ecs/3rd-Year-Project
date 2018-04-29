@@ -79,9 +79,9 @@ begin
 		end
 		COMPUTE:
 		begin
-			if(countIN != countPKT)		$display("ERROR - PACKET COUNT TRACKER");
-			else if(info[3:0] != `MODE)	$display("ERROR - INCORRECT MODE");
-			else if(info[4])		$display("ERROR - OUTPUT PACKET");
+			if(countIN != countPKT)		$display("INPUT ERROR - PACKET COUNT TRACKER");
+			else if(info[3:0] != `MODE)	$display("INPUT ERROR - INCORRECT MODE");
+			else if(info[4])		$display("INPUT ERROR - OUTPUT PACKET");
 			else
 			begin
 				countPKT <= countPKT + 1;

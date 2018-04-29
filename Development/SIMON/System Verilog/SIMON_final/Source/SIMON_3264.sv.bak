@@ -1,6 +1,5 @@
 module SIMON_3264
-#(	parameter MODE = 0,
-	parameter N = 16,
+#(	parameter N = 16,
 	parameter M = 4,
 	parameter T = 32,		
 	parameter Co = 5		)
@@ -11,6 +10,7 @@ module SIMON_3264
 	input logic [M-1:0][N-1:0] key,
 	output logic ldData, ldKey,
 	output logic doneData, doneKey,
+	output logic ENCDEC,
 	output logic [2*N-1:0] cipher	);
 
 //	KEY EXPANSION LOGIC

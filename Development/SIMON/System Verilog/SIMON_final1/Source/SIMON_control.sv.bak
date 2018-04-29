@@ -35,8 +35,6 @@ logic [2*`N-1:0] 			i, o;
 SIMON_round r(.in(i), .key(rKey), .out(o));
 
 //	RISING EDGE NEW CHECK
-logic					newDATA_rise, newKEY_rise;
-
 always @(posedge newDATA, posedge loadDATA, negedge nR)
 begin
 	if(~nR)				newDATA_rise <= 1'b0;

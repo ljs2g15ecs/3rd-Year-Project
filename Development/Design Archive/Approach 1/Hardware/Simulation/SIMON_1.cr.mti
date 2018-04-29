@@ -1,0 +1,57 @@
+{C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Source/SIMON_round.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Source/SIMON_round.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module SIMON_round
+
+Top level modules:
+	SIMON_round
+
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Source/SIMON_keyexpansion_INL.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Source/SIMON_keyexpansion_INL.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module SIMON_keyexpansion_INL
+
+Top level modules:
+	SIMON_keyexpansion_INL
+
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Source/SIMON_keyexpansion_PRE.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Source/SIMON_keyexpansion_PRE.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module SIMON_keyexpansion_PRE
+
+Top level modules:
+	SIMON_keyexpansion_PRE
+
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Simulation/test_SIMON_control_PRE.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Simulation/test_SIMON_control_PRE.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module test_SIMON_control_PRE
+
+Top level modules:
+	test_SIMON_control_PRE
+
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Simulation/test_SIMON_control_INL.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Simulation/test_SIMON_control_INL.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module test_SIMON_control_INL
+
+Top level modules:
+	test_SIMON_control_INL
+
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Source/SIMON_function.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Source/SIMON_function.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module SIMON_function
+
+Top level modules:
+	SIMON_function
+
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Source/SIMON_control_INL.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Source/SIMON_control_INL.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module SIMON_control_INL
+
+Top level modules:
+	SIMON_control_INL
+
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Source/SIMON_control_PRE.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 1/Hardware/Source/SIMON_control_PRE.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module SIMON_control_PRE
+
+Top level modules:
+	SIMON_control_PRE
+
+} {} {}}
