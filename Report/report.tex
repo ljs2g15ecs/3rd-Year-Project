@@ -451,7 +451,7 @@ end
 	\end{lstlisting}
 	\end{minipage}
 	
-	The main functionality of the system was provided by the control module which provides the sequential operation with the clock ($clk$), and active low reset signal ($nR$). As with the software version two control modules were created: one that expands they key while encrypting ($INL$) and one that waits for the key to be fully expanded before the data processing begins ($PRE$). They both achieve this by operation as a state machine with with different states: waiting for data; loading data; processing data; and writing the output data. The state is controlled by the combinational block which is dependant on the current state; the inputs: $newData$, $readData$ and $enc\_dec$; and the internal $count$ variable and the output $doneKey$. The combinational blocks that implement the next state logic is shown in \autoref{lst:Next_state_INL} and \ref{lst:Next_state_PRE}.
+        The main functionality of the system was provided by the control module which provides the sequential operation with the clock ($clk$), and active low reset signal ($nR$). As with the software version two control modules were created: one that expands they key while encrypting ($INL$) and one that waits for the key to be fully expanded before the data processing begins ($PRE$). They both achieve this by operation as a state machine with with different states: waiting for data; loading data; processing data; and writing the output data. The state is controlled by the combinational block which is dependant on the current state; the inputs: $newData$, $readData$ and $enc\_dec$; and the internal $count$ variable and the output $doneKey$. The combinational blocks that implement the next state logic is shown in \autoref{lst:Next_state_INL} and \ref{lst:Next_state_PRE}.
 
 	\begin{minipage}{\linewidth}
 	\begin{lstlisting}[label={lst:Next_state_PRE},caption={The next state logic for the ($PRE$) control module},style=CStyle]	
@@ -479,9 +479,13 @@ end
 	\end{lstlisting}
 	\end{minipage}
 	
-	To test the individual modules various input data was selected and the expected outputs were calculated either manually for the simple operations or using the software. As with the software when this functionality was correct they were combined into the top level control module to be further tested. Again, this was only for the most basic 32/64 mode of SIMON. To do this a testbench was created that with a clock that had a $100ns$ period, or $10MHz$ \textcolor{red}{[CHECK]}, and with the initial inputs setup during the reset of the module. After this the reset signal could be disabled and then the $newData$ signal could be set $HIGH$ to indicate to the state machine to move into the loading and processing states. When the module finished processing the data the ciphertext outputted could read by the testbench and then compared with the expected result before being decrypted in the module capable of that.
+	To test the individual modules various input data was selected and the expected outputs were calculated either manually for the simple operations or using the software. As with the software when this functionality was correct they were combined into the top level control module to be further tested. Again, this was only for the most basic 32/64 mode of SIMON. To do this a testbench was created that with a clock that had a $100ns$ period, or $10MHz$ \textcolor{red}{[CHECK]}, and with the initial inputs setup during the reset of the module. 
+	
+	After this the reset signal could be disabled and then the $newData$ signal could be set $HIGH$ to indicate to the state machine to move into the loading and processing states. After an appropriate delay the $newData$ signal is reset and then testbench waits for a rising edge of the $doneData$ signal before asserting the $readData$ signal. The testbench for ($INL$) then just resets the $readData$ signal and finishes as the encryption is finished. Although, the other testbench reads the outputted ciphertext is read into the the plaintext input and the $enc\_dec$ signal is inverted. This informs the module to decrypt the plaintext when $newData$ is next set. The same process is the repeated and the testbench finishes after the decryption is complete. When the module finished processing the data the ciphertext outputted could read by the testbench and then compared with the expected results.
 	
 	\textcolor{blue}{INSERT TESTING RESULTS FIGURE}
+	
+	As this approach was developed in the early stages of the project and didn't offer much functionality or perfomance enhancements it was never synthesised for an FPGA.
     
 	\section{Second Approach}
 	\label{section:second}
@@ -551,7 +555,7 @@ end
 	
 	Another addition to the system was the ability to load a new key after the initial loading was done. This was done with another input signal $newKey$ which operated in the same way as the $newData$ signal did for data. Also a few more signals were outputted that indicate when the data and keys were loaded into the system and thus the inputs could change to be ready for the next set of data.
 	
-	For this new approach all ten modes of SIMON were tested in hardware with each having it's own top level module containing an instance of the control module as well as the key expansion module which had a new input of the $z$ constant that varies with each mode. This top level module for the basic mode 32/64 is shown in \autoref{lst:Top_level}
+	For this new approach all ten modes of SIMON were tested in hardware with each having it's own top level module containing an instance of the control module as well as the key expansion module which had a new input of the $z$ constant that varies with each mode. This top level module for the basic mode 32/64 is shown in \autoref{lst:Top_level} and the other modes are setup in the same way.
 
 	\begin{minipage}{\linewidth}
 	\begin{lstlisting}[label={lst:Top_level},caption={The next state logic for the ($PRE$) control module},style=CStyle]
@@ -588,11 +592,33 @@ endmodule
 	\end{lstlisting}
 	\end{minipage}
     
-	\textcolor{red}{ADD SYSTEM VERILOG LISTINGS BELOW [100]}
-    
 	\textcolor{red}{ADD SYSTEM VERILOG SIMULATIONS BELOW [200]}
 	
-	To test this new approach the
+	To test this new approach the same testbench was used for each version, only differing in the input data taken from the test vectors. The same clock This testbench first inputs the plaintext and the key at the same time by putting the $newData$, $newKey$ and $enc\_dec$ signals $HIGH$. The new input signals are then reset after each rising edge of the load signal, $ldData$ \& $ldKey$ respectively, using $always$ blocks in the testbench and short delays. Then in another $always$ block, which is sensitive to the rising edge of the $doneData$ signal, the $readData$ signal set $HIGH$, the output is read back into the input and he $enc\_dec$ signal is inverted. Then before the $always$ block completes the $newData$ signal is asserted again. The $readData$ is then reset after a falling edge of the $doneData$ signal which the control module should enforce. With these $always$ blocks, \autoref{lst:testbench}. the simulation can just continue always alternating between encrypting and decrypting the data.
+
+	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:testbench},caption={The $always$ blocks of the testnches},style=CStyle]
+always @(posedge ldData)
+begin
+	repeat(2)	@(posedge clk);
+	#20ns
+	newData <= 1'b0;
+end
+
+always @(posedge doneData)
+begin
+	repeat(2)	@(posedge clk);
+	#10ns
+	readData <= 1'b1;
+	plain <= cipher;
+	enc_dec <= ~enc_dec;
+	
+	repeat(2)	@(posedge clk);
+	#10ns
+	newData <= 1'b1;
+end
+	\end{lstlisting}
+	\end{minipage}
     
 	\textcolor{red}{ADD SYSTEM VERILOG SYNTHESIS BELOW [100]}
     
@@ -801,7 +827,9 @@ PACKET		CIPHER::compute		(	PACKET	x					)
     \subsection{Testing}
 	\textcolor{red}{ADD C++ TESTING BELOW [200]} 
 	
-	As this final approach is in a different language the actual cipher needed to be tested with just individual blocks to confirm correct operation again, which was done in the same way as the previous approaches. After this was done the packet system needed
+	As this final approach is in a different language all of the classes and overloaded operators needed to be tested, and for this reason each class has a test function that checks the number bytes used by the variables and then sets up example data and prints them to the console in the various formats. Then before packets and data reading were tested the cipher functions were designed and first tested just on the blocks as with the previous approaches. Then after the packets were functioning as desired the decoding of them in the cipher class could be tested by inputting dummy packets and checking that the correct case is activated. To check that the data reading is reading the correct data and inserting it into the correct packets, and blocks, a small test file with just two packets worth of data, 32 bytes for the 32/64 mode, was used tha included the testvector plaintext.
+	
+	From there there functions were used to insert the test vector key into the first packet and then the plaintext into the second packet. These two packets were used to confirm the operation with checks on the outputted cipher text after the processing. They were also inserted at the beginning of each packet stream so that if something went wrong with whole processing, it can be seen if the cipher functions are the source of the error.
     
 	\section{Hardware - System Verilog}
 	\label{section:SVF}
@@ -810,7 +838,19 @@ PACKET		CIPHER::compute		(	PACKET	x					)
 	
 	To handle the input packets the module takes an input of bytes equal to the size of the packets as well as an input control signal $newIN$. The module operates in a similar way to how the control module did in the first approach, \autoref{subsection:SV1}, with states for waiting for packets; loading packets; processing packets; and writing the relevant words to the relevant output, the key or the input block of the control module. After the packet is loaded the processing state checks the information byte is in the correct form: as an input, for the correct mode and the packet count; and then decodes what data is in the packet which is used by the writing state. When a packet contains two blocks of data, identified in the information, the first writes two of the words to the the input block and then waits for the control module to be ready for new data before writing the other two words.
 	
-	The control module was also changed slightly to enable the packet information and count to propagate through the module with the connected data. This removed the need for the $enc\_dec$ signal as that is contained in the information. The input or output flag is also flipped by the control module for the output handling module.
+	The control module was also changed slightly to enable the packet information and count to propagate through the module with the connected data. This removed the need for the $enc\_dec$ signal as that is contained in the information. The input or output flag is also flipped by the control module for the output handling module. One change that was made though was to use extra signals that keep track of when the new data and keys are loaded internally with rising edge sensitive $always\_ff$ blocks. This is done with the $new_DATA_rise$ and $newKEY_rise$ signals that are set $HIGH$ with the rising edge of their relevant inputs and reset with the rising edge of the relevant load output. This enables the control module to not continue loading new data or another key if the new input signals are not reset by the other modules. Similar functionality was also used used in the packet handling modules for their new input signals.
+
+ 	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:new_rise},caption={The $always\_ff$ blocks used for risnig edge new data checks},style=CStyle]
+//	RISING EDGE NEW CHECK
+always @(posedge newDATA, posedge loadDATA, negedge nR)
+begin
+	if(~nR)						newDATA_rise <= 1'b0;
+	else if(loadDATA)	newDATA_rise <= 1'b0;
+	else if(newDATA)	newDATA_rise <= 1'b1;
+end
+	\end{lstlisting}
+	\end{minipage}
 	
 	The output handling module receives the packet information and data from the control module and then writes the data to the relevant part of the output packet. It then checks and decodes the packet information similar to the input dandling module but then instead of loading, processing and then writing it processes the packet information, reads the data and then writes the packet to the output. If the packet information suggests that there should be two blocks of data in the packet then the module waits for a second block of data to be processed by the control module before writing the output packet.
     
@@ -863,11 +903,17 @@ PACKET		CIPHER::compute		(	PACKET	x					)
 	\section{Conclusion}
 	
 	\section{Future Work}
-	There are lots of functionality that can be added and testing that can be done to continue and improve on this project in the future. These includes, but not limited to, continuing to improve the efficiency of both the hardware and software; implemented the hardware version onto an FPGA; implementing the hardware as an Application Specific Integrated Circuit (ASIC); optimising the design for clock speed on the FPGA and ASIC; and implementing the software onto the small embedded processors used in IoT. For the hardware version the improvements needed are mainly just adding more power saving methods like clock gating and also optimising the logic for the fastest clock speed possible. In terms of software, the code should probably be reduced to just the basic functionality and the setup of the packets and the encryption algorithm could be used in separate sets of code. 
+	There is lots of functionality that can be added and testing that can be done to continue and improve on this project in the future. These includes, but not limited to, continuing to improve the efficiency of both the hardware and software; implemented the hardware version onto an FPGA; implementing the hardware as an Application Specific Integrated Circuit (ASIC); optimising the design for clock speed on the FPGA and ASIC; and implementing the software onto the small embedded processors used in IoT.
+	
+	For the hardware version the improvements needed are mainly just adding more power saving methods like clock gating and also optimising the logic for the fastest clock speed possible. What is needed though is methods to deal with the errors detected by the packet handling modules. As, at this point the errors are detected and stop the loading of packets but are only shown as lines of text printed during in simulation. This could be achieved by having a few outputs assigned to the various errors that occur that when detected by the sending processor could be corrected and resent.
+	
+	In terms of software, the code should probably be reduced to just the basic functionality and the setup of the packets and the encryption algorithm could be used in separate sets of code. 
 	
 	Mainly that would be putting the hardware design onto an FPGA and performing some tests for throughput and power consumption on the actual hardware. This would involve adding some more modules on top of the SIMON cipher system to enable communications to get the data in and out, which could be a fully parallel method if enough input/output pins are available for both the key and data block. However, this would prove very difficult due the limited I/O options available on most FPGA development boards, and it requiring a total of 96 inputs (64 Key + 32 Data Block) and 32 outputs (32 Data Block) for just the most basic mode without the packet system in place. Another option would be to send a $WORD$, or maybe a $BLOCK$, of data in parallel and then some control signals to route it into the correct register for the key or data block. But the method I would have used, if I had the time in this project, would have been to implement a serial protocol like $I^2C$ or similar in the hardware. This is because this functionality would most likely be already implemented on the host embedded processor and requires only a few I/O pins. The serial protocol would send over the packets which would be stored in a FIFO with the width of the packets.
 	
 	The developed System Verilog design could also be compiled and implemented on an ASIC. This would almost certainly improve the power consumption as only the absolutely necessary  logic would be present and consuming power. It would also improve the throughput performance as it could be designed for an optimal clock speed that should be faster than what an FPGA can achieve.
+	
+	For a more direct comparison with the small embedded processors used in IoT the software could be altered slightly and compiled for the platforms use. With this the throughput and power consumption could be tested. However, as the hardware has already been proven to perform better than the software running on a full size 64-bit processor at over $2GHz$, a small processor with between 8 and 32-bit operations at a much slower clock speed will perform even worse.
 	
 	\bibliographystyle{IEEEtran}
 	\bibliography{Report}

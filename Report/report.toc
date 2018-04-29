@@ -23,22 +23,22 @@
 \contentsline {section}{\numberline {3.2}Second Approach}{21}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Software - Hosted C}{21}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Hardware - System Verilog}{21}{subsection.3.2.2}
-\contentsline {chapter}{\numberline {4}Final Design Approach}{24}{chapter.4}
-\contentsline {section}{\numberline {4.1}Software - Hosted C++}{25}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Changes to the Code}{25}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Testing}{29}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Hardware - System Verilog}{30}{section.4.2}
-\contentsline {chapter}{\numberline {5}Experiments \& Results}{31}{chapter.5}
-\contentsline {section}{\numberline {5.1}Throughput}{31}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Method}{31}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Results}{31}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}Power Comsumption}{32}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Method}{32}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Results}{32}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Resource Use}{32}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Method}{32}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Results}{32}{subsection.5.3.2}
-\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{33}{chapter.6}
-\contentsline {section}{\numberline {6.1}Conclusion}{33}{section.6.1}
-\contentsline {section}{\numberline {6.2}Future Work}{33}{section.6.2}
-\contentsline {chapter}{Bibliography}{35}{chapter*.4}
+\contentsline {chapter}{\numberline {4}Final Design Approach}{25}{chapter.4}
+\contentsline {section}{\numberline {4.1}Software - Hosted C++}{26}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Changes to the Code}{26}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Testing}{30}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Hardware - System Verilog}{31}{section.4.2}
+\contentsline {chapter}{\numberline {5}Experiments \& Results}{33}{chapter.5}
+\contentsline {section}{\numberline {5.1}Throughput}{33}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Method}{33}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Results}{33}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}Power Comsumption}{34}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Method}{34}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Results}{34}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Resource Use}{34}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Method}{34}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Results}{34}{subsection.5.3.2}
+\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{35}{chapter.6}
+\contentsline {section}{\numberline {6.1}Conclusion}{35}{section.6.1}
+\contentsline {section}{\numberline {6.2}Future Work}{35}{section.6.2}
+\contentsline {chapter}{Bibliography}{37}{chapter*.4}
