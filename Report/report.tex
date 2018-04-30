@@ -33,8 +33,28 @@
 	showspaces=false,                
 	showstringspaces=false,
 	showtabs=false,                  
-	tabsize=2,
+	tabsize=4,
 	language=C
+}
+
+\lstdefinestyle{SVStyle} {
+    backgroundcolor=\color{backgroundColour},   
+	commentstyle=\color{mGray},
+	keywordstyle=\color{mGray},
+	numberstyle=\tiny\color{mGray},
+	stringstyle=\color{mGray},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=4,
+	language=Verilog
 }
 
 \usepackage{lipsum}
@@ -277,7 +297,7 @@
 	Initially the software was only developed to be used in a hosted environment but future approaches could made be for an embedded processor or something similar. With most languages used in software development the variable sizes and constrained to the data types available, with C offering only 8, 16, 32 and 64 bit variable types. This produced some difficulty with the 24 and 48 bit sizes required for this algorithm, but with the use of typedefs and bitfields in a structure it was solved. Using the values of $N$ and $M$ a $word$ data type was defined based on unsigned integers, uint$N$\_t, and the block, key and key schedule data types were setup using arrays of the base $word$ type. All of the code used to setup the data sizes and type can be seen in \autoref{lst:macro}.
     
 	\begin{lstlisting}[label={lst:macro},caption={Macro definition of the word, block, key and key schedule types.},style=CStyle]
-#if	defined	S32_64
+#if		defined	S32_64
     #define    N    16
     #define    M    4
     #define    T    32
@@ -312,9 +332,9 @@ TYPE(N)	F		(word x					)
 
 void	ROUND	(block b,	word k		)
 {	
-	word tmp = b[0];									//	SAVED TO SWAP
+	word tmp = b[0];					//	SAVED TO SWAP
 	b[0].v = b[1].v ^ F(b[0]) ^ k.v;	//	GENERATE NEW WORD
-	b[1] = tmp;												//	SWAP FROM SAVED
+	b[1] = tmp;							//	SWAP FROM SAVED
 }
 	\end{lstlisting}
 	\end{minipage}
@@ -376,14 +396,14 @@ void	KEXP_INL	(key k,	TYPE(8) i		)
 	As mentioned in \autoref{section:first} the parameter system was used to pass the values for word and key size and also the number of rounds to be iterated. Similar to the functions used in \autoref{subsection:HOSTED1} modules were used for the Feistel function, round function, key expansion function before being combined in the top level control module. Although, unlike the software version the rotate and logic operations used could be done with just combinational logic so the result is available almost instantaneously not after a few CPU instruction cycles. 
 
 	\begin{minipage}{\linewidth}
-	\begin{lstlisting}[label={lst:Feistel_function},caption={The feistel function},style=CStyle]	
+	\begin{lstlisting}[label={lst:Feistel_function},caption={The feistel function},style=SVStyle]	
 module SIMON_function
 #(
-parameter 		N = 	16,
-parameter 		M =	4
+parameter 				N = 	16,
+parameter 				M =		4
 )
 (
-input logic [N-1:0]	in,
+input logic [N-1:0]		in,
 output logic [N-1:0]	out
 );
 
@@ -399,11 +419,11 @@ endmodule
 	\autoref{lst:Feistel_function} shows how the Feistel function is implemented in hardware with just combinational logic and wire shifts.  A similar method is used for the shifts in the key expansion. The round function, \autoref{lst:Round_function}, was then designed using an instance of the Feistel function with the input being the the top half of the input block of the round function and the result being assigned to the $f$ logic block. The result of the round function is then calculated in another combinational block.
 
 	\begin{minipage}{\linewidth}
-	\begin{lstlisting}[label={lst:Round_function},caption={The Round function},style=CStyle]	
+	\begin{lstlisting}[label={lst:Round_function},caption={The Round function},style=SVStyle]	
 module SIMON_round
 #(
-parameter 		N = 	16,
-parameter 		M = 	4	
+parameter 				N = 	16,
+parameter 				M = 	4	
 )
 (
 input logic [2*N-1:0] 	in,
@@ -426,25 +446,25 @@ endmodule
 	\end{minipage}
 	
 	\begin{minipage}{\linewidth}
-	\begin{lstlisting}[label={lst:Next_state_INL},caption={The next state logic for the ($INL$) control module},style=CStyle]
+	\begin{lstlisting}[label={lst:Next_state_INL},caption={The next state logic for the ($INL$) control module},style=SVStyle]
 always_comb
 begin
 	unique case(current)
 	s0:
 	begin
-		if(newData)				next = s1;
-		else							next = s0;
+		if(newData)			next = s1;
+		else				next = s0;
 	end
-	s1:									next = s2;
+	s1:						next = s2;
 	s2:
 	begin
 		if(count != T-1)	next = s2;
-		else							next = s3;
+		else				next = s3;
 	end
 	s3:
 	begin
-		if(readData)			next = s0;
-		else							next = s3;
+		if(readData)		next = s0;
+		else				next = s3;
 	end
 	endcase
 end
@@ -454,7 +474,7 @@ end
         The main functionality of the system was provided by the control module which provides the sequential operation with the clock ($clk$), and active low reset signal ($nR$). As with the software version two control modules were created: one that expands they key while encrypting ($INL$) and one that waits for the key to be fully expanded before the data processing begins ($PRE$). They both achieve this by operation as a state machine with with different states: waiting for data; loading data; processing data; and writing the output data. The state is controlled by the combinational block which is dependant on the current state; the inputs: $newData$, $readData$ and $enc\_dec$; and the internal $count$ variable and the output $doneKey$. The combinational blocks that implement the next state logic is shown in \autoref{lst:Next_state_INL} and \ref{lst:Next_state_PRE}.
 
 	\begin{minipage}{\linewidth}
-	\begin{lstlisting}[label={lst:Next_state_PRE},caption={The next state logic for the ($PRE$) control module},style=CStyle]	
+	\begin{lstlisting}[label={lst:Next_state_PRE},caption={The next state logic for the ($PRE$) control module},style=SVStyle]	
 always_comb
 begin
 	unique case(current)
@@ -508,7 +528,7 @@ end
 	To add the clock gating to the control module wasn't simple as the clock should not be halted while data is being processed or written to the output, so it could only be updated during the wait state. This was attempted with the clock gating signal only updating in this state on the same rising edge as the state machine. However, this caused glitches because the state machine moved onto the next state before the clock was stopped and was thus no longer in the correct state the clock gating when required. This was because the same edge that is needed to update the control signal moves the machine onto the next state. One option to solve this is to add more signals and a latch to have the gated clock to only stop when the clock is $LOW$. A similar method to this was eventually used as the clock gating signal sensitivity was changed to the falling edge of the clock, hence updating half a clock cycle before the system changes state.
 
 	\begin{minipage}{\linewidth}
-	\begin{lstlisting}[label={lst:Clock_Gating},caption={The next state logic for the ($PRE$) control module},style=CStyle]
+	\begin{lstlisting}[label={lst:Clock_Gating},caption={The next state logic for the ($PRE$) control module},style=SVStyle]
 //	GATED CLOCK LOGIC
 logic clkCipherGo, clkCipher;
 logic clkKeyGo, clkKey, clkAll;
@@ -535,8 +555,8 @@ begin
 		LOAD:
 		begin
 			ENCDEC <= enc_dec;
-			if(enc_dec)	clkCipherGo <= (newData) && (newKey || doneKey);
-			else				clkCipherGo <= (newData) && doneKey;
+			if(enc_dec)	clkCipherGo <= newData && (newKey || doneKey);
+			else		clkCipherGo <= newData && doneKey;
 			clkKeyGo <= newKey;
 		end
 		EXECUTE:
@@ -558,7 +578,7 @@ end
 	For this new approach all ten modes of SIMON were tested in hardware with each having it's own top level module containing an instance of the control module as well as the key expansion module which had a new input of the $z$ constant that varies with each mode. This top level module for the basic mode 32/64 is shown in \autoref{lst:Top_level} and the other modes are setup in the same way.
 
 	\begin{minipage}{\linewidth}
-	\begin{lstlisting}[label={lst:Top_level},caption={The next state logic for the ($PRE$) control module},style=CStyle]
+	\begin{lstlisting}[label={lst:Top_level},caption={The next state logic for the ($PRE$) control module},style=SVStyle]
 module SIMON_3264
 #(
 parameter N = 16,
@@ -596,7 +616,7 @@ endmodule
 	To test this new approach the same testbench was used for each version, only differing in the input data taken from the test vectors. The same clock This testbench first inputs the plaintext and the key at the same time by putting the $newData$, $newKey$ and $enc\_dec$ signals $HIGH$. The new input signals are then reset after each rising edge of the load signal, $ldData$ \& $ldKey$ respectively, using $always$ blocks in the testbench and short delays. Then in another $always$ block, which is sensitive to the rising edge of the $doneData$ signal, the $readData$ signal set $HIGH$, the output is read back into the input and he $enc\_dec$ signal is inverted. Then before the $always$ block completes the $newData$ signal is asserted again. The $readData$ is then reset after a falling edge of the $doneData$ signal which the control module should enforce. With these $always$ blocks, \autoref{lst:testbench}. the simulation can just continue always alternating between encrypting and decrypting the data.
 
 	\begin{minipage}{\linewidth}
-	\begin{lstlisting}[label={lst:testbench},caption={The $always$ blocks of the testnches},style=CStyle]
+	\begin{lstlisting}[label={lst:testbench},caption={The $always$ blocks of the testnches},style=SVStyle]
 always @(posedge ldData)
 begin
 	repeat(2)	@(posedge clk);
@@ -861,12 +881,42 @@ PACKET		CIPHER::compute		(	PACKET	x					)
 		
 	With the packets being setup in software, as described in \autoref{section:HOSTEDF}, the System Verilog module only needed to be handle the information and hence route the packeted data to the correct part of the system at the right time. The whole system also needed to ability to pass the packet information and count through the modules as each one processed the data to ensure that the correct packet is outputted. To do this two modules were added: one to handle the input packet; and one to handle the output packets.
 	
-	To handle the input packets the module takes an input of bytes equal to the size of the packets as well as an input control signal $newIN$. The module operates in a similar way to how the control module did in the first approach, \autoref{subsection:SV1}, with states for waiting for packets; loading packets; processing packets; and writing the relevant words to the relevant output, the key or the input block of the control module. After the packet is loaded the processing state checks the information byte is in the correct form: as an input, for the correct mode and the packet count; and then decodes what data is in the packet which is used by the writing state. When a packet contains two blocks of data, identified in the information, the first writes two of the words to the the input block and then waits for the control module to be ready for new data before writing the other two words.
+	To handle the input packets the module takes an input of bytes equal to the size of the packets as well as an input control signal $newIN$. The module operates in a similar way to how the control module did in the first approach, \autoref{subsection:SV1}, with states for waiting; loading packets; processing packets; and writing the relevant words to the relevant output, the key or the input block of the control module. After the packet is loaded the processing state checks the information byte is in the correct form: as an input, for the correct mode and the packet count; and then decodes what data is in the packet which is used by the writing state. When a packet contains two blocks of data, identified in the information, the first writes two of the words to the the input block and then waits for the control module to be ready for new data before writing the other two words. To do this a $PROCESSING$ flag bit used to notify the next state that when the control module is ready to load new data it should continue to write the other block in the packet before it is ready to load a new packet.
+
+ 	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:dataIN_next},caption={The next state logic used for the input packet handling module.},style=SVStyle]
+always_comb
+begin
+	unique case(current)
+	WAIT:
+	begin
+		if(PROCESSING)
+		begin
+			if(newDATA_rise || loadDATA)	next = WAIT;	
+			else				next = WRITE;	
+		end
+		else
+		begin
+			if(newPKT_rise)			next = LOAD;
+			else				next = WAIT;
+		end
+	end
+	LOAD:						next = COMPUTE;
+	COMPUTE:					next = WRITE;
+	WRITE:
+	begin
+		if(newDATA_rise)			next = WRITE;
+		else					next = WAIT;
+	end
+	endcase
+end
+	\end{lstlisting}
+	\end{minipage}
 	
 	The control module was also changed slightly to enable the packet information and count to propagate through the module with the connected data. This removed the need for the $enc\_dec$ signal as that is contained in the information. The input or output flag is also flipped by the control module for the output handling module. One change that was made though was to use extra signals that keep track of when the new data and keys are loaded internally with rising edge sensitive $always\_ff$ blocks. This is done with the $new_DATA_rise$ and $newKEY_rise$ signals that are set $HIGH$ with the rising edge of their relevant inputs and reset with the rising edge of the relevant load output. This enables the control module to not continue loading new data or another key if the new input signals are not reset by the other modules. Similar functionality was also used used in the packet handling modules for their new input signals.
 
  	\begin{minipage}{\linewidth}
-	\begin{lstlisting}[label={lst:new_rise},caption={The $always\_ff$ blocks used for risnig edge new data checks},style=CStyle]
+	\begin{lstlisting}[label={lst:new_rise},caption={The $always\_ff$ blocks used for risnig edge new data checks},style=SVStyle]
 //	RISING EDGE NEW CHECK
 always @(posedge newDATA, posedge loadDATA, negedge nR)
 begin
@@ -930,7 +980,7 @@ end
 	As each mode of SIMON processes a different number of bytes depending on the block the throughput of each block size (32, 48, 64, 96 and 128) is shown as it doesn't vary much key size for both software and not at all for hardware. \autoref{fig:throughput} demonstrates how the throughput of SIMON in hardware out performs the software with all of the block sizes defined, and used, by SIMON. It also shows that the throughput increases with the block size significantly in hardware. There is a slight improvement in software between 32 and 48 bits but from there it remains almost constant. This is because the processor used to run the software is 64 bits and thus can operate on 64 bit, used for the 96 and 128 bit block sizes, and 32 bit, used for 48 and 64 bit block sizes, data types efficiently, but with the 16 bit data type used only with a 32 bit block size this is not the case.
 	
 	\begin{figure}[H]
-		\includegraphics[width=0.75\textwidth]{SIMON_throughput}
+		\includegraphics[width=0.9\textwidth]{SIMON_throughput}
 		\centering
 		\caption{The comparison of the throughputs of various modes of SIMON in software and hardware.}
 		\label{fig:throughput}
@@ -941,19 +991,39 @@ end
 	\section{Resource Use}
 	
 	\subsection{Method}
-	\textcolor{red}{ADD RESOURCE TESTING METHOD BELOW [100]}
 	
 	Different resource are required and used by the software and hardware versions of SIMON developed for this project, but they are both still quantifiable in terms of memory used, but not with the logic elements used by the hardware as the software uses a number of operations with the ALU to compute the logic. Therefore, the different modes are used for comparisons within the same version with total logic elements, total registers, and input output pins being used for the hardware; and the total memory and number of instructions required for the software. The hardware data is provided by the Quartus Prime 17.1 and the data for both approach two, \autoref{SV2}, the final approach in \autoref{SVF} as they are both synthesised and provide an insight into the difference that using the packets has in terms of resource use.
 	
 	\subsection{Results}
-	\textcolor{red}{ADD RESOURCE TESTING RESULTS BELOW [300]}
 	
-	Using the data from \autoref{table:synth2} and \autoref{table:synth3} the \autoref{fig:logic}, \ref{fig:register} and \ref{fig:pins} was produced for these comparisons.  
+	\begin{figure}[H]
+		\includegraphics[width=0.8\textwidth]{SIMON_logic}
+		\centering
+		\caption{The comparison of the throughputs of various modes of SIMON in software and hardware.}
+		\label{fig:logic}
+	\end{figure}
+	
+	Using the data from \autoref{table:synth2} and \autoref{table:synth3} the approaches resources are compared in \autoref{fig:logic}, \ref{fig:registers} and \ref{fig:pins}.  These figures indicate that, for both approaches, the main increases only occur between modes when the block size changes and the resources used only changed slightly with the different key sizes. An exemption to this pattern is the pins used in approach 2 which appears to increase with an approximate linear relationship with the mode. This is different for the third and final approach as the packet handling ensures that the inputs and outputs remain equal for the block sizes.
+	
+	\begin{figure}[H]
+		\includegraphics[width=0.8\textwidth]{SIMON_registers}
+		\centering
+		\caption{The comparison of the throughputs of various modes of SIMON in software and hardware.}
+		\label{fig:registers}
+	\end{figure}
+	
+	When comparing the approaches it is clear that the packet handling modules, as expected, require more resources than just the control module used in the second approach. Although, the percentage changes between the two sets of data, while quite significant, aren't all huge; with the logic elements averaging at $27\%$, the registers at $36\%$ and the input/output pins at $23\%$.
+	
+	\begin{figure}[H]
+		\includegraphics[width=0.8\textwidth]{SIMON_pins}
+		\centering
+		\caption{The comparison of the throughputs of various modes of SIMON in software and hardware.}
+		\label{fig:pins}
+	\end{figure}
 	
 	\section{Power Consumption}
 	
 	\subsection{Method}
-	\textcolor{red}{ADD POWER TESTING METHOD BELOW [100]}
 	
 	As the hardware design was never implemented onto a FPGA the power consumption of the system while encrypting and decrypting data was never tested. However, the synthesis software often provide some extra tools that can estimate the power consumption by calculating the switching frequency of the internal nodes based on random input switching. The synthesised design from Quartus Prime is the main source of this data by using it's `Power Analyzer Tool', but the design was also compiled by the Cadence software\textcolor{red}{[[insert reference]} to compare what might be possible if the system is implemented onto an ASIC in the future.  The cadence software only provides some basic information about the estimated  the power consumption during the synthesis.
 	
@@ -964,7 +1034,16 @@ end
 	\label{chapter:CONC}
 	
 	\section{Conclusion}
+	Overall this project, while not completely succeeding in the original goal of optimising the algorithm for the low power environment of `Internet of Things', it has produced a working model for encrypting and decrypting data at a much faster rate than would be possible in the small embedded processors that the `IoT' devices use. Finding multiple algorithms for the varying levels of performance; in terms of security, throughput, power consumption and resource use; required by the wide range of `IoT` devices was also a goal in the original project brief but wasn't achieved in this project. However, the algorithm, SIMON,  was chosen to be the only algorithm used because it is defined with flexibility in all those performance parameters with the different block and key sizes. 
 	
+	Another potential problem of this project is that it became too software orientated, for reasons explored in \autoref{section:proj_man}, but the work done was still very relevant to the project goals as for it to be used in `IoT' products their would need to be a communication protocol in place. Although, the protocol eventually developed was done so with not much research into similar options that have already been produced and are readily available for use. This resulted in the protocol, based on packets and connected information, possibly being a poor solution to the problem.
+	
+	\section{Project Management}
+	\label{section:proj_man}
+	Unfortunately, even though the multiple working models produced in this project required working very hard throughout the duration of the project, a consistent project management technique made it difficult for the original goals, which were plausible and possible, being achieved. As, for example, implementing the hardware version onto a FPGA and testing the performance parameters on actual hardware was the main objective at the beginning but when it came to to doing this developed model wasn't ready because too much time and effort was put into adding advanced power saving techniques such as clock gating, something that wasn't required for correct operation, to the system. This meant that the simulation and synthesis tools were relied upon heavily to gather the results required to evauluate its performance; and these only produce estimates and don't necessarily represent what a FPGA would perform like.
+	
+	On the other hand, when this was realised a backup plan for continuing the project was reasily available. This plan was to shift some of the development efforts to the software to setup the packet system for sending and receiving data between the various `IoT' platforms and the now theoretical hardware. Even though this was the back up plan it did require more effort than expected  
+		
 	\section{Future Work}
 	There is lots of functionality that can be added and testing that can be done to continue and improve on this project in the future. These includes, but not limited to, continuing to improve the efficiency of both the hardware and software; implemented the hardware version onto an FPGA; implementing the hardware as an Application Specific Integrated Circuit (ASIC); optimising the design for clock speed on the FPGA and ASIC; and implementing the software onto the small embedded processors used in IoT.
 	

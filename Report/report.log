@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.11)  30 APR 2018 14:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.11)  30 APR 2018 19:13
 entering extended mode
 **./report.tex
 (report.tex
@@ -286,20 +286,20 @@ Package: everypage 2007/06/20 1.1 Hooks to run on every page
 (report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -336,7 +336,7 @@ LaTeX Font Info:    ... okay on input line 44.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box30
-Package hyperref Info: Link coloring OFF on input line 44.
+Package hyperref Info: Link coloring OFF on input line 64.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -345,9 +345,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count118
 )
-LaTeX Info: Redefining \ref on input line 44.
-LaTeX Info: Redefining \pageref on input line 44.
-LaTeX Info: Redefining \nameref on input line 44.
+LaTeX Info: Redefining \ref on input line 64.
+LaTeX Info: Redefining \pageref on input line 64.
+LaTeX Info: Redefining \nameref on input line 64.
 
 (report.out) (report.out)
 \@outlinefile=\write3
@@ -387,7 +387,7 @@ Package caption Info: End \AtBeginDocument code.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <142.26378> not available
-(Font)              size <24.88> substituted on input line 61.
+(Font)              size <24.88> substituted on input line 81.
 
 [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
@@ -397,7 +397,7 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <142.26378> not available
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.69 	\end{abstract}
+l.89 	\end{abstract}
                      [1] (report.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 6.
@@ -409,7 +409,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.34 ...line {5.1.2}Results}{34}{subsection.5.1.2}
+l.34 ...line {5.1.2}Results}{36}{subsection.5.1.2}
                                                    [2
 
 ])
@@ -425,140 +425,140 @@ Chapter 1.
 ] [6]
 Chapter 2.
 
-LaTeX Warning: Citation `Juels2005' on page 7 undefined on input line 97.
+LaTeX Warning: Citation `Juels2005' on page 7 undefined on input line 117.
 
 
-LaTeX Warning: Citation `David2011' on page 7 undefined on input line 97.
+LaTeX Warning: Citation `David2011' on page 7 undefined on input line 117.
 
 
 LaTeX Warning: Citation `AlfredJ.Menezes1996' on page 7 undefined on input line
- 104.
+ 124.
 
 [7
 
 ]
 
 LaTeX Warning: Citation `BruceSchneier2000' on page 8 undefined on input line 1
-11.
+31.
 
 
 LaTeX Warning: Citation `AlfredJ.Menezes1996' on page 8 undefined on input line
- 111.
+ 131.
 
 
 LaTeX Warning: Citation `AlfredJ.Menezes1996' on page 8 undefined on input line
- 116.
+ 136.
 
 
-LaTeX Warning: Citation `Shannon1949' on page 8 undefined on input line 118.
+LaTeX Warning: Citation `Shannon1949' on page 8 undefined on input line 138.
 
 
-LaTeX Warning: Citation `Feistel1973' on page 8 undefined on input line 118.
+LaTeX Warning: Citation `Feistel1973' on page 8 undefined on input line 138.
 
 
 LaTeX Warning: Citation `AlfredJ.Menezes1996' on page 8 undefined on input line
- 118.
+ 138.
 
 [8]
 
-LaTeX Warning: Citation `Shannon1949' on page 9 undefined on input line 155.
+LaTeX Warning: Citation `Shannon1949' on page 9 undefined on input line 175.
 
 
-LaTeX Warning: Citation `Robshaw1995' on page 9 undefined on input line 168.
+LaTeX Warning: Citation `Robshaw1995' on page 9 undefined on input line 188.
 
 [9]
 
-LaTeX Warning: Citation `Dworkin2001' on page 10 undefined on input line 170.
+LaTeX Warning: Citation `Dworkin2001' on page 10 undefined on input line 190.
 
 
 LaTeX Warning: Citation `ComputerSecurityDivision1999' on page 10 undefined on 
-input line 183.
+input line 203.
 
 
 LaTeX Warning: Citation `ComputerSecurityDivision2001' on page 10 undefined on 
-input line 183.
+input line 203.
 
 
 LaTeX Warning: Citation `BruceSchneier1994' on page 10 undefined on input line 
-183.
+203.
 
 
 LaTeX Warning: Citation `ComputerSecurityDivision1999' on page 10 undefined on 
-input line 186.
+input line 206.
 
 [10]
 
-LaTeX Warning: Citation `Team' on page 11 undefined on input line 188.
+LaTeX Warning: Citation `Team' on page 11 undefined on input line 208.
 
 
 LaTeX Warning: Citation `ComputerSecurityDivision2001' on page 11 undefined on 
-input line 188.
+input line 208.
 
 
-LaTeX Warning: Citation `Strachacki2008' on page 11 undefined on input line 191
+LaTeX Warning: Citation `Strachacki2008' on page 11 undefined on input line 211
 .
 
 
-LaTeX Warning: Citation `Gomes2016' on page 11 undefined on input line 191.
+LaTeX Warning: Citation `Gomes2016' on page 11 undefined on input line 211.
 
 
-LaTeX Warning: Citation `Moradi2011' on page 11 undefined on input line 191.
+LaTeX Warning: Citation `Moradi2011' on page 11 undefined on input line 211.
 
 
 LaTeX Warning: Citation `BruceSchneier1994' on page 11 undefined on input line 
-196.
+216.
 
 
-LaTeX Warning: Citation `Chatterjee2014' on page 11 undefined on input line 196
+LaTeX Warning: Citation `Chatterjee2014' on page 11 undefined on input line 216
 .
 
 
-LaTeX Warning: Citation `Prasetyo2014' on page 11 undefined on input line 196.
+LaTeX Warning: Citation `Prasetyo2014' on page 11 undefined on input line 216.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11]
 
-LaTeX Warning: Citation `Bogdanov2007' on page 12 undefined on input line 203.
+LaTeX Warning: Citation `Bogdanov2007' on page 12 undefined on input line 223.
 
 
-LaTeX Warning: Citation `Borghoff2012' on page 12 undefined on input line 203.
+LaTeX Warning: Citation `Borghoff2012' on page 12 undefined on input line 223.
 
 
-LaTeX Warning: Citation `Beaulieu2013' on page 12 undefined on input line 203.
+LaTeX Warning: Citation `Beaulieu2013' on page 12 undefined on input line 223.
 
 
-LaTeX Warning: Citation `Mckay' on page 12 undefined on input line 203.
+LaTeX Warning: Citation `Mckay' on page 12 undefined on input line 223.
 
 
-LaTeX Warning: Citation `Beaulieu2015' on page 12 undefined on input line 230.
+LaTeX Warning: Citation `Beaulieu2015' on page 12 undefined on input line 250.
 
 
-LaTeX Warning: Citation `Beaulieu2015' on page 12 undefined on input line 230.
+LaTeX Warning: Citation `Beaulieu2015' on page 12 undefined on input line 250.
 
 
-LaTeX Warning: Citation `Aysu2014' on page 12 undefined on input line 235.
+LaTeX Warning: Citation `Aysu2014' on page 12 undefined on input line 255.
 
 
-LaTeX Warning: Citation `Shahverdi2015' on page 12 undefined on input line 235.
+LaTeX Warning: Citation `Shahverdi2015' on page 12 undefined on input line 255.
 
 
 
-LaTeX Warning: Citation `Beaulieu2013' on page 12 undefined on input line 235.
+LaTeX Warning: Citation `Beaulieu2013' on page 12 undefined on input line 255.
 
 [12]
 
-LaTeX Warning: Reference `Feistel' on page 13 undefined on input line 238.
+LaTeX Warning: Reference `Feistel' on page 13 undefined on input line 258.
 
 
-LaTeX Warning: Citation `Banik2015' on page 13 undefined on input line 243.
+LaTeX Warning: Citation `Banik2015' on page 13 undefined on input line 263.
 
 
-LaTeX Warning: Reference `Feistel' on page 13 undefined on input line 245.
+LaTeX Warning: Reference `Feistel' on page 13 undefined on input line 265.
 
 
-LaTeX Warning: Reference `Feistel' on page 13 undefined on input line 252.
+LaTeX Warning: Reference `Feistel' on page 13 undefined on input line 272.
 
 [13] [14]
 Chapter 3.
@@ -570,17 +570,17 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 279.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 294.
+nput line 299.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 314.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 294.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 314.
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 306--321
+Overfull \hbox (30.0pt too wide) in paragraph at lines 326--341
 []$[]$ 
  []
 
@@ -588,20 +588,20 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 306--321
 Underfull \vbox (badness 6063) has occurred while \output is active []
 
  [16]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 329.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 349.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 329.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 349.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 329.
+(Font)              <7> on input line 349.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 329.
+(Font)              <5> on input line 349.
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 322--365
+Overfull \hbox (30.0pt too wide) in paragraph at lines 342--385
 []$[]$ 
  []
 
@@ -609,27 +609,36 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 322--365
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [17]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 378--398
+(C:\Users\lewis\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(C:\Users\lewis\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang2.sty
+File: lstlang2.sty 2015/06/04 1.6 listings language file
+)
+(C:\Users\lewis\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang3.sty
+File: lstlang3.sty 2015/06/04 1.6 listings language file
+)
+Overfull \hbox (30.0pt too wide) in paragraph at lines 398--418
 []$[]$ 
  []
 
 [18]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 401--427
+Overfull \hbox (30.0pt too wide) in paragraph at lines 421--447
 []$[]$ 
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 428--453
+Overfull \hbox (30.0pt too wide) in paragraph at lines 448--473
 []$[]$ 
  []
 
 [19]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 456--481
+Overfull \hbox (30.0pt too wide) in paragraph at lines 476--501
 []$[]$ 
  []
 
 [20] [21]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 510--553
+Overfull \hbox (30.0pt too wide) in paragraph at lines 530--573
 []$[]$ 
  []
 
@@ -637,17 +646,17 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 510--553
 Underfull \vbox (badness 2103) has occurred while \output is active []
 
  [22]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 560--594
+Overfull \hbox (30.0pt too wide) in paragraph at lines 580--614
 []$[]$ 
  []
 
 [23]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 598--621
+Overfull \hbox (30.0pt too wide) in paragraph at lines 618--641
 []$[]$ 
  []
 
 
-LaTeX Warning: Reference `fig:sythn2' on page 24 undefined on input line 648.
+LaTeX Warning: Reference `fig:sythn2' on page 24 undefined on input line 668.
 
 [24]
 Chapter 4.
@@ -657,35 +666,33 @@ Underfull \vbox (badness 6380) has occurred while \output is active []
  [25
 
 ]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 667--709
-[]$[]$ 
- []
-
-[26]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 714--727
-[]$[]$ 
- []
-
-
-Overfull \hbox (30.0pt too wide) in paragraph at lines 728--745
-[]$[]$ 
- []
-
-[27]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 748--774
-[]$[]$ 
- []
-
-
-Overfull \hbox (30.0pt too wide) in paragraph at lines 775--807
+Overfull \hbox (30.0pt too wide) in paragraph at lines 687--729
 []$[]$ 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [28]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 810--851
+ [26]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [27]
+Overfull \hbox (30.0pt too wide) in paragraph at lines 734--747
+[]$[]$ 
+ []
+
+
+Overfull \hbox (30.0pt too wide) in paragraph at lines 748--765
+[]$[]$ 
+ []
+
+[28]
+Overfull \hbox (30.0pt too wide) in paragraph at lines 768--794
+[]$[]$ 
+ []
+
+
+Overfull \hbox (30.0pt too wide) in paragraph at lines 795--827
 []$[]$ 
  []
 
@@ -693,54 +700,80 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 810--851
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [29]
-[30]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 868--879
+Overfull \hbox (30.0pt too wide) in paragraph at lines 830--871
 []$[]$ 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [31]
-[32]
+ [30]
+[31]
+Overfull \hbox (30.0pt too wide) in paragraph at lines 886--915
+[]$[]$ 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [32]
+Overfull \hbox (30.0pt too wide) in paragraph at lines 918--929
+[]$[]$ 
+ []
+
+[33] [34]
 Chapter 5.
 
 Underfull \vbox (badness 5189) has occurred while \output is active []
 
- [33
+ [35
 
 ]
-<images/SIMON_throughput.jpg, id=866, 858.20625pt x 561.59813pt>
+<images/SIMON_throughput.jpg, id=907, 1017.8025pt x 658.96187pt>
 File: images/SIMON_throughput.jpg Graphic file (type jpg)
 
 <use images/SIMON_throughput.jpg>
-Package pdftex.def Info: images/SIMON_throughput.jpg used on input line 933.
-(pdftex.def)             Requested size: 322.22746pt x 210.86443pt.
+Package pdftex.def Info: images/SIMON_throughput.jpg used on input line 983.
+(pdftex.def)             Requested size: 386.67033pt x 250.34778pt.
+
+
+LaTeX Warning: Reference `SV2' on page 36 undefined on input line 995.
+
+
+LaTeX Warning: Reference `SVF' on page 36 undefined on input line 995.
+
+
+Underfull \vbox (badness 1859) has occurred while \output is active []
+
+ [36 <./images/SIMON_throughput.jpg>]
+<images/SIMON_logic.jpg, id=913, 1018.30438pt x 661.97313pt>
+File: images/SIMON_logic.jpg Graphic file (type jpg)
+
+<use images/SIMON_logic.jpg>
+Package pdftex.def Info: images/SIMON_logic.jpg used on input line 1000.
+(pdftex.def)             Requested size: 343.7106pt x 223.44164pt.
+
+<images/SIMON_registers.jpg, id=919, 1020.81375pt x 658.46pt>
+File: images/SIMON_registers.jpg Graphic file (type jpg)
+
+<use images/SIMON_registers.jpg>
+Package pdftex.def Info: images/SIMON_registers.jpg used on input line 1009.
+(pdftex.def)             Requested size: 343.7106pt x 221.70323pt.
+ [37 <./images/SIMON_logic.jpg>]
+<images/SIMON_pins.jpg, id=927, 1019.81pt x 650.93187pt>
+File: images/SIMON_pins.jpg Graphic file (type jpg)
+
+<use images/SIMON_pins.jpg>
+Package pdftex.def Info: images/SIMON_pins.jpg used on input line 1018.
+(pdftex.def)             Requested size: 343.7106pt x 219.38701pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [34 <./images/SIMON_throughput.jpg>]
-
-LaTeX Warning: Reference `SV2' on page 35 undefined on input line 946.
-
-
-LaTeX Warning: Reference `SVF' on page 35 undefined on input line 946.
-
-
-LaTeX Warning: Reference `fig:logic' on page 35 undefined on input line 951.
-
-
-LaTeX Warning: Reference `fig:register' on page 35 undefined on input line 951.
-
-
-
-LaTeX Warning: Reference `fig:pins' on page 35 undefined on input line 951.
-
-[35]
+ [38 <./images/SIMON_registers.jpg> <./images/SIMON_pins.jpg>] [39]
 Chapter 6.
-[36
+[40
 
-] (report.bbl [37]
+] [41] (report.bbl [42]
 Underfull \hbox (badness 1107) in paragraph at lines 26--30
 \OT1/cmr/m/n/12 ness.'' [On-line]. Avail-able: []$https : / / www . iot-[]now .
  com / 2017 / 03 / 09 /
@@ -753,16 +786,17 @@ cars-[]cellular-[]iot-[]vehicle-[]telematics/$[]
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 987.
- [38
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1066.
+ [43
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 987.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1066.
  (report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 987.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 987.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1066.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1066.
+
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 01BC1DC54D49159BD24D3982C70680B3;2830.
+(rerunfilecheck)             Checksum: B089F7C17A6EFFE58EB18E8CF604255C;2897.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -771,13 +805,13 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 987.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1066.
  ) 
 Here is how much of TeX's memory you used:
- 9786 strings out of 493323
- 145829 string characters out of 3139065
- 518268 words of memory out of 3000000
- 12714 multiletter control sequences out of 15000+200000
+ 10111 strings out of 493323
+ 150983 string characters out of 3139065
+ 525981 words of memory out of 3000000
+ 12992 multiletter control sequences out of 15000+200000
  8500 words of font info for 30 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,11n,58p,1590b,1324s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -791,9 +825,9 @@ msfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb
 ><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on report.pdf (40 pages, 464973 bytes).
+Output written on report.pdf (45 pages, 978422 bytes).
 PDF statistics:
- 1041 PDF objects out of 1200 (max. 8388607)
- 523 named destinations out of 1000 (max. 500000)
- 358 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1111 PDF objects out of 1200 (max. 8388607)
+ 559 named destinations out of 1000 (max. 500000)
+ 381 words of extra memory for PDF output out of 10000 (max. 10000000)
 
