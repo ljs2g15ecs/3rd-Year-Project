@@ -1,0 +1,7 @@
+
+State Machine - |SIMON_64128|SIMON_control:control|current
+Name current.WRITE current.EXECUTE current.LOAD current.INIT 
+current.INIT 0 0 0 0 
+current.LOAD 0 0 1 1 
+current.EXECUTE 0 1 0 1 
+current.WRITE 1 0 0 1 

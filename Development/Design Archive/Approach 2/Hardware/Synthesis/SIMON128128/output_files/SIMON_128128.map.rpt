@@ -1,0 +1,510 @@
+Analysis & Synthesis report for SIMON_128128
+Mon Apr 30 10:45:46 2018
+Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |SIMON_128128|SIMON_control:control|current
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: Top-level Entity: |SIMON_128128
+ 13. Parameter Settings for User Entity Instance: SIMON_keyexpansion:ke
+ 14. Parameter Settings for User Entity Instance: SIMON_control:control
+ 15. Parameter Settings for User Entity Instance: SIMON_control:control|SIMON_round:r
+ 16. Parameter Settings for User Entity Instance: SIMON_control:control|SIMON_round:r|SIMON_function:func
+ 17. Parameter Settings for Inferred Entity Instance: SIMON_keyexpansion:ke|lpm_divide:Mod0
+ 18. Port Connectivity Checks: "SIMON_keyexpansion:ke"
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Apr 30 10:45:46 2018       ;
+; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
+; Revision Name                   ; SIMON_128128                                ;
+; Top-level Entity Name           ; SIMON_128128                                ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 4754                                        ;
+; Total pins                      ; 394                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; SIMON_128128       ; SIMON_128128       ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.3%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                             ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                                         ; Library ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; Source/SIMON_round.sv            ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_round.sv        ;         ;
+; Source/SIMON_keyexpansion.sv     ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_keyexpansion.sv ;         ;
+; Source/SIMON_function.sv         ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_function.sv     ;         ;
+; Source/SIMON_control.sv          ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_control.sv      ;         ;
+; Source/SIMON_128128.sv           ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_128128.sv       ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_divide.tdf                                                                                ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/abs_divider.inc                                                                               ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sign_div_unsign.inc                                                                           ;         ;
+; aglobal171.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/aglobal171.inc                                                                                ;         ;
+; db/lpm_divide_92m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/db/lpm_divide_92m.tdf        ;         ;
+; db/sign_div_unsign_ckh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/db/sign_div_unsign_ckh.tdf   ;         ;
+; db/alt_u_div_use.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/db/alt_u_div_use.tdf         ;         ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary            ;
++---------------------------------------------+----------+
+; Resource                                    ; Usage    ;
++---------------------------------------------+----------+
+; Estimate of Logic utilization (ALMs needed) ; 3266     ;
+;                                             ;          ;
+; Combinational ALUT usage for logic          ; 2198     ;
+;     -- 7 input functions                    ; 72       ;
+;     -- 6 input functions                    ; 1336     ;
+;     -- 5 input functions                    ; 316      ;
+;     -- 4 input functions                    ; 211      ;
+;     -- <=3 input functions                  ; 263      ;
+;                                             ;          ;
+; Dedicated logic registers                   ; 4754     ;
+;                                             ;          ;
+; I/O pins                                    ; 394      ;
+;                                             ;          ;
+; Total DSP Blocks                            ; 0        ;
+;                                             ;          ;
+; Maximum fan-out node                        ; nR~input ;
+; Maximum fan-out                             ; 4753     ;
+; Total fan-out                               ; 31845    ;
+; Average fan-out                             ; 4.11     ;
++---------------------------------------------+----------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                           ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                 ; Entity Name         ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |SIMON_128128                             ; 2198 (0)            ; 4754 (0)                  ; 0                 ; 0          ; 394  ; 0            ; |SIMON_128128                                                                                                                       ; SIMON_128128        ; work         ;
+;    |SIMON_control:control|                ; 2105 (2041)         ; 4754 (4754)               ; 0                 ; 0          ; 0    ; 0            ; |SIMON_128128|SIMON_control:control                                                                                                 ; SIMON_control       ; work         ;
+;       |SIMON_round:r|                     ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SIMON_128128|SIMON_control:control|SIMON_round:r                                                                                   ; SIMON_round         ; work         ;
+;    |SIMON_keyexpansion:ke|                ; 93 (65)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SIMON_128128|SIMON_keyexpansion:ke                                                                                                 ; SIMON_keyexpansion  ; work         ;
+;       |lpm_divide:Mod0|                   ; 28 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SIMON_128128|SIMON_keyexpansion:ke|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_92m:auto_generated|  ; 28 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SIMON_128128|SIMON_keyexpansion:ke|lpm_divide:Mod0|lpm_divide_92m:auto_generated                                                   ; lpm_divide_92m      ; work         ;
+;             |sign_div_unsign_ckh:divider| ; 28 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SIMON_128128|SIMON_keyexpansion:ke|lpm_divide:Mod0|lpm_divide_92m:auto_generated|sign_div_unsign_ckh:divider                       ; sign_div_unsign_ckh ; work         ;
+;                |alt_u_div_use:divider|    ; 28 (28)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SIMON_128128|SIMON_keyexpansion:ke|lpm_divide:Mod0|lpm_divide_92m:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_use:divider ; alt_u_div_use       ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------+
+; State Machine - |SIMON_128128|SIMON_control:control|current                     ;
++-----------------+---------------+-----------------+--------------+--------------+
+; Name            ; current.WRITE ; current.EXECUTE ; current.LOAD ; current.INIT ;
++-----------------+---------------+-----------------+--------------+--------------+
+; current.INIT    ; 0             ; 0               ; 0            ; 0            ;
+; current.LOAD    ; 0             ; 0               ; 1            ; 1            ;
+; current.EXECUTE ; 0             ; 1               ; 0            ; 1            ;
+; current.WRITE   ; 1             ; 0               ; 0            ; 1            ;
++-----------------+---------------+-----------------+--------------+--------------+
+
+
++------------------------------------------------------------+
+; Registers Removed During Synthesis                         ;
++---------------------------------------+--------------------+
+; Register name                         ; Reason for Removal ;
++---------------------------------------+--------------------+
+; SIMON_control:control|current~4       ; Lost fanout        ;
+; SIMON_control:control|current~5       ; Lost fanout        ;
+; Total Number of Removed Registers = 2 ;                    ;
++---------------------------------------+--------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 4754  ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 320   ;
+; Number of registers using Asynchronous Clear ; 4749  ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 4740  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+; 3:1                ; 128 bits  ; 256 LEs       ; 0 LEs                ; 256 LEs                ; Yes        ; |SIMON_128128|SIMON_control:control|pKeys[0][14] ;
+; 4:1                ; 128 bits  ; 256 LEs       ; 256 LEs              ; 0 LEs                  ; Yes        ; |SIMON_128128|SIMON_control:control|p[106]       ;
+; 172:1              ; 64 bits   ; 7296 LEs      ; 3328 LEs             ; 3968 LEs               ; No         ; |SIMON_128128|SIMON_control:control|rKey[35]     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |SIMON_128128 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 64    ; Signed Integer                                      ;
+; M              ; 2     ; Signed Integer                                      ;
+; T              ; 68    ; Signed Integer                                      ;
+; Co             ; 7     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: SIMON_keyexpansion:ke ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; N              ; 64    ; Signed Integer                            ;
+; M              ; 2     ; Signed Integer                            ;
+; Co             ; 7     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: SIMON_control:control ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; N              ; 64    ; Signed Integer                            ;
+; M              ; 2     ; Signed Integer                            ;
+; T              ; 68    ; Signed Integer                            ;
+; Co             ; 7     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: SIMON_control:control|SIMON_round:r ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: SIMON_control:control|SIMON_round:r|SIMON_function:func ;
++----------------+-------+-----------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                        ;
++----------------+-------+-----------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                              ;
++----------------+-------+-----------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: SIMON_keyexpansion:ke|lpm_divide:Mod0 ;
++------------------------+----------------+----------------------------------------------+
+; Parameter Name         ; Value          ; Type                                         ;
++------------------------+----------------+----------------------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                                      ;
+; LPM_WIDTHD             ; 6              ; Untyped                                      ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                      ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                      ;
+; LPM_PIPELINE           ; 0              ; Untyped                                      ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                      ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                      ;
+; CBXI_PARAMETER         ; lpm_divide_92m ; Untyped                                      ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                      ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                      ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                   ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                 ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                 ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                               ;
++------------------------+----------------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "SIMON_keyexpansion:ke" ;
++-----------+-------+----------+--------------------+
+; Port      ; Type  ; Severity ; Details            ;
++-----------+-------+----------+--------------------+
+; z[61..60] ; Input ; Info     ; Stuck at VCC       ;
+; z[57..56] ; Input ; Info     ; Stuck at VCC       ;
+; z[54..53] ; Input ; Info     ; Stuck at VCC       ;
+; z[48..43] ; Input ; Info     ; Stuck at VCC       ;
+; z[28..27] ; Input ; Info     ; Stuck at VCC       ;
+; z[19..18] ; Input ; Info     ; Stuck at VCC       ;
+; z[11..9]  ; Input ; Info     ; Stuck at VCC       ;
+; z[7..4]   ; Input ; Info     ; Stuck at VCC       ;
+; z[59..58] ; Input ; Info     ; Stuck at GND       ;
+; z[50..49] ; Input ; Info     ; Stuck at GND       ;
+; z[42..40] ; Input ; Info     ; Stuck at GND       ;
+; z[38..35] ; Input ; Info     ; Stuck at GND       ;
+; z[31..29] ; Input ; Info     ; Stuck at GND       ;
+; z[26..25] ; Input ; Info     ; Stuck at GND       ;
+; z[23..22] ; Input ; Info     ; Stuck at GND       ;
+; z[17..12] ; Input ; Info     ; Stuck at GND       ;
+; z[55]     ; Input ; Info     ; Stuck at GND       ;
+; z[52]     ; Input ; Info     ; Stuck at GND       ;
+; z[51]     ; Input ; Info     ; Stuck at VCC       ;
+; z[39]     ; Input ; Info     ; Stuck at VCC       ;
+; z[34]     ; Input ; Info     ; Stuck at VCC       ;
+; z[33]     ; Input ; Info     ; Stuck at GND       ;
+; z[32]     ; Input ; Info     ; Stuck at VCC       ;
+; z[24]     ; Input ; Info     ; Stuck at VCC       ;
+; z[21]     ; Input ; Info     ; Stuck at VCC       ;
+; z[20]     ; Input ; Info     ; Stuck at GND       ;
+; z[8]      ; Input ; Info     ; Stuck at GND       ;
+; z[3]      ; Input ; Info     ; Stuck at GND       ;
+; z[2]      ; Input ; Info     ; Stuck at VCC       ;
+; z[1]      ; Input ; Info     ; Stuck at GND       ;
+; z[0]      ; Input ; Info     ; Stuck at VCC       ;
++-----------+-------+----------+--------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 4754                        ;
+;     CLR               ; 13                          ;
+;     ENA               ; 4                           ;
+;     ENA CLR           ; 4416                        ;
+;     ENA CLR SLD       ; 320                         ;
+;     plain             ; 1                           ;
+; arriav_lcell_comb     ; 2198                        ;
+;     arith             ; 21                          ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 13                          ;
+;         2 data inputs ; 3                           ;
+;         3 data inputs ; 3                           ;
+;     extend            ; 72                          ;
+;         7 data inputs ; 72                          ;
+;     normal            ; 2098                        ;
+;         2 data inputs ; 24                          ;
+;         3 data inputs ; 211                         ;
+;         4 data inputs ; 211                         ;
+;         5 data inputs ; 316                         ;
+;         6 data inputs ; 1336                        ;
+;     shared            ; 7                           ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 6                           ;
+; boundary_port         ; 394                         ;
+;                       ;                             ;
+; Max LUT depth         ; 8.40                        ;
+; Average LUT depth     ; 4.84                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:25     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+    Info: Processing started: Mon Apr 30 10:44:49 2018
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SIMON_128128 -c SIMON_128128
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file source/simon_round.sv
+    Info (12023): Found entity 1: SIMON_round File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_round.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file source/simon_keyexpansion.sv
+    Info (12023): Found entity 1: SIMON_keyexpansion File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_keyexpansion.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file source/simon_function.sv
+    Info (12023): Found entity 1: SIMON_function File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_function.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file source/simon_control.sv
+    Info (12023): Found entity 1: SIMON_control File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_control.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file source/simon_128128.sv
+    Info (12023): Found entity 1: SIMON_128128 File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_128128.sv Line: 1
+Info (12127): Elaborating entity "SIMON_128128" for the top level hierarchy
+Info (12128): Elaborating entity "SIMON_keyexpansion" for hierarchy "SIMON_keyexpansion:ke" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_128128.sv Line: 22
+Info (12128): Elaborating entity "SIMON_control" for hierarchy "SIMON_control:control" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_128128.sv Line: 24
+Info (12128): Elaborating entity "SIMON_round" for hierarchy "SIMON_control:control|SIMON_round:r" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_control.sv Line: 31
+Info (12128): Elaborating entity "SIMON_function" for hierarchy "SIMON_control:control|SIMON_round:r|SIMON_function:func" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_round.sv Line: 10
+Info (278001): Inferred 1 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "SIMON_keyexpansion:ke|Mod0" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_keyexpansion.sv Line: 18
+Info (12130): Elaborated megafunction instantiation "SIMON_keyexpansion:ke|lpm_divide:Mod0" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_keyexpansion.sv Line: 18
+Info (12133): Instantiated megafunction "SIMON_keyexpansion:ke|lpm_divide:Mod0" with the following parameter: File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/Source/SIMON_keyexpansion.sv Line: 18
+    Info (12134): Parameter "LPM_WIDTHN" = "7"
+    Info (12134): Parameter "LPM_WIDTHD" = "6"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_92m.tdf
+    Info (12023): Found entity 1: lpm_divide_92m File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/db/lpm_divide_92m.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_ckh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_ckh File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/db/sign_div_unsign_ckh.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_use.tdf
+    Info (12023): Found entity 1: alt_u_div_use File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Synthesis/SIMON128128/db/alt_u_div_use.tdf Line: 22
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 2 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 7203 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 262 input pins
+    Info (21059): Implemented 132 output pins
+    Info (21061): Implemented 6809 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 787 megabytes
+    Info: Processing ended: Mon Apr 30 10:45:46 2018
+    Info: Elapsed time: 00:00:57
+    Info: Total CPU time (on all processors): 00:01:22
+
+

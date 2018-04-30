@@ -1,0 +1,75 @@
+`include "SIMON_defintions.svh"
+
+module test_SIMON_dataOUT;
+
+//	INPUT
+logic				clk, nR;
+logic				out_readPKT;
+logic				doneDATA;
+logic [7:0]			infoOUT, countOUT;
+logic [1:0][`N-1:0]		outDATA;
+
+//	OUTPUT
+logic 				out_donePKT;
+logic 				readDATA;
+logic [(1+(`N/2)):0][7:0]	out;
+
+SIMON_dataOUT dOUT(.*);
+
+initial
+begin
+	#50ns		clk = 1'b0;
+	forever #50ns	clk = ~clk;
+end
+
+initial
+begin
+	nR = 1'b0;	
+	@(posedge clk);
+	#10ns
+
+	out_readPKT = 1'b0;
+	doneDATA = 1'b0;
+	infoOUT = `out_iDEC_TEST;
+	countOUT = 8'h00;
+	outDATA = `out_DEC_TEST;	//	CHANGE TO OUTPUT DATA
+
+	@(posedge clk);
+	#10ns
+
+	nR = 1'b1;
+
+	@(posedge clk);
+	#10ns
+	
+	doneDATA <= 1'b1;
+end
+
+always @(posedge readDATA)
+begin
+	repeat(2)	@(posedge clk);
+	#10ns
+	
+	doneDATA <= 1'b0;
+
+	repeat(5)	@(posedge clk);
+	#10ns
+	
+	doneDATA <= 1'b1;
+end
+
+always @(posedge out_donePKT)
+begin
+	repeat(2)	@(posedge clk);
+	#10ns
+	
+	countOUT <= countOUT + 1'b1;
+	out_readPKT <= 1'b1;
+
+	repeat(2)	@(posedge clk);
+	#10ns
+
+	out_readPKT <= 1'b0;
+end
+
+endmodule

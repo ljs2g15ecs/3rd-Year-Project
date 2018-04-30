@@ -1,0 +1,12 @@
+Power Analyzer Status : Successful - Mon Apr 30 14:10:23 2018
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Revision Name : SIMON_topPKT
+Top-level Entity Name : SIMON_topPKT
+Family : Cyclone V
+Device : 5CSEMA5F31C6
+Power Models : Final
+Total Thermal Power Dissipation : 426.36 mW
+Core Dynamic Thermal Power Dissipation : 0.00 mW
+Core Static Thermal Power Dissipation : 411.26 mW
+I/O Thermal Power Dissipation : 15.10 mW
+Power Estimation Confidence : Low: user provided insufficient toggle rate data

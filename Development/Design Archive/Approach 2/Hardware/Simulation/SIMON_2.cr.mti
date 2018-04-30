@@ -89,12 +89,12 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	test_SIMON_96144
 
-} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_96144.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_96144.sv}
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/test_SIMON_control.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/test_SIMON_control.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module SIMON_96144
+-- Compiling module test_SIMON_control_v5
 
 Top level modules:
-	SIMON_96144
+	test_SIMON_control_v5
 
 } {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_128256.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_128256.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -103,19 +103,12 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	SIMON_128256
 
-} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/test_SIMON_control.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/test_SIMON_control.sv}
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_96144.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_96144.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module test_SIMON_control_v5
+-- Compiling module SIMON_96144
 
 Top level modules:
-	test_SIMON_control_v5
-
-} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_6496.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_6496.sv}
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module SIMON_6496
-
-Top level modules:
-	SIMON_6496
+	SIMON_96144
 
 } {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_control.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_control.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -124,19 +117,19 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	SIMON_control
 
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_6496.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_6496.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module SIMON_6496
+
+Top level modules:
+	SIMON_6496
+
 } {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_4896.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_4896.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module SIMON_4896
 
 Top level modules:
 	SIMON_4896
-
-} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/test_SIMON_4872.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/test_SIMON_4872.sv}
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module test_SIMON_4872
-
-Top level modules:
-	test_SIMON_4872
 
 } {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/test_SIMON_64128.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/test_SIMON_64128.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -145,6 +138,13 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	test_SIMON_64128
 
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/test_SIMON_4872.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/test_SIMON_4872.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module test_SIMON_4872
+
+Top level modules:
+	test_SIMON_4872
+
 } {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_64128.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_64128.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module SIMON_64128
@@ -152,12 +152,12 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	SIMON_64128
 
-} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_128128.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_128128.sv}
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_function.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_function.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module SIMON_128128
+-- Compiling module SIMON_function
 
 Top level modules:
-	SIMON_128128
+	SIMON_function
 
 } {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_9696.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_9696.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -166,11 +166,11 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	SIMON_9696
 
-} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_function.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_function.sv}
+} {} {}} {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_128128.sv} {1 {vlog -work work -sv -stats=none {C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 2/Hardware/Source/SIMON_128128.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module SIMON_function
+-- Compiling module SIMON_128128
 
 Top level modules:
-	SIMON_function
+	SIMON_128128
 
 } {} {}}

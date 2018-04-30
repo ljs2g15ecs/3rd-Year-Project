@@ -253,7 +253,7 @@ void		encryptFILE_PKT	(							)
 	
 	testFILE.assign("test");
 	testFILE.addFILE_PKT(K);
-	testFILE.addFILE_PKT(P, P);
+	//testFILE.addFILE_PKT(P, P);
 	
 	testFILE.readFILE_PKT();
 }

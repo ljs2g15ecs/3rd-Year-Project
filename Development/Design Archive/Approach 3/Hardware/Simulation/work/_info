@@ -1,0 +1,635 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Simulation
+vSIMON_control
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1525088792
+!i10b 1
+!s100 0zodc_:40NP;C:2Tig]TP3
+I81TQnokZS0bPYKP4kPA0D0
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 SIMON_control_sv_unit
+S1
+R0
+w1525074800
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_control.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_control.sv
+L0 3
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1525088792.000000
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_control.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_control.sv|
+!i113 1
+Z6 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z7 tCvgOpt 0
+n@s@i@m@o@n_control
+vSIMON_controlBLK
+R1
+R2
+!i10b 1
+!s100 A;TURU2n8`90bXLU4:YUK1
+IG5e_@4b:hiJh49=CP3G6H3
+R3
+!s105 SIMON_controlBLK_sv_unit
+S1
+R0
+w1524921504
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_controlBLK.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_controlBLK.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_controlBLK.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_controlBLK.sv|
+!i113 1
+R6
+R7
+n@s@i@m@o@n_control@b@l@k
+vSIMON_dataIN
+R1
+R2
+!i10b 1
+!s100 WWQe`I9Jo>2`zFKD?fQnL0
+IDn1[PU8W^@e:BnOhHQ<mn2
+R3
+!s105 SIMON_dataIN_sv_unit
+S1
+R0
+w1525075371
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_dataIN.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_dataIN.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_dataIN.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_dataIN.sv|
+!i113 1
+R6
+R7
+n@s@i@m@o@n_data@i@n
+vSIMON_dataOUT
+R1
+R2
+!i10b 1
+!s100 DS]G_CQObOZF9TmTdkDWc0
+I<E?EDao5QBK9aMn:DilE@0
+R3
+!s105 SIMON_dataOUT_sv_unit
+S1
+R0
+w1525075407
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_dataOUT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_dataOUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_dataOUT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_dataOUT.sv|
+!i113 1
+R6
+R7
+n@s@i@m@o@n_data@o@u@t
+vSIMON_function
+R1
+Z8 !s110 1525088791
+!i10b 1
+!s100 0K0bMKRb?K[k_5_GR>DR<0
+I^g0SAj1j3zB_l<?UkWT=J1
+R3
+!s105 SIMON_function_sv_unit
+S1
+R0
+w1524224254
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_function.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_function.sv
+L0 3
+R4
+r1
+!s85 0
+31
+Z9 !s108 1525088791.000000
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_function.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_function.sv|
+!i113 1
+R6
+R7
+n@s@i@m@o@n_function
+vSIMON_keyexpansion
+R1
+R2
+!i10b 1
+!s100 UeKT2R<4EVIWe:029>fS[1
+Idc4`o^nm4AM@OegO2>G7h1
+R3
+!s105 SIMON_keyexpansion_sv_unit
+S1
+R0
+w1524224938
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_keyexpansion.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_keyexpansion.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_keyexpansion.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_keyexpansion.sv|
+!i113 1
+R6
+R7
+n@s@i@m@o@n_keyexpansion
+vSIMON_round
+R1
+R8
+!i10b 1
+!s100 g3?fh=[FN;B2So<LZfT390
+I@4^46=;FfLKeoNP92z]mN3
+R3
+!s105 SIMON_round_sv_unit
+S1
+R0
+w1524224376
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_round.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_round.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_round.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_round.sv|
+!i113 1
+R6
+R7
+n@s@i@m@o@n_round
+vSIMON_topPKT
+R1
+R2
+!i10b 1
+!s100 [jlgR72BenZ`BhCd[OZWV3
+IkjjIY1oZTGK=<8cMX>a<e2
+R3
+!s105 SIMON_topPKT_sv_unit
+S1
+R0
+w1524920144
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_topPKT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_topPKT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_topPKT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/SIMON_topPKT.sv|
+!i113 1
+R6
+R7
+n@s@i@m@o@n_top@p@k@t
+vtest_SIMON_128128_THROUGHPUT
+R1
+Z10 !s110 1525088794
+!i10b 1
+!s100 EiLVGoCo1dTW3=WON?LhA1
+IFzARPV57<^=dHzHRY]?nd1
+R3
+!s105 test_SIMON_128128_THROUGHPUT_sv_unit
+S1
+R0
+w1525088559
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_128128_THROUGHPUT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_128128_THROUGHPUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+Z11 !s108 1525088794.000000
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_128128_THROUGHPUT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_128128_THROUGHPUT.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_128128_@t@h@r@o@u@g@h@p@u@t
+vtest_SIMON_128192_THROUGHPUT
+R1
+R10
+!i10b 1
+!s100 TijzGCl=ePO8Ez6n<SaBN3
+Ia[f_blFUaXaffJiobzS>n3
+R3
+!s105 test_SIMON_128192_THROUGHPUT_sv_unit
+S1
+R0
+w1525087622
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_128192_THROUGHPUT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_128192_THROUGHPUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R11
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_128192_THROUGHPUT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_128192_THROUGHPUT.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_128192_@t@h@r@o@u@g@h@p@u@t
+vtest_SIMON_128256_THROUGHPUT
+R1
+R10
+!i10b 1
+!s100 [P6Em3Fa9KUzl^8Q=`^z[2
+IYZ<_`_X6WGoU`DM=JI2n40
+R3
+!s105 test_SIMON_128256_THROUGHPUT_sv_unit
+S1
+R0
+w1525087634
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_128256_THROUGHPUT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_128256_THROUGHPUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R11
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_128256_THROUGHPUT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_128256_THROUGHPUT.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_128256_@t@h@r@o@u@g@h@p@u@t
+vtest_SIMON_14872_THROUGHPUT
+R1
+!s110 1525088086
+!i10b 1
+!s100 ZHFkhI:4GPnZ=gd;:>BGN3
+IL_7lR[]gRo93h5AcWg7JL0
+R3
+Z12 !s105 test_SIMON_4872_THROUGHPUT_sv_unit
+S1
+R0
+w1525088079
+Z13 8C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\test_SIMON_4872_THROUGHPUT.sv
+Z14 FC:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\test_SIMON_4872_THROUGHPUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+!s108 1525088086.000000
+Z15 !s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\test_SIMON_4872_THROUGHPUT.sv|
+Z16 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\test_SIMON_4872_THROUGHPUT.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_14872_@t@h@r@o@u@g@h@p@u@t
+vtest_SIMON_3264_THROUGHPUT
+R1
+Z17 !s110 1525088793
+!i10b 1
+!s100 YezTPSe0G3;aklm2koWm;0
+I3HGFKo9V>;T<5PlSJaAiN1
+R3
+!s105 test_SIMON_3264_THROUGHPUT_sv_unit
+S1
+R0
+w1525087508
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_3264_THROUGHPUT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_3264_THROUGHPUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+Z18 !s108 1525088793.000000
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_3264_THROUGHPUT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_3264_THROUGHPUT.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_3264_@t@h@r@o@u@g@h@p@u@t
+vtest_SIMON_4872_THROUGHPUT
+R1
+R17
+!i10b 1
+!s100 kzJnM36_Ab^oSf4J]k9a63
+IMV4I?ILY4TT9hTdPZijb50
+R3
+R12
+S1
+R0
+w1525088100
+R13
+R14
+L0 3
+R4
+r1
+!s85 0
+31
+R18
+R15
+R16
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_4872_@t@h@r@o@u@g@h@p@u@t
+vtest_SIMON_4896_THROUGHPUT
+R1
+R17
+!i10b 1
+!s100 SSBSNLSdFIi0NCQ:A54`D3
+IXWTJgVP@2RCVn[=DEdT_91
+R3
+!s105 test_SIMON_4896_THROUGHPUT_sv_unit
+S1
+R0
+w1525088787
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_4896_THROUGHPUT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_4896_THROUGHPUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R18
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_4896_THROUGHPUT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_4896_THROUGHPUT.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_4896_@t@h@r@o@u@g@h@p@u@t
+vtest_SIMON_64128_THROUGHPUT
+R1
+R10
+!i10b 1
+!s100 c^[BV;>o1z`LCjK4:C6dc0
+ImKlimC247UG0^l5Al1e[=1
+R3
+!s105 test_SIMON_64128_THROUGHPUT_sv_unit
+S1
+R0
+w1525086227
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_64128_THROUGHPUT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_64128_THROUGHPUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R18
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_64128_THROUGHPUT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_64128_THROUGHPUT.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_64128_@t@h@r@o@u@g@h@p@u@t
+vtest_SIMON_6496_THROUGHPUT
+R1
+R17
+!i10b 1
+!s100 ;UD?YObk12ULgXH878nXM2
+IMNg;0J:o?JZKYa?c2WE_d3
+R3
+!s105 test_SIMON_6496_THROUGHPUT_sv_unit
+S1
+R0
+w1525088246
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_6496_THROUGHPUT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_6496_THROUGHPUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R18
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_6496_THROUGHPUT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_6496_THROUGHPUT.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_6496_@t@h@r@o@u@g@h@p@u@t
+vtest_SIMON_96144_THROUGHPUT
+R1
+R10
+!i10b 1
+!s100 ;f2W23<a@AJ1kYkT:KHQ;3
+IFgk?dQ3?<cd6CKP2PaL[n1
+R3
+!s105 test_SIMON_96144_THROUGHPUT_sv_unit
+S1
+R0
+w1525087710
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_96144_THROUGHPUT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_96144_THROUGHPUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R11
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_96144_THROUGHPUT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_96144_THROUGHPUT.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_96144_@t@h@r@o@u@g@h@p@u@t
+vtest_SIMON_9696_THROUGHPUT
+R1
+R10
+!i10b 1
+!s100 iQ9Wa?^[mC^7oiEBBJaMc0
+IWzW^GUA;^J@KM0TF1=[X:2
+R3
+!s105 test_SIMON_9696_THROUGHPUT_sv_unit
+S1
+R0
+w1525088402
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_9696_THROUGHPUT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_9696_THROUGHPUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R11
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_9696_THROUGHPUT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_9696_THROUGHPUT.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_9696_@t@h@r@o@u@g@h@p@u@t
+vtest_SIMON_control
+R1
+R2
+!i10b 1
+!s100 ?]YNkgEae2OiK;8MC<EH72
+IeW;32I^VF;g;bVMNjLN0e2
+R3
+!s105 test_SIMON_control_sv_unit
+S1
+R0
+w1524920082
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_control.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_control.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_control.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_control.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_control
+vtest_SIMON_controlBLK
+R1
+R2
+!i10b 1
+!s100 F2PPjN0fkY]`hIQ4n:4Oa0
+ITgTC1i`bTh`7d8k_mYGTl3
+R3
+!s105 test_SIMON_controlBLK_sv_unit
+S1
+R0
+w1524921721
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_controlBLK.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_controlBLK.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_controlBLK.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_controlBLK.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_control@b@l@k
+vtest_SIMON_dataIN
+R1
+R17
+!i10b 1
+!s100 o[Q:0bQ;o2YQ[<VcMjd`D1
+I4D3ZAWgL9YA80RRmeFQ]a3
+R3
+!s105 test_SIMON_dataIN_sv_unit
+S1
+R0
+w1524918780
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_dataIN.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_dataIN.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_dataIN.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_dataIN.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_data@i@n
+vtest_SIMON_dataOUT
+R1
+R17
+!i10b 1
+!s100 P0UO2?<5a92]Ab^oCD3EB3
+IQHea0]VB`fcCLkXe;d^>01
+R3
+!s105 test_SIMON_dataOUT_sv_unit
+S1
+R0
+w1524917406
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_dataOUT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_dataOUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R18
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_dataOUT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_dataOUT.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_data@o@u@t
+vtest_SIMON_topPKT
+R1
+R17
+!i10b 1
+!s100 i0g@@CdmaHEjg1K6fZCA42
+IG8iKJ_J@o9LS^M?<3ka:Z1
+R3
+!s105 test_SIMON_topPKT_sv_unit
+S1
+R0
+w1525008923
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_topPKT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_topPKT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R18
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_topPKT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_topPKT.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_top@p@k@t
+vtest_SIMON_topPKT_THROUGHPUT
+R1
+!s110 1525083083
+!i10b 1
+!s100 Ra4_D`30[goXZ4Z9i<SH@1
+IWgTM2YhZ[dL`S]iEMnlOk3
+R3
+!s105 test_SIMON_topPKT_THROUGHPUT_sv_unit
+S1
+R0
+w1524991843
+8C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_topPKT_THROUGHPUT.sv
+FC:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_topPKT_THROUGHPUT.sv
+L0 3
+R4
+r1
+!s85 0
+31
+!s108 1525083083.000000
+!s107 C:\Users\lewis\Documents\Part III\3rd-Year-Project\Development\Design Archive\Approach 3\Hardware\Source\SIMON_defintions.svh|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_topPKT_THROUGHPUT.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Source/test_SIMON_topPKT_THROUGHPUT.sv|
+!i113 1
+R6
+R7
+ntest_@s@i@m@o@n_top@p@k@t_@t@h@r@o@u@g@h@p@u@t

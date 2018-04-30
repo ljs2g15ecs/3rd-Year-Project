@@ -37,7 +37,7 @@ begin
 	else if(in_newPKT)		newPKT_rise <= 1'b1;
 end
 
-always @(PROCESSING, negedge nR)
+always @(posedge in_loadPKT, negedge PROCESSING, negedge nR)
 begin
 	if(~nR)				in_donePKT <= 1'b0;
 	else if(PROCESSING)		in_donePKT <= 1'b0;
@@ -80,13 +80,11 @@ begin
 		COMPUTE:
 		begin
 			if(countIN != countPKT)		$display("INPUT ERROR - PACKET COUNT TRACKER");
-			else if(info[3:0] != `MODE)	$display("INPUT ERROR - INCORRECT MODE");
-			else if(info[4])		$display("INPUT ERROR - OUTPUT PACKET");
-			else
-			begin
-				countPKT <= countPKT + 1;
-				nBLOCK <= ~info[5] && info[7];
-			end
+			if(info[3:0] != `MODE)		$display("INPUT ERROR - INCORRECT MODE");
+			if(info[4])			$display("INPUT ERROR - OUTPUT PACKET");
+			
+			countPKT <= countPKT + 1'b1;
+			nBLOCK <= ~info[5] && info[7];
 		end
 		WRITE:
 		begin

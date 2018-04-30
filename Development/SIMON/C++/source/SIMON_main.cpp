@@ -19,10 +19,10 @@ int		main()
 #endif
 
 #ifndef	DEBUG
-	tTHROUGH_TV_PKT();\
+	//tTHROUGH_TV_PKT();\
 	tTHROUGH_TV_BLK();
 	
 	tTHROUGH_DF_PKT();\
-	tTHROUGH_DF_BLK();
+	//tTHROUGH_DF_BLK();
 #endif
 }

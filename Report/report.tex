@@ -591,8 +591,7 @@ SIMON_control #(N,M,T,Co) control(.*);
 endmodule
 	\end{lstlisting}
 	\end{minipage}
-    
-	\textcolor{red}{ADD SYSTEM VERILOG SIMULATIONS BELOW [200]}
+
 	
 	To test this new approach the same testbench was used for each version, only differing in the input data taken from the test vectors. The same clock This testbench first inputs the plaintext and the key at the same time by putting the $newData$, $newKey$ and $enc\_dec$ signals $HIGH$. The new input signals are then reset after each rising edge of the load signal, $ldData$ \& $ldKey$ respectively, using $always$ blocks in the testbench and short delays. Then in another $always$ block, which is sensitive to the rising edge of the $doneData$ signal, the $readData$ signal set $HIGH$, the output is read back into the input and he $enc\_dec$ signal is inverted. Then before the $always$ block completes the $newData$ signal is asserted again. The $readData$ is then reset after a falling edge of the $doneData$ signal which the control module should enforce. With these $always$ blocks, \autoref{lst:testbench}. the simulation can just continue always alternating between encrypting and decrypting the data.
 
@@ -619,9 +618,35 @@ begin
 end
 	\end{lstlisting}
 	\end{minipage}
-    
-	\textcolor{red}{ADD SYSTEM VERILOG SYNTHESIS BELOW [100]}
-    
+
+	\begin{table}[H]
+	\centering
+	\begin{tabular}{||c|c|c|c|c|c|c||}
+		\hline \hline
+		Mode  & $N$ & $M$ & $T$ & Logic & Registers & Pins\\
+		\hline \hline
+		0 & 16 & 4 & 32 & 437 &	656 &	138 \\
+		\hline
+		1 & 24 & 3 & 36 & 717	& 1049 & 178  \\
+		2 & 24 & 4 & 36 & 730 &	1073 & 202  \\
+		\hline
+		3 & 32 & 3 & 42 & 1123 & 1585 &	234  \\
+		4 & 32 & 4 & 44 & 1123 & 1681 &	266	\\
+		\hline
+		5 & 48 & 2 & 52 & 1905 & 2801 &	298  \\
+		6 & 48 & 3 & 54 & 2024 & 2945 & 346 \\
+		\hline
+		7 & 64 & 2 & 68 & 3266 & 4754 & 394  \\
+		8 & 64 & 3 & 69 & 3627 & 4882 & 458 \\
+ 		9 & 64 & 4 & 72 & 3498 & 5138 &	522 \\
+		\hline \hline
+	\end{tabular}
+	\caption{A table of the synthesis of all ten modes of SIMON.}
+	\label{table:synth2}
+	\end{table}  
+	
+	With this new approach the hardware as compiled and synthesised in Quartus Prime 17.1 Lite Edition for the DE1-SoC development board\textcolor{red}{[insert reference]} with just the basic settings and `Analysis and Synthesis' stage used. This produced some statistics about the design including the number or registers and combination logic lookup tables required to implement it. As expected these varied greatly with the mode of SIMON with the registers needed increasing substantially because the key schedule is stored and the not only does the word width increase but also the number rounds. \autoref{table:synth2} shows the results of this synthesis and \autoref{fig:sythn2} is the resultant RTL netlist view of the system.
+	    
 	\chapter{Final Design Approach}
 	\label{chapter:FINAL}
 	For the final approach the idea was to ensure that the control module remains in the $execute$, or processing, state as much as possible to ensure that the system is always processing data and thus increase the throughput. Having the hardware active all the time does increase the overall power consumption and might negate the effects of the clock gating added in \autoref{section:second}, but as the throughput is increased the power consumed per bit or byte of data processed is lower. This is done by sending packets of data instead of just individual blocks of data and having extra functions or modules to handle the input and output of these packets. This added another system to be tested and compared in both hardware and software but even if it performs worst than the just inputting blocks, it does represent a more usable and complete system.
@@ -863,6 +888,32 @@ end
 	For the input handling module the input packet had the basic packet information for a key, initial packet count of $0$ and then the key from the test vectors.
 
 	\textcolor{red}{ADD SYSTEM VERILOG SYNTHESIS BELOW [100]}
+	
+	\begin{table}[H]
+	\centering
+	\begin{tabular}{||c|c|c|c|c|c|c||}
+		\hline \hline
+		Mode  & $N$ & $M$ & $T$ & Logic & Registers & Pins\\
+		\hline \hline
+		0 & 16 & 4 & 32 & 635 & 1029 & 167 \\
+		\hline
+		1 & 24 & 3 & 36 & 971	& 1542 & 231  \\
+		2 & 24 & 4 & 36 & 997 &	1590 & 231  \\
+		\hline
+		3 & 32 & 3 & 42 & 1446 & 2214 &	295  \\
+		4 & 32 & 4 & 44 & 1457 & 2342 &	295	\\
+		\hline
+		5 & 48 & 2 & 52 & 2337 & 3654 &	423  \\
+		6 & 48 & 3 & 54 & 2501 & 3646 & 423 \\
+		\hline
+		7 & 64 & 2 & 68 & 3813 & 5863 & 551  \\
+		8 & 64 & 3 & 69 & 4115 & 6055 & 551 \\
+ 		9 & 64 & 4 & 72 & 4117 & 6375 &	551 \\
+		\hline \hline
+	\end{tabular}
+	\caption{A table of the synthesis of all ten modes of SIMON with packet handling modules.}
+	\label{table:synth3}
+	\end{table}
 
 	\chapter{Experiments \& Results}
 	\label{chapter:RESULT}
@@ -872,30 +923,42 @@ end
 	\section{Throughput}
 	
 	\subsection{Method}
-	To test the throughput of the algorithm is as simple as putting some data through it and timing how the implementation takes to process that data. From there, using the number of bytes and the time taken, the throughput can be calculated in bytes per second ($Bs^{-1}$) with \textcolor{red}{[insert equation]}. For the both software and hardware the data needed to be setup in software by reading an example file containing approximately $10kB$ of lorum ipsum\textcolor{red}{[insert reference]}. As the reading of the file takes some time, and is not part of the hardware testing, it is not included for the throughput testing in software by reading the file and setting up the packets and blocks before recording the start time. To input the data into the ModelSim testbenches it was simply written to a file in a SystemVerilog format and then copied and pasted into the relevant testbench.
+	To test the throughput of the algorithm is as simple as putting some data through it and timing how the implementation takes to process that data. From there, using the number of bytes and the time taken, the throughput can be calculated in bits per second ($bits/s$) with \textcolor{red}{[insert equation]}. For the both software and hardware the data needed to be setup in software by reading an example file containing approximately $10kB$ of lorum ipsum\textcolor{red}{[insert reference]}. As the reading of the file takes some time, and is not part of the hardware testing, it is not included for the throughput testing in software by reading the file and setting up the packets and blocks before recording the start time. To input the data into the ModelSim testbenches it was simply written to a file in a SystemVerilog format and then copied and pasted into the relevant testbench.
 	
 	\subsection{Results}
-	\textcolor{red}{ADD THROUGHPUT TESTING RESULTS BELOW [300]}
 	
-	As each mode of SIMON processes a different number of bytes depending on the block the throughput of each block size (32, 48, 64, 96 and 128) is shown as it doesn't vary much key size.  
+	As each mode of SIMON processes a different number of bytes depending on the block the throughput of each block size (32, 48, 64, 96 and 128) is shown as it doesn't vary much key size for both software and not at all for hardware. \autoref{fig:throughput} demonstrates how the throughput of SIMON in hardware out performs the software with all of the block sizes defined, and used, by SIMON. It also shows that the throughput increases with the block size significantly in hardware. There is a slight improvement in software between 32 and 48 bits but from there it remains almost constant. This is because the processor used to run the software is 64 bits and thus can operate on 64 bit, used for the 96 and 128 bit block sizes, and 32 bit, used for 48 and 64 bit block sizes, data types efficiently, but with the 16 bit data type used only with a 32 bit block size this is not the case.
 	
-	\textcolor{blue}{ADD THROUGHPUT FIGURE}
-
-	\section{Power Comsumption}
+	\begin{figure}[H]
+		\includegraphics[width=0.75\textwidth]{SIMON_throughput}
+		\centering
+		\caption{The comparison of the throughputs of various modes of SIMON in software and hardware.}
+		\label{fig:throughput}
+	\end{figure}
 	
-	\subsection{Method}
-	\textcolor{red}{ADD POWER TESTING METHOD BELOW [100]}
-	
-	\subsection{Results}
-	\textcolor{red}{ADD POWER TESTING RESULTS BELOW [300]}
+	Another factor that effects the throughput of the algorithm is the clock speed used, but this suggests that the software should process data quicker than the hardware because it uses a clock speed of over $2GHz$ and the hardware uses a much slower $10MHz$ in the simulations used to gather these results. Therefore, a speedup of approximately $200$ is expected when comparing software to hardware, but the actual speedup occurs in the other direction with an average of about $3.3$. This is because the software takes many more instructions to compute each cycle of the encryption, or decryption and it also has the overheads of the operating system and any other programs running at that time. Where as because the hardware is customised to this algorithm it can compute the result encryption, or decryption, cycle almost very clock cycle, excluding when the state machine is in the other states.
 
 	\section{Resource Use}
 	
 	\subsection{Method}
 	\textcolor{red}{ADD RESOURCE TESTING METHOD BELOW [100]}
 	
+	Different resource are required and used by the software and hardware versions of SIMON developed for this project, but they are both still quantifiable in terms of memory used, but not with the logic elements used by the hardware as the software uses a number of operations with the ALU to compute the logic. Therefore, the different modes are used for comparisons within the same version with total logic elements, total registers, and input output pins being used for the hardware; and the total memory and number of instructions required for the software. The hardware data is provided by the Quartus Prime 17.1 and the data for both approach two, \autoref{SV2}, the final approach in \autoref{SVF} as they are both synthesised and provide an insight into the difference that using the packets has in terms of resource use.
+	
 	\subsection{Results}
 	\textcolor{red}{ADD RESOURCE TESTING RESULTS BELOW [300]}
+	
+	Using the data from \autoref{table:synth2} and \autoref{table:synth3} the \autoref{fig:logic}, \ref{fig:register} and \ref{fig:pins} was produced for these comparisons.  
+	
+	\section{Power Consumption}
+	
+	\subsection{Method}
+	\textcolor{red}{ADD POWER TESTING METHOD BELOW [100]}
+	
+	As the hardware design was never implemented onto a FPGA the power consumption of the system while encrypting and decrypting data was never tested. However, the synthesis software often provide some extra tools that can estimate the power consumption by calculating the switching frequency of the internal nodes based on random input switching. The synthesised design from Quartus Prime is the main source of this data by using it's `Power Analyzer Tool', but the design was also compiled by the Cadence software\textcolor{red}{[[insert reference]} to compare what might be possible if the system is implemented onto an ASIC in the future.  The cadence software only provides some basic information about the estimated  the power consumption during the synthesis.
+	
+	\subsection{Results}
+	\textcolor{red}{ADD POWER TESTING RESULTS BELOW [300]}
 
 	\chapter{Conclusion \& Future Work}
 	\label{chapter:CONC}

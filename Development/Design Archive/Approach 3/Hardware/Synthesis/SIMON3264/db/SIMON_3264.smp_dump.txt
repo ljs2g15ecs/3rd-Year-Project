@@ -1,0 +1,21 @@
+
+State Machine - |SIMON_topPKT|SIMON_dataOUT:dataOUT|current
+Name current.WRITE current.READ current.LOAD current.WAIT 
+current.WAIT 0 0 0 0 
+current.LOAD 0 0 1 1 
+current.READ 0 1 0 1 
+current.WRITE 1 0 0 1 
+
+State Machine - |SIMON_topPKT|SIMON_control:control|current
+Name current.WRITE current.EXECUTE current.LOAD current.INIT 
+current.INIT 0 0 0 0 
+current.LOAD 0 0 1 1 
+current.EXECUTE 0 1 0 1 
+current.WRITE 1 0 0 1 
+
+State Machine - |SIMON_topPKT|SIMON_dataIN:dataIN|current
+Name current.WRITE current.COMPUTE current.LOAD current.WAIT 
+current.WAIT 0 0 0 0 
+current.LOAD 0 0 1 1 
+current.COMPUTE 0 1 0 1 
+current.WRITE 1 0 0 1 
