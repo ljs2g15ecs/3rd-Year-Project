@@ -43,4 +43,5 @@
 \contentsline {section}{\numberline {6.3}Future Work}{42}{section.6.3}
 \contentsline {chapter}{Bibliography}{46}{chapter*.14}
 \contentsline {chapter}{\numberline {A}Project Brief}{47}{appendix.A}
-\contentsline {chapter}{\numberline {B}Synthesised Top Level Module}{48}{appendix.B}
+\contentsline {chapter}{\numberline {B}Design Archive}{48}{appendix.B}
+\contentsline {chapter}{\numberline {C}Synthesised Top Level Module}{49}{appendix.C}

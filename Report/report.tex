@@ -17,6 +17,8 @@
 \usepackage{pdfpages}
 \usepackage{pdflscape}
 
+\usepackage{dirtree}
+
 \definecolor{mGray}{rgb}{0.5,0.5,0.5}
 \definecolor{backgroundColour}{rgb}{1,1,1}
 
@@ -72,8 +74,8 @@
 		\\[4cm]Author: Lewis Smith
 		\\[1cm]\today
 		\\[2cm]Low Power Hardware Accelerated Internet of Things Cryptography
-		\\[4cm]Project Supervisor: Mark Zwolinski
-		\\Second Examiner:
+		\\[4cm]Project Supervisor: Professor Mark Zwolinski
+		\\Second Examiner: Frederic Gardes
 		\\[4cm]A project report submitted for the award of MEng Electronic Systems with Computer Systems
         
 	\end{center}
@@ -308,7 +310,7 @@ typedef word 		key[M];
 typedef word		keys[T];
 	\end{lstlisting}
     
-	After the data types were defined the rotate functions, which are used frequently in algorithm, were made to rotate the bits in a $word$ around a given number of bits. These rotate functions were used in the Feistel and round functions which is iterated for both encryption and decryption. The code used for these functions can be seen in \autoref{lst:func} but a full listing is available in the \textcolor{green}{Appendix}. 
+	After the data types were defined the rotate functions, which are used frequently in algorithm, were made to rotate the bits in a $word$ around a given number of bits. These rotate functions were used in the Feistel and round functions which is iterated for both encryption and decryption. The code used for these functions can be seen in \autoref{lst:func} but a full listing is available in the Design Archive. 
 	
 	\begin{minipage}{\linewidth}
 	\begin{lstlisting}[label={lst:func},caption={Round and Feistel functions},style=CStyle]
@@ -374,9 +376,7 @@ void	KEXP_INL	(key k,	TYPE(8) i		)
     
 	For simplicity in the early stages the the software didn't have the capability of reading a file and encrypting or decrypting it so it could only use data stored in the code. This still allowed for the test vectors to be used and therefore correct functionality could still be confirmed.  By simply changing the desired mode at compile time and setting up the test vectors for each mode they could be tested with the same code.
 	
-	The results of testing the code, in mode 0 (32/64), can be seen in \textcolor{red}{[reference figure]}. For the in loop key expansion the test plaintext and key was inputted and encrypted with the result compared with the expected ciphertext. With the pre loop key exapansion the encrypted ciphertext could also be decrypted so when that produced the original plaintext then the whole system was confirmed to function correctly.
-	
-	\textcolor{blue}{INSERT TESTING RESULTS FIGURE}
+	For the in loop key expansion the test plaintext and key was inputted and encrypted with the result compared with the expected ciphertext. With the pre loop key exapansion the encrypted ciphertext could also be decrypted so when that produced the original plaintext then the whole system was confirmed to function correctly.
     
 	\subsection{Hardware - System Verilog}
 	\label{subsection:SV1}
@@ -489,8 +489,6 @@ end
 	To test the individual modules various input data was selected and the expected outputs were calculated either manually for the simple operations or using the software. As with the software when this functionality was correct they were combined into the top level control module to be further tested. Again, this was only for the most basic 32/64 mode of SIMON. To do this a testbench was created that with a clock that had a $100ns$ period, or $10MHz$, and with the initial inputs setup during the reset of the module. 
 	
 	After this the reset signal could be disabled and then the $newData$ signal could be set $HIGH$ to indicate to the state machine to move into the loading and processing states. After an appropriate delay the $newData$ signal is reset and then testbench waits for a rising edge of the $doneData$ signal before asserting the $readData$ signal. The testbench for ($INL$) then just resets the $readData$ signal and finishes as the encryption is finished. Although, the other testbench reads the outputted ciphertext is read into the the plaintext input and the $enc\_dec$ signal is inverted. This informs the module to decrypt the plaintext when $newData$ is next set. The same process is the repeated and the testbench finishes after the decryption is complete. When the module finished processing the data the ciphertext outputted could read by the testbench and then compared with the expected results.
-	
-	\textcolor{blue}{INSERT TESTING RESULTS FIGURE}
 	
 	As this approach was developed in the early stages of the project and didn't offer much functionality or perfomance enhancements it was never synthesised for an FPGA.
     
@@ -646,7 +644,7 @@ end
 	\label{table:synth2}
 	\end{table}  
 	
-	With this new approach the hardware as compiled and synthesised in Quartus Prime 17.1 Lite Edition for the DE1-SoC development board\textcolor{red}{[insert reference]} with just the basic settings and `Analysis and Synthesis' stage used. This produced some statistics about the design including the number or registers and combination logic lookup tables required to implement it. As expected these varied greatly with the mode of SIMON with the registers needed increasing substantially because the key schedule is stored and the not only does the word width increase but also the number rounds. \autoref{table:synth2} shows the results of this synthesis and \autoref{fig:sythn2} is the resultant RTL netlist view of the system.
+	With this new approach the hardware as compiled and synthesised in Quartus Prime 17.1 Lite Edition for the DE1-SoC development board with just the basic settings and `Analysis and Synthesis' stage used. This produced some statistics about the design including the number or registers and combination logic lookup tables required to implement it. As expected these varied greatly with the mode of SIMON with the registers needed increasing substantially because the key schedule is stored and the not only does the word width increase but also the number rounds. \autoref{table:synth2} shows the results of this synthesis and \autoref{fig:sythn2} is the resultant RTL netlist view of the system.
 	    
 	\chapter{Final Design Approach}
 	\label{chapter:FINAL}
@@ -1204,13 +1202,54 @@ output logic [(1+(`N/2)):0][7:0]	out
 	
 	\includepdf[scale=0.85,pages=1,pagecommand=\chapter{Project Brief},offset=0 -5cm]{source/Brief.pdf}
 	
+	\chapter{Design Archive}
+
+\dirtree{%
+.1 Design Archive.
+.2 Approach 1.
+.3 Hardware.
+.4 Source\DTcomment{Contains all System Verilog source code}.
+.4 Simulation\DTcomment{Contains ModelSim project and testbenches}.
+.3 Software.
+.4 Source\DTcomment{Makefile uses all C files in here}.
+.4 build\DTcomment{Make compiles to here}.
+.4 make\DTcomment{Makefile}.
+.2 Approach 2.
+.3 Hardware.
+.4 Source\DTcomment{Contains all System Verilog source code}.
+.4 Simulation\DTcomment{Contains ModelSim project and testbenches}.
+.4 Synthesis\DTcomment{Contains Quartus Prime projects for each mode}.
+.3 Software.
+.4 Source\DTcomment{Makefile uses all C files in here}.
+.4 build\DTcomment{Make compiles to here}.
+.4 make\DTcomment{Makefile}.
+.2 Approach 3.
+.3 Hardware.
+.4 Source\DTcomment{Contains all System Verilog source code}.
+.4 Simulation\DTcomment{Contains ModelSim project and testbenches}.
+.4 Synthesis\DTcomment{Contains Quartus Prime projects for each mode}.
+.3 Software.
+.4 Source\DTcomment{Makefile uses all C files in here}.
+.4 BUILD\DTcomment{Make compiles to here if BUILD is defined}.
+.4 DEBUG\DTcomment{Make compiles to here if DEBUG is defined}.
+.4 make\DTcomment{Makefile}.
+.4 test\DTcomment{Text file to be read}.
+}
+
+%\begin{landscape}	
 	\chapter{Synthesised Top Level Module}
 
 	\begin{figure}[H]
-		\includegraphics[width=\textwidth]{SIMON_synth}
+		\includegraphics[width=0.6\linewidth]{SIMON_synth}
 		\centering
-		\caption{The comparison of the throughputs of various modes of SIMON in software and hardware.}
+		\caption{The RTL netlist view of the top level module with packet handling.}
 		\label{fig:synth_final}
 	\end{figure}
-
+%\end{landscape}
+	
 \end{document}
+
+
+
+
+
