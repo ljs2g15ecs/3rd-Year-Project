@@ -14,6 +14,9 @@
 \usepackage{xcolor}
 \usepackage{listings}
 
+\usepackage{pdfpages}
+\usepackage{pdflscape}
+
 \definecolor{mGray}{rgb}{0.5,0.5,0.5}
 \definecolor{backgroundColour}{rgb}{1,1,1}
 
@@ -57,10 +60,6 @@
 	language=Verilog
 }
 
-\usepackage{lipsum}
-\usepackage{draftwatermark}
-\SetWatermarkScale{8} 
-
 \begin{document}
     
 	\begin{titlepage}
@@ -84,27 +83,29 @@
     
 	\begin{abstract}
     
-	\addcontentsline{toc}{chapter}{Abstract}    
+	This project aims to develop a FPGA system that can encrypt and decrypt data that is being used and transmitted between `Internet of Things' devices. It does this using the SIMON algorithm that was selected from many during the research stage because of its flexibility and its lightweight characteristics. The FPGA development was done in the System Verilog language and simulated using ModelSim before being synthesised in Quartus Prime. A software version was also developed in C for comparison with the hardware version. Both versions will be compared with similar projects found in literature in terms of data throughput, power consumption and resource use. 
     
 	\end{abstract}
     
 	\tableofcontents
-	\addcontentsline{toc}{chapter}{Contents}
+	\newpage
     
-	\chapter*{Acknowledgements}
+	\section*{Acknowledgements}
 	\addcontentsline{toc}{chapter}{Acknowledgements}
+	I would like to thank my Project Supervisor Professor Mark Zwolinski for his support and guidance throughout this project.
+	
+	\section*{Statement of Originality}
+	\addcontentsline{toc}{chapter}{Statement of Originality}
     
 	\chapter{Introduction}
 	\label{chapter:intro}
 	As the speed and global reach of the internet has expanded over the years the number of devices connected to it has rapidly increased. These devices are no longer just the servers and the PC's connected to them, they now include consumer devices like smartphones, tablets, and games consoles. However, even more recently the idea of connecting the internet to various `dumb' appliances like: simple light switches; kettles; fridges and many more; to make them `smart' devices that can be controlled through small embedded processors has emerged. The idea of connecting such devices to internet has been dubbed `Internet of Things' or `IoT' and has the aim to make our lives simpler. The `IoT' concept is also being explored for more industrial applications such as: automated factories; city electrical grids; and even a network of self-driving cars\cite{Hegde} but this is far more advanced than the basic `smart' home.
     
-	Due to the wide range of products that a connected IoT device can be applied to improve the efficiency and/or usefulness, it has been predicted that billions of devices will be in use by 2020\cite{Evans2011}. This also means that the complexity of the devices varies greatly. The one thing that all of these devices have in common though is that they need to be secure as they communicate sensitive and private data through an open channel on the internet between the user and the device. To keep the potential adversaries from accessing the data and possibly controlling numerous connected devices, maliciously or not, an encryption algorithm can be used.
-    
-	\textcolor{orange}{POSSIBLY CHANGE/IMPROVE BELOW}      
+	Due to the wide range of products that a connected IoT device can be applied to improve the efficiency and/or usefulness, it has been predicted that billions of devices will be in use by 2020\cite{Evans2011}. This also means that the complexity of the devices varies greatly. The one thing that all of these devices have in common though is that they need to be secure as they communicate sensitive and private data through an open channel on the internet between the user and the device. To keep the potential adversaries from accessing the data and possibly controlling numerous connected devices, maliciously or not, an encryption algorithm can be used.  
         
 	There are many encryption algorithms that perform this function and most can be implemented in both software and dedicated hardware such as an Application Specific Integrated Circuit (ASIC) or a Field Programmable Gate Array (FPGA). As a majority of IoT devices are implemented on small embedded processors which have limited resources, the hardware option might possibly be a better solution for IoT devices. However, due to the fact that most IoT devices are always on, and likely battery powered, power consumption is a very important factor when considering options for adding hardware accelerated encryption and for battery powered devices it is often more critical than the actual encryption.
     
-	The goals of this project are to explore various encryption algorithms and compare their performance based on data throughput, accuracy, security and power consumption when implemented in software and hardware. To evaluate these parameters the same algorithms can be coded in C or C++ for the software versions and a Hardware Development Language (HDL) such as System Verilog can be first simulated in ModelSim, before programming a FPGA for the hardware version. These comparisons can then be used to match the algorithms to the appropriate IoT device as they all have different requirements for relative security level and power consumption, as for example a light switch does not necessarily need to be protected from the same level of attack as a set of digital locks or private data storage. In order for the hardware to work with IoT devices it will also need a communication protocol like $I^2 C$ or SPI to work with embedded processors, and possibly Ethernet or WiFi to act as the gateway to internet for the device. Some of these protocols are available on FPGA development boards but can be implemented in System Verilog code.
+	The initial goals of this project were to explore various encryption algorithms and compare their performance based on data throughput, accuracy, security and power consumption when implemented in software and hardware. To evaluate these parameters the same algorithms were coded in C or C++ for the software versions and a Hardware Development Language (HDL) such as System Verilog can be first simulated in ModelSim, before programming a FPGA for the hardware version. These comparisons can then be used to match the algorithms to the appropriate IoT device as they all have different requirements for relative security level and power consumption, as for example a light switch does not necessarily need to be protected from the same level of attack as a set of digital locks or private data storage. In order for the hardware to work with IoT devices it will also need a communication protocol like $I^2 C$ or SPI to work with embedded processors, and possibly Ethernet or WiFi to act as the gateway to internet for the device. Some of these protocols are available on FPGA development boards but can be implemented in System Verilog code.
     
 	\chapter{Background Research \& Literature}
 	\label{chapter:BACK}
@@ -112,47 +113,41 @@
 	\section{Internet of Things}
 	\label{section:IoT}
     
-	\textcolor{red}{CHANGE/IMPROVE BELOW [100]}
-    
 	As mentioned in \autoref{chapter:intro} there are many IoT devices that require varying levels of security and have to be protected against different of attacks, like side channel attacks. The purpose of this subsection is to discover what these devices are and what properties are required in the encryption algorithm in terms of throughput, power or energy consumption, software or hardware restrictions and security. Due to IoT devices having limited resources a provisional limit of 2000 Gate Equivalents in hardware is the maximum size for most embedded platforms but even that might be to big for devices like RFID tags\cite{Juels2005}. Power consumption should also be kept to as little as possible but a limit of tens of micro Watts ($\mu W$) for RFID tags is suggested\cite{David2011}.
     
 	\section{Cryptography}
 	\label{section:crypt}
     
-	\textcolor{orange}{POSSIBLY CHANGE/IMPROVE BELOW}
+	After evaluating the conditions required to provide the appropriate level of security  in \autoref{section:IoT} this subsection explores the cryptographic principles and algorithms available that satisfy those conditions. The primary objective of cryptography is to convert, or encrypt, a readable message known as plaintext into an unreadable form, ciphertext, so that adversaries cannot read the contents, but over the years the scope of cryptography has widened. Throughout history encryption has been has been used allow people and groups to exchange secret messages, especially in times of war. Since the early transposition and substitution ciphers, where each character in a message are rearranged and replaced by others a certain number further down the alphabet respectively, encryption has evolved to include techniques for identity authentication, integrity checks and much more. Cryptography is therefore the study of encryption and other techniques, including identity authentication and integrity checks. Its counterpart: the study of breaking the encryption to find the original message, is known as cryptanalysis\cite{AlfredJ.Menezes1996}. Eventually, for most encryption techniques a weakness is found, and subsequently exploited, so more complex techniques are conceived and with the invention of computers the complexity of the algorithms has increased greatly. However, the computer power is also available for cryptanalysis so the cycle of continuous improvement of the algorithms has not stopped.
     
-	After evaluating the conditions required to provide the appropriate level of security  in \autoref{section:IoT} this subsection explores the cryptographic principles and algorithms available that satisfy those conditions. The primary objective of cryptography is to convert, or encrypt, a readable message known as plaintext into an unreadable form, ciphertext, so that adversaries cannot read the contents, but over the years the scope of cryptography has widened. Throughout history encryption has been has been used allow people and groups to exchange secret messages, especially in times of war. Since the early transposition and substitution ciphers, where each character in a message are rearranged and replaced by others a certain number further down the alphabet respectively, encryption has evolved to include techniques for identity authentication, integrity checks and much more\textcolor{red}{[insert reference]}. Cryptography is therefore the study of encryption and other techniques, including identity authentication and integrity checks. Its counterpart: the study of breaking the encryption to find the original message, is known as cryptanalysis\cite{AlfredJ.Menezes1996}. Eventually, for most encryption techniques a weakness is found, and subsequently exploited, so more complex techniques are conceived and with the invention of computers the complexity of the algorithms has increased greatly. However, the computer power is also available for cryptanalysis so the cycle of continuous improvement of the algorithms hasn't stopped.
-    
-	In cryptography there are two main concepts that the algorithms are based on: symmetric and asymmetric keys\textcolor{red}{[insert reference]}. In asymmetric key cryptography a unique key is used to encrypt data and different, but a related key, is used to decrypt it. The relationship between the two keys is often defined by maths problem that is very difficult to solve which is the basis of the encryption\textcolor{red}{[insert reference]}. On the other hand, symmetric key cryptography uses the same key for both encryption and decryption, hence symmetric, with the security usually provided by a combination of simple logic operations\textcolor{red}{[insert reference]}.
+	In cryptography there are two main concepts that the algorithms are based on: symmetric and asymmetric keys. In asymmetric key cryptography a unique key is used to encrypt data and different, but a related key, is used to decrypt it. The relationship between the two keys is often defined by maths problem that is very difficult to solve which is the basis of the encryption. On the other hand, symmetric key cryptography uses the same key for both encryption and decryption, hence symmetric, with the security usually provided by a combination of simple logic operations\cite{AlfredJ.Menezes1996}.
     
 	\subsection{Asymmetric Key}
-	\textcolor{orange}{POSSIBLY CHANGE/IMPROVE BELOW}
     
-	Asymmetric key cryptography can be referred to as public key due to the fact that one of the related keys can be publicly available without compromising the security of the encrypted data. This is because the keys are usually generated based on mathematical problems that have no solution or the solution is impossible for a computer to solve efficiently, such that solving it takes longer than an exhaustive key search\cite{BruceSchneier2000}. There are many problems that fit this criteria but the most popular in use today are the integer factorization and elliptic curve problems used by the RSA\textcolor{red}{[insert reference]} and the family of Elliptic-curve cryptography (ECC) techniques\textcolor{red}{[insert reference]} respectively. Public key cryptography can be used in two different modes as if data is encrypted with the intended recipients public key only they can decrypt it with their private key, thus encryption. However, if a private key is used for encryption then using the public key to decrypt it ensures the senders identity, authentication\cite{AlfredJ.Menezes1996}.
+	Asymmetric key cryptography can be referred to as public key due to the fact that one of the related keys can be publicly available without compromising the security of the encrypted data. This is because the keys are usually generated based on mathematical problems that have no solution or the solution is impossible for a computer to solve efficiently, such that solving it takes longer than an exhaustive key search\cite{BruceSchneier2000}. There are many problems that fit this criteria but the most popular in use today are the integer factorization and elliptic curve problems used by the RSA\cite{Mckaya} and the family of Elliptic-curve cryptography (ECC) techniques\cite{Bos} respectively. Public key cryptography can be used in two different modes as if data is encrypted with the intended recipients public key only they can decrypt it with their private key, thus encryption. However, if a private key is used for encryption then using the public key to decrypt it ensures the senders identity, authentication\cite{AlfredJ.Menezes1996}.
     
 	\subsection{Symmetric Key}
-	\textcolor{orange}{POSSIBLY CHANGE/IMPROVE BELOW}
     
 	Similar to the symmetric/private comparison symmetric key cryptography is also known as private key, as in order to keep the encrypted data secure the key used must be kept secret. There are two main types of private key algorithms that operate on the plaintext differently: block ciphers which uses a fixed number of bits, block; or stream ciphers which encrypts data bit by bit\cite{AlfredJ.Menezes1996}.
     
-	Modern block ciphers are based on Claude Shannons work on product ciphers\cite{Shannon1949}, in which he suggested that iterating a cipher for multiple rounds, with subkeys, improves the security. Hence, the cipher to be iterated didn't need to be complex operations and simple logic operations such as XOR, substitution or permutation of the plaintext could be used\textcolor{red}{[insert reference]}. The base cipher that is iterated is known as the round function and it takes as an input a block of plaintext and a subkey, which is generated from the main key by a separate key expansion function, and outputs a block of ciphertext. The output is usually the result of the round function XORed with the subkey. The round functions are mostly designed using either a Feistel network\cite{Feistel1973} (F network) or a Substitution Permutation network (SP network)\cite{AlfredJ.Menezes1996}.
+	Modern block ciphers are based on Claude Shannons work on product ciphers\cite{Shannon1949}, in which he suggested that iterating a cipher for multiple rounds, with subkeys, improves the security. Hence, the cipher to be iterated did not need to be complex operations and simple logic operations such as XOR, substitution or permutation of the plaintext could be used. The base cipher that is iterated is known as the round function and it takes as an input a block of plaintext and a subkey, which is generated from the main key by a separate key expansion function, and outputs a block of ciphertext. The output is usually the result of the round function XORed with the subkey. The round functions are mostly designed using either a Feistel network\cite{Feistel1973} (F network) or a Substitution Permutation network (SP network)\cite{AlfredJ.Menezes1996}.
     
-	The Fesitel network was named after physicist Horst Feistel who was a integral part of the team at IBM that developed the early block cipher Lucifer, which of course used a Feistel network\textcolor{red}{[insert reference]}. The F network works by splitting the input plaintext into two equal words, known as the left (MSB) and right (LSB) words. The round function is then applied to the right word before the result is XORed with the left word and then the words are swapped over and iterated as in \autoref{F_L_ENC} and \ref{F_R_ENC}, with the ciphertext being equal to ($R_{n+1}$, $L_{n+1}$) where $n$ is the number of rounds iterated. The advantage of using a F network is that decryption is just applying the same algorithm but with the sub keys in reverse as in \autoref{F_L_DEC} and \ref{F_R_DEC}, with the ciphertext ($R_{n+1}$, $L_{n+1}$) as the input and the plaintext ($L_0$, $R_0$) returned.
+	The Fesitel network was named after physicist Horst Feistel who was a integral part of the team at IBM that developed the early block cipher Lucifer, which of course used a Feistel network. The F network works by splitting the input plaintext into two equal words, known as the left (MSB) and right (LSB) words. The round function is then applied to the right word before the result is XORed with the left word and then the words are swapped over and iterated as in \autoref{F_L_ENC} and \ref{F_R_ENC}, with the ciphertext being equal to ($R_{n+1}$, $L_{n+1}$) where $n$ is the number of rounds iterated. The advantage of using a F network is that decryption is just applying the same algorithm but with the sub keys in reverse as in \autoref{F_L_DEC} and \ref{F_R_DEC}, with the ciphertext ($R_{n+1}$, $L_{n+1}$) as the input and the plaintext ($L_0$, $R_0$) returned.
     
-%    \begin{figure}[H]
-%    \begin{subfigure}[H]{0.5\textwidth}
-%            \includegraphics[width=\textwidth]{Feistel}
-%            \centering
-%            \caption{Basic Feistel network.}
-%            \label{Feistel}
-%    \end{subfigure}
-%    \begin{subfigure}[H]{0.5\textwidth}
-%            \includegraphics[width=\textwidth]{SP}
-%            \centering
-%            \caption{Basic Substitution Permutation network.}
-%            \label{SP}
-%    \end{subfigure}
-%    \end{figure}
+    \begin{figure}[H]
+    \begin{subfigure}[H]{0.5\textwidth}
+            \includegraphics[width=\textwidth]{Feistel}
+            \centering
+            \caption{Basic Feistel network.}
+            \label{Feistel}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.5\textwidth}
+            \includegraphics[width=\textwidth]{SP}
+            \centering
+            \caption{Basic Substitution Permutation network.}
+            \label{SP}
+    \end{subfigure}
+    \end{figure}
 
 
 	\begin{equation}
@@ -183,29 +178,24 @@
 	L_i = R_{i+1} \oplus F(L_{i+1}, K_i)B_i = F'(B_{i+1}) \oplus K_i
 	\end{equation}
     
-	\textcolor{red}{CHANGE/IMPROVE BELOW} 
-    
-	Stream ciphers were initially designed to approximate the One Time Pad (OTP) cipher that was proved to be completely unbreakable by Claude Shannon\textcolor{red}{[insert reference]}. The OTP works by combining each digit of the plaintext with a completely random keystream. The stream ciphers work by generating a pseudo-random keystream to combine with the plaintext\cite{Robshaw1995}. Because the keystream is pseudo-random and not completely random a stream cipher is breakable. The keystream is created by a pseudo-random number generated with a cryptographic key used as a seed.   
+	Stream ciphers were initially designed to approximate the One Time Pad (OTP) cipher that was proved to be completely unbreakable by Claude Shannon\cite{Shannon1949}. The OTP works by combining each digit of the plaintext with a completely random keystream. The stream ciphers work by generating a pseudo-random keystream to combine with the plaintext\cite{Robshaw1995}. Because the keystream is pseudo-random and not completely random a stream cipher is breakable. The keystream is created by a pseudo-random number generated with a cryptographic key used as a seed.   
     
 	There are also some modes of operation for block ciphers, in \cite{Dworkin2001}, that provide better security by using feedback of the ciphertext to the next block. Some of these modes of operation also allow block ciphers to behave similar to stream ciphers as they encrypt an initialization vector with the key and the resulting ciphertext can be combined with the plaintext.
     
     \subsection{Decisions}
     \label{section:cryp_decisions}
     
-    \textcolor{orange}{POSSIBLY CHANGE/IMPROVE BELOW}
-    
 	Due to the fact that asymmetric key algorithms are hard to solve they require complex hardware or software to implement which is undesirable for this project. Also, with the exception of ECC the key sizes needed for the security can be very large so with the limited IO pins available on FPGAs they could prove difficult to program. On the other hand, many private key algorithms are designed to be efficient in hardware especially Feistel networks as an inverted round function isn't required. While a stream cipher can be useful to encrypt serial data that will most likely be the source, the modes of operation available for block ciphers provide more flexible functionality including stream cipher modes. Therefore, the algorithm chosen for this project will most likely be a block cipher with a Feistel network.
     
 	\section{Conventional Algorithms}
 
-	\textcolor{orange}{POSSIBLY CHANGE/IMPROVE BELOW}
     
 	There are many block ciphers that are considered very secure and therefore popular, they include: DES\cite{ComputerSecurityDivision1999}, AES\cite{ComputerSecurityDivision2001}, Blowfish\cite{BruceSchneier1994}. DES operates on a block of 64 bits for 16 rounds using a key length of 64 bits but it has an effective key length of 56 bits as 8 bits were used for parity. AES, an upgrade to DES, is far more secure as uses a 128 bit block and has the flexibility of using three different key lengths: 128, 192 and 256. The number of rounds that AES iterates depends on the key length with 10 rounds used for a 128 bit key, 12 for 192, and 14 for the largest key. Blowfish, like DES, operates on a 64 bit block and iterates for 16 rounds, but it can use a variable key length in the range 32 to 448 bits.
     
 	\subsection{Standardization}
-	DES, which stands for Data Encryption Standard, is one the earliest block ciphers used in the computer age and it was developed by IBM in the 1970s based on their earlier cipher Lucifer\textcolor{red}{[insert reference]}. As with Lucifer it was designed around a Feistel network but the round function used also has a SP network structure to it\textcolor{red}{[insert reference]},but the S-boxes aren't a one-to-one function but rather output 4 bits from a 6 bit input. It has the name Data Encryption Standard as it was accepted as the standard encryption algorithm by the US National Bureau of Standards (NBS), now the National Institute of Standards and Technology (NIST), in 1977 after it was altered by the National Security Agency (NSA), which caused some controversy\cite{ComputerSecurityDivision1999}.
+	DES, which stands for Data Encryption Standard, is one the earliest block ciphers used in the computer age and it was developed by IBM in the 1970s based on their earlier cipher Lucifer. As with Lucifer it was designed around a Feistel network but the round function used also has a SP network structure to it,but the S-boxes aren't a one-to-one function but rather output 4 bits from a 6 bit input. It has the name Data Encryption Standard as it was accepted as the standard encryption algorithm by the US National Bureau of Standards (NBS), now the National Institute of Standards and Technology (NIST), in 1977 after it was altered by the National Security Agency (NSA), which caused some controversy\cite{ComputerSecurityDivision1999}.
     
-	DES was used for about two decades but in the 1990s several successful attacks proved its weakness\cite{Team} so in 1997 NIST started a selection process to find its replacement. Due the controversy of the NSAs involvement and comments from the cryptography community the selection process was as transparent as possible\textcolor{red}{[insert reference]}. Many algorithms were submitted as candidates for the standard but the finalists were: MARS, RC6, Rijndael, Serpent, and Twofish\textcolor{red}{[insert reference]}. It took three years to decide on the algorithm to be set as the standard which was announced as Rijndael in 2000 and the standard was et in 2001, with the 128, 192, 256 bit keys being used in the standard\cite{ComputerSecurityDivision2001}. Unlike DES, AES uses a SP network as it is efficient, in time, in both hardware and software. The round function treats the block as a $4x4$ byte matrix and performs multiple steps on the data: sub bytes; shift rows; mix columns and add round key\textcolor{red}{[insert reference]}.
+	DES was used for about two decades but in the 1990s several successful attacks proved its weakness\cite{Team} so in 1997 NIST started a selection process to find its replacement. Due the controversy of the NSAs involvement and comments from the cryptography community the selection process was as transparent as possible. Many algorithms were submitted as candidates for the standard but the finalists were: MARS, RC6, Rijndael, Serpent, and Twofish\cite{Flood2000}. It took three years to decide on the algorithm to be set as the standard which was announced as Rijndael in 2000 and the standard was et in 2001, with the 128, 192, 256 bit keys being used in the standard\cite{ComputerSecurityDivision2001}. Unlike DES, AES uses a SP network as it is efficient, in time, in both hardware and software. The round function treats the block as a $4x4$ byte matrix and performs multiple steps on the data: sub bytes; shift rows; mix columns and add round key.
 
     
 	Since its standardization in 2001 AES has been used almost exclusively because its security is trusted. Because of this there are many different software and hardware implementations produced with some concentrating on side-channel attack resistance\cite{Strachacki2008} or efficient S-box implementations\cite{Gomes2016}. However, even area optimized designs like \cite{Moradi2011} use 2400 gate equivalents which is too much for lightweight applications.
@@ -213,17 +203,17 @@
 	\subsection{Other Algorithms}
 	The US standardized algorithms quickly became very popular and can be considered the unofficial global standard. Although, there are many other algorithms that are considered secure and are commonly used. One of these algorithms, TripleDES, is actually based around DES which increases the security by encrypting the plaintext three times with separate keys making the effective key length of 168 bits. These algorithms might be used because there is still some distrust of the NSAs involvement in the algorithms and they are more open source. This is the case of the Blowfish algorithm as it is unpatented and can therefore be used in any product without legal consequence.
     
-	Blowfish was designed by Bruce Schneier in the early 1990s as he, and many others, noticed the insecurity of DES particularly with the 56 bit key length making a brute force attack more plausible\cite{BruceSchneier1994}. The design of the algorithm is based around a Feistel network with, similar to DES, the round function using S-boxes. The sub keys and S-box lookup tables are generated using the hexadecimal digits of pi which are provided by the designers\textcolor{red}{[insert reference]}. As with AES there are many FPGA and ASIC implementations of the Blowfish algorithm, \cite{Chatterjee2014} and \cite{Prasetyo2014}, but they require too many FPGA resources to be considered for the lightweight nature of this project.
+	Blowfish was designed by Bruce Schneier in the early 1990s as he, and many others, noticed the insecurity of DES particularly with the 56 bit key length making a brute force attack more plausible\cite{BruceSchneier1994}. The design of the algorithm is based around a Feistel network with, similar to DES, the round function using S-boxes. The sub keys and S-box lookup tables are generated using the hexadecimal digits of pi which are provided by the designers\cite{BruceSchneier1994}. As with AES there are many FPGA and ASIC implementations of the Blowfish algorithm, \cite{Chatterjee2014} and \cite{Prasetyo2014}, but they require too many FPGA resources to be considered for the lightweight nature of this project.
     
 	\subsection{Decisions}
 	Due to the conventional algorithms not being explicitly designed for hardware and definitely not for lightweight applications they are not appropriate for this project. Although, they are useful for comparison with the lightweight algorithms in \autoref{section:light} in terms of security and throughput.
     
 	\section{Lightweight Algorithms}
 	\label{section:light}
-	After deciding that the conventional algorithms might not be suitable for the low power devices targeted by this project, some more lightweight algorithms were found including: PRESENT\cite{Bogdanov2007}, PRINCE\cite{Borghoff2012} and the SIMON and SPECK algorithms\cite{Beaulieu2013}. However, as IoT is an emerging technology and is the main reason for lightweight cryptography there isn't a standard set by NIST, but the process has begun in \cite{Mckay}. These algorithms are considered lightweight because they make sacrifices in and security or throughput, or both, to achieve small area and low power designs.
+	After deciding that the conventional algorithms might not be suitable for the low power devices targeted by this project, some more lightweight algorithms were found including: PRESENT\cite{Bogdanov2007}, PRINCE\cite{Borghoff2012} and the SIMON and SPECK algorithms\cite{Beaulieu2013}. However, as IoT is an emerging technology and is the main reason for lightweight cryptography there isn't a standard set by NIST, but the process has begun\cite{Mckay}. These algorithms are considered lightweight because they make sacrifices in and security or throughput, or both, to achieve small area and low power designs.
     
 	\subsection{SIMON \& SPECK}
-	The SIMON and SPECK family of algorithms are the lightweight techniques proposed by the NSA that were designed to perform well in both software and hardware while still being secure; and to be flexible in terms of block and key size, listed in \autoref{table:S+S}. The algorithms are similar but SIMON was optimised for hardware implementations and SPECK for software. As with AES the number of rounds iterated depends on the key size but as the block size varies as well it also has an effect as shown in \autoref{table:S+S}. The structure of both algorithms is a Feistel network and thus it works on words of $N$ bits, where $2N$ is the block size, and with a key of $M*N$ bits. This lends it self to the naming format of SIMON or SPECK $2N/N*M$, which means, for example, SIMON48/72 has a word size of 24 and uses 3 words for the key\textcolor{red}{[insert reference]}.
+	The SIMON and SPECK family of algorithms are the lightweight techniques proposed by the NSA that were designed to perform well in both software and hardware while still being secure; and to be flexible in terms of block and key size, listed in \autoref{table:S+S}. The algorithms are similar but SIMON was optimised for hardware implementations and SPECK for software. As with AES the number of rounds iterated depends on the key size but as the block size varies as well it also has an effect as shown in \autoref{table:S+S}. The structure of both algorithms is a Feistel network and thus it works on words of $N$ bits, where $2N$ is the block size, and with a key of $M*N$ bits. This lends it self to the naming format of SIMON or SPECK $2N/N*M$, which means, for example, SIMON48/72 has a word size of 24 and uses 3 words for the key.
     
 	\begin{table}[H]
 	\centering
@@ -251,7 +241,6 @@
 	\label{table:S+S}
 	\end{table}    
     
-	%\textcolor{cyan}{[Insert FPGA implementations of SIMON \& SPECK]}
 	Even though they are relatively new algorithms there are still a few FPGA implementations available for review, including \cite{Aysu2014} and \cite{Shahverdi2015} as well as those provided in \cite{Beaulieu2013}. These all show that very small designs are possible with even the 128/256 versions fitting below the 2000 GE limit.
     
 	\subsection{Other Algorithms}
@@ -262,7 +251,7 @@
 	\subsection{Decisions}
 	Based on the research explored in \autoref{chapter:BACK} I chose the SIMON and SPECK algorithms from the NSA, mainly because of their flexibility in security levels, with different key lengths, that could be applied to the different devices explored in \autoref{section:IoT}. This means that multiple algorithms don't need to be developed and I could concentrate on making my code as efficient as possible. When compared in terms of power consumption the SIMON64/96 version in \cite{Banik2015} also shows lower power consumption than the other algorithms explored. Also, while both PRESENT and PRINCE meet the lightweight specification they are also SP networks and in \autoref{section:cryp_decisions} it was decided that a Feistel network is preferable.
     
-	After deciding on the SIMON and SPECK family I explored how each version works in order to make a more informed decision on which to work with in this project. As SIMON was designed primarily for hardware it only makes use of XOR ($\oplus$), AND ($\&$) and circular rotate operations ($R^j[x]$) on the $n$ bit wide words. For the rotate operation the word $x$ is rotated by $j$ bits to the left or right if $j$ is negative. The encryption and decryption functions take the Feistel network form described in \autoref{Feistel} with the round function \autoref{SIMON_round}.
+	After deciding on the SIMON and SPECK family I explored how each version works in order to make a more informed decision on which to work with in this project. As SIMON was designed primarily for hardware it only makes use of XOR ($\oplus$), AND ($\&$) and circular rotate operations ($R^j[x]$) on the $n$ bit wide words. For the rotate operation the word $x$ is rotated by $j$ bits to the left, or right if $j$ is negative. The encryption and decryption functions take the Feistel network form described in \autoref{Feistel} with the round function \autoref{SIMON_round}.
     
 	\begin{equation}
 	\label{SIMON_round}
@@ -286,7 +275,7 @@
 	\label{chapter:INITIAL}
 	Unfortunately, unlike some of the algorithms explored in \autoref{chapter:BACK} there isn't a standard SIMON/SPECK software library available for use and benchmarking with my design. For that a reason a software version needed to be developed that offers similar functionality to the hardware version, so both software and hardware were developed in parallel. Also, by working on the software version, in C or C++, it allowed me to increase my familiarity with the algorithm and provided some insight in to how the hardware version, in System Verilog, would be designed, and vice versa.
     
-	For all versions of the SIMON algorithm developed for this project the most important factor is efficiency in terms of power consumption and resource use, with time efficiency not being an initial priority. All versions of this algorithm were developed not only with the description but also the pseudocode\textcolor{red}{[insert reference]}. In that document there is also a set of test vectors that define the ciphertext the algorithm should produce with given key and plaintext. Due to Feistel network structure of SIMON the decryption is just the same as encryption but with the key schedule reversed. This means that the encryption can be done in parallel to the key expansion but decryption requires the key to be pre-expanded. As some of the block cipher modes of operation\textcolor{red}{[insert reference]} only require encryption, two variants might be useful: one that can just encrypt data; and one with full functionality.
+	For all versions of the SIMON algorithm developed for this project the most important factor is efficiency in terms of power consumption and resource use, with time efficiency not being an initial priority. All versions of this algorithm were developed not only with the description but also the pseudocode\cite{Beaulieu2013}. In that document there is also a set of test vectors that define the ciphertext the algorithm should produce with given key and plaintext. Due to Feistel network structure of SIMON the decryption is just the same as encryption but with the key schedule reversed. This means that the encryption can be done in parallel to the key expansion but decryption requires the key to be pre-expanded. As some of the block cipher modes of operation\cite{Dworkin2001a} only require encryption, two variants might be useful: one that can just encrypt data; and one with full functionality.
     
 	\section{First Approach}
 	\label{section:first}
@@ -320,8 +309,6 @@ typedef word		keys[T];
 	\end{lstlisting}
     
 	After the data types were defined the rotate functions, which are used frequently in algorithm, were made to rotate the bits in a $word$ around a given number of bits. These rotate functions were used in the Feistel and round functions which is iterated for both encryption and decryption. The code used for these functions can be seen in \autoref{lst:func} but a full listing is available in the \textcolor{green}{Appendix}. 
-    
-	\textcolor{red}{CHANGE/IMPROVE BELOW} 
 	
 	\begin{minipage}{\linewidth}
 	\begin{lstlisting}[label={lst:func},caption={Round and Feistel functions},style=CStyle]
@@ -499,7 +486,7 @@ end
 	\end{lstlisting}
 	\end{minipage}
 	
-	To test the individual modules various input data was selected and the expected outputs were calculated either manually for the simple operations or using the software. As with the software when this functionality was correct they were combined into the top level control module to be further tested. Again, this was only for the most basic 32/64 mode of SIMON. To do this a testbench was created that with a clock that had a $100ns$ period, or $10MHz$ \textcolor{red}{[CHECK]}, and with the initial inputs setup during the reset of the module. 
+	To test the individual modules various input data was selected and the expected outputs were calculated either manually for the simple operations or using the software. As with the software when this functionality was correct they were combined into the top level control module to be further tested. Again, this was only for the most basic 32/64 mode of SIMON. To do this a testbench was created that with a clock that had a $100ns$ period, or $10MHz$, and with the initial inputs setup during the reset of the module. 
 	
 	After this the reset signal could be disabled and then the $newData$ signal could be set $HIGH$ to indicate to the state machine to move into the loading and processing states. After an appropriate delay the $newData$ signal is reset and then testbench waits for a rising edge of the $doneData$ signal before asserting the $readData$ signal. The testbench for ($INL$) then just resets the $readData$ signal and finishes as the encryption is finished. Although, the other testbench reads the outputted ciphertext is read into the the plaintext input and the $enc\_dec$ signal is inverted. This informs the module to decrypt the plaintext when $newData$ is next set. The same process is the repeated and the testbench finishes after the decryption is complete. When the module finished processing the data the ciphertext outputted could read by the testbench and then compared with the expected results.
 	
@@ -514,13 +501,7 @@ end
 	\subsection{Software - Hosted C}
 	\label{subsection:HOSTED2}
 	
-	There were only some minor changes to the software version for this approach which were mainly what was learnt from developing the System Verilog version, \autoref{subsection:SV1}. One of these changes was ensuring that the key schedule was stored, before or during the main loop, and only expanded once. This was done with a $doneKey$ flag variable which is set to true at the end of the key expansion.
-	
-	One other improvement was to add basic file reading capability to the software which allowed any  `$.txt$' file to be read and stored in data blocks to be processed. Although, the same test data was used for the key and first data block to ensure that the cipher was still performing correctly.
-	
-	\textcolor{red}{ADD C LISTINGS BELOW [100]}
-    
-	\textcolor{red}{ADD C TESTING BELOW [200]}   
+	There were only some minor changes to the software version for this approach which were mainly what was learnt from developing the System Verilog version, \autoref{subsection:SV1}. One of these changes was ensuring that the key schedule was stored, before or during the main loop, and only expanded once. This was done with a $doneKey$ flag variable which is set to true at the end of the key expansion. 
     
 	\subsection{Hardware - System Verilog}
 	\label{subsection:SV2}
@@ -673,7 +654,12 @@ end
     
 	In a full system the packets would be sent using a serial protocol like $I^2C$ but the they would also include information about what and how much data is being sent in a packet. As there are ten modes of the SIMON algorithm, labelled as $0 - 9$, four bits of the information are used to identify what mode of SIMON the data is intended for. This leaves another 4 bits to be used in a byte that were used individually for different parameters of the packet. One bit was used to indicate whether the data is to be processed or a new key to be loaded. Another tells the hardware to encrypt or decrypt the data, obviously irrelevant if a new key is being sent. As for most modes the number of words in the key are more than the two words in a block it was decided that a constant four words, or two blocks, would be sent in each packet but an option to just send one block would be controlled by one bit. The last bit in this byte tells the hardware that the packet is either meant to be inputted to it or outputted from it. To help the hardware keep track of the packets another byte was used to as a packet ID, which increments with each new packet.
     
-	\textcolor{blue}{ADD PACKET DIAGRAM FIGURE}
+	\begin{figure}[H]
+		\includegraphics[width=0.9\textwidth]{SIMON_packet}
+		\centering
+		\caption{A diagram showing how the data is stored in the packets.}
+		\label{fig:packet}
+	\end{figure}
 	
 	Having this information attached to each block of data being processed could introduce a weakness to the cipher that might be exploited by an attacker. Although, ensuring and increasing the security of the algorithm is not the main purpose of this project.
     
@@ -683,8 +669,11 @@ end
 	\subsection{Changes to the Code}
 	
 	As the packets need to be setup by the a processor and includes a few data types and with some individual bits needing to be controlled it made sense to switch to an object orientated language instead of C so naturally C++ was chosen. While it would be possible to develop the functionality required in C it would take time and effort to get functionality already provided by C++.
+	
+	\autoref{lst:WORD_CLASS} shows the basic word class with the same $TYPE(N)$ as in the previous C software. With C++ some of the operators needed could be overloaded, including the shift operators ($<<$ \& $>>$) which were used to provide the rotation functions. The other basic data type used in the previous approaches were setup with similar classes and constructor, mutator and accessor functions. All of the classes developed also used similar functions, especially for printing the data to strings and getting the data stored.
 
-	\begin{minipage}{\linewidth}
+	%\newpage
+	%\begin{minipage}{\linewidth}
 	\begin{lstlisting}[label={lst:WORD_CLASS},caption={Declaration of WORD Class},style=CStyle]
 class 			WORD
 {
@@ -693,41 +682,40 @@ public:
 	WORD();
 	WORD(TYPE(N) x);
 	//	MUTATORS
-	void			assign			(	TYPE(N)	x							);
-	void			assign			(	TYPE(8)	x, TYPE(8)	i	);
-	TYPE(8)		addBYTE			(	TYPE(8)	x							);
-	void			flush				(												);
+	void	 	assign			(	TYPE(N)	x				);
+	void     	assign			(	TYPE(8)	x, TYPE(8)	i	);
+	TYPE(8)	 	addBYTE		(	TYPE(8)	x				);
+	void	 	flush			(							);
 	//	ACCESSORS
-	void			test				(												);
-	TYPE(N)		get_v				(												);
-	TYPE(8)		get_b				(												);
-	TYPE(8)		get_b				(	TYPE(8)	i							);
-	TYPE(16)	get_B				(	TYPE(8)	i							);
-	TYPE(16)	size_v			(												);
-	TYPE(16)	size_b			(												);
-	string		HEX_WORD		(												);
-	string		CHR_BYTES		(												);
-	string		HEX_BYTES		(												);
+	void	 	test			(							);
+	TYPE(N)	 	get_v			(							);
+	TYPE(8)	 	get_b			(							);
+	TYPE(8)	 	get_b			(	TYPE(8)	i				);
+	TYPE(16) 	get_B			(	TYPE(8)	i				);
+	TYPE(16) 	size_v			(							);
+	TYPE(16) 	size_b			(							);
+	string	 	HEX_WORD		(							);
+	string	 	CHR_BYTES		(							);
+	string	 	HEX_BYTES		(							);
 	//	OPERATORS
-	WORD			operator~		(												);
-	WORD			operator&		(	const	WORD	x					);
-	WORD			operator^		(	const	WORD	x					);
-	WORD			operator^=	(	const	WORD	x					);
-	WORD			operator<<	(	const	TYPE(8)	i				);
-	WORD			operator>>	(	const	TYPE(8)	i				);
+	WORD		operator~		(							);
+	WORD		operator&		(	const	WORD	x		);
+	WORD		operator^		(	const	WORD	x		);
+	WORD		operator^=		(	const	WORD	x		);
+	WORD		operator<<		(	const	TYPE(8)	i		);
+	WORD		operator>>		(	const	TYPE(8)	i		);
+	
 private:
-	TYPE(8)		w_nxtBYTE;	//	NEXT BYTE TO WRITE TO
-	TYPE(8)		r_nxtBYTE;	//	NEXT BYTE TO READ FROM
+	TYPE(8)		w_nxtBYTE;		//	NEXT BYTE TO WRITE TO
+	TYPE(8)		r_nxtBYTE;		//	NEXT BYTE TO READ FROM
 	union
 	{
 		TYPE(N)	val	:	N;		//	VALUE STORED AS ONE BYTE
-		TYPE(8)	bytes[N/8];	//	VALUE STORED IN BYTES
+		TYPE(8)	bytes[N/8];		//	VALUE STORED IN BYTES
 	};
 };
 	\end{lstlisting}
-	\end{minipage}
-	
-	\autoref{lst:WORD_CLASS} shows the basic word class with the same $TYPE(N)$ as in the previous C software. With C++ some of the operators needed could be overloaded, including the shift operators ($<<$ \& $>>$) which were used to provide the rotation functions. The other basic data type used in the previous approaches were setup with similar classes and constructor, mutator and accessor functions. All of the classes developed also used similar functions, especially for printing the data to strings and getting the data stored.
+	%\end{minipage}
     
    	The packet class stored the packet information, \autoref{lst:_INFO_}, packet count and the four words of data, \autoref{lst:PACKET}. It also has an array of one byte unsigned integers that compacts the data into the smallest possible size for transmission. This is required because the information and count can always be stored in two bytes but depending on the mode the words vary in size and don't always fit exactly into the data types available. So before being sent a function is used to copy the data from the words byte by byte into the byte array which results in no redundant data being sent by accident. The setting up of these packets can be done separately or as part of the encryption, or decryption, process. The input and output packet counts were stored in static variable as they are meant to increment with each new packet. This was done when a packet is declared as an input or an output and not in the constructor as the actual object could be used again. For example, an output packet with some cipher text stored could be used to test decryption by simply declaring it an input packet while keeping the same data.
 
@@ -741,8 +729,7 @@ typedef struct	_INFO_
 	TYPE(8)		data_key	:	1;	//	DATA/KEY
 	TYPE(8)		enc_dec		:	1;	//	ENCRYPT/DECRYPT
 	TYPE(8)		nBlocks		:	1;	//	NUMBER OF BLOCKS (1/2)
-}				_INFO_;
-	\end{lstlisting}
+}				_INFO_;\end{lstlisting}
 	\end{minipage}
 
 	\begin{minipage}{\linewidth}
@@ -759,8 +746,7 @@ TYPE(8)		count;			//	DATA COUNT
 WORD		wDATA[4];			//	PACKET DATA
 
 //	PACKET IN BYTES	
-TYPE(8)		pBYTES[2+(N/2)];
-	\end{lstlisting}
+TYPE(8)		pBYTES[2+(N/2)];\end{lstlisting}
 	\end{minipage}
    	
    	A class was used to reading files because the data were read into a temporary byte array before being stored in a the four words in a packet. From there with the packet setup, using \autoref{lst:readPACKET} where the $readWORD()$ function reads a $WORD$ from the file and also keeps track of where in the file it has read to. With the packet read it could be added to a vector of input vectors or sent straight to the cipher used, either software or hardware. If the vector method is used then the packets could be stored in another file to be sent to the cipher at a later point. The class is also used for reading the packets returned to it by the cipher and then written to a file with the same as the original name but with an encrypted or decrypted indicator. This class is also capable of just reading blocks of data from the file so that the new approach to the SIMON could be compared with the previous approaches.
@@ -792,6 +778,8 @@ PACKET		DATA::readPACKET	(								)
 	\end{lstlisting}
 	\end{minipage}
 	
+	The reason for using a class for the cipher object, \autoref{lst:CIPHER_CLASS}, was so that the key schedule and the state of the encrypted/decrypted block could be stored in one variable it similar to how it is stored in the hardware version. There is also a function added for handling the packets to ensure that data is used correctly in \autoref{lst:compute_PACKET}. This function takes the inputted packet and sets up a new output packet with the same information about the data and then checks it for errors before computing the relevant data and addding it to the output packet. As with data class there is also the basic encryption and decryption functions to deal with just blocks as the inputs.
+	
  	\begin{minipage}{\linewidth}
 	\begin{lstlisting}[label={lst:CIPHER_CLASS},caption={The declaration of the CIPHER Class},style=CStyle]	   	
 class			CIPHER
@@ -802,30 +790,28 @@ public:
 	
 	//	MUTATORS
 	PACKET		compute		(	PACKET	p					);
-	BLOCK			compute		(	BLOCK	b, TYPE(8)	enc_dec	);
-	void			expandKEY	(	KEY		x					);
-	void			encryptDATA	(	WORD	x0,	WORD	x1		);
-	void			encryptDATA	(	BLOCK	x					);
-	void			decryptDATA	(	WORD	x0,	WORD	x1		);
-	void			decryptDATA	(	BLOCK	x					);
-	void			resetCount	(								);
-	BLOCK			round		(	WORD	x					);
-	WORD			expand		(	KEY		x,	TYPE(8)	i		);
+	BLOCK		compute		(	BLOCK	b, TYPE(8)	enc_dec	);
+	void		expandKEY	(	KEY		x					);
+	void		encryptDATA	(	WORD	x0,	WORD	x1		);
+	void		encryptDATA	(	BLOCK	x					);
+	void		decryptDATA	(	WORD	x0,	WORD	x1		);
+	void		decryptDATA	(	BLOCK	x					);
+	void		resetCount	(								);
+	BLOCK		round		(	WORD	x					);
+	WORD		expand		(	KEY		x,	TYPE(8)	i		);
 	
-	void			flush		(								);
+	void		flush		(								);
 	
 private:
 	TYPE(8)		pktCOUNT;
-	BLOCK			stateCIPHER;
-	KEY_S			scheduleKEY;
+	BLOCK		stateCIPHER;
+	KEY_S		scheduleKEY;
 	TYPE(8)		roundCOUNT;
 	TYPE(8)		doneKEY	:	1;
 	
 };
 	\end{lstlisting}
 	\end{minipage}
-   	
-   	The reason for using a class for the cipher object, \autoref{lst:CIPHER_CLASS}, was so that the key schedule and the state of the encrypted/decrypted block could be stored in one variable it similar to how it is stored in the hardware version. There is also a function added for handling the packets to ensure that data is used correctly in \autoref{lst:compute_PACKET}. This function takes the inputted packet and sets up a new output packet with the same information about the data and then checks it for errors before computing the relevant data and addding it to the output packet. As with data class there is also the basic encryption and decryption functions to deal with just blocks as the inputs.
 
  	\begin{minipage}{\linewidth}
 	\begin{lstlisting}[label={lst:compute_PACKET},caption={The function for handling the packets},style=CStyle]	
@@ -836,30 +822,30 @@ PACKET		CIPHER::compute		(	PACKET	x					)
 	
 	switch(x.checkIN(pktCOUNT))
 	{
-		case	0:	// ERROR
-			break;
-		case	1:	// DATA
-			if(doneKEY)
-			{
-				if(x.get_i().enc_dec)	encryptDATA(x.get_w(0), x.get_w(1));
-				else					decryptDATA(x.get_w(0), x.get_w(1));
-				out.assign(stateCIPHER.get_w(0), 0);
-				out.assign(stateCIPHER.get_w(1), 1);
-				pktCOUNT++;
-				if(!x.get_i().nBlocks) break;
-				
-				if(x.get_i().enc_dec)	encryptDATA(x.get_w(2), x.get_w(3));
-				else					decryptDATA(x.get_w(2), x.get_w(3));
-				out.assign(stateCIPHER.get_w(0), 2);
-				out.assign(stateCIPHER.get_w(1), 3);
-			}
-			break;
-		case	2:	// KEY
-			expandKEY( KEY(x.get_w(0), x.get_w(1), x.get_w(2), x.get_w(3)) );
+	case	0:	// ERROR
+		break;
+	case	1:	// DATA
+		if(doneKEY)
+		{
+			if(x.get_i().enc_dec)	encryptDATA(x.get_w(0),x.get_w(1));
+			else					decryptDATA(x.get_w(0),x.get_w(1));
+			out.assign(stateCIPHER.get_w(0), 0);
+			out.assign(stateCIPHER.get_w(1), 1);
 			pktCOUNT++;
-			break;
-		default	 :	//	ERROR
-			break;
+			if(!x.get_i().nBlocks) break;
+				
+			if(x.get_i().enc_dec)	encryptDATA(x.get_w(2),x.get_w(3));
+			else					decryptDATA(x.get_w(2),x.get_w(3));
+			out.assign(stateCIPHER.get_w(0), 2);
+			out.assign(stateCIPHER.get_w(1), 3);
+		}
+		break;
+	case	2:	// KEY
+		expandKEY(KEY(x.get_w(0), x.get_w(1), x.get_w(2), x.get_w(3)));
+		pktCOUNT++;
+		break;
+	default	 :	//	ERROR
+		break;
 	}
 	
 	out.pack();
@@ -870,16 +856,51 @@ PACKET		CIPHER::compute		(	PACKET	x					)
 	\end{minipage}
     
     \subsection{Testing}
-	\textcolor{red}{ADD C++ TESTING BELOW [200]} 
 	
-	As this final approach is in a different language all of the classes and overloaded operators needed to be tested, and for this reason each class has a test function that checks the number bytes used by the variables and then sets up example data and prints them to the console in the various formats. Then before packets and data reading were tested the cipher functions were designed and first tested just on the blocks as with the previous approaches. Then after the packets were functioning as desired the decoding of them in the cipher class could be tested by inputting dummy packets and checking that the correct case is activated. To check that the data reading is reading the correct data and inserting it into the correct packets, and blocks, a small test file with just two packets worth of data, 32 bytes for the 32/64 mode, was used tha included the testvector plaintext.
+	As this final approach is in a different language all of the classes and overloaded operators needed to be tested, and for this reason each class has a test function that checks the number bytes used by the variables and then sets up example data and prints them to the console in the various formats. Then before packets and data reading were tested the cipher functions were designed and first tested just on the blocks as with the previous approaches. Then after the packets were functioning as desired the decoding of them in the cipher class could be tested by inputting dummy packets and checking that the correct case is activated. To check that the data reading is reading the correct data and inserting it into the correct packets, and blocks, a small test file with just two packets worth of data, 32 bytes for the 32/64 mode, was used that included the testvector plaintext.
+
+ 	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:test_PACKET},caption={The function for testing the packets handling, encryption and decryption.},style=CStyle]	
+TYPE(8)		tCIPHER_TV_PKT	(							)
+{
+	cout 	<< endl\
+			<< "|\tTESTING PACKET HANDLING WITH TEST VECTORS\t|"\
+			<< endl;
 	
-	From there there functions were used to insert the test vector key into the first packet and then the plaintext into the second packet. These two packets were used to confirm the operation with checks on the outputted cipher text after the processing. They were also inserted at the beginning of each packet stream so that if something went wrong with whole processing, it can be seen if the cipher functions are the source of the error.
+	PACKET p, c;
+	CIPHER	SIMON;
+	
+	resetCounts();
+	
+	p = expandTV_PKT();
+	c = SIMON.compute(p);
+	printPACKETS(p, c);
+	
+	
+	p = encryptTV_PKT();
+	c = SIMON.compute(p);
+	printPACKETS(p, c);
+	
+	if( (c.get_BLK(0) == C) && (c.get_BLK(1) == C) )
+	{
+		cout << "|\tENCRYPTING WORKING!\t|" << endl;
+		return 1;
+	}
+	else
+	{
+		cout << "|\tENCRYPTING NOT WORKING!\t|" << endl;
+		return 0;
+	}
+}
+	\end{lstlisting}
+	\end{minipage}
+	
+	From there there functions were used to insert the test vector key into the first packet and then the plaintext into the second packet. These two packets were used to confirm the operation with checks on the outputted cipher text after the processing, all shown in \autoref{lst:test_PACKET}. They were also inserted at the beginning of each packet stream so that if something went wrong with whole processing, it can be seen if the cipher functions are the source of the error.
     
 	\section{Hardware - System Verilog}
 	\label{section:SVF}
 		
-	With the packets being setup in software, as described in \autoref{section:HOSTEDF}, the System Verilog module only needed to be handle the information and hence route the packeted data to the correct part of the system at the right time. The whole system also needed to ability to pass the packet information and count through the modules as each one processed the data to ensure that the correct packet is outputted. To do this two modules were added: one to handle the input packet; and one to handle the output packets.
+	With the packets being setup in software, as described in \autoref{section:HOSTEDF}, the System Verilog module only needed to be handle the information and hence route the packeted data to the correct part of the system at the right time. The whole system also needed to ability to pass the packet information and count through the modules as each one processed the data to ensure that the correct packet is outputted. To do this two modules were added: one to handle the input packet; and one to handle the output packets. In this third and final approach the parameter method for setting the input ad output block and key sizes was scrapped fro using a macro definition method much more similar to that used in the software because it allowed a more efficient design in code space due to not needing a module for each of the ten SIMON modes.
 	
 	To handle the input packets the module takes an input of bytes equal to the size of the packets as well as an input control signal $newIN$. The module operates in a similar way to how the control module did in the first approach, \autoref{subsection:SV1}, with states for waiting; loading packets; processing packets; and writing the relevant words to the relevant output, the key or the input block of the control module. After the packet is loaded the processing state checks the information byte is in the correct form: as an input, for the correct mode and the packet count; and then decodes what data is in the packet which is used by the writing state. When a packet contains two blocks of data, identified in the information, the first writes two of the words to the the input block and then waits for the control module to be ready for new data before writing the other two words. To do this a $PROCESSING$ flag bit used to notify the next state that when the control module is ready to load new data it should continue to write the other block in the packet before it is ready to load a new packet.
 
@@ -893,20 +914,20 @@ begin
 		if(PROCESSING)
 		begin
 			if(newDATA_rise || loadDATA)	next = WAIT;	
-			else				next = WRITE;	
+			else							next = WRITE;	
 		end
 		else
 		begin
-			if(newPKT_rise)			next = LOAD;
-			else				next = WAIT;
+			if(newPKT_rise)					next = LOAD;
+			else							next = WAIT;
 		end
 	end
-	LOAD:						next = COMPUTE;
-	COMPUTE:					next = WRITE;
+	LOAD:									next = COMPUTE;
+	COMPUTE:								next = WRITE;
 	WRITE:
 	begin
-		if(newDATA_rise)			next = WRITE;
-		else					next = WAIT;
+		if(newDATA_rise)					next = WRITE;
+		else								next = WAIT;
 	end
 	endcase
 end
@@ -920,24 +941,115 @@ end
 //	RISING EDGE NEW CHECK
 always @(posedge newDATA, posedge loadDATA, negedge nR)
 begin
-	if(~nR)						newDATA_rise <= 1'b0;
+	if(~nR)				newDATA_rise <= 1'b0;
 	else if(loadDATA)	newDATA_rise <= 1'b0;
 	else if(newDATA)	newDATA_rise <= 1'b1;
 end
 	\end{lstlisting}
 	\end{minipage}
+
+ 	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:dataOUT_next},caption={The next state logic for the output data handling module.},style=SVStyle]
+always_comb
+begin
+	unique case(current)
+	WAIT:
+	begin
+		if(doneDATA_rise)
+		begin
+			if(PROCESSING)					next = READ;
+			else							next = LOAD;
+		end
+		else								next = WAIT;
+	end
+	LOAD:									next = READ;
+	READ:
+	begin
+		if(nBLOCK)							next = WAIT;
+		else								next = WRITE;		
+	end
+	WRITE:
+	begin
+		if(out_donePKT || out_readPKT)		next = WRITE;
+		else								next = WAIT;
+	end
+	endcase
+end
+	\end{lstlisting}
+	\end{minipage}
 	
-	The output handling module receives the packet information and data from the control module and then writes the data to the relevant part of the output packet. It then checks and decodes the packet information similar to the input dandling module but then instead of loading, processing and then writing it processes the packet information, reads the data and then writes the packet to the output. If the packet information suggests that there should be two blocks of data in the packet then the module waits for a second block of data to be processed by the control module before writing the output packet.
-    
-	\textcolor{red}{ADD SYSTEM VERILOG LISTINGS BELOW [100]}
-    
-	\textcolor{red}{ADD SYSTEM VERILOG SIMULATIONS BELOW [200]}
+	The output handling module receives the packet information and data from the control module and then writes the data to the relevant part of the output packet. It then checks and decodes the packet information similar to the input dandling module but then instead of loading, processing and then writing it processes the packet information, reads the data and then writes the packet to the output. If the packet information suggests that there should be two blocks of data in the packet then the module waits for a second block of data to be processed by the control module before writing the output packet. As with the input handling module a $PROCESSING$ flag is used to indicate to the state machine whether or not a second block of data should be read from the control module. But this flag is used slightly differently, \autoref{lst:dataOUT_next}, because it has to wait passively for the control module to finish processing the data rather than actively writing data to it.
+
+ 	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:test_dataIN},caption={The testbench for the input packet handling module.},style=SVStyle]
+initial
+begin
+	//	...
+	in_newPKT = 1'b0;
+	loadDATA = 1'b0;
+	loadKEY = 1'b0;
+	testDATA = `in_ENC_TEST;
+	countPKT = 8'h00;
+	in = {`in_iKEY_TEST, countPKT, `in_KEY_TEST };
+
+	@(posedge clk);
+	#10ns
+	
+	in_newPKT <= 1'b1;
+end
+
+always @(posedge newDATA)
+begin
+	repeat(2)	@(posedge clk);
+	#10ns
+	
+	loadDATA <= 1'b1;
+end
+
+always @(negedge newDATA)
+begin
+	repeat(2)	@(posedge clk);
+	#10ns
+	
+	loadDATA <= 1'b0;
+end
+
+always @(posedge in_donePKT)
+begin
+	repeat(2)	@(posedge clk);
+	#10ns
+
+	in <= { `in_iENC_TEST, countPKT, testDATA, ~testDATA};
+	
+	@(posedge clk)
+	in_newPKT <= 1'b1;
+	testDATA <= ~testDATA;
+end
+	\end{lstlisting}
+	\end{minipage}
 	
 	As the control module didn't change much from the previous approach its testing wasn't important but the other modules needed to be functionality correctly with absolutely no glitches for them to all interact as a whole system. To this the, as with all of the previous testbenches, the inputs were all setup with the reset signal active and then changed after the reset was deactivated.
 
-	For the input handling module the input packet had the basic packet information for a key, initial packet count of $0$ and then the key from the test vectors.
+	For the input handling module the input packet had the basic packet information for a key, initial packet count of $0$ and then the key from the test vectors. Then, similar to the initial testbenches in \autoref{subsection:SV1} and \ref{subsection:SV2}, the new input signals are activated and $always$ blocks are setup not only to react to the outputs, but to also mimic the behaviour of the control module. After the packet complete output signal is activated the testbench then sets up the next packet with the text vector plaintext and relevant information and count. This same method of using $always$ blocks to emulate the control module to confirm the operation of the output handling module.
+	
+	After the modules for packet handling and controlling the encryption and decryption were operating individually they were combined in the top level module with only the packets and their control signals beign used as inputs and outputs, \autoref{lst:top_io}, with the other signals for the control module only required internally. This module was then tested in with dummy packets setup in the same way as the individual testbenches and also when the output packets were read they were checked to see if they match the test vector cipher text and then it is decrypted and checked again. Once both the encryption and decryption tests both pass the simulation is completed using a $\$finsh$ command.
 
-	\textcolor{red}{ADD SYSTEM VERILOG SYNTHESIS BELOW [100]}
+ 	\begin{minipage}{\linewidth}
+	\begin{lstlisting}[label={lst:top_io},caption={The inputs and output of the tope level module.},style=SVStyle]
+module SIMON_topPKT
+(
+input logic							clk, nR,
+input logic							in_newPKT,
+input logic							out_readPKT,
+input logic [(1+(`N/2)):0][7:0]		in,
+output logic 						in_loadPKT, in_donePKT,
+output logic						out_donePKT,
+output logic [(1+(`N/2)):0][7:0]	out
+);
+	\end{lstlisting}
+	\end{minipage}
+
+	With all the functionality of the top level module confirmed it was ready to be synthesised using the same method as used in \autoref{subsection:SV2} with the Quartus Prime 17.1 software. This synthesis resulted in the the data shown in \autoref{table:synth3}.
 	
 	\begin{table}[H]
 	\centering
@@ -973,7 +1085,12 @@ end
 	\section{Throughput}
 	
 	\subsection{Method}
-	To test the throughput of the algorithm is as simple as putting some data through it and timing how the implementation takes to process that data. From there, using the number of bytes and the time taken, the throughput can be calculated in bits per second ($bits/s$) with \textcolor{red}{[insert equation]}. For the both software and hardware the data needed to be setup in software by reading an example file containing approximately $10kB$ of lorum ipsum\textcolor{red}{[insert reference]}. As the reading of the file takes some time, and is not part of the hardware testing, it is not included for the throughput testing in software by reading the file and setting up the packets and blocks before recording the start time. To input the data into the ModelSim testbenches it was simply written to a file in a SystemVerilog format and then copied and pasted into the relevant testbench.
+	To test the throughput of the algorithm is as simple as putting some data through it and timing how the implementation takes to process that data. From there, using the number of bytes and the time taken, the throughput can be calculated in bits per second ($bits/s$) with \autoref{THROUGHPUT}. For the both software and hardware the data needed to be setup in software by reading an example file containing exactly $19.2kB$ of lorum ipsum. As the reading of the file takes some time, and is not part of the hardware testing, it is not included for the throughput testing in software by reading the file and setting up the packets and blocks before recording the start time. To input the data into the ModelSim testbenches it was simply written to a file in a SystemVerilog format and then copied and pasted into the relevant testbench.
+
+	\begin{equation}
+	\label{THROUGHPUT}
+	THROUGHPUT = \frac{DATA\ READ(BYTES\ or\ BITS)}{TIME\ TAKEN}
+	\end{equation}
 	
 	\subsection{Results}
 	
@@ -989,10 +1106,11 @@ end
 	Another factor that effects the throughput of the algorithm is the clock speed used, but this suggests that the software should process data quicker than the hardware because it uses a clock speed of over $2GHz$ and the hardware uses a much slower $10MHz$ in the simulations used to gather these results. Therefore, a speedup of approximately $200$ is expected when comparing software to hardware, but the actual speedup occurs in the other direction with an average of about $3.3$. This is because the software takes many more instructions to compute each cycle of the encryption, or decryption and it also has the overheads of the operating system and any other programs running at that time. Where as because the hardware is customised to this algorithm it can compute the result encryption, or decryption, cycle almost very clock cycle, excluding when the state machine is in the other states.
 
 	\section{Resource Use}
+	\label{section:resource}
 	
 	\subsection{Method}
 	
-	Different resource are required and used by the software and hardware versions of SIMON developed for this project, but they are both still quantifiable in terms of memory used, but not with the logic elements used by the hardware as the software uses a number of operations with the ALU to compute the logic. Therefore, the different modes are used for comparisons within the same version with total logic elements, total registers, and input output pins being used for the hardware; and the total memory and number of instructions required for the software. The hardware data is provided by the Quartus Prime 17.1 and the data for both approach two, \autoref{SV2}, the final approach in \autoref{SVF} as they are both synthesised and provide an insight into the difference that using the packets has in terms of resource use.
+	Different resource are required and used by the software and hardware versions of SIMON developed for this project. Therefore, the different modes are used for comparisons within the hardware version with total logic elements, total registers, and input output pins being used. The hardware data is provided by the Quartus Prime 17.1 and the data for both approach two, \autoref{subsection:SV2}, the final approach in \autoref{section:SVF} as they are both synthesised and provide an insight into the difference that using the packets has in terms of resource use.
 	
 	\subsection{Results}
 	
@@ -1025,16 +1143,35 @@ end
 	
 	\subsection{Method}
 	
-	As the hardware design was never implemented onto a FPGA the power consumption of the system while encrypting and decrypting data was never tested. However, the synthesis software often provide some extra tools that can estimate the power consumption by calculating the switching frequency of the internal nodes based on random input switching. The synthesised design from Quartus Prime is the main source of this data by using it's `Power Analyzer Tool', but the design was also compiled by the Cadence software\textcolor{red}{[[insert reference]} to compare what might be possible if the system is implemented onto an ASIC in the future.  The cadence software only provides some basic information about the estimated  the power consumption during the synthesis.
+	As the hardware design was never implemented onto a FPGA the power consumption of the system while encrypting and decrypting data was never tested. However, the synthesis software often provide some extra tools that can estimate the power consumption by calculating the switching frequency of the internal nodes based on random input switching. The synthesised design from Quartus Prime is the main source of this data by using it's `Power Analyzer Tool'. 
 	
 	\subsection{Results}
-	\textcolor{red}{ADD POWER TESTING RESULTS BELOW [300]}
+	
+	Unfortunately, the Quartus Prime tool for analysing the power analysis requires the design to fit on the board being synthesised for but for this design the limiting factor is the number or input and output pins available, which is 288 for the DE1-SoC used for this project. This meant that only the three smallest modes could be analysed with the results shown in \autoref{table:power}. Even the small number or results gathered suggests that the power doesn't increase much with the mode so similar results are expected for the higher modes.
+	
+	\begin{table}[H]
+	\centering
+	\begin{tabular}{||c|c|c|c|c||}
+		\hline \hline
+		Mode & $N$ & $M$ & $T$ & Power ($mW$)\\
+		\hline \hline
+		0 & 16 & 4 & 32 & 426.36 \\
+		\hline
+		1 & 24 & 3 & 36 & 428.87 \\
+		2 & 24 & 4 & 36 & 428.88  \\
+		\hline \hline
+	\end{tabular}
+	\caption{A table of the power analysis of all the first three modes of SIMON with packet handling modules.}
+	\label{table:power}
+	\end{table}
 
 	\chapter{Conclusion \& Future Work}
 	\label{chapter:CONC}
 	
 	\section{Conclusion}
-	Overall this project, while not completely succeeding in the original goal of optimising the algorithm for the low power environment of `Internet of Things', it has produced a working model for encrypting and decrypting data at a much faster rate than would be possible in the small embedded processors that the `IoT' devices use. Finding multiple algorithms for the varying levels of performance; in terms of security, throughput, power consumption and resource use; required by the wide range of `IoT` devices was also a goal in the original project brief but wasn't achieved in this project. However, the algorithm, SIMON,  was chosen to be the only algorithm used because it is defined with flexibility in all those performance parameters with the different block and key sizes. 
+	Overall this project, while not completely succeeding in the original goal of optimising the algorithm for the low power environment of `Internet of Things', it has produced a working model for encrypting and decrypting data at a much faster rate than would be possible in the small embedded processors that the `IoT' devices use. Finding multiple algorithms for the varying levels of performance; in terms of security, throughput, power consumption and resource use; required by the wide range of `IoT` devices was also a goal in the original project brief but wasn't achieved in this project. However, the algorithm, SIMON,  was chosen to be the only algorithm used because it is defined with flexibility in all those performance parameters with the different block and key sizes.
+	
+	As for comparing this projects design resource use, in \autoref{section:resource}, with the resource limits in \autoref{section:IoT} it doesn't come close to the 200 GE limit suggested. Although, as it isn't comparable to the those designs shown for SIMON in the algorithm definition document, it might be possible that the key schedule is stored i dedicated memory block interfaced with the FPGA. Also for designs in literature the resource use is often given in different units of measurement: gate equivalents and slices are just a few measurements used. This makes it difficult to make direct comparisons between them as there isn't always a defined relationship between them.
 	
 	Another potential problem of this project is that it became too software orientated, for reasons explored in \autoref{section:proj_man}, but the work done was still very relevant to the project goals as for it to be used in `IoT' products their would need to be a communication protocol in place. Although, the protocol eventually developed was done so with not much research into similar options that have already been produced and are readily available for use. This resulted in the protocol, based on packets and connected information, possibly being a poor solution to the problem.
 	
@@ -1042,7 +1179,9 @@ end
 	\label{section:proj_man}
 	Unfortunately, even though the multiple working models produced in this project required working very hard throughout the duration of the project, a consistent project management technique made it difficult for the original goals, which were plausible and possible, being achieved. As, for example, implementing the hardware version onto a FPGA and testing the performance parameters on actual hardware was the main objective at the beginning but when it came to to doing this developed model wasn't ready because too much time and effort was put into adding advanced power saving techniques such as clock gating, something that wasn't required for correct operation, to the system. This meant that the simulation and synthesis tools were relied upon heavily to gather the results required to evauluate its performance; and these only produce estimates and don't necessarily represent what a FPGA would perform like.
 	
-	On the other hand, when this was realised a backup plan for continuing the project was reasily available. This plan was to shift some of the development efforts to the software to setup the packet system for sending and receiving data between the various `IoT' platforms and the now theoretical hardware. Even though this was the back up plan it did require more effort than expected  
+	On the other hand, when this was realised a backup plan for continuing the project was reasily available. This plan was to shift some of the development efforts to the software to setup the packet system for sending and receiving data between the various `IoT' platforms and the now theoretical hardware. Even though this was the back up plan it did require more effort than expected and did take some from the hardware development.
+	
+	Also towards the end of the project more time have been taken to design and expand upon the experiments explored in \autoref{chapter:RESULT}, especially to examine the power consumption of the module in hardware but also to test the software for what CPU resources it used.
 		
 	\section{Future Work}
 	There is lots of functionality that can be added and testing that can be done to continue and improve on this project in the future. These includes, but not limited to, continuing to improve the efficiency of both the hardware and software; implemented the hardware version onto an FPGA; implementing the hardware as an Application Specific Integrated Circuit (ASIC); optimising the design for clock speed on the FPGA and ASIC; and implementing the software onto the small embedded processors used in IoT.
@@ -1061,6 +1200,17 @@ end
 	\bibliography{Report}
 	\addcontentsline{toc}{chapter}{Bibliography}
 
-	\appendix    
+	\appendix
+	
+	\includepdf[scale=0.85,pages=1,pagecommand=\chapter{Project Brief},offset=0 -5cm]{source/Brief.pdf}
+	
+	\chapter{Synthesised Top Level Module}
+
+	\begin{figure}[H]
+		\includegraphics[width=\textwidth]{SIMON_synth}
+		\centering
+		\caption{The comparison of the throughputs of various modes of SIMON in software and hardware.}
+		\label{fig:synth_final}
+	\end{figure}
 
 \end{document}

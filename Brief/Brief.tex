@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[12pt]{article}
 
 \usepackage[inner=24mm, outer=24mm, top=24mm, bottom=24mm]{geometry}
 \usepackage[parfill]{parskip}
@@ -6,9 +6,11 @@
 \title{\vspace{-20mm}Low Power Hardware Accelerated Internet of Things Cryptography}
 \author{Author: Lewis Smith\\ Supervisor: Mark Zwolinski}
 
+\pagenumbering{gobble}
+
 \begin{document}
    
-   \maketitle
+   %\maketitle
    
    The last few years has seen the rapid emergence of internet connected domestic devices dubbed "Internet of Things" or "IoT". These devices range from the trivial light switch or thermostat controlled through the internet to a more complex networked self driving car or possibly door and safe locks. These IoT devices work by transferring data, which can be commands or possibly sensitive and private information, through the internet between the device and the user. Thus to keep potential adversaries from accessing the private information or controlling the numerous internet connected appliances, maliciously or not, a layer of encryption is usually used, with the decryption key only known by the specified users. This encryption can be achieved through software on a processor or on dedicated hardware like Application Specific Integrated Circuits (ASIC) or Field Programmable Gate Arrays (FPGA). As many IoT devices are small embedded processors there isn't much available program space available to store the encryption algorithms so hardware accelerated encryption is probably a better solution. Dedicated hardware can also, theoretically, perform the algorithms faster and more accurately. However, due to the fact that most IoT devices are always on, power consumption is a very important factor when considering options for adding hardware accelerated encryption and for battery powered devices is often more critical than the actual encryption. 
    

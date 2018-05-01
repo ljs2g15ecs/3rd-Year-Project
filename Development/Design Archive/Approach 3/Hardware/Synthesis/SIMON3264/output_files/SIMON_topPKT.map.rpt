@@ -1,5 +1,5 @@
 Analysis & Synthesis report for SIMON_topPKT
-Mon Apr 30 14:05:14 2018
+Tue May 01 02:04:58 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -49,7 +49,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Apr 30 14:05:14 2018       ;
+; Analysis & Synthesis Status     ; Successful - Tue May 01 02:04:58 2018       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; SIMON_topPKT                                ;
 ; Top-level Entity Name           ; SIMON_topPKT                                ;
@@ -161,39 +161,41 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 2           ;
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 2           ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                                           ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                                       ; Library ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+---------+
-; Source/SIMON_defintions.svh      ; yes             ; User Unspecified File        ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_defintions.svh  ;         ;
-; Source/SIMON_topPKT.sv           ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv       ;         ;
-; Source/SIMON_round.sv            ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_round.sv        ;         ;
-; Source/SIMON_keyexpansion.sv     ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_keyexpansion.sv ;         ;
-; Source/SIMON_function.sv         ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_function.sv     ;         ;
-; Source/SIMON_dataOUT.sv          ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_dataOUT.sv      ;         ;
-; Source/SIMON_dataIN.sv           ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_dataIN.sv       ;         ;
-; Source/SIMON_control.sv          ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_control.sv      ;         ;
-; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_divide.tdf                                                                              ;         ;
-; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/abs_divider.inc                                                                             ;         ;
-; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sign_div_unsign.inc                                                                         ;         ;
-; aglobal171.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/aglobal171.inc                                                                              ;         ;
-; db/lpm_divide_72m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/db/lpm_divide_72m.tdf        ;         ;
-; db/sign_div_unsign_bkh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/db/sign_div_unsign_bkh.tdf   ;         ;
-; db/alt_u_div_sse.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/db/alt_u_div_sse.tdf         ;         ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                    ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                                                ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; Source/SIMON_defintions.svh      ; yes             ; User Unspecified File        ; C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_defintions.svh  ;         ;
+; Source/SIMON_topPKT.sv           ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv       ;         ;
+; Source/SIMON_round.sv            ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_round.sv        ;         ;
+; Source/SIMON_keyexpansion.sv     ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_keyexpansion.sv ;         ;
+; Source/SIMON_function.sv         ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_function.sv     ;         ;
+; Source/SIMON_dataOUT.sv          ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_dataOUT.sv      ;         ;
+; Source/SIMON_dataIN.sv           ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_dataIN.sv       ;         ;
+; Source/SIMON_control.sv          ; yes             ; User SystemVerilog HDL File  ; C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_control.sv      ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_divide.tdf                                                                                       ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/abs_divider.inc                                                                                      ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sign_div_unsign.inc                                                                                  ;         ;
+; aglobal171.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/aglobal171.inc                                                                                       ;         ;
+; db/lpm_divide_72m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/db/lpm_divide_72m.tdf        ;         ;
+; db/sign_div_unsign_bkh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/db/sign_div_unsign_bkh.tdf   ;         ;
+; db/alt_u_div_sse.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/db/alt_u_div_sse.tdf         ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
 +--------------------------------------------------------+
@@ -397,7 +399,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -407,66 +409,66 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Mon Apr 30 14:04:55 2018
+    Info: Processing started: Tue May 01 02:04:42 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SIMON_3264 -c SIMON_topPKT
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file source/simon_toppkt.sv
-    Info (12023): Found entity 1: SIMON_topPKT File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 3
+    Info (12023): Found entity 1: SIMON_topPKT File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file source/simon_round.sv
-    Info (12023): Found entity 1: SIMON_round File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_round.sv Line: 3
+    Info (12023): Found entity 1: SIMON_round File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_round.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file source/simon_keyexpansion.sv
-    Info (12023): Found entity 1: SIMON_keyexpansion File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_keyexpansion.sv Line: 3
+    Info (12023): Found entity 1: SIMON_keyexpansion File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_keyexpansion.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file source/simon_function.sv
-    Info (12023): Found entity 1: SIMON_function File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_function.sv Line: 3
+    Info (12023): Found entity 1: SIMON_function File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_function.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file source/simon_dataout.sv
-    Info (12023): Found entity 1: SIMON_dataOUT File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_dataOUT.sv Line: 3
+    Info (12023): Found entity 1: SIMON_dataOUT File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_dataOUT.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file source/simon_datain.sv
-    Info (12023): Found entity 1: SIMON_dataIN File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_dataIN.sv Line: 3
+    Info (12023): Found entity 1: SIMON_dataIN File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_dataIN.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file source/simon_control.sv
-    Info (12023): Found entity 1: SIMON_control File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_control.sv Line: 3
+    Info (12023): Found entity 1: SIMON_control File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_control.sv Line: 3
 Info (12127): Elaborating entity "SIMON_topPKT" for the top level hierarchy
-Info (12128): Elaborating entity "SIMON_dataIN" for hierarchy "SIMON_dataIN:dataIN" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 30
-Info (12128): Elaborating entity "SIMON_control" for hierarchy "SIMON_control:control" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 31
-Info (12128): Elaborating entity "SIMON_keyexpansion" for hierarchy "SIMON_control:control|SIMON_keyexpansion:ke" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_control.sv Line: 29
-Info (12128): Elaborating entity "SIMON_round" for hierarchy "SIMON_control:control|SIMON_round:r" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_control.sv Line: 35
-Info (12128): Elaborating entity "SIMON_function" for hierarchy "SIMON_control:control|SIMON_round:r|SIMON_function:func" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_round.sv Line: 10
-Info (12128): Elaborating entity "SIMON_dataOUT" for hierarchy "SIMON_dataOUT:dataOUT" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 32
+Info (12128): Elaborating entity "SIMON_dataIN" for hierarchy "SIMON_dataIN:dataIN" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 30
+Info (12128): Elaborating entity "SIMON_control" for hierarchy "SIMON_control:control" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 31
+Info (12128): Elaborating entity "SIMON_keyexpansion" for hierarchy "SIMON_control:control|SIMON_keyexpansion:ke" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_control.sv Line: 29
+Info (12128): Elaborating entity "SIMON_round" for hierarchy "SIMON_control:control|SIMON_round:r" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_control.sv Line: 35
+Info (12128): Elaborating entity "SIMON_function" for hierarchy "SIMON_control:control|SIMON_round:r|SIMON_function:func" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_round.sv Line: 10
+Info (12128): Elaborating entity "SIMON_dataOUT" for hierarchy "SIMON_dataOUT:dataOUT" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 32
 Info (278001): Inferred 1 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "SIMON_control:control|SIMON_keyexpansion:ke|Mod0" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_keyexpansion.sv Line: 33
-Info (12130): Elaborated megafunction instantiation "SIMON_control:control|SIMON_keyexpansion:ke|lpm_divide:Mod0" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_keyexpansion.sv Line: 33
-Info (12133): Instantiated megafunction "SIMON_control:control|SIMON_keyexpansion:ke|lpm_divide:Mod0" with the following parameter: File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_keyexpansion.sv Line: 33
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "SIMON_control:control|SIMON_keyexpansion:ke|Mod0" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_keyexpansion.sv Line: 33
+Info (12130): Elaborated megafunction instantiation "SIMON_control:control|SIMON_keyexpansion:ke|lpm_divide:Mod0" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_keyexpansion.sv Line: 33
+Info (12133): Instantiated megafunction "SIMON_control:control|SIMON_keyexpansion:ke|lpm_divide:Mod0" with the following parameter: File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_keyexpansion.sv Line: 33
     Info (12134): Parameter "LPM_WIDTHN" = "5"
     Info (12134): Parameter "LPM_WIDTHD" = "6"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_72m.tdf
-    Info (12023): Found entity 1: lpm_divide_72m File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/db/lpm_divide_72m.tdf Line: 24
+    Info (12023): Found entity 1: lpm_divide_72m File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/db/lpm_divide_72m.tdf Line: 24
 Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_bkh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_bkh File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/db/sign_div_unsign_bkh.tdf Line: 24
+    Info (12023): Found entity 1: sign_div_unsign_bkh File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/db/sign_div_unsign_bkh.tdf Line: 24
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_sse.tdf
-    Info (12023): Found entity 1: alt_u_div_sse File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/db/alt_u_div_sse.tdf Line: 22
+    Info (12023): Found entity 1: alt_u_div_sse File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/db/alt_u_div_sse.tdf Line: 22
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 6 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 8 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "in[8][0]" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
-    Warning (15610): No output dependent on input pin "in[8][1]" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
-    Warning (15610): No output dependent on input pin "in[8][2]" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
-    Warning (15610): No output dependent on input pin "in[8][3]" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
-    Warning (15610): No output dependent on input pin "in[8][4]" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
-    Warning (15610): No output dependent on input pin "in[8][5]" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
-    Warning (15610): No output dependent on input pin "in[8][6]" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
-    Warning (15610): No output dependent on input pin "in[8][7]" File: C:/Users/lewis/Documents/Part III/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
+    Warning (15610): No output dependent on input pin "in[8][0]" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
+    Warning (15610): No output dependent on input pin "in[8][1]" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
+    Warning (15610): No output dependent on input pin "in[8][2]" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
+    Warning (15610): No output dependent on input pin "in[8][3]" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
+    Warning (15610): No output dependent on input pin "in[8][4]" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
+    Warning (15610): No output dependent on input pin "in[8][5]" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
+    Warning (15610): No output dependent on input pin "in[8][6]" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
+    Warning (15610): No output dependent on input pin "in[8][7]" File: C:/Users/lewis/Documents/Part III/COMP3200/3rd-Year-Project/Development/Design Archive/Approach 3/Hardware/Synthesis/SIMON3264/Source/SIMON_topPKT.sv Line: 8
 Info (21057): Implemented 1551 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 84 input pins
     Info (21059): Implemented 83 output pins
     Info (21061): Implemented 1384 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 737 megabytes
-    Info: Processing ended: Mon Apr 30 14:05:14 2018
-    Info: Elapsed time: 00:00:19
-    Info: Total CPU time (on all processors): 00:00:40
+    Info: Peak virtual memory: 770 megabytes
+    Info: Processing ended: Tue May 01 02:04:58 2018
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:30
 
 

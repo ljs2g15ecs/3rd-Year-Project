@@ -1,45 +1,46 @@
-\BOOKMARK [0][-]{Doc-Start}{Abstract}{}% 1
-\BOOKMARK [0][-]{chapter*.1}{Contents}{}% 2
-\BOOKMARK [0][-]{chapter*.2}{Acknowledgements}{}% 3
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 4
-\BOOKMARK [0][-]{chapter.2}{Background Research \046 Literature}{}% 5
-\BOOKMARK [1][-]{section.2.1}{Internet of Things}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.2}{Cryptography}{chapter.2}% 7
-\BOOKMARK [2][-]{subsection.2.2.1}{Asymmetric Key}{section.2.2}% 8
-\BOOKMARK [2][-]{subsection.2.2.2}{Symmetric Key}{section.2.2}% 9
-\BOOKMARK [2][-]{subsection.2.2.3}{Decisions}{section.2.2}% 10
-\BOOKMARK [1][-]{section.2.3}{Conventional Algorithms}{chapter.2}% 11
-\BOOKMARK [2][-]{subsection.2.3.1}{Standardization}{section.2.3}% 12
-\BOOKMARK [2][-]{subsection.2.3.2}{Other Algorithms}{section.2.3}% 13
-\BOOKMARK [2][-]{subsection.2.3.3}{Decisions}{section.2.3}% 14
-\BOOKMARK [1][-]{section.2.4}{Lightweight Algorithms}{chapter.2}% 15
-\BOOKMARK [2][-]{subsection.2.4.1}{SIMON \046 SPECK}{section.2.4}% 16
-\BOOKMARK [2][-]{subsection.2.4.2}{Other Algorithms}{section.2.4}% 17
-\BOOKMARK [2][-]{subsection.2.4.3}{Decisions}{section.2.4}% 18
-\BOOKMARK [0][-]{chapter.3}{Previous Work \046 Initial Design Approaches}{}% 19
-\BOOKMARK [1][-]{section.3.1}{First Approach}{chapter.3}% 20
-\BOOKMARK [2][-]{subsection.3.1.1}{Software - Hosted C}{section.3.1}% 21
-\BOOKMARK [2][-]{subsection.3.1.2}{Hardware - System Verilog}{section.3.1}% 22
-\BOOKMARK [1][-]{section.3.2}{Second Approach}{chapter.3}% 23
-\BOOKMARK [2][-]{subsection.3.2.1}{Software - Hosted C}{section.3.2}% 24
-\BOOKMARK [2][-]{subsection.3.2.2}{Hardware - System Verilog}{section.3.2}% 25
-\BOOKMARK [0][-]{chapter.4}{Final Design Approach}{}% 26
-\BOOKMARK [1][-]{section.4.1}{Software - Hosted C++}{chapter.4}% 27
-\BOOKMARK [2][-]{subsection.4.1.1}{Changes to the Code}{section.4.1}% 28
-\BOOKMARK [2][-]{subsection.4.1.2}{Testing}{section.4.1}% 29
-\BOOKMARK [1][-]{section.4.2}{Hardware - System Verilog}{chapter.4}% 30
-\BOOKMARK [0][-]{chapter.5}{Experiments \046 Results}{}% 31
-\BOOKMARK [1][-]{section.5.1}{Throughput}{chapter.5}% 32
-\BOOKMARK [2][-]{subsection.5.1.1}{Method}{section.5.1}% 33
-\BOOKMARK [2][-]{subsection.5.1.2}{Results}{section.5.1}% 34
-\BOOKMARK [1][-]{section.5.2}{Resource Use}{chapter.5}% 35
-\BOOKMARK [2][-]{subsection.5.2.1}{Method}{section.5.2}% 36
-\BOOKMARK [2][-]{subsection.5.2.2}{Results}{section.5.2}% 37
-\BOOKMARK [1][-]{section.5.3}{Power Consumption}{chapter.5}% 38
-\BOOKMARK [2][-]{subsection.5.3.1}{Method}{section.5.3}% 39
-\BOOKMARK [2][-]{subsection.5.3.2}{Results}{section.5.3}% 40
-\BOOKMARK [0][-]{chapter.6}{Conclusion \046 Future Work}{}% 41
-\BOOKMARK [1][-]{section.6.1}{Conclusion}{chapter.6}% 42
-\BOOKMARK [1][-]{section.6.2}{Project Management}{chapter.6}% 43
-\BOOKMARK [1][-]{section.6.3}{Future Work}{chapter.6}% 44
-\BOOKMARK [0][-]{chapter*.10}{Bibliography}{}% 45
+\BOOKMARK [0][-]{section*.2}{Acknowledgements}{}% 1
+\BOOKMARK [0][-]{section*.3}{Statement of Originality}{}% 2
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 3
+\BOOKMARK [0][-]{chapter.2}{Background Research \046 Literature}{}% 4
+\BOOKMARK [1][-]{section.2.1}{Internet of Things}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.2}{Cryptography}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.2.1}{Asymmetric Key}{section.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.2.2}{Symmetric Key}{section.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.3}{Decisions}{section.2.2}% 9
+\BOOKMARK [1][-]{section.2.3}{Conventional Algorithms}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.3.1}{Standardization}{section.2.3}% 11
+\BOOKMARK [2][-]{subsection.2.3.2}{Other Algorithms}{section.2.3}% 12
+\BOOKMARK [2][-]{subsection.2.3.3}{Decisions}{section.2.3}% 13
+\BOOKMARK [1][-]{section.2.4}{Lightweight Algorithms}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.4.1}{SIMON \046 SPECK}{section.2.4}% 15
+\BOOKMARK [2][-]{subsection.2.4.2}{Other Algorithms}{section.2.4}% 16
+\BOOKMARK [2][-]{subsection.2.4.3}{Decisions}{section.2.4}% 17
+\BOOKMARK [0][-]{chapter.3}{Previous Work \046 Initial Design Approaches}{}% 18
+\BOOKMARK [1][-]{section.3.1}{First Approach}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.3.1.1}{Software - Hosted C}{section.3.1}% 20
+\BOOKMARK [2][-]{subsection.3.1.2}{Hardware - System Verilog}{section.3.1}% 21
+\BOOKMARK [1][-]{section.3.2}{Second Approach}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.2.1}{Software - Hosted C}{section.3.2}% 23
+\BOOKMARK [2][-]{subsection.3.2.2}{Hardware - System Verilog}{section.3.2}% 24
+\BOOKMARK [0][-]{chapter.4}{Final Design Approach}{}% 25
+\BOOKMARK [1][-]{section.4.1}{Software - Hosted C++}{chapter.4}% 26
+\BOOKMARK [2][-]{subsection.4.1.1}{Changes to the Code}{section.4.1}% 27
+\BOOKMARK [2][-]{subsection.4.1.2}{Testing}{section.4.1}% 28
+\BOOKMARK [1][-]{section.4.2}{Hardware - System Verilog}{chapter.4}% 29
+\BOOKMARK [0][-]{chapter.5}{Experiments \046 Results}{}% 30
+\BOOKMARK [1][-]{section.5.1}{Throughput}{chapter.5}% 31
+\BOOKMARK [2][-]{subsection.5.1.1}{Method}{section.5.1}% 32
+\BOOKMARK [2][-]{subsection.5.1.2}{Results}{section.5.1}% 33
+\BOOKMARK [1][-]{section.5.2}{Resource Use}{chapter.5}% 34
+\BOOKMARK [2][-]{subsection.5.2.1}{Method}{section.5.2}% 35
+\BOOKMARK [2][-]{subsection.5.2.2}{Results}{section.5.2}% 36
+\BOOKMARK [1][-]{section.5.3}{Power Consumption}{chapter.5}% 37
+\BOOKMARK [2][-]{subsection.5.3.1}{Method}{section.5.3}% 38
+\BOOKMARK [2][-]{subsection.5.3.2}{Results}{section.5.3}% 39
+\BOOKMARK [0][-]{chapter.6}{Conclusion \046 Future Work}{}% 40
+\BOOKMARK [1][-]{section.6.1}{Conclusion}{chapter.6}% 41
+\BOOKMARK [1][-]{section.6.2}{Project Management}{chapter.6}% 42
+\BOOKMARK [1][-]{section.6.3}{Future Work}{chapter.6}% 43
+\BOOKMARK [0][-]{chapter*.14}{Bibliography}{}% 44
+\BOOKMARK [0][-]{appendix.A}{Project Brief}{}% 45
+\BOOKMARK [0][-]{appendix.B}{Synthesised Top Level Module}{}% 46
